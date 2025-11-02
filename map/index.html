@@ -64,6 +64,9 @@ let allStyleLayers = [];
 // Will hold the style default visibility for each layer
 const styleDefaultVisibility = {};
 
+// Track externally loaded layers (not part of original style)
+const externalLayers = new Set();
+
 // Default camera
 const defaultCamera = {
   center: [34.3537, 31.4238], // Custom view
@@ -302,12 +305,34 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     if (map.getSource(sourceId)) map.removeSource(sourceId);
     map.addSource(sourceId, { type: 'geojson', data: geojson });
 
-    // 4) Infer layer type
+    // 4) Extract sourceHint and determine layer type
+    let sourceHint = null;
+    if (typeof toLayer === 'object' && toLayer !== null && toLayer.sourceHint) sourceHint = toLayer.sourceHint;
+    if (!sourceHint && typeof geojsonFile === 'object' && geojsonFile.sourceHint) sourceHint = geojsonFile.sourceHint;
+    
+    console.log('[LOAD] Layer:', layerId, 'with sourceHint:', sourceHint);
+    
     let type = 'line';
-    if (geojson.features && geojson.features.length) {
-      const geomType = geojson.features[0].geometry && geojson.features[0].geometry.type;
-      if (geomType === 'Polygon' || geomType === 'MultiPolygon') type = 'fill';
-      else if (geomType === 'Point' || geomType === 'MultiPoint') type = 'circle';
+    let sourceLayerFound = false;
+    
+    if (sourceHint) {
+      const styleLayer = map.getStyle().layers.find(l => l.id === sourceHint);
+      if (styleLayer && styleLayer.type) {
+        type = styleLayer.type;
+        sourceLayerFound = true;
+        console.log('[LAYER TYPE] Using type', type, 'from source layer', sourceHint);
+      } else {
+        console.warn('[LAYER TYPE] Source layer', sourceHint, 'not found in style! Available layers:', map.getStyle().layers.map(l => l.id).join(', '));
+      }
+    }
+    
+    // Fallback: infer from geometry if no source layer found
+    if (!sourceLayerFound) {
+      if (geojson.features && geojson.features.length) {
+        const geomType = geojson.features[0].geometry && geojson.features[0].geometry.type;
+        if (geomType === 'Polygon' || geomType === 'MultiPolygon') type = 'fill';
+        else if (geomType === 'Point' || geomType === 'MultiPoint') type = 'circle';
+      }
     }
 
     // 5) Visibility
@@ -331,9 +356,6 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
 
     // 7) Copy styling from sourceHint if provided
     try {
-      let sourceHint = null;
-      if (typeof toLayer === 'object' && toLayer !== null && toLayer.sourceHint) sourceHint = toLayer.sourceHint;
-      if (!sourceHint && typeof geojsonFile === 'object' && geojsonFile.sourceHint) sourceHint = geojsonFile.sourceHint;
       if (sourceHint) {
         const styleLayer = map.getStyle().layers.find(l => l.id === sourceHint);
         if (styleLayer) {
@@ -344,15 +366,53 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
             layerDef.layout = Object.assign({}, layerDef.layout, copiedLayout);
           }
           console.log('[STYLE COPY] Copied paint/layout from', sourceHint, 'to', layerId);
+        } else {
+          console.warn('[STYLE COPY] Source layer', sourceHint, 'not found, cannot copy styling');
         }
       }
     } catch (ex) {
-      console.warn('Failed to apply source hint style:', ex);
+      console.warn('[STYLE COPY] Failed to apply source hint style:', ex);
     }
 
-    // 8) Add layer
-    map.addLayer(layerDef);
+    // 8) Add layer - with beforeId to place right after source layer if sourceHint is provided
+    try {
+      if (sourceHint) {
+        // Find the layer that comes right after the source layer to insert before it
+        const allLayers = map.getStyle().layers;
+        const sourceIndex = allLayers.findIndex(l => l.id === sourceHint);
+        if (sourceIndex >= 0) {
+          if (sourceIndex < allLayers.length - 1) {
+            const beforeId = allLayers[sourceIndex + 1].id;
+            console.log('[LAYER ORDER] Placing', layerId, 'right after', sourceHint, '(before', beforeId + ')');
+            map.addLayer(layerDef, beforeId);
+          } else {
+            // Source layer is last, add at top
+            console.log('[LAYER ORDER] Source layer', sourceHint, 'is last, adding', layerId, 'at top');
+            map.addLayer(layerDef);
+          }
+        } else {
+          // Source layer not found
+          console.warn('[LAYER ORDER] Source layer', sourceHint, 'not found in style, adding', layerId, 'at top');
+          map.addLayer(layerDef);
+        }
+      } else {
+        // No source hint, add at top
+        map.addLayer(layerDef);
+      }
+    } catch (ex) {
+      console.warn('[LAYER ORDER] Failed to add layer with positioning:', ex);
+      // Fallback: add without beforeId
+      try {
+        map.addLayer(layerDef);
+      } catch (ex2) {
+        console.error('[LAYER ORDER] Failed to add layer at all:', ex2);
+        throw ex2;
+      }
+    }
     console.log(`Layer loaded: ${layerId}`);
+    
+    // Mark as external layer
+    externalLayers.add(layerId);
 
     // 9) Follow logic is handled centrally in the hashchange handler to ensure
     // camera and layer flags are applied first. No auto-follow here.
@@ -362,7 +422,27 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
       map.setLayoutProperty(layerId, 'visibility', 'none');
     }
     if (!allStyleLayers.some(l => l.id === layerId)) {
-      allStyleLayers.push({ id: layerId, name: cleanId });
+      // Insert the layer in the correct position based on actual map layer order
+      try {
+        if (sourceHint) {
+          // Find the source layer's position in allStyleLayers
+          const sourceIdx = allStyleLayers.findIndex(l => l.id === sourceHint);
+          if (sourceIdx >= 0) {
+            // Insert right after the source layer
+            allStyleLayers.splice(sourceIdx + 1, 0, { id: layerId, name: cleanId });
+            console.log('[LAYER LIST] Inserted', layerId, 'after', sourceHint, 'in UI list');
+          } else {
+            // Source not in list, add at end
+            allStyleLayers.push({ id: layerId, name: cleanId });
+          }
+        } else {
+          // No source hint, add at end
+          allStyleLayers.push({ id: layerId, name: cleanId });
+        }
+      } catch (ex) {
+        console.warn('Failed to position layer in list:', ex);
+        allStyleLayers.push({ id: layerId, name: cleanId });
+      }
       styleDefaultVisibility[layerId] = 'visible';
     }
     createLayerControls(map, allStyleLayers.filter(l => map.getLayer(l.id) && map.getLayoutProperty(l.id, 'visibility') === 'visible').map(l => l.id));
@@ -438,10 +518,14 @@ function createLayerControls(map, visibleLayers) {
         showReset = false;
       }
       let label = layer.name || layer.id;
+      // Check if this is an externally loaded layer
+      const isExternalLayer = externalLayers.has(layer.id);
+      // Apply bold blue styling for external layers
+      const labelStyle = isExternalLayer ? 'font-weight:bold;color:#0028ff;' : (bold ? 'font-weight:bold;' : '');
       // Wrap the checkbox, label, and button in a span for easy removal
-      container.innerHTML += `<span class="layer-list-item" data-layer-item="${layer.id}"><label style="${bold ? 'font-weight:bold;' : ''}"><input type="checkbox" data-layer="${layer.id}" ${checked}> ${label}</label>`;
+      container.innerHTML += `<span class="layer-list-item" data-layer-item="${layer.id}"><label style="${labelStyle}"><input type="checkbox" data-layer="${layer.id}" ${checked}> ${label}</label>`;
       // For dynamic layers (not part of the style), always show delete 'X' button
-      if (!map.getStyle().layers.some(l => l.id === layer.id)) {
+      if (isExternalLayer) {
         container.innerHTML += ` <button data-delete="${layer.id}" title="Delete layer" style="font-size:1.1em;line-height:1;color:#c00;font-weight:bold;vertical-align:middle;padding:0 0.2em;">x</button>`;
       } else if (explicitState[layer.id]) {
         container.innerHTML += ` <button data-reset="${layer.id}" title="Reset to style default" style="font-size:1.1em;line-height:1;vertical-align:middle;padding:0 0.2em;">↻</button>`;
@@ -546,6 +630,7 @@ function createLayerControls(map, visibleLayers) {
       const idx = allStyleLayers.findIndex(l => l.id === layerId);
       if (idx !== -1) allStyleLayers.splice(idx, 1);
       delete styleDefaultVisibility[layerId];
+      externalLayers.delete(layerId);
       // Refresh the UI after deletion to ensure the list is in sync
       createLayerControls(map, allStyleLayers.filter(l => map.getLayer(l.id) && map.getLayoutProperty(l.id, 'visibility') === 'visible').map(l => l.id));
       // Remove from hash and update URL
@@ -681,13 +766,21 @@ map.on('load', () => {
     console.warn('[INIT] Failed to apply parsed camera on load', e);
   }
   // Load any dynamic geojsons requested in the hash
-  const { dynamicGeojsonToLoad } = parseHash();
+  const { dynamicGeojsonToLoad, layers: layersOn } = parseHash();
   if (dynamicGeojsonToLoad && dynamicGeojsonToLoad.length) {
     dynamicGeojsonToLoad.forEach(entry => {
+      let name = null, sourceHint = null;
       if (typeof entry === 'string') {
-        loadAndAddOrReplaceGeoJSON(entry + '.geojson');
-      } else if (entry && typeof entry === 'object' && entry.name) {
-        loadAndAddOrReplaceGeoJSON(entry.name + '.geojson', { sourceHint: entry.sourceHint });
+        name = entry;
+      } else if (entry && typeof entry === 'object') {
+        name = entry.name;
+        sourceHint = entry.sourceHint;
+      }
+      if (name) {
+        loadAndAddOrReplaceGeoJSON(name + '.geojson', { 
+          visibility: (layersOn && layersOn.includes(name)) ? 'visible' : 'none',
+          sourceHint 
+        });
       }
     });
   }
@@ -1025,7 +1118,13 @@ window.addEventListener('hashchange', () => {
         styleDefaultVisibility[name] = 'visible';
       }
       // Load if not present
-      if (!map.getLayer(name)) {
+      const layerExists = map.getLayer(name);
+      if (!layerExists) {
+        console.log('[HASHCHANGE] Loading new layer:', name, 'with sourceHint:', sourceHint);
+        loadAndAddOrReplaceGeoJSON(name + '.geojson', { visibility: layersOn.includes(name) ? 'visible' : 'none', sourceHint });
+      } else if (sourceHint) {
+        // Layer exists but sourceHint provided - reload to apply styling
+        console.log('[HASHCHANGE] Reloading existing layer:', name, 'with sourceHint:', sourceHint);
         loadAndAddOrReplaceGeoJSON(name + '.geojson', { visibility: layersOn.includes(name) ? 'visible' : 'none', sourceHint });
       }
       // Unload if present but not in hash (optional, currently not removing)
