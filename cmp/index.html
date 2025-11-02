@@ -1,0 +1,2030 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Inflect SVG Viewer</title>
+<style>
+  html,body{height:100%;margin:0;background:#333;color:#fff;font-family:Helvetica,Arial,sans-serif}
+  #app{position:relative;height:100vh;overflow:hidden}
+  #canvas{width:100%;height:100%;position:relative}
+  #referenceFrame{position:absolute;pointer-events:none;border:1px solid #0B99FF;box-sizing:border-box;z-index:10}
+  #svgContainer{position:absolute;left:0;top:0;right:0;bottom:0;overflow:visible}
+  /* HTML overlays container sits above the SVG and follows its transforms */
+  #overlays{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:9}
+  #overlays .overlay{position:absolute;transform-origin:0 0;pointer-events:auto}
+  #controls{position:absolute;right:8px;top:8px;background:rgba(255,255,255,0.06);padding:8px;border-radius:6px;color:#fff;font-size:13px}
+  #controls label{display:block;margin-bottom:6px;font-size:12px}
+  #controls input[type=range]{width:140px}
+  #status{position:absolute;left:8px;top:8px;background:rgba(0,0,0,0.5);padding:6px 8px;border-radius:6px;font-size:12px}
+  /* when embedded in an iframe we hide the UI chrome and reference frame */
+  .embedded #controls, .embedded #status, .embedded #referenceFrame{ display:none !important; }
+  /* layer list inside controls */
+  #layerList{ max-height:200px; overflow:auto; margin-top:6px; font-size:13px }
+  #layerList label{ display:flex; align-items:center; gap:8px; margin:4px 0 }
+  /* Ensure the embedded SVG is not resized by CSS; we control size via transforms */
+  #svgContainer > svg{position:absolute;left:0;top:0;max-width:none;max-height:none;width:auto;height:auto}
+</style>
+<style>
+  /* Force an exception child to remain visible without transitions to avoid flicker */
+  .inflect-exception-visible { opacity: 1 !important; visibility: visible !important; transition: none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="canvas">
+    <div id="referenceFrame"></div>
+    <div id="svgContainer"></div>
+    <div id="overlays" aria-hidden="false"></div>
+  </div>
+  <div id="controls">
+    <button id="reset">Reset view</button>
+    <div style="margin-top:8px;font-weight:600">Layers</div>
+    <div id="layerList" aria-live="polite"></div>
+  <button id="copyLink" style="margin-top:8px">Copy link</button>
+  </div>
+  <div id="status">loading...</div>
+</div>
+<script>
+// detect if running inside an iframe and toggle embedded UI
+try {
+  if (window.top && window.top !== window.self) {
+      document.documentElement.classList.add('embedded');
+  }
+} catch(e) {
+  // cross-origin top access may throw; assume embedded in that case
+  try { document.documentElement.classList.add('embedded'); } catch(e){}
+}
+
+// Simple inflect-style hash parser: fields separated by & with url in 5th slot.
+// Parse hash and tolerate a url token that may include @param pairs: url@k=v@k2=v2
+function parseUrlField(urlField) {
+  if (!urlField) return { url: '', params: {}, vis: { show: [], hide: [] } };
+  // support optional trailing visibility tokens after a slash, e.g. 'file.svg/~layer+other'
+  let base = String(urlField);
+  let vis = { show: [], hide: [] };
+  const slashIdx = base.indexOf('/');
+  if (slashIdx !== -1) {
+    const visPart = base.slice(slashIdx + 1);
+    base = base.slice(0, slashIdx);
+    // tokens start with + or ~; capture sequences like +name, ~name
+    const re = /([+~])([^+~\/]+)/g;
+    let m;
+    while ((m = re.exec(visPart)) !== null) {
+      const sym = m[1]; const name = decodeURIComponent(m[2]);
+        // resolve short label (no slash) to full hierarchical key if unique
+        let resolved = name;
+        if (!name.includes('/')){
+          // find keys whose last segment matches name
+          const matches = [];
+          for (const k of layerKeyMap.keys()){
+            if (String(k).split('/').pop() === name) matches.push(k);
+          }
+          if (matches.length === 1) resolved = matches[0];
+        }
+        if (sym === '+') vis.show.push(resolved);
+        else if (sym === '~') vis.hide.push(resolved);
+    }
+  }
+  const parts = base.split('@').map(s => s.trim()).filter(Boolean);
+  const url = parts[0] || '';
+  const params = {};
+  parts.slice(1).forEach(p => {
+    const eq = p.indexOf('=');
+    if (eq === -1) return;
+    const k = p.slice(0, eq);
+    const v = p.slice(eq+1);
+    if (!k) return;
+    params[k] = isNaN(Number(v)) ? v : Number(v);
+  });
+  return { url, params, vis };
+}
+
+function buildUrlField(url, params, vis){
+  let token = url || '';
+  if (params) for (const k of Object.keys(params)) token += `@${k}=${encodeURIComponent(String(params[k]))}`;
+  // Hide-only semantics: only serialize hidden layer keys as ~key
+    if (vis) {
+      let seg = '';
+      // helper to pick a short label if unique (last segment), otherwise use full key
+      function shortOrFull(k) {
+        if (!k) return k;
+        const last = String(k).split('/').pop();
+        // check uniqueness among layerKeyMap keys' last segments
+        let count = 0;
+        for (const kk of layerKeyMap.keys()) if ((String(kk).split('/').pop()) === last) count++;
+        return count === 1 ? last : k;
+      }
+      // Hide-only semantics: by default serialize hidden layers as ~key. However,
+      // when there are explicit show (+) tokens present we prefer to serialize only
+      // the +tokens (so additional checks produce +A+B) and omit explicit ~ siblings
+      // that would otherwise be emitted like +A+B~C~D.
+      let hideList = (vis.hide || []).slice();
+      let showList = (vis.show || []).slice();
+      try {
+        // Only attempt compression when there are no explicit shows; if shows are
+        // present, skip compression and we will omit ~ tokens below.
+        if (!showList.length) {
+          const hideSet = new Set(hideList);
+          for (const parentKey of Array.from(layerKeyMap.keys())){
+            const children = getDirectChildrenKeys(parentKey);
+            if (children.length < 2) continue;
+            const hiddenChildren = children.filter(c => hideSet.has(c));
+            const shownChildren = children.filter(c => showList.includes(c));
+            if (hiddenChildren.length === children.length - 1 && shownChildren.length === 1){
+              hideList = hideList.filter(h => !hiddenChildren.includes(h));
+              hideList.push(parentKey);
+            }
+          }
+        }
+      } catch(e) { /* ignore compression failures */ }
+
+      // If explicit shows are present, prefer emitting only +tokens and skip ~tokens
+      if (showList && showList.length) {
+        showList.forEach(s => { seg += `+${encodeURIComponent(String(shortOrFull(s)))}`; });
+      } else {
+        if (hideList && hideList.length) hideList.forEach(h => { seg += `~${encodeURIComponent(String(shortOrFull(h)))}`; });
+      }
+      if (seg) token += '/' + seg;
+  }
+  return token;
+}
+
+function parseHash(){
+  const raw = location.hash.slice(1).trim();
+  if (!raw) return { url: '', params: {}, view: null };
+  // New compact format: filename/x,y,zoom/layers
+  // filename may be a path containing .svg; layers is optional (encoded after a slash)
+  const compactRe = /^(?<file>[^\/,]+\.svg|\/[^\/,]+\.svg|[^\/,]+\.svg)\/(?<xyzoom>[\d\-\.]+,[\d\-\.]+,[\d\-\.]+)(?:\/(?<layers>.*))?$/i;
+  const m = raw.match(compactRe);
+  if (m && m.groups && m.groups.file){
+    const file = m.groups.file;
+    const xyzoom = m.groups.xyzoom || '';
+    const layers = m.groups.layers || '';
+    const parts = xyzoom.split(',').map(Number);
+    const x = !isNaN(parts[0]) ? parts[0] : null;
+    const y = !isNaN(parts[1]) ? parts[1] : null;
+    const s = !isNaN(parts[2]) ? parts[2] : null;
+    // parse layers section which follows same +/~ tokens optionally
+    const vis = { show: [], hide: [] };
+    if (layers) {
+      const re = /([+~])([^+~\/]+)/g;
+      let mm;
+      while ((mm = re.exec(layers)) !== null){
+        const sym = mm[1]; const name = decodeURIComponent(mm[2]);
+        if (sym === '+') vis.show.push(name); else vis.hide.push(name);
+      }
+    }
+    const params = {};
+    if (s !== null) params.s = s;
+    if (x !== null) params.x = x;
+    if (y !== null) params.y = y;
+    return { url: file, params: params, view: null, vis: vis };
+  }
+
+  // backward compatibility: old ampersand-separated format
+  if (!raw.includes('&') && (raw.indexOf('.svg') !== -1 || raw.startsWith('/') || /^\w[\w\-\.]*\.svg$/i.test(raw))) {
+    const parsed = parseUrlField(raw);
+    return { url: parsed.url, params: parsed.params || {}, view: null, vis: parsed.vis || { show: [], hide: [] } };
+  }
+  const parts = raw.split('&');
+  let rawUrlField = parts[4] || '';
+  // tolerant shift
+  if (!rawUrlField && parts.length>=5 && parts[3] && (parts[3].includes('.svg')||parts[3].startsWith('svg/'))) {
+    rawUrlField = parts[3];
+  }
+  const parsed = parseUrlField(rawUrlField);
+  return { url: parsed.url, params: parsed.params || {}, view: null, vis: parsed.vis || { show: [], hide: [] } };
+}
+function layersToUrlField(u){ return u || ''; }
+
+function buildCompactHash(file, params, vis){
+  // params: { x, y, s }
+  // x,y are normalized offsets in reference-frame units; keep 2 decimals
+  const x = (params && typeof params.x === 'number') ? (Math.round(params.x*100)/100) : 0;
+  const y = (params && typeof params.y === 'number') ? (Math.round(params.y*100)/100) : 0;
+  const s = (params && typeof params.s === 'number') ? (Math.round(params.s*100)/100) : 1;
+  // If params match the default canonical view (0,0,1), omit them from the hash
+  let token = String(file || '');
+  const paramsAreDefault = (x === 0 && y === 0 && (Math.abs(s - 1) < 1e-6));
+  if (!paramsAreDefault) token += `/${x},${y},${s}`;
+  // append visibility tokens after either the params (if present) or the filename
+  if (vis && ((Array.isArray(vis.show) && vis.show.length) || (Array.isArray(vis.hide) && vis.hide.length))){
+    let seg = '';
+    // When serializing layer keys into the compact hash, only include the
+    // local label (last path segment) to keep tokens short and avoid
+    // exposing group prefixes. If the short label is non-unique the
+    // parser will resolve it against available keys on load.
+    function shortLabel(k){
+      if (!k) return k;
+      const s = String(k).split('/').pop();
+      return s;
+    }
+    if (vis.show && vis.show.length) vis.show.forEach(item => seg += `+${encodeURIComponent(String(shortLabel(item)))}`);
+    else if (vis.hide && vis.hide.length) vis.hide.forEach(item => seg += `~${encodeURIComponent(String(shortLabel(item)))}`);
+    if (seg) token += `/${seg}`;
+  }
+  return token;
+}
+
+let svgContainer = document.getElementById('svgContainer');
+let status = document.getElementById('status');
+let resetBtn = document.getElementById('reset');
+
+let svgEl = null; // the embedded svg root
+let wrapperG = null; // group we apply transforms to
+let bbox = null;
+// animation timing (ms) for fades; make configurable
+// Use a longer duration and a soft cubic-bezier to produce buttery transitions
+const FADE_DURATION = 1800;
+const SOFT_EASE = 'cubic-bezier(0.22,1,0.36,1)';
+let state = { tx:0, ty:0, scale:1 };
+let view = null; // { topLeft:[x,y], bottomRight:[x,y] } in svg coords
+let isDragging=false, dragStart=null, dragStartState=null;
+ let pendingVis = null; // visibility instructions to apply after load
+let layerKeyMap = new Map();
+let showExceptions = new Set(); // keys explicitly shown despite ancestor hide
+let defaultSvgParams = null; // captured after load to represent the 'fit' defaults
+
+function getDirectChildrenKeys(parentKey){
+  const res = [];
+  const prefix = parentKey + '/';
+  for (const k of layerKeyMap.keys()){
+    if (!k.startsWith(prefix)) continue;
+    const rest = k.slice(prefix.length);
+    if (rest.indexOf('/') === -1) res.push(k);
+  }
+  return res;
+}
+
+function getKeyForElement(el){
+  for (const [k, v] of layerKeyMap.entries()){
+    if (v === el) return k;
+  }
+  return null;
+}
+
+function setStatus(s){ status.textContent = s; }
+
+async function loadSVG(url){
+  if (!url) { setStatus('no url'); return; }
+  try {
+    setStatus('loading '+url);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('fetch failed '+res.status);
+    const text = await res.text();
+    svgContainer.innerHTML = text;
+    svgEl = svgContainer.querySelector('svg');
+    if (!svgEl) throw new Error('no <svg> in file');
+    // ensure width/height viewBox exists
+    if (!svgEl.getAttribute('viewBox')) {
+      const w = svgEl.getAttribute('width')||svgEl.clientWidth||300;
+      const h = svgEl.getAttribute('height')||svgEl.clientHeight||150;
+      svgEl.setAttribute('viewBox','0 0 '+w+' '+h);
+    }
+  // We manipulate the SVG using CSS transforms on the svg element.
+  // Anchor everything to the canvas' top-left and avoid CSS auto-scaling.
+  try {
+    const canvas = document.getElementById('canvas');
+    if (canvas && canvas.style) canvas.style.position = canvas.style.position || 'relative';
+    if (svgContainer && svgContainer.style) {
+      svgContainer.style.position = 'absolute';
+      svgContainer.style.left = '0';
+      svgContainer.style.top = '0';
+      svgContainer.style.right = '0';
+      svgContainer.style.bottom = '0';
+      svgContainer.style.overflow = 'visible';
+    }
+  } catch(e){}
+  svgEl.style.position = 'absolute';
+  svgEl.style.left = '0';
+  svgEl.style.top = '0';
+  svgEl.style.maxWidth = 'none';
+  svgEl.style.maxHeight = 'none';
+  svgEl.style.width = 'auto';
+  svgEl.style.height = 'auto';
+  svgEl.style.display = 'block';
+  svgEl.style.transformOrigin = '0 0';
+    // compute bbox after a tick and derive initial fit values
+    await new Promise(r => setTimeout(r,20));
+    try { bbox = svgEl.getBBox(); } catch(e) { bbox = { x:0,y:0,width:svgEl.clientWidth||300,height:svgEl.clientHeight||150 }; }
+    fitToContainer();
+  // leave scale as default; caller may override via params
+  // UI sliders removed — keep internal state but do not update controls
+    render();
+  // Capture the default params (scale/tx/ty) after fitting so
+  // missing hash params can animate toward these defaults.
+  try { defaultSvgParams = { s: state.scale, x: state.tx, y: state.ty }; } catch(e){}
+    setStatus('ready');
+    window.viewerReady = true;
+  // build layer list UI so user can show/hide layers
+  try { buildLayerList(); } catch(e) { console.warn('build layer list failed', e); }
+  // apply any pending visibility instructions now that layers exist
+  try { if (pendingVis) { applyVisibilityFromVis(pendingVis, { animate: false }); pendingVis = null; } } catch(e) { console.warn('apply pending vis failed', e); }
+    try { window.layerKeyMap = layerKeyMap; } catch(e){}
+  // auto-attach video overlays for layers with vimeo-* or embed-* IDs
+  try { autoAttachVideoOverlays(); } catch(e) { console.warn('auto-attach videos failed', e); }
+  } catch (e) {
+    console.error(e);
+    setStatus('error');
+    window.viewerReady = false;
+  }
+}
+
+// animate opacity values for a set of elements (obj map name->elem)
+// build a simple layer list UI from top-level svg children
+function buildLayerList(){
+  if (!svgEl) return;
+  const layerList = document.getElementById('layerList');
+  if (!layerList) return;
+  layerList.innerHTML = '';
+
+  // exclude non-visual/definition tags and elements defined under <defs>
+  const excluded = new Set([
+    'SCRIPT','STYLE','DEFS','METADATA','TITLE','PATTERN',
+    'LINEARGRADIENT','RADIALGRADIENT','CLIPPATH','MASK','FILTER','MARKER','SYMBOL','VIEW','FONT'
+  ]);
+
+  function getLabel(el, idx){
+    // Only include elements that have an explicit id. Elements without an
+    // id should not appear in the layer checklist per user request.
+    return el.id || null;
+  }
+
+  function makeNode(el, idx, parentKey){
+    // Skip elements that do not have an id — we only expose id'd elements
+    // in the layer list.
+    const baseKey = getLabel(el, idx);
+    if (!baseKey) return null;
+
+    const li = document.createElement('div');
+    li.style.marginLeft = '0px';
+    const label = document.createElement('label');
+    label.style.display = 'flex'; label.style.alignItems = 'center'; label.style.gap = '8px';
+    const cb = document.createElement('input'); cb.type = 'checkbox';
+    const computed = window.getComputedStyle(el);
+    cb.checked = !(computed.display === 'none' || computed.visibility === 'hidden');
+    // compute a stable key and ensure uniqueness
+    // baseKey already retrieved above
+    let key = parentKey ? `${parentKey}/${baseKey}` : baseKey;
+    // ensure uniqueness
+    let uniqueKey = key; let suffix = 1;
+    while (layerKeyMap.has(uniqueKey)) { uniqueKey = key + '_' + (suffix++); }
+    key = uniqueKey;
+    cb.dataset.layerKey = key;
+    label.dataset.layerKey = key;
+    layerKeyMap.set(key, el);
+  cb.addEventListener('change', () => {
+    const key = cb.dataset.layerKey;
+    // If no key, fallback to direct toggle
+  if (!key) { toggleLayerVisibility(el, cb.checked, { animate: true }); try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){} try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){} updateHashFromLayerList(); refreshLayerListCheckboxes(); return; }
+
+    // If the user checked the checkbox, just show the layer (remove ~token if present)
+    // Do NOT add to showExceptions - only the "Only" button creates +tokens
+    if (cb.checked === true) {
+      // ensure ancestor chain is visible so this layer can be seen
+      const parts = key.split('/');
+      for (let i = 0; i < parts.length - 1; i++) {
+        const ancestor = parts.slice(0, i+1).join('/');
+        if (layerKeyMap.has(ancestor)) {
+          try { toggleLayerVisibility(layerKeyMap.get(ancestor), true, { animate: false }); } catch(e){}
+        }
+      }
+      // show this element
+      toggleLayerVisibility(el, true, { animate: true });
+      try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
+      try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+      refreshLayerListCheckboxes(); updateHashFromLayerList();
+      return;
+    }
+
+    // If the user unchecked the checkbox and it was previously an explicit exception (+token),
+    // remove it from showExceptions and reapply parsed visibility.
+    if (cb.checked === false && showExceptions.has(key)) {
+      // Remove explicit +token for this key from the hash and in-memory exceptions.
+      showExceptions.delete(key);
+      try {
+        // Parse current hash and remove this key from parsed.vis.show
+        const parsed = parseHash();
+        parsed.vis = parsed.vis || { show: [], hide: [] };
+        parsed.vis.show = (parsed.vis.show || []).filter(s => String(s) !== String(key));
+        // write new token into the hash using compact format
+        const token = buildCompactHash(parsed.url, parsed.params, parsed.vis);
+  suppressHashFor(120);
+        location.hash = '#'+token;
+        // apply new visibility immediately so UI updates without waiting for hashchange
+        try { applyVisibilityFromVis(parsed.vis || { hide: [], show: [] }, { animate: true }); } catch(e){}
+      } catch(e) {
+        // fallback: reapply current parsed vis
+        try { applyVisibilityFromVis(parseHash().vis || { hide: [], show: [] }, { animate: true }); } catch(e){}
+      }
+      refreshLayerListCheckboxes(); updateHashFromLayerList();
+      return;
+    }
+
+    // Existing behavior for toggling parents/children when unchecking a parent
+    const direct = getDirectChildrenKeys(key);
+    if (direct.length > 0 && cb.checked === false) {
+      // detect if any direct child is in showExceptions OR currently visible
+      const exceptions = direct.filter(dk => showExceptions.has(dk));
+      const visibleChildren = direct.filter(dk => {
+        const el = layerKeyMap.get(dk);
+        if (!el) return false;
+        const cs = window.getComputedStyle(el);
+        const op = parseFloat(cs.opacity || '1');
+        return cs.display !== 'none' && cs.visibility !== 'hidden' && op > 0;
+      });
+      if (exceptions.length > 0 || visibleChildren.length > 0) {
+        // keep parent visible
+        toggleLayerVisibility(el, true, { animate: false });
+        // ensure checkbox shows unchecked state (user intent) while parent remains visible
+        try { cb.checked = false; } catch(e){}
+        // for each child: if it's an exception, ensure visible immediately; else fade out
+        const fadePromises = [];
+        direct.forEach(childKey => {
+          const childEl = layerKeyMap.get(childKey);
+          if (!childEl) return;
+          if (showExceptions.has(childKey) || visibleChildren.includes(childKey)) {
+            // protect exception child
+            if (childEl.classList) childEl.classList.add('inflect-exception-visible');
+            toggleLayerVisibility(childEl, true, { animate: false });
+            const prev = __fadeCancels.get(childEl); if (prev) prev();
+          } else {
+            fadePromises.push(animateLayerVisibility(childEl, false));
+          }
+        });
+        Promise.all(fadePromises).then(() => {
+          // ensure non-exception children are hidden
+          direct.forEach(childKey => {
+            if (showExceptions.has(childKey)) return;
+            const childEl = layerKeyMap.get(childKey);
+            if (!childEl) return;
+            toggleLayerVisibility(childEl, false, { animate: false });
+          });
+          try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
+          try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+          refreshLayerListCheckboxes(); updateHashFromLayerList();
+        }).catch(() => { 
+          try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
+          try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+          refreshLayerListCheckboxes(); updateHashFromLayerList();
+        });
+        return;
+      }
+    }
+    // default behavior: toggle element visibility directly
+    toggleLayerVisibility(el, cb.checked, { animate: true });
+    try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    updateHashFromLayerList(); refreshLayerListCheckboxes();
+  });
+    // "Only" button: make this the only visible layer (implements +key semantics)
+    const onlyBtn = document.createElement('button');
+    onlyBtn.type = 'button';
+    onlyBtn.className = 'only-btn';
+    onlyBtn.title = 'Only ⊙ — show only this layer (hide siblings)';
+    onlyBtn.textContent = '⊙';
+    onlyBtn.style.marginLeft = '6px';
+    onlyBtn.style.background = 'transparent';
+    onlyBtn.style.border = 'none';
+    onlyBtn.style.color = 'inherit';
+    onlyBtn.style.cursor = 'pointer';
+    onlyBtn.style.fontSize = '14px';
+    onlyBtn.addEventListener('click', (ev) => {
+      ev.preventDefault(); ev.stopPropagation();
+      const theKey = key;
+      if (!theKey) return;
+      // If this is a top-level (root) node (no parentKey), interpret Only as
+      // a reset: clear any visibility tokens from the hash and clear exceptions
+      // so the default SVG visibility is restored.
+      if (!parentKey) {
+  suppressHashFor(120);
+        // Clear in-memory exceptions
+        showExceptions.clear();
+        // remove vis token by writing compact hash without vis
+        const parsed = parseHash();
+        parsed.vis = { show: [], hide: [] };
+        const token = buildCompactHash(parsed.url, parsed.params, parsed.vis);
+        location.hash = '#'+token;
+  // Reapply parsed visibility (which is now empty) so UI updates
+  try { applyVisibilityFromVis({ show: [], hide: [] }, { animate: true }); } catch(e){}
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+        refreshLayerListCheckboxes();
+        return;
+      }
+
+      // Non-root behavior: keep existing +token semantics (show only this subtree)
+      const vis = { show: [theKey], hide: [] };
+  try { applyVisibilityFromVis(vis, { animate: true }); } catch(e){ console.warn('applyVisibilityFromVis failed', e); }
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+      // update the hash token similarly to updateHashFromLayerList but using our vis
+  suppressHashFor(120);
+      const parsed = parseHash();
+      const token = buildCompactHash(parsed.url, parsed.params, vis);
+      location.hash = '#'+token;
+      // Refresh UI to reflect new visibility
+      refreshLayerListCheckboxes();
+    });
+    // allow clicking the label when checkbox is disabled to create a show-exception
+    label.addEventListener('click', (e) => {
+      // only intercept when the input is currently disabled (i.e., ancestor controls it)
+      if (!cb.disabled) return;
+      e.preventDefault(); e.stopPropagation();
+      const key = cb.dataset.layerKey;
+      if (!key) return;
+      const parentParts = key.split('/').slice(0, -1);
+      const parentKey = parentParts.length ? parentParts.join('/') : null;
+      // toggle exception
+      if (showExceptions.has(key)) {
+        showExceptions.delete(key);
+        // remove exception-visible marker
+        const excOld = layerKeyMap.get(key);
+        if (excOld && excOld.classList) excOld.classList.remove('inflect-exception-visible');
+        // reapply visibility from parsed vis (which may hide parent again)
+        try { applyVisibilityFromVis(parseHash().vis || { hide: [], show: [] }, { animate: false }); } catch(e){}
+      } else {
+        showExceptions.add(key);
+        // if parent exists and is currently hidden by vis, reveal parent and hide siblings
+        if (parentKey && layerKeyMap.has(parentKey)){
+          const parentEl = layerKeyMap.get(parentKey);
+          // show parent element immediately so child can be rendered (no animation)
+          toggleLayerVisibility(parentEl, true, { animate: false });
+          // Ensure the exception child is visible immediately (no animation) so it
+          // doesn't flicker while we manipulate the parent/other siblings.
+          const excEl = layerKeyMap.get(key);
+          if (excEl) {
+            // mark as exception-visible to protect from animation/hide
+            if (excEl.classList) excEl.classList.add('inflect-exception-visible');
+            // show immediately with no transition
+            toggleLayerVisibility(excEl, true, { animate: false });
+            try { excEl.style.transition = 'none'; excEl.style.opacity = '1'; } catch(e){}
+            // cancel any pending fade on this element
+            const prev = __fadeCancels.get(excEl); if (prev) prev();
+          }
+          // fade out siblings first (animate), then once faded set their display none and
+          // keep the exception child visible (no animate in) to avoid blink.
+          const children = getDirectChildrenKeys(parentKey);
+          const fadeOutPromises = [];
+          children.forEach(childKey => {
+            if (childKey === key) return; // skip exception child for now
+            const childEl = layerKeyMap.get(childKey);
+            if (!childEl) return;
+            // animate fade out
+            fadeOutPromises.push(animateLayerVisibility(childEl, false));
+          });
+          // when all siblings have finished fading out, ensure they're hidden and then show exception
+          Promise.all(fadeOutPromises).then(() => {
+            children.forEach(childKey => {
+              const childEl = layerKeyMap.get(childKey);
+              if (!childEl) return;
+              if (childKey === key) return;
+              // ensure hidden immediately (no animation)
+              toggleLayerVisibility(childEl, false, { animate: false });
+            });
+            // ensure the exception child remains visible (no animation)
+            const excEl2 = layerKeyMap.get(key);
+            if (excEl2) toggleLayerVisibility(excEl2, true, { animate: false });
+            // finally update hash/UI
+            refreshLayerListCheckboxes(); updateHashFromLayerList();
+          }).catch(() => {
+            // fallback: immediate apply
+            children.forEach(childKey => {
+              const childEl = layerKeyMap.get(childKey);
+              if (!childEl) return;
+              if (childKey === key) return;
+              toggleLayerVisibility(childEl, false, { animate: false });
+            });
+            const excEl3 = layerKeyMap.get(key); if (excEl3) toggleLayerVisibility(excEl3, true, { animate: false });
+            refreshLayerListCheckboxes(); updateHashFromLayerList();
+          });
+        } else {
+          // no parent: just show this layer (user action)
+            toggleLayerVisibility(el, true, { animate: true });
+        }
+      }
+      refreshLayerListCheckboxes();
+      updateHashFromLayerList();
+    });
+  const span = document.createElement('span');
+  // display only the local label (omit parent prefix) for readability
+  const displayLabel = parentKey ? baseKey : baseKey;
+  span.textContent = displayLabel;
+    label.appendChild(cb); label.appendChild(span);
+  // append only button after label contents
+  label.appendChild(onlyBtn);
+    li.appendChild(label);
+    // if element has element children, show nested list
+    const childElems = Array.from(el.children).filter(c => c.nodeType===1 && !excluded.has((c.tagName||'').toUpperCase()) && !c.closest('defs'));
+    if (childElems.length > 0){
+      const container = document.createElement('div');
+      container.style.marginLeft = '12px';
+      childElems.forEach((c, ci) => {
+        const node = makeNode(c, ci, key);
+        if (node) container.appendChild(node);
+      });
+      li.appendChild(container);
+    }
+    return li;
+  }
+
+  const topChildren = Array.from(svgEl.children).filter(c => c.nodeType===1 && !excluded.has((c.tagName||'').toUpperCase()) && !c.closest('defs'));
+  layerKeyMap.clear();
+  topChildren.forEach((el, idx) => {
+    const node = makeNode(el, idx, null);
+    if (node) layerList.appendChild(node);
+  });
+  // enforce parent/child checkbox disabled state after building
+  refreshLayerListCheckboxes();
+  // expose for debugging/tests
+  try { window.layerKeyMap = layerKeyMap; } catch(e){}
+}
+
+function toggleLayerVisibility(el, show, opts){
+  if (!el) return;
+  // If this element is explicitly marked as an exception-visible, never hide it
+  try { if (!show && el.classList && el.classList.contains('inflect-exception-visible')) return; } catch(e){}
+  // If this element corresponds to a parent (has direct children), do not hide the parent
+  try {
+    const key = getKeyForElement(el);
+    if (!show && key && getDirectChildrenKeys(key).length > 0) return;
+  } catch(e){}
+  // Determine current computed visibility so we can avoid re-animating
+  // elements whose visible state already matches the requested state.
+  function isCurrentlyVisible(element){
+    try {
+      const cs = window.getComputedStyle(element);
+      const op = parseFloat(cs.opacity || '1');
+      return cs.display !== 'none' && cs.visibility !== 'hidden' && op > 0.001;
+    } catch(e) { return true; }
+  }
+  const animate = !(opts && opts.animate === false);
+  const currentlyVisible = isCurrentlyVisible(el);
+  // If the element is already in the desired visibility state, skip animation.
+  if (currentlyVisible && show) {
+    return animate ? Promise.resolve() : undefined;
+  }
+  if (!currentlyVisible && !show) {
+    return animate ? Promise.resolve() : undefined;
+  }
+  if (animate) {
+    return animateLayerVisibility(el, show);
+  } else {
+    // immediate apply without animation
+    if (show) {
+      el.style.transition = '';
+      el.style.opacity = '';
+      el.style.display = '';
+      el.style.visibility = '';
+    } else {
+      // If this is a parent (has children), don't remove it — children will be hidden individually.
+      try {
+        const key = getKeyForElement(el);
+        if (key && getDirectChildrenKeys(key).length > 0) {
+          // leave parent visible but non-interactive; children control visibility
+          el.style.pointerEvents = 'none';
+          // do not set opacity/display so children remain rendered
+        } else {
+          el.style.transition = '';
+          el.style.opacity = '';
+          el.style.display = 'none';
+        }
+      } catch(e) {
+        el.style.display = 'none';
+      }
+    }
+  }
+}
+
+// animate opacity for an element when showing/hiding
+const __fadeCancels = new WeakMap();
+function animateLayerVisibility(el, show, duration = FADE_DURATION){
+  if (!el) return;
+  // If this element maps to a parent node with direct children, do not animate it;
+  // children will be animated individually. Avoid setting parent opacity which
+  // would affect child rendering.
+  try {
+    const key = getKeyForElement(el);
+    if (!show && key && getDirectChildrenKeys(key).length > 0) return Promise.resolve();
+  } catch(e){}
+  // if element is marked as an exception visible, don't animate hiding it or toggling
+  if (el.classList && el.classList.contains('inflect-exception-visible')) {
+    if (show) {
+      // ensure visible immediately
+      el.style.transition = '';
+      el.style.opacity = '';
+      el.style.display = '';
+      el.style.visibility = '';
+    } else {
+      // do not hide exception-marked elements
+      return Promise.resolve();
+    }
+  }
+  return new Promise((resolve) => {
+  // cancel previous transition if any
+  const prevCancel = __fadeCancels.get(el);
+  if (prevCancel) prevCancel();
+
+  const computedDisplay = window.getComputedStyle(el).display;
+  // show: ensure element is displayed and fade to opacity 1
+  if (show) {
+  // make element visible before starting fade. For SVG elements there may
+  // be an explicit display="none" attribute; remove it and set an inline
+  // CSS display so the element becomes visible.
+  try { el.removeAttribute && el.removeAttribute('display'); } catch(e){}
+  el.style.display = 'inline';
+    el.style.visibility = '';
+    // Start with no transition and opacity 0
+    el.style.transition = 'none';
+    el.style.opacity = '0';
+    // Force layout
+    void el.getBoundingClientRect();
+    // Update overlays to get opacity:0 with no transition
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    // Now set up the transition
+  el.style.transition = `opacity ${duration}ms ${SOFT_EASE}`;
+    // Force layout again so transition is registered
+    void el.getBoundingClientRect();
+    // Update overlays to copy the transition property (opacity still at 0)
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    let finished = false;
+    const onEnd = (ev) => {
+      if (ev && ev.propertyName !== 'opacity') return;
+      if (finished) return;
+      finished = true;
+      el.removeEventListener('transitionend', onEnd);
+      // cleanup
+      el.style.transition = '';
+      el.style.opacity = '';
+      __fadeCancels.delete(el);
+      // Update overlays after visibility change completes
+      try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+      resolve();
+    };
+    el.addEventListener('transitionend', onEnd);
+    // start fade
+    requestAnimationFrame(() => { 
+      el.style.opacity = '1';
+      // Double RAF to ensure overlay updates after opacity change has been committed
+      requestAnimationFrame(() => {
+  try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+      });
+    });
+    // store cancel function
+    __fadeCancels.set(el, () => {
+      if (!finished) { el.removeEventListener('transitionend', onEnd); finished = true; }
+      __fadeCancels.delete(el);
+      el.style.transition = '';
+      el.style.opacity = '';
+      // Update overlays when animation is cancelled
+      try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+      resolve();
+    });
+    return;
+  }
+
+  // hide: fade to 0 then set display none
+  // Start with no transition, just ensure opacity is 1
+  el.style.transition = 'none';
+  if (!el.style.opacity) {
+    // if no inline opacity, set to computed value or 1
+    const comp = window.getComputedStyle(el).opacity;
+    el.style.opacity = comp || '1';
+  }
+  // Force layout
+  void el.getBoundingClientRect();
+  // Update overlays to get opacity:1 with no transition
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+  // Now set up the transition
+  el.style.transition = `opacity ${duration}ms ${SOFT_EASE}`;
+  // Force layout so transition is registered
+  void el.getBoundingClientRect();
+  // Update overlays to copy the transition property (opacity still at 1)
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+  let finished = false;
+  const onEndHide = (ev) => {
+    if (ev && ev.propertyName !== 'opacity') return;
+    if (finished) return;
+    finished = true;
+    el.removeEventListener('transitionend', onEndHide);
+    el.style.transition = '';
+    el.style.opacity = '';
+    // If this element is a parent with direct children, avoid removing it
+    // from layout (display:none) because that would hide its children
+    // momentarily. Instead keep it in the DOM but make it non-interactive.
+    try {
+      const key = getKeyForElement(el);
+      if (key && getDirectChildrenKeys(key).length > 0) {
+        el.style.pointerEvents = 'none';
+        // ensure opacity remains 0
+        try { el.style.opacity = '0'; } catch(e){}
+  // avoid setting SVG display attribute; rely on inline styles only
+      } else {
+        el.style.display = 'none';
+  // avoid setting SVG display attribute; rely on inline styles only
+      }
+    } catch(e) {
+      el.style.display = 'none';
+      try { el.setAttribute && el.setAttribute('display', 'none'); } catch(e){}
+    }
+    __fadeCancels.delete(el);
+    // Update overlays after visibility change completes
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    resolve();
+  };
+  el.addEventListener('transitionend', onEndHide);
+  // start fade out
+  requestAnimationFrame(() => { 
+    el.style.opacity = '0';
+    // Double RAF to ensure overlay updates after opacity change has been committed
+    requestAnimationFrame(() => {
+      try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    });
+  });
+  __fadeCancels.set(el, () => {
+    if (!finished) { el.removeEventListener('transitionend', onEndHide); finished = true; }
+    __fadeCancels.delete(el);
+    el.style.transition = '';
+    el.style.opacity = '';
+    try {
+      const key = getKeyForElement(el);
+      if (key && getDirectChildrenKeys(key).length > 0) {
+        el.style.pointerEvents = 'none';
+        try { el.style.opacity = '0'; } catch(e){}
+  // avoid setting SVG display attribute; rely on inline styles only
+      } else {
+        el.style.display = 'none';
+  // avoid setting SVG display attribute; rely on inline styles only
+      }
+    } catch(e) {
+      el.style.display = 'none';
+      try { el.setAttribute && el.setAttribute('display', 'none'); } catch(e){}
+    }
+    // Update overlays when animation is cancelled
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+    resolve();
+  });
+  });
+}
+
+// apply vis object { show:[], hide:[] } to the SVG layers (matching by id/data-name/prefix)
+function applyVisibilityFromVis(vis, opts){
+  const animateGlobally = opts && opts.animate === true;
+  if (!svgEl) return;
+  // Resolve short vis tokens (like 'princess') against layerKeyMap by last-segment
+  const rawHides = (vis && Array.isArray(vis.hide)) ? vis.hide.slice() : [];
+  const rawShows = (vis && Array.isArray(vis.show)) ? vis.show.slice() : [];
+    const resolveToken = (tok) => {
+    if (!tok) return tok;
+    if (String(tok).includes('/')) return tok;
+    // find keys whose last segment matches tok
+    const matches = [];
+    for (const k of layerKeyMap.keys()){
+      if (String(k).split('/').pop() === tok) matches.push(k);
+    }
+    return matches.length === 1 ? matches[0] : tok;
+  };
+  const hides = rawHides.map(resolveToken);
+  const shows = rawShows.map(resolveToken);
+  // Sync in-memory exceptions with parsed vis.show so parsed state wins
+  showExceptions = new Set(shows);
+  // Ancestor-preserve behavior for +tokens: for each shown key, walk up its
+  // ancestor chain and hide all direct sibling branches at each ancestor level
+  // (unless those siblings are explicitly shown or marked as exceptions).
+  try {
+    const ancestorHideAdditions = new Set();
+    function addDescendantsToSet(baseKey, set){
+      for (const k of layerKeyMap.keys()){
+        if (k === baseKey || k.startsWith(baseKey + '/')) set.add(k);
+      }
+    }
+    for (const s of shows){
+      if (!s) continue;
+      const parts = String(s).split('/');
+      // top-level: hide other top-level keys
+      if (parts.length === 1){
+        for (const k of layerKeyMap.keys()){
+          if (String(k).split('/').length !== 1) continue;
+          if (k === s) continue;
+          if (shows.includes(k)) continue; // don't hide other requested shows
+          if (showExceptions.has(k)) continue;
+          addDescendantsToSet(k, ancestorHideAdditions);
+        }
+      } else {
+        // for each ancestor (parent, grandparent, ...)
+        for (let i = parts.length - 1; i >= 1; i--) {
+          const ancestorKey = parts.slice(0, i).join('/');
+          const nextSeg = parts[i];
+          const childToKeep = ancestorKey + '/' + nextSeg;
+          const children = getDirectChildrenKeys(ancestorKey);
+          for (const childKey of children) {
+            if (childKey === childToKeep) continue;
+            if (shows.includes(childKey)) continue;
+            if (showExceptions.has(childKey)) continue;
+            addDescendantsToSet(childKey, ancestorHideAdditions);
+          }
+        }
+      }
+    }
+    // merge additions into hides (avoid duplicates)
+    for (const k of ancestorHideAdditions) if (!hides.includes(k) && !shows.includes(k)) hides.push(k);
+  } catch(e){ console.warn('ancestor-preserve merge failed', e); }
+  // Build sets for quick lookup
+  const hideSet = new Set();
+  const showSet = new Set();
+  for (const h of hides) {
+    for (const k of layerKeyMap.keys()){
+      if (k === h || k.startsWith(h + '/')) hideSet.add(k);
+    }
+    // also hide the parent itself if it's a key
+    if (layerKeyMap.has(h)) hideSet.add(h);
+  }
+  // Ensure ~parent hides the entire subtree: explicitly expand hides to include
+  // all descendant keys (in case some logic later treats parents specially).
+  const expandedHideSet = new Set(hideSet);
+  for (const h of hides) {
+    if (!h) continue;
+    for (const k of layerKeyMap.keys()){
+      if (k.startsWith(h + '/')) expandedHideSet.add(k);
+    }
+    if (layerKeyMap.has(h)) expandedHideSet.add(h);
+  }
+  for (const s of shows) {
+    for (const k of layerKeyMap.keys()){
+      if (k === s || k.startsWith(s + '/')) showSet.add(k);
+    }
+    if (layerKeyMap.has(s)) showSet.add(s);
+  }
+
+  // detect parents that are hidden but have a shown descendant
+  const parentsWithExceptions = new Set();
+  for (const h of hides){
+    for (const s of shows){
+      if (s === h) continue;
+      if (String(s).startsWith(String(h) + '/')) parentsWithExceptions.add(h);
+    }
+  }
+
+  // Apply initial visibility: default visible unless hidden, but show parents that have exceptions
+  for (const [key, el] of layerKeyMap.entries()){
+    // If this key is a parent (has direct children), we normally keep the parent
+    // visible to avoid blinking. However, if the parent (or its ancestor) is in
+    // the expandedHideSet (i.e. ~parent requested), hide the parent as well
+    // (unless it's explicitly shown). We apply parent hides immediately to
+    // avoid conflicts with animation guards.
+    const directChildren = getDirectChildrenKeys(key);
+    if (directChildren.length > 0) {
+      const parentIsHidden = expandedHideSet.has(key) && !(showSet.has(key) || showExceptions.has(key));
+      if (parentIsHidden) {
+        // hide parent immediately (no animation)
+        try {
+          el.style.transition = '';
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+        } catch(e){}
+        try { const cb = document.querySelector(`input[data-layer-key="${key}"]`); if (cb) cb.checked = false; } catch(e){}
+        // Remove overlay if present
+        if (window.overlayManager && typeof window.overlayManager.remove === 'function') window.overlayManager.remove(key);
+        continue;
+      }
+      // otherwise keep parent visible; children control visibility
+      toggleLayerVisibility(el, true, { animate: false });
+      try { const cb = document.querySelector(`input[data-layer-key="${key}"]`); if (cb) cb.checked = true; } catch(e){}
+      // Ensure overlay is attached if needed (autoAttachVideoOverlays will handle this)
+      continue;
+    }
+
+    let visible = true;
+    if (showExceptions.has(key) || showSet.has(key)) visible = true;
+    else if (parentsWithExceptions.has(key)) visible = true;
+    else if (expandedHideSet.has(key)) visible = false;
+    else visible = true;
+    toggleLayerVisibility(el, visible, { animate: animateGlobally ? true : false });
+    // update corresponding checkbox immediately if present
+    try { const cb = document.querySelector(`input[data-layer-key="${key}"]`); if (cb) cb.checked = Boolean(visible); } catch(e){}
+    // Remove overlay if hiding, ensure attached if showing (autoAttachVideoOverlays will re-attach)
+    if (!visible && window.overlayManager && typeof window.overlayManager.remove === 'function') window.overlayManager.remove(key);
+  }
+  // After all visibility changes, re-attach overlays for visible layers
+  if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+  if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
+
+  // For each parent with exceptions, hide its direct children except the ones explicitly shown
+  parentsWithExceptions.forEach(parentKey => {
+    const children = getDirectChildrenKeys(parentKey);
+    children.forEach(childKey => {
+      const childEl = layerKeyMap.get(childKey);
+      if (!childEl) return;
+      const vis = (showSet.has(childKey) || showExceptions.has(childKey));
+      toggleLayerVisibility(childEl, vis, { animate: animateGlobally ? true : false });
+      try { const cb = document.querySelector(`input[data-layer-key="${childKey}"]`); if (cb) cb.checked = Boolean(vis); } catch(e){}
+    });
+  });
+  // Additionally, for any parent that is explicitly hidden (~parent), hide its direct
+  // children as well (unless those children are explicitly shown). This ensures
+  // that ~parent hides the entire subtree even when parents remain visible to
+  // avoid layout blinking.
+  for (const parentKey of Array.from(layerKeyMap.keys())){
+    const children = getDirectChildrenKeys(parentKey);
+    if (!children.length) continue;
+    if (!expandedHideSet.has(parentKey)) continue;
+    children.forEach(childKey => {
+      const childEl = layerKeyMap.get(childKey);
+      if (!childEl) return;
+      // If the child is explicitly shown, respect that
+      const shouldShow = showSet.has(childKey) || showExceptions.has(childKey);
+      toggleLayerVisibility(childEl, shouldShow, { animate: animateGlobally ? true : false });
+      try { const cb = document.querySelector(`input[data-layer-key="${childKey}"]`); if (cb) cb.checked = Boolean(shouldShow); } catch(e){}
+    });
+  }
+  // finally refresh checkboxes to set disabled/indeterminate states
+  refreshLayerListCheckboxes();
+  // refresh checkboxes
+  refreshLayerListCheckboxes();
+}
+
+function refreshLayerListCheckboxes(){
+  const layerList = document.getElementById('layerList'); if (!layerList) return;
+  // traverse labels and update checkboxes based on element's computed visibility
+  const inputs = Array.from(layerList.querySelectorAll('input[type=checkbox]'));
+  // build a map key -> input for ancestor lookups
+  const inputMap = new Map();
+  inputs.forEach(cb => { if (cb.dataset && cb.dataset.layerKey) inputMap.set(cb.dataset.layerKey, cb); });
+
+  // first, set each checkbox to reflect the element's computed visibility and enable it
+  inputs.forEach(cb => {
+    const key = cb.dataset.layerKey;
+    if (!key) return;
+    const el = layerKeyMap.get(key);
+    if (!el) return;
+    // do not override cb.checked here — leave checked as the authoritative state (user or programmatic)
+    cb.disabled = false;
+  });
+
+  // then, for each checkbox, if any ancestor parent checkbox exists and is unchecked,
+  // mark this checkbox as checked and disabled to indicate it's controlled by the parent
+  inputs.forEach(cb => {
+    const key = cb.dataset.layerKey; if (!key) return;
+    // walk up the key path
+    const parts = key.split('/');
+    for (let i = parts.length - 1; i > 0; i--) {
+      const ancestorKey = parts.slice(0, i).join('/');
+      const ancestorInput = inputMap.get(ancestorKey);
+      if (ancestorInput) {
+          if (!ancestorInput.checked) {
+            // parent is unchecked -> child should appear checked but disabled immediately
+            cb.checked = true;
+            cb.disabled = true;
+          }
+          break; // stop at nearest ancestor found
+        }
+    }
+  });
+
+  // now compute indeterminate state for parents: if a parent has some direct children
+  // that are shown as exceptions (or mixed), mark the parent.indeterminate = true
+  for (const [key, ancestorInput] of inputMap.entries()){
+    const children = getDirectChildrenKeys(key);
+    if (!children.length) { ancestorInput.indeterminate = false; continue; }
+    let exceptions = 0, visible = 0, hidden = 0;
+    children.forEach(childKey => {
+      const cb = inputMap.get(childKey);
+      if (!cb) return;
+      if (cb.disabled && showExceptions.has(childKey)) exceptions++;
+      if (cb.checked) visible++; else hidden++;
+    });
+    // parent is indeterminate if some children are exceptions or mixed visibility
+    ancestorInput.indeterminate = (exceptions>0) || (visible>0 && hidden>0);
+  }
+}
+
+function findElementByLabel(name){
+  // prefer layerKeyMap lookup
+  if (layerKeyMap.has(name)) return layerKeyMap.get(name);
+  // fallback: prefix match
+  for (const [k, el] of layerKeyMap.entries()){
+    if (k === name || k.startsWith(name)) return el;
+  }
+  return null;
+}
+
+function collectVisibilityFromList(){
+  const layerList = document.getElementById('layerList'); if (!layerList) return { show:[], hide:[] };
+  // Hide-only: collect only the keys that are currently unchecked (i.e., hidden)
+  const res = { hide: [], show: [] };
+  const inputs = Array.from(layerList.querySelectorAll('input[type=checkbox]'));
+  inputs.forEach(cb => {
+    const key = cb.dataset.layerKey; if (!key) return;
+    if (!cb.checked) res.hide.push(key);
+  });
+  // include explicit exceptions
+  for (const k of showExceptions) res.show.push(k);
+  return res;
+}
+
+function updateHashFromLayerList(){
+  // read existing parsed hash to preserve params
+  const parsed = parseHash();
+  const vis = collectVisibilityFromList();
+  const token = buildCompactHash(parsed.url || '', parsed.params || {}, vis);
+  // we need to preserve original 6-field style when present; if not, just write #token
+  // Debounce writing the hash so ongoing animations are not cancelled by an
+  // immediate hashchange handler. We still mark the write as originating
+  // locally so the next hashchange is ignored.
+  try { if (__hashWriteTimeout) clearTimeout(__hashWriteTimeout); } catch(e){}
+  __hashWriteTimeout = setTimeout(() => {
+  suppressHashFor(120);
+    // Write the new compact token directly
+    location.hash = '#'+token;
+    __hashWriteTimeout = null;
+  }, 260);
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const cp = document.getElementById('copyLink');
+  if (cp) {
+    cp.addEventListener('click', (ev) => {
+      try {
+        // Copy the current URL starting with 'svg/#' format (relative path)
+        let text = '';
+        if (location && location.hash && location.hash.length > 1) {
+          text = `svg/${location.hash}`;
+        } else {
+          const url = currentUrl || '';
+          const params = { s: Math.round(state.scale*100)/100, x: Math.round(state.tx*100)/100, y: Math.round(state.ty*100)/100 };
+          const vis = collectVisibilityFromList();
+          const token = buildCompactHash(url, params, vis);
+          text = `svg/#${token}`;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(()=> setStatus('link copied'))
+            .catch(() => { throw new Error('clipboard failed'); });
+        } else {
+          // fallback
+          const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); setStatus('link copied');
+        }
+      } catch(e){
+        try { setStatus('copy failed'); } catch(e){}
+      }
+    });
+  }
+});
+
+// Get the reference frame dimensions - this is the FIXED coordinate system
+// that all transformations are relative to
+function getReferenceFrame(){
+  // Use the #canvas element which is sized to the full viewport
+  const canvas = document.getElementById('canvas');
+  const canvasRect = canvas ? canvas.getBoundingClientRect() : null;
+  const cw = canvasRect ? canvasRect.width : window.innerWidth;
+  const ch = canvasRect ? canvasRect.height : window.innerHeight;
+  
+  // The reference frame is a centered square that fills the viewport as much as possible (no margins)
+  const refSize = Math.min(cw, ch);
+  const refLeft = (cw - refSize) / 2;
+  const refTop = (ch - refSize) / 2;
+  
+  return {
+    size: refSize,
+    left: refLeft,
+    top: refTop,
+    centerX: refLeft + refSize / 2,
+    centerY: refTop + refSize / 2
+  };
+}
+
+function fitToContainer(){
+  if (!svgEl || !bbox) return;
+  
+  // In the reference frame coordinate system:
+  // - state.scale 1.0 means the SVG exactly fits the reference square
+  // - state.tx=0, state.ty=0 means the SVG is centered in the reference square
+  
+  // Set state to scale 1.0 (SVG fits perfectly in reference frame) at position 0,0 (centered)
+  state.scale = 1.0;
+  // Normalized pan offsets relative to ref.size
+  state.tx = 0;
+  state.ty = 0;
+  
+  // update reference frame display
+  updateReferenceFrame();
+}
+
+function updateReferenceFrame(){
+  // The reference frame is a SQUARE that represents the safe area visible
+  // across all screen resolutions. The SVG's transformations are all relative
+  // to this square: scale 1.0 = fits the square, x=0/y=0 = centered in square.
+  const refFrame = document.getElementById('referenceFrame');
+  if (!refFrame) return;
+  
+  const ref = getReferenceFrame();
+  
+  refFrame.style.width = `${ref.size}px`;
+  refFrame.style.height = `${ref.size}px`;
+  refFrame.style.left = `${ref.left}px`;
+  refFrame.style.top = `${ref.top}px`;
+}
+
+function render(){
+  if (!svgEl || !bbox) return;
+  
+  // COORDINATE SYSTEM:
+  // 1. Viewport determines reference frame size (centered square, 90% of min dimension)
+  // 2. Reference frame determines SVG transform
+  //    - state.scale: scale relative to reference frame
+  //      * 1.0 = SVG scaled to fit exactly in reference frame
+  //      * 2.0 = SVG scaled to 2x the reference frame size
+  //    - state.tx, state.ty: translation in pixels relative to reference frame center
+  //      * 0,0 = centered in reference frame
+  
+  const ref = getReferenceFrame();
+  
+  // Calculate how to fit SVG in reference frame at scale 1.0
+  const scaleToFitInRef = Math.min(ref.size / bbox.width, ref.size / bbox.height);
+  
+  // The actual viewport scale is: (scale relative to ref) * (scale to fit ref)
+  const viewportScale = state.scale * scaleToFitInRef;
+  
+    // At scale 1.0, the SVG should fit exactly in the reference frame
+    // Let's verify: when state.scale = 1.0:
+    //   - scaledWidth should equal ref.size (if width-constrained) OR
+    //   - scaledHeight should equal ref.size (if height-constrained)
+    const scaledWidth = bbox.width * viewportScale;
+    const scaledHeight = bbox.height * viewportScale;
+  
+    console.log('RENDER:', {
+      'ref.size': ref.size,
+      'bbox': `${bbox.width}x${bbox.height}`,
+      'state.scale': state.scale,
+      'scaleToFitInRef': scaleToFitInRef,
+      'viewportScale': viewportScale,
+      'scaled': `${Math.round(scaledWidth)}x${Math.round(scaledHeight)}`,
+      'shouldFitInRef': Math.max(scaledWidth, scaledHeight) <= ref.size ? '✓' : '✗'
+    });
+  
+    // Position: Start at reference frame center, add offsets (in pixels), subtract SVG center offset
+  // state.tx/state.ty are normalized offsets in reference-frame units (1.0 = ref.size)
+  const offsetXpx = state.tx * ref.size;
+  const offsetYpx = state.ty * ref.size;
+  const viewportTx = ref.centerX + offsetXpx - (bbox.x + bbox.width/2) * viewportScale;
+  const viewportTy = ref.centerY + offsetYpx - (bbox.y + bbox.height/2) * viewportScale;
+  
+  // Apply transform
+  svgEl.style.transform = `translate(${Math.round(viewportTx)}px, ${Math.round(viewportTy)}px) scale(${viewportScale})`;
+  
+  // Update reference frame display (called here for consistency, also called on resize)
+  updateReferenceFrame();
+
+  // Update HTML overlays to match current SVG transform
+  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
+}
+
+// simple tweening helper for numeric state transitions
+let __svg_tween_cancel = null;
+function tweenProps(from, to, duration = 400, onUpdate){
+  if (__svg_tween_cancel) __svg_tween_cancel();
+  const start = performance.now();
+  const keys = Object.keys(to);
+  let rafId = null;
+  let cancelled = false;
+  // build a cubic-bezier easing function (approximation via Newton-Raphson)
+  const bezier = (function(){
+    function cubicBezier(p1x,p1y,p2x,p2y){
+      const cx = 3 * p1x, bx = 3 * (p2x - p1x) - cx, ax = 1 - cx - bx;
+      const cy = 3 * p1y, by = 3 * (p2y - p1y) - cy, ay = 1 - cy - by;
+      function sampleCurveX(t){ return ((ax * t + bx) * t + cx) * t; }
+      function sampleCurveY(t){ return ((ay * t + by) * t + cy) * t; }
+      function sampleCurveDerivativeX(t){ return (3 * ax * t + 2 * bx) * t + cx; }
+      function solveCurveX(x){
+        let t2 = x;
+        for (let i = 0; i < 8; i++){
+          const x2 = sampleCurveX(t2) - x;
+          const d = sampleCurveDerivativeX(t2);
+          if (Math.abs(x2) < 1e-6) return t2;
+          if (Math.abs(d) < 1e-6) break;
+          t2 = t2 - x2 / d;
+        }
+        // fallback to bisection
+        let t0 = 0, t1 = 1; t2 = x;
+        while (t0 < t1){
+          const x2 = sampleCurveX(t2);
+          if (Math.abs(x2 - x) < 1e-6) return t2;
+          if (x > x2) t0 = t2; else t1 = t2;
+          t2 = (t1 - t0) * 0.5 + t0;
+        }
+        return t2;
+      }
+      return function(x){ return sampleCurveY(solveCurveX(x)); };
+    }
+    return cubicBezier(0.22, 1, 0.36, 1);
+  })();
+
+  function step(now){
+    const t = Math.min(1, (now - start) / duration);
+    const eased = bezier(t);
+    const cur = {};
+    keys.forEach(k => {
+      const a = typeof from[k]==='number' ? from[k] : 0;
+      const b = typeof to[k]==='number' ? to[k] : a;
+      cur[k] = a + (b - a) * eased;
+    });
+    try { onUpdate(cur); } catch(e){}
+    if (t < 1 && !cancelled) rafId = requestAnimationFrame(step);
+    else {
+      // final commit
+      try { onUpdate(Object.assign({}, to)); } catch(e){}
+      __svg_tween_cancel = null;
+    }
+  }
+  rafId = requestAnimationFrame(step);
+  __svg_tween_cancel = () => { cancelled = true; if (rafId) cancelAnimationFrame(rafId); __svg_tween_cancel = null; };
+  return __svg_tween_cancel;
+}
+
+// animate to target params (s, x, y, r)
+function animateTo(params, duration = 900){
+  if (!params) return Promise.resolve();
+  const target = {
+    scale: typeof params.s === 'number' ? params.s : state.scale,
+    tx: typeof params.x === 'number' ? params.x : state.tx,
+    ty: typeof params.y === 'number' ? params.y : state.ty,
+    // rotation intentionally omitted (viewer is pan/zoom-only)
+  };
+  return new Promise(resolve => {
+    tweenProps({ scale: state.scale, tx: state.tx, ty: state.ty },
+               { scale: target.scale, tx: target.tx, ty: target.ty },
+               duration,
+               (cur) => {
+                 state.scale = cur.scale; state.tx = cur.tx; state.ty = cur.ty;
+                 render();
+               });
+    // resolve after duration (plus tiny buffer)
+    setTimeout(() => { resolve(); }, duration + 20);
+  });
+}
+
+// Merge provided params with captured defaults so missing fields animate to defaults
+function mergeWithDefaults(params){
+  const defs = defaultSvgParams || { s: state.scale, x: state.tx, y: state.ty };
+  const p = params && typeof params === 'object' ? params : {};
+  return {
+    s: (typeof p.s === 'number') ? p.s : defs.s,
+    x: (typeof p.x === 'number') ? p.x : defs.x,
+    y: (typeof p.y === 'number') ? p.y : defs.y
+  };
+}
+
+// interaction
+// Drag-to-pan using reference frame coordinates
+svgContainer.addEventListener('mousedown', (e)=>{
+  isDragging=true;
+  const rect = svgContainer.getBoundingClientRect();
+  const x = (e.clientX - rect.left);
+  const y = (e.clientY - rect.top);
+  dragStart = [x, y];
+  // store starting normalized offsets
+  const ref = getReferenceFrame();
+  dragStartState = { tx: state.tx, ty: state.ty, refSize: ref.size };
+  svgContainer.style.cursor = 'grabbing';
+  try { setStatus('drag:start'); } catch(e){}
+});
+window.addEventListener('mouseup', ()=>{ if (isDragging){ isDragging=false; svgContainer.style.cursor=''; commitHash(); }});
+window.addEventListener('mousemove', (e)=>{
+  if (!isDragging || !dragStartState) return;
+  const rect = svgContainer.getBoundingClientRect();
+  const x = (e.clientX - rect.left);
+  const y = (e.clientY - rect.top);
+  const dx = x - dragStart[0];
+  const dy = y - dragStart[1];
+  
+  // Convert pixel deltas to normalized reference-frame units
+  const ref = getReferenceFrame();
+  const scaleFactor = ref.size || dragStartState.refSize || 1;
+  state.tx = dragStartState.tx + (dx / scaleFactor);
+  state.ty = dragStartState.ty + (dy / scaleFactor);
+  
+  render();
+  try { setStatus(`drag tx:${Math.round(state.tx*100)/100} ty:${Math.round(state.ty*100)/100}`); } catch(e){}
+});
+
+// wheel zoom centered at mouse
+// Wheel-based zoom using reference frame coordinates
+svgContainer.addEventListener('wheel', (e)=>{
+  if (!bbox) return;
+  e.preventDefault();
+  const rect = svgContainer.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+  
+  const zoomFactor = e.deltaY > 0 ? 1.1 : 0.9;
+  const ref = getReferenceFrame();
+  const scaleToFitRef = Math.min(ref.size / bbox.width, ref.size / bbox.height);
+  
+  // Mouse position in viewport pixels
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+  
+  // We want the point under the mouse to stay fixed during zoom
+  // Current viewport scale
+  const oldViewportScale = state.scale * scaleToFitRef;
+  
+  // Mouse position relative to reference frame center
+  const mouseRefX = mouseX - ref.centerX;
+  const mouseRefY = mouseY - ref.centerY;
+  
+  // The point in the SVG under the mouse (in SVG coordinates)
+  // viewportTx = ref.centerX + state.tx - (bbox.x + bbox.width/2) * viewportScale
+  // mouseX = viewportTx + svgX * viewportScale
+  // Solving for svgX:
+  // svgX = (mouseX - viewportTx) / viewportScale
+  //      = (mouseX - ref.centerX - state.tx + (bbox.x + bbox.width/2) * viewportScale) / viewportScale
+  const txPx = state.tx * ref.size;
+  const tyPx = state.ty * ref.size;
+  const svgX = (mouseRefX - txPx) / oldViewportScale + (bbox.x + bbox.width/2);
+  const svgY = (mouseRefY - tyPx) / oldViewportScale + (bbox.y + bbox.height/2);
+  
+  // Apply zoom to scale (scale is relative to reference frame)
+  const newScale = state.scale / zoomFactor;
+  const newViewportScale = newScale * scaleToFitRef;
+  
+  // Compute new tx, ty such that svgX, svgY still maps to mouse position
+  // mouseX = ref.centerX + newTx + (svgX - (bbox.x + bbox.width/2)) * newViewportScale
+  // Solving for newTx:
+  // newTx = mouseX - ref.centerX - (svgX - (bbox.x + bbox.width/2)) * newViewportScale
+  const newTxPx = mouseRefX - (svgX - (bbox.x + bbox.width/2)) * newViewportScale;
+  const newTyPx = mouseRefY - (svgY - (bbox.y + bbox.height/2)) * newViewportScale;
+  
+  state.scale = newScale;
+  // store normalized offsets
+  state.tx = newTxPx / ref.size;
+  state.ty = newTyPx / ref.size;
+  
+  render();
+  try { 
+    const ref = getReferenceFrame();
+    setStatus(`scale:${Math.round(state.scale*100)/100} ref:${Math.round(ref.size)}px`); 
+  } catch(e){}
+  // persist new view/scale to the hash after user stops zooming
+  try { scheduleViewHashWrite(100); } catch(e){}
+},{ passive: false });
+
+// rotate/zoom input controls removed per user preference
+
+resetBtn.addEventListener('click', ()=>{
+  // Animate back to the captured defaults (fit-to-container) then remove view params
+  const parsed = parseHash();
+  const defs = defaultSvgParams || { s: state.scale, x: state.tx, y: state.ty };
+  // animateTo will merge with defaults, but we call with explicit defaults here
+  animateTo({ s: defs.s, x: defs.x, y: defs.y }, 700).catch(()=>{}).then(() => {
+    // After animation, write a compact hash that preserves url and visibility but omits view params
+    try { suppressHashFor(120); } catch(e){}
+    const token = buildCompactHash(parsed.url || '', {}, parsed.vis || { show: [], hide: [] });
+    location.hash = '#'+token;
+  });
+});
+
+// Hash management: only write final state on interaction end or reset
+let hashTimeout = null;
+function commitHash(){
+  const url = currentUrl || '';
+  const parsed = parseHash();
+  const annotations = (parsed && parsed.annotations) ? parsed.annotations : { boxes:[], lines:[], color:'ff0000' };
+  // Use same 6-field format for compatibility: view&opacity&boxes&lines&url&<rotation-slot>
+  const viewParam = '';
+  const opacity = 100;
+  // Serialize params into url token
+  function buildUrlToken(url, params) {
+    let token = url || '';
+    for (const k of Object.keys(params || {})) {
+      token += `@${k}=${encodeURIComponent(String(params[k]))}`;
+    }
+    return token;
+  }
+  const params = { s: Math.round(state.scale*100)/100, x: Math.round(state.tx*100)/100, y: Math.round(state.ty*100)/100 };
+  const token = buildCompactHash(url, params, parsed.vis || { show: [], hide: [] });
+  suppressHashFor(120);
+  console.debug('commitHash: writing compact hash', token);
+  location.hash = '#'+token;
+}
+
+let currentUrl = '';
+
+// When we write location.hash from a UI interaction, the browser fires a hashchange
+// event which can re-apply visibility programmatically and cancel in-progress
+// animations. Use a timestamp guard so brief UI-originated writes are ignored
+// by the hashchange handler for a short window.
+try { window.__suppressHashChangeUntil = 0; } catch(e){}
+function suppressHashFor(ms){ try { window.__suppressHashChangeUntil = Date.now() + (ms || 120); } catch(e){} }
+// debounced hash write to avoid immediate reapplication during animations
+let __hashWriteTimeout = null;
+let __viewHashTimeout = null;
+
+function scheduleViewHashWrite(delay = 100){
+  try { if (__viewHashTimeout) clearTimeout(__viewHashTimeout); } catch(e){}
+  __viewHashTimeout = setTimeout(() => {
+    try { commitHash(); } catch(e){}
+    __viewHashTimeout = null;
+  }, delay);
+}
+
+// Public: accept messy hrefs like parent does
+window.acceptViewerHash = function(raw){
+  try{
+    if (!raw || typeof raw !== 'string') return false;
+    const s = raw.trim();
+    const ampIdx = s.indexOf('&&&');
+    if (ampIdx !== -1) {
+      const after = s.slice(ampIdx+3);
+      const token = after.split('&')[0] || '';
+      if (!token) return false;
+      // parse the legacy token into parsed fields and re-emit in compact form
+      const parsed = parseHash.call({ location: { hash: '#'+token } }) || parseHash();
+      const params = parsed.params || { s: state.scale, x: state.tx, y: state.ty };
+      const compact = buildCompactHash(parsed.url || token, params, parsed.vis || { show: [], hide: [] });
+      location.hash = '#'+compact;
+      return true;
+    }
+  const urlMatch = s.match(/(https?:\/\/[^#\s]+|\/[^#\s]+|[^#\s]+\.svg)/i);
+    if (urlMatch && urlMatch[0]){
+      let url = urlMatch[0];
+      try{ const u = new URL(url, location.origin); url = u.pathname + (u.search||''); } catch(e){}
+      // emit compact hash using current view/state
+  const params = { s: Math.round(state.scale*100)/100, x: Math.round(state.tx*100)/100, y: Math.round(state.ty*100)/100 };
+      const compact = buildCompactHash(url, params, { show: [], hide: [] });
+      location.hash = '#'+compact; return true;
+    }
+    return false;
+  } catch(e){ return false; }
+}
+
+// Initial load (guarded startup to tolerate injected scripts that may throw)
+function startViewer(){
+  try {
+    const parsed = parseHash();
+    let url = parsed.url || '';
+    // Only load if an explicit .svg filename is present in the hash
+    if (!url || url.indexOf('.svg') === -1) {
+      setStatus('waiting for #file.svg');
+      window.viewerReady = false;
+      return Promise.resolve();
+    }
+    currentUrl = url;
+  // Apply params if present (scale/tx/ty) after load
+    // queue visibility to apply after load if present
+    if (parsed.vis) pendingVis = parsed.vis;
+    return loadSVG(url).then(() => {
+      try {
+        if (parsed.params) {
+              // animate into the requested params rather than snapping. Merge
+              // missing fields with captured defaults so unspecified values
+              // animate toward the default fit-to-container state.
+              return animateTo(mergeWithDefaults(parsed.params), 900).catch(()=>{});
+            }
+      } catch (e) {
+        console.warn('Applying params failed', e);
+      }
+    }).catch(e => {
+      console.warn('Initial load failed', e);
+      pendingVis = null;
+    });
+  } catch (e) {
+    console.warn('startViewer caught', e);
+    return Promise.resolve();
+  }
+}
+
+// Global non-fatal error handler: log but don't let injected scripts abort viewer startup
+window.addEventListener('error', (ev) => {
+  // Keep default behavior but ensure it's logged to console for tests
+  try { console.warn('PAGE ERROR (non-fatal):', ev && ev.message ? ev.message : ev); } catch(e){}
+  // do not call ev.preventDefault() so other handlers can run; we only avoid throwing here
+});
+
+// Kick off startup asynchronously (guarded)
+setTimeout(() => { startViewer(); }, 0);
+
+// respond to external hash changes
+window.addEventListener('hashchange', ()=>{
+  // If this hashchange was caused by our own UI write, skip re-applying
+  // visibility/state to avoid cancelling user-initiated animations.
+  if (typeof window.__suppressHashChangeUntil === 'number' && Date.now() < window.__suppressHashChangeUntil) { console.debug('hashchange: suppressed by timestamp'); return; }
+  console.debug('hashchange: applying parsed hash');
+  const parsed = parseHash();
+  if (!parsed) return;
+  // if URL changed, load new svg immediately
+  if (parsed.url && parsed.url !== currentUrl) {
+    currentUrl = parsed.url;
+    loadSVG(currentUrl).then(()=>{
+      if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
+      if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+    });
+    return;
+  }
+  // if same URL but params changed, animate to new params
+  if (parsed.url === currentUrl) {
+    if (parsed.params) animateTo(mergeWithDefaults(parsed.params), 800).catch(()=>{});
+    if (parsed.vis) {
+      if (!svgEl) { pendingVis = parsed.vis; }
+      else {
+        try {
+          applyVisibilityFromVis(parsed.vis, { animate: true });
+          // After visibility changes, update overlays to ensure fade in/out
+          if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
+        } catch(e){}
+      }
+    }
+    // Always re-attach overlays in case layers changed
+    if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+  }
+});
+
+// Auto-attach video overlays based on layer IDs
+function autoAttachVideoOverlays(){
+  if (!window.overlayManager || !layerKeyMap) return;
+  for (const [key, el] of layerKeyMap.entries()){
+    try{
+      const id = el.id || String(key).split('/').pop();
+      if (!id) continue;
+      // Only attach overlays for displayed layers (allow opacity 0 during fade-in)
+      const cs = window.getComputedStyle(el);
+      const isDisplayed = cs.display !== 'none' && cs.visibility !== 'hidden';
+      // Remove overlay if not displayed
+      if (!isDisplayed && window.overlayManager && typeof window.overlayManager.remove === 'function') {
+        window.overlayManager.remove(key);
+        continue;
+      }
+      // Match patterns: vimeo-1234567, embed-vimeo.com%2F1234567, etc.
+      let url = null;
+      // Pattern: vimeo-1234567 -> /embed/#vimeo.com%2F1234567/autoplay,loop,cover
+      const vimeoMatch = id.match(/^vimeo-(\d+)$/i);
+      if (vimeoMatch){
+        const videoId = vimeoMatch[1];
+        url = `/embed/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
+      }
+      // Pattern: embed-* -> extract full embed URL from id
+      // e.g., embed-vimeo.com%2F1234567 or embed-vimeo.com%2F1234567%2Fautoplay
+      const embedMatch = id.match(/^embed-(.+)$/i);
+      if (embedMatch && !url){
+        const embedPath = embedMatch[1];
+        url = `/embed/#${embedPath}`;
+      }
+      if (url && isDisplayed){
+        // Only attach if not already present
+        if (!window.overlayManager.items || !window.overlayManager.items.has(key)) {
+          console.log('[auto-attach] Attaching video to layer', key, 'with URL', url);
+          window.overlayManager.attachIframe(key, url);
+        }
+      } else if (window.overlayManager && typeof window.overlayManager.remove === 'function') {
+        window.overlayManager.remove(key);
+      }
+    }catch(e){ console.warn('[auto-attach] Failed for key', key, e); }
+  }
+}
+
+// Update reference frame and SVG transform on window resize
+window.addEventListener('resize', () => {
+  try { 
+    updateReferenceFrame();
+    render(); // Re-render SVG to match new reference frame scale
+  } catch(e){}
+});
+
+window.viewerReady = false;
+</script>
+
+<!-- Overlay manager: position HTML/iframe layers to follow SVG elements -->
+<script>
+(function(){
+  const root = document.getElementById('overlays');
+  const items = new Map(); // key -> { target: SVGElement, el: HTMLElement|SVGForeignObjectElement, mode: 'html'|'svg-fo' }
+
+  function getTargetForKey(key){
+    if (!key) return null;
+    // Prefer layerKeyMap (built by viewer) for hierarchical keys
+    if (window.layerKeyMap && typeof window.layerKeyMap.get === 'function'){
+      const el = window.layerKeyMap.get(key);
+      if (el) return el;
+    }
+    // Fallback: search by plain id in current svg
+    try{
+      if (window.svgEl && typeof window.svgEl.querySelector === 'function'){
+        const byId = window.svgEl.querySelector('#'+CSS.escape(String(key)));
+        if (byId) return byId;
+      }
+    }catch(e){}
+    try{
+      const byIdDoc = document.getElementById(String(key));
+      if (byIdDoc && byIdDoc.ownerSVGElement) return byIdDoc;
+    }catch(e){}
+    return null;
+  }
+
+  function updateOne(key){
+    const item = items.get(key);
+    if (!item || !item.target || !item.el) return;
+    const el = item.target;
+    const overlay = item.el;
+    try{
+      // If this overlay is an SVG foreignObject (in-SVG), compute geometry in SVG units
+      const isSvgFO = overlay && overlay.namespaceURI === 'http://www.w3.org/2000/svg' && overlay.tagName.toLowerCase() === 'foreignobject';
+      if (isSvgFO) {
+        const bb = el.getBBox();
+        if (!bb) { overlay.setAttribute('display','none'); return; }
+        // Map local quad to root SVG coordinates using getCTM
+        const ctm = (typeof el.getCTM === 'function') ? el.getCTM() : null;
+        const mapLocalSvg = (x, y) => {
+          if (ctm) {
+            const p = new DOMPoint(x, y).matrixTransform(ctm);
+            return { x: p.x, y: p.y };
+          }
+          return { x, y };
+        };
+
+        // Prefer path corners when available
+        let tlp, trp, blp, width, height, rotation;
+        if (el.tagName === 'path' && el.getAttribute) {
+          try {
+            const d = el.getAttribute('d');
+            if (d) {
+              const coords = [];
+              const matches = d.matchAll(/([ML])\s*([+-]?\d*\.?\d+)[,\s]+([+-]?\d*\.?\d+)/g);
+              for (const m of matches) { coords.push({ x: parseFloat(m[2]), y: parseFloat(m[3]) }); if (coords.length >= 4) break; }
+              if (coords.length >= 4) {
+                const pts = [
+                  mapLocalSvg(coords[0].x, coords[0].y),
+                  mapLocalSvg(coords[1].x, coords[1].y),
+                  mapLocalSvg(coords[2].x, coords[2].y),
+                  mapLocalSvg(coords[3].x, coords[3].y)
+                ];
+                const byY = pts.slice().sort((a,b)=> a.y - b.y);
+                const topPair = byY.slice(0,2).sort((a,b)=> a.x - b.x);
+                const bottomPair = byY.slice(2,4).sort((a,b)=> a.x - b.x);
+                tlp = topPair[0]; trp = topPair[1]; blp = bottomPair[0];
+              }
+            }
+          } catch(e) {/* fallback to bbox */}
+        }
+        if (!tlp || !trp || !blp) {
+          const pts = [
+            mapLocalSvg(bb.x, bb.y),
+            mapLocalSvg(bb.x + bb.width, bb.y),
+            mapLocalSvg(bb.x + bb.width, bb.y + bb.height),
+            mapLocalSvg(bb.x, bb.y + bb.height)
+          ];
+          const byY = pts.slice().sort((a,b)=> a.y - b.y);
+          const topPair = byY.slice(0,2).sort((a,b)=> a.x - b.x);
+          const bottomPair = byY.slice(2,4).sort((a,b)=> a.x - b.x);
+          tlp = topPair[0]; trp = topPair[1]; blp = bottomPair[0];
+        }
+        const vx = { x: trp.x - tlp.x, y: trp.y - tlp.y };
+        const vy = { x: blp.x - tlp.x, y: blp.y - tlp.y };
+        width = Math.hypot(vx.x, vx.y);
+        height = Math.hypot(vy.x, vy.y);
+        rotation = Math.atan2(vx.y, vx.x) * 180 / Math.PI;
+
+        // Apply to foreignObject
+        overlay.removeAttribute('display');
+        overlay.setAttribute('x', String(tlp.x));
+        overlay.setAttribute('y', String(tlp.y));
+        overlay.setAttribute('width', String(Math.max(0.001, width)));
+        overlay.setAttribute('height', String(Math.max(0.001, height)));
+        overlay.setAttribute('transform', `rotate(${rotation} ${tlp.x} ${tlp.y})`);
+
+        // Mirror visibility/opacity/transition
+        const cs = window.getComputedStyle(el);
+        const targetVisibility = cs.visibility || 'visible';
+        const targetDisplay = (cs.display === 'none') ? 'none' : 'inline';
+        const elTransition = el.style.transition || '';
+        const elOpacity = el.style.opacity || cs.opacity || '1';
+        overlay.style.transition = elTransition;
+        overlay.style.opacity = elOpacity;
+        overlay.style.visibility = targetVisibility;
+        if (targetDisplay === 'none' || parseFloat(elOpacity) < 0.01 && (!elTransition || elTransition === 'none')) {
+          overlay.setAttribute('display','none');
+        } else {
+          overlay.removeAttribute('display');
+        }
+        return; // SVG-FO path handled
+      }
+      const bb = el.getBBox();
+      if (!bb) { overlay.style.display = 'none'; return; }
+
+      // Recreate the same CSS transform math used by the viewer's render()
+      const ref = (typeof getReferenceFrame === 'function') ? getReferenceFrame() : {
+        size: Math.min(window.innerWidth || 0, window.innerHeight || 0),
+        centerX: (window.innerWidth || 0) / 2,
+        centerY: (window.innerHeight || 0) / 2
+      };
+      // Use the global svg bbox captured at load/fit, not the element's bbox
+      const vb = (typeof bbox !== 'undefined' && bbox) ? bbox : (svgEl && svgEl.getBBox ? svgEl.getBBox() : bb);
+      // Use the viewer's state (scale/tx/ty) from the global, not window
+      const st = (typeof state !== 'undefined' && state) ? state : { tx: 0, ty: 0, scale: 1 };
+      const scaleToFitInRef = Math.min(ref.size / vb.width, ref.size / vb.height);
+      const viewportScale = st.scale * scaleToFitInRef;
+      const offsetXpx = st.tx * ref.size;
+      const offsetYpx = st.ty * ref.size;
+      const viewportTx = ref.centerX + offsetXpx - (vb.x + vb.width / 2) * viewportScale;
+      const viewportTy = ref.centerY + offsetYpx - (vb.y + vb.height / 2) * viewportScale;
+
+      const mapPoint = (x, y) => ({
+        x: viewportTx + x * viewportScale,
+        y: viewportTy + y * viewportScale
+      });
+      // Apply element's internal SVG transform (if any) before mapping to CSS pixels
+      // getCTM() gives the matrix from the element's local coordinate space to the SVG viewport (pre-CSS)
+      const ctm = (typeof el.getCTM === 'function') ? el.getCTM() : null;
+      const mapLocal = (x, y) => {
+        if (ctm) {
+          const p = new DOMPoint(x, y).matrixTransform(ctm);
+          return mapPoint(p.x, p.y);
+        }
+        return mapPoint(x, y);
+      };
+
+      let width, height, rotation, tx, ty;
+
+      // Prefer true path corners when available
+      if (el.tagName === 'path' && el.getAttribute) {
+        try {
+          const d = el.getAttribute('d');
+          if (d) {
+            const coords = [];
+            // Support negative and decimal values for coordinates
+            const matches = d.matchAll(/([ML])\s*([+-]?\d*\.?\d+)[,\s]+([+-]?\d*\.?\d+)/g);
+            for (const match of matches) {
+              coords.push({ x: parseFloat(match[2]), y: parseFloat(match[3]) });
+              if (coords.length >= 4) break;
+            }
+            if (coords.length >= 4) {
+              // Map the first four path points to screen coords
+              const pts = [
+                mapLocal(coords[0].x, coords[0].y),
+                mapLocal(coords[1].x, coords[1].y),
+                mapLocal(coords[2].x, coords[2].y),
+                mapLocal(coords[3].x, coords[3].y)
+              ];
+              // Identify corners robustly by y-rank: top pair = two smallest y, bottom pair = two largest y
+              const byY = pts.slice().sort((a,b)=> a.y - b.y);
+              const topPair = byY.slice(0,2).sort((a,b)=> a.x - b.x); // [TL, TR]
+              const bottomPair = byY.slice(2,4).sort((a,b)=> a.x - b.x); // [BL, BR]
+              const tlp = topPair[0];
+              const trp = topPair[1];
+              const blp = bottomPair[0];
+              // Compute width/height and rotation (orthonormal axes)
+              const vx = { x: trp.x - tlp.x, y: trp.y - tlp.y };
+              const vy = { x: blp.x - tlp.x, y: blp.y - tlp.y };
+              width = Math.hypot(vx.x, vx.y);
+              height = Math.hypot(vy.x, vy.y);
+              rotation = Math.atan2(vx.y, vx.x) * 180 / Math.PI;
+              tx = tlp.x; ty = tlp.y;
+            }
+          }
+        } catch(e) {/* fall through to bbox */}
+      }
+
+      // Fallback: use bbox corners mapped through the viewer transform
+      if (tx == null || ty == null) {
+        if (!bb.width || !bb.height) { overlay.style.display = 'none'; return; }
+        const pts = [
+          mapLocal(bb.x, bb.y),
+          mapLocal(bb.x + bb.width, bb.y),
+          mapLocal(bb.x + bb.width, bb.y + bb.height),
+          mapLocal(bb.x, bb.y + bb.height)
+        ];
+        const byY = pts.slice().sort((a,b)=> a.y - b.y);
+        const topPair = byY.slice(0,2).sort((a,b)=> a.x - b.x); // [TL, TR]
+        const bottomPair = byY.slice(2,4).sort((a,b)=> a.x - b.x); // [BL, BR]
+        const tlp = topPair[0];
+        const trp = topPair[1];
+        const blp = bottomPair[0];
+        const vx = { x: trp.x - tlp.x, y: trp.y - tlp.y };
+        const vy = { x: blp.x - tlp.x, y: blp.y - tlp.y };
+        width = Math.hypot(vx.x, vx.y);
+        height = Math.hypot(vy.x, vy.y);
+        rotation = Math.atan2(vx.y, vx.x) * 180 / Math.PI;
+        tx = tlp.x; ty = tlp.y;
+      }
+
+      // Apply unambiguous translate+rotate, with width/height defining scale
+      overlay.style.transform = `translate(${tx}px, ${ty}px) rotate(${rotation}deg)`;
+      overlay.style.width = Math.max(0.001, width) + 'px';
+      overlay.style.height = Math.max(0.001, height) + 'px';
+      
+      // mirror visibility/opacity/transition with smooth transitions
+      const cs = window.getComputedStyle(el);
+      const targetVisibility = cs.visibility || 'visible';
+      const targetDisplay = (cs.display === 'none') ? 'none' : 'block';
+      
+      // Mirror the element's inline styles exactly - this is critical for sync
+      // Use inline style values, not computed, so we get the transition target values
+      const elTransition = el.style.transition || '';
+      const elOpacity = el.style.opacity || cs.opacity || '1';
+      
+      // Always copy the element's transition exactly
+      overlay.style.transition = elTransition;
+      
+      // Mirror opacity from inline style (the target value during transitions)
+      overlay.style.opacity = elOpacity;
+      overlay.style.visibility = targetVisibility;
+      
+      // Keep display:block during fade transitions; only hide when opacity is 0 and no transition
+      const opacityValue = parseFloat(elOpacity);
+      if (targetDisplay === 'none' || (opacityValue < 0.01 && (!elTransition || elTransition === 'none' || elTransition === ''))) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.display = 'block';
+      }
+    }catch(e){ /* ignore per-frame errors */ }
+  }
+
+  function update(){
+    for (const k of items.keys()) updateOne(k);
+  }
+
+  function attachToLayer(key, element){
+    try{
+      const target = getTargetForKey(key);
+      if (!target) { console.warn('[overlay] target not found for key', key); return null; }
+      const el = (typeof element === 'function') ? element() : element;
+      if (!el) return null;
+      // Determine mode: use SVG foreignObject for correct z-ordering
+      const isSvgMode = true;
+      if (isSvgMode) {
+        // Build foreignObject with XHTML div+iframe
+        const fo = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+        fo.setAttribute('x','0'); fo.setAttribute('y','0');
+        fo.setAttribute('width','1'); fo.setAttribute('height','1');
+        fo.style.pointerEvents = 'auto';
+        // insert after target so it paints above target but below following siblings
+        try { target.parentNode.insertBefore(fo, target.nextSibling); } catch(e) { try{ target.parentNode.appendChild(fo); }catch(e){} }
+
+        const xhtmlDiv = document.createElementNS('http://www.w3.org/1999/xhtml', 'div');
+        xhtmlDiv.setAttribute('xmlns','http://www.w3.org/1999/xhtml');
+        xhtmlDiv.style.width = '100%';
+        xhtmlDiv.style.height = '100%';
+        xhtmlDiv.style.pointerEvents = 'auto';
+
+        // If the provided element is an iframe/element, append into xhtmlDiv; else create iframe
+        let iframeEl = el;
+        if (!(el instanceof HTMLIFrameElement)) {
+          const iframe = document.createElement('iframe');
+          iframe.src = '';
+          iframe.setAttribute('frameborder','0');
+          iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture');
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
+          iframe.style.border = '0';
+          iframe.style.display = 'block';
+          iframeEl = iframe;
+        }
+        xhtmlDiv.appendChild(iframeEl);
+        fo.appendChild(xhtmlDiv);
+        // Track item
+        items.set(String(key), { target, el: fo, mode: 'svg-fo' });
+        // Initial update
+        updateOne(String(key));
+        return fo;
+      } else {
+        // Legacy HTML overlay mode
+        el.classList.add('overlay');
+        el.style.position = 'absolute';
+        el.style.left = '0';
+        el.style.top = '0';
+        el.style.transformOrigin = '0 0';
+        el.style.willChange = 'transform,width,height';
+        el.dataset.layerKey = String(key);
+        root && root.appendChild(el);
+        items.set(String(key), { target, el, mode: 'html' });
+        updateOne(String(key));
+        return el;
+      }
+    }catch(e){ return null; }
+  }
+
+  function remove(key){
+    const item = items.get(String(key));
+    if (item) { try{ item.el.remove(); }catch(e){} items.delete(String(key)); }
+  }
+
+  function attachIframe(key, src, attrs){
+    // Build FO overlay and set iframe src
+    const fo = attachToLayer(key, () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = src || '';
+      iframe.setAttribute('frameborder','0');
+      iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture');
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = '0';
+      iframe.style.display = 'block';
+      try{ Object.entries(attrs || {}).forEach(([k,v]) => iframe.setAttribute(k, String(v))); }catch(e){}
+      return iframe;
+    });
+    return fo;
+  }
+
+  // Expose API (including items for visibility checks)
+  window.overlayManager = { attachToLayer, attachIframe, update, remove, items };
+})();
+</script>
+</body>
+</html>
