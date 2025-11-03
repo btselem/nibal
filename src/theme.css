@@ -155,6 +155,30 @@ section.testimony p{
     border-right: 4px solid #FA5F5F;
 }
 
+section.closing {
+    padding-top: 40vh;
+}
+
+section.closing a {
+    color: #FA5F5F;
+}
+
+section.closing h2 {
+    font-size: 24px;
+    color: #FA5F5F;
+    line-height: 1em;
+}
+
+section.closing h3 {
+   font-size: 18px;
+    line-height: 1em;
+}
+
+section.closing ul {
+    margin-top: 0;
+    padding: 0 1em;
+}
+
 /* used as placeholder */
 section p code { 
     font-family: inherit;
@@ -291,11 +315,14 @@ section {
 
 section:first-of-type, section:last-of-type {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
 }
 
+section:first-of-type {
+    justify-content: center;
+    text-align: center; 
+}
+ 
 section:first-of-type {
     min-height: 85vh;
     padding: 0 0 15vh;

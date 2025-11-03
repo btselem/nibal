@@ -571,13 +571,46 @@ css: src/theme.css
 </a>
 
 
-{.subheader}
+{.meta thumb closing no-snap}
 [](about:blank)
+**המסע של ניבאל עוד לא נגמר.** כארגון זכויות אדם ישראלי, לנו בבצלם אין כוונה להסיר את המבט מהפשעים שנעשו וממשיכים להיעשות בשמנו. נמשיך לעקוב אחרי השיקום של ניבאל ושל רצועת עזה כולה ונשמח לעדכן גם אותך:
+
+[ כתובת האימייל שלי ]
+- [] צרפו אותי לרשימת התפוצה של בצלם
+
+[ עדכנו אותי על גורלה של ניבאל ]
+
+## מתודולוגיה ומקורות
+
+<a href="https://btselem.org/" target="blank" class="dontinflect">
+    לתחקיר המלא
+    <strong>
+    אין מקום בטוח
+    </strong>
+</a>
+
+### צילומים ווידאו
+- באדיבות ניבאל אל היסי
+- רוייטרס
+- דובר צה״ל
+
+### מידע גיאוגרפי
+- Mapbox.com
+- ESRI Wayback
+- Gazamap.com
+
+### מידע סטטיסטי
+- מחלקת המחקר של בצלם
+
 ## קרדיטים
+### מחקר ועריכה
+- בצלם
 
+### עיצוב ופיתוח מוצר
+- <a href="http://mushon.com" target="blank" class="dontinflect">מושון זר-אביב</a>, סטודיו שועל
+- Made with <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
 
-[](tbd/#מכאן%2C_לחשוב_אם_לשבץ_מחדש%3A%0A)
-
+<!--
 
 {.meta thumb}
 [](tbd/#pinpoints_of_dozens_of_bombings_in_al_mawasi_nov_24_to_jan_25_—_in_the_excel_tab)
@@ -590,3 +623,4 @@ css: src/theme.css
     </strong>
 </a>
 
+-->
