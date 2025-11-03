@@ -459,6 +459,35 @@
                 })();
             }
 
+            // Install a single on-page caption for the currently active
+            // inflection link. Caption text is taken from the link's
+            // markdown title (the "..." part in [text](href "title")).
+            (function setupInflectCaption(){
+                try {
+                    let el = document.getElementById('inflect-caption');
+                    if (!el) {
+                        el = document.createElement('div');
+                        el.id = 'inflect-caption';
+                        el.className = 'inflect-caption';
+                        el.style.display = 'none';
+                        document.body.appendChild(el);
+                    }
+
+                    function setCaptionFromLink(a){
+                        try {
+                            if (!a) { el.style.display = 'none'; el.textContent = ''; return; }
+                            const title = (a.getAttribute('title') || a.getAttribute('data-caption') || a.textContent || '').trim();
+                            if (!title) { el.style.display = 'none'; el.textContent = ''; return; }
+                            el.textContent = title;
+                            el.style.display = '';
+                        } catch(e){ /* swallow */ }
+                    }
+
+                    // Expose small helper so observers/click handlers can update caption
+                    window.__setInflectCaptionFromLink = setCaptionFromLink;
+                } catch(e) { /* swallow */ }
+            })();
+
             try { console.info('initializeObservers: about to run'); } catch(e){}
             initializeObservers();
             // Observe sections so empty/anchor-only links inside sections are detected
@@ -596,6 +625,7 @@
                         // (e.g. the typewriter) mutate link textContent or href.
                         const rawHref = visibleLink.getAttribute('href');
                         try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(visibleLink.href); }
+                        try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(visibleLink); } catch(e){}
                         // Start any typewriter animation for the section that contains this link
                         // after the iframe has been asked to load the path. Use a short delay
                         // to allow the iframe transition to start.
@@ -663,6 +693,7 @@
                         }
 
                         try { const full = new URL(raw, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(a.href); }
+                        try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(a); } catch(e){}
                     } catch(e) { /* swallow */ }
                     sectionObserver.unobserve(en.target);
                 }
@@ -1022,6 +1053,7 @@
                     link.classList.add('active');
                     const rawHref = link.getAttribute('href');
                     try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(link.href); }
+                    try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(link); } catch(e){}
                     // (typewriter removed)
                 });
             } else {
@@ -1035,6 +1067,7 @@
             firstLink.classList.add('active');
             const rawHref = firstLink.getAttribute('href');
             try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(firstLink.href); }
+            try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(firstLink); } catch(e){}
         }
 
     }
