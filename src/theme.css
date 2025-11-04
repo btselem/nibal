@@ -351,6 +351,7 @@ iframe {
     transition: opacity 0.1s ease-in;
 }
 
+/* Hide timestamp labels in the opening section */
 #chapter-nav.ch01 .chapter-item.timestamp .chapter-label{
     opacity: 0;
 }
