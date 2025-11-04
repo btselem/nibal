@@ -504,6 +504,57 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('[chapters] Active item:', currentTargetId, '| Viewport center:', viewportCenter);
       }
       
+      // Find which chapter the current section belongs to
+      let currentChapterNumber = 0;
+      const chapterHeadingDots = Array.from(document.querySelectorAll('#chapter-nav .chapter-heading-dot'));
+      
+      if (currentTargetId) {
+        // Find the nav item for the current target
+        const currentNavItem = allItems.find(item => {
+          const dot = item.querySelector('.chapter-dot');
+          return dot && dot.dataset.target === currentTargetId;
+        });
+        
+        if (currentNavItem) {
+          // If current item is a chapter heading, find its index
+          if (currentNavItem.classList.contains('chapter-heading-item')) {
+            const currentDot = currentNavItem.querySelector('.chapter-dot');
+            currentChapterNumber = chapterHeadingDots.indexOf(currentDot) + 1;
+          } else {
+            // If current item is a section, find which chapter it belongs to
+            const chapterId = currentNavItem.dataset.chapterId;
+            if (chapterId) {
+              // Find the chapter heading dot with this chapterId
+              const chapterItem = document.querySelector(`#chapter-nav .chapter-heading-item[data-chapter-id="${chapterId}"]`);
+              if (chapterItem) {
+                const chapterDot = chapterItem.querySelector('.chapter-dot');
+                currentChapterNumber = chapterHeadingDots.indexOf(chapterDot) + 1;
+              }
+            }
+          }
+        }
+      }
+      
+      // Update chapter class on nav element
+      const navElement = document.getElementById('chapter-nav');
+      if (navElement) {
+        // Remove all existing chXX classes
+        navElement.classList.forEach(className => {
+          if (/^ch\d+$/.test(className)) {
+            navElement.classList.remove(className);
+          }
+        });
+        
+        // Add current chapter class
+        if (currentChapterNumber > 0) {
+          const chapterClass = 'ch' + String(currentChapterNumber).padStart(2, '0');
+          navElement.classList.add(chapterClass);
+          if (window.__chaptersDebug) {
+            console.log('[chapters] Current chapter:', currentChapterNumber, '| Class:', chapterClass);
+          }
+        }
+      }
+      
       // Mark all dots as visited, future, or current based on scroll position
       // Note: 'current' class on sections is now handled by core index.html
       targetPositions.forEach(pos => {

@@ -351,6 +351,14 @@ iframe {
     transition: opacity 0.1s ease-in;
 }
 
+#chapter-nav.ch01 .chapter-item.timestamp .chapter-label{
+    opacity: 0;
+}
+
+#chapter-nav.ch01 .chapter-item.timestamp:hover .chapter-label{
+    opacity: 1;
+}
+
 @media (max-width: 1000px) and (orientation: portrait) {
     /* On narrow portrait screens stack the main content above the iframe
        with both covering the viewport. The iframe stays behind and is
