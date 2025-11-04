@@ -1,366 +1,181 @@
-# Map — Complete Interactive Mapping Guide
+# Map Guide
 
 [](map/#23.99000,29.92877,2.00,0.0,0.0/~Gaza_border_dash,~Gaza_border_base "Map Overview")
-This comprehensive guide covers all features of the interactive map at `map/index.html`. You'll learn hash-driven camera control, layer toggling, dynamic GeoJSON/CSV loading, historical satellite imagery (Sentinel-2 & Wayback), camera path animations, and embedding best practices.
+This comprehensive guide covers all features of the interactive map. Learn hash-driven camera control, layer toggling, dynamic data loading, historical satellite imagery, and cinematic animations.
 
----
 
-## Table of Contents
-1. [Hash URL Syntax](#hash-url-syntax)
-2. [Camera Control](#camera-control)
-3. [Layer Management](#layer-management)
-4. [Dynamic GeoJSON/CSV Layers](#dynamic-geojsoncsv-layers)
-5. [Historical Satellite Imagery](#historical-satellite-imagery)
-6. [Camera Path Animation](#camera-path-animation)
-7. [Advanced Features](#advanced-features)
+{.heading}
 
----
+## Introduction
 
-## Hash URL Syntax
-
-The map is controlled entirely through URL hash parameters. The general format is:
-
-```
-map/#lat,lng,zoom,bearing,pitch/+layerA,~layerB,+external:modifier
-```
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0 "Basic camera positioning")
-
-**Components:**
-- **Camera:** `lat,lng,zoom,bearing,pitch` (all numeric)
-- **Layers:** Comma-separated tokens starting with `+` (show) or `~` (hide)
-- **Modifiers:** `:follow` for path animation, `(source)` for styling
-
----
-
-## Camera Control
-
-### Basic Positioning
-
-[](map/#31.52888,34.47937,18.14,15.0,0 "Jabalia at high zoom with slight rotation")
-Camera at Jabalia, zoom 18, bearing 15°, pitch 0° (flat)
-
-[](map/#31.52956,34.47717,14.33,22.4,60.5 "Jabalia with 3D perspective")
-Same location with 60° pitch for 3D terrain view
-
-### Camera Parameters Explained
-
-- **lat, lng:** Latitude and longitude (decimal degrees)
-- **zoom:** 0 (world) to 22 (street level)
-- **bearing:** 0–360° rotation (0 = north up)
-- **pitch:** 0–60° tilt (0 = flat, 60 = maximum tilt)
-
-### Smooth Camera Transitions
-
-[](map/#31.52888,34.47937,18.14,15.0,0 "Start: Jabalia close-up")
-When scrolling or clicking between links, the camera smoothly animates between positions.
-
-[](map/#31.41976,34.39009,10.00,37.6,0.0 "End: Gaza overview")
-Fly from Jabalia to southern Gaza with automatic easing.
-
----
-
-## Layer Management
-
-### Built-in Style Layers
-
-The map includes predefined layers from the Mapbox style:
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly-outlines "IDF evacuation zone outlines")
-**IDF polygon outlines** — Show evacuation zone boundaries
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly,+idf-poly-outlines "IDF zones with fills and outlines")
-**IDF polygons** — Combine fills and outlines for full visualization
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+overlay "Satellite overlay layer")
-**Overlay** — Custom satellite imagery layer
-
-[](map/#31.52929,34.47915,15.50,37.6,0.0/+satellite,+jabalia "Multiple layers active")
-**Multiple layers** — Stack several layers (satellite + point markers)
-
-### Showing and Hiding Layers
-
-[](map/#31.43315,34.35321,10.06,37.6,0.0 "Reset to defaults")
-**Reset to defaults** — Omit layer tokens to use style defaults
-
-[](map/#31.43315,34.35321,10.06,37.6,0.0/~satellite "Hide satellite layer")
-**Hide with ~** — Use `~layername` to explicitly hide a layer
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/~satellite,+overlay "Replace default satellite")
-**Replace layers** — Hide default satellite, show custom overlay
-
----
-
-## Dynamic GeoJSON/CSV Layers
-
-Load external data files directly via the hash. The map automatically detects file type and converts CSV to GeoJSON.
-
-### Loading GeoJSON Files
-
-[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah "Load jabalia-rafah.geojson path")
-**Simple path** — Place `jabalia-rafah.geojson` in `/map/` and load with `+jabalia-rafah`
-
-The system searches for files in this order:
-1. `map/filename.geojson`
-2. `map/filename.csv`
-3. `map/data/filename.csv`
-
-### CSV Point Data
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+displacement-points "Load CSV points")
-**CSV points** — CSV files with `lat`/`lng` columns render as point markers
-
-**Supported column names:** `lat`, `latitude`, `y` / `lon`, `lng`, `longitude`, `x`
-
-### Styling External Layers
-
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track) "Styled path using track layer")
-**Copy styles** — Use `+filename(sourceLayer)` to copy paint/layout from an existing style layer
-
-**Available source layers:**
-- `track` — Thick colored lines
-- `overlay` — Raster positioning reference
-- `idf-poly` — Fill styling
-- `idf-poly-outlines` — Stroke styling
-
-### Layer Positioning
-
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track) "Layer inserted after 'track'")
-When you specify a source hint like `(track)`, the new layer is inserted immediately after that layer in the render order, ensuring proper z-index.
-
----
-
-## Historical Satellite Imagery
-
-Access timestamped satellite imagery from two free, open sources—no authentication required.
-
-### Sentinel-2 Cloudless (EOX)
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20240215 "Sentinel-2 imagery from Feb 15, 2024")
-**Syntax:** `+s2:YYYYMMDD`
-
-**Features:**
-- 10-meter resolution
-- Cloud-free annual mosaics (compiled from multiple acquisitions)
-- Available from June 2015 to 2024
-- Free and open via EOX WMTS service
-- No watermarks, no authentication
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815 "Summer 2023 mosaic")
-**2023 mosaic** — View last year's imagery
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20200601 "June 2020 baseline")
-**Historical baseline** — Compare with pre-conflict imagery
-
-**Technical notes:**
-- Mosaics are updated annually (typically with a 1–2 year delay)
-- Uses EOX's `s2cloudless` service
-- TileMatrixSet: `g` (Google Maps compatible)
-- Max zoom: 13
-
-### ESRI Wayback (Maxar Satellite)
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20240215 "Wayback imagery from Feb 15, 2024")
-**Syntax:** `+wayback:YYYYMMDD`
-
-**Features:**
-- Very high resolution (30cm in urban areas)
-- Historical archive going back to February 2014
-- Updated every few weeks with new Maxar imagery
-- Free public WMTS service with CORS enabled
-- Ideal for detailed damage assessment
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+wayback:20231007 "Day before Oct 7 attack")
-**Pre-conflict** — Oct 7, 2023 baseline
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20241101 "Recent imagery")
-**Current state** — Most recent Wayback release
-
-**Technical notes:**
-- Uses ESRI's public Wayback WMTS endpoint
-- Automatically selects closest available release date
-- Max zoom: 22 (extremely detailed)
-- Includes Maxar, GeoEye, and other commercial satellite sources
-
-### Combining Historical Imagery
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815,+idf-poly-outlines "Sentinel-2 with zone overlays")
-**Overlay analysis** — Stack historical imagery with current zone boundaries
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20241015,+jabalia "High-res with markers")
-**Detailed context** — Combine Wayback's detail with vector annotations
-
-### Date Selection Tips
-
-- **Sentinel-2:** Request any date; system uses the annual mosaic for that year (capped at 2024)
-- **Wayback:** Request any date; system picks the nearest available release (updated bi-weekly)
-- Both services log the actual date/mosaic used in the browser console
-
----
-
-## Camera Path Animation
-
-Create cinematic camera movements that follow GeoJSON LineString features.
-
-### Basic Path Following
-
-[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow "Animate along the displacement path")
-**Syntax:** `+layername:follow`
-
-The camera smoothly flies along the path geometry using Mapbox GL JS's FreeCamera API.
-
-[](map/#31.52103,34.46974,12.79,-14.4,30.4/+jabalia-rafah:follow,+jabalia,+rafah "Follow path with start/end markers")
-**With markers** — Show origin and destination points during animation
-
-### Animation Behavior
-
-- **Duration:** ~30 seconds for typical paths (auto-calculated based on length)
-- **Easing:** Smooth acceleration and deceleration
-- **Bearing:** Camera rotates to face direction of travel
-- **Pitch:** Configurable tilt (set via initial camera pitch parameter)
-- **Interruption:** User interaction cancels animation; URL updates manually resume
-
-### Combining Animation with Imagery
-
-[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+s2:20231001 "Animate over historical imagery")
-**Historical journey** — Fly over Sentinel-2 imagery from a specific date
-
-[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+wayback:20240215 "Detailed flyover")
-**High-resolution flyover** — Use Wayback for detailed terrain views
-
----
-
-## Advanced Features
-
-### Layer Visibility Persistence
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly "Enable IDF polygons")
-Layers remain active as you navigate...
-
-[](map/#31.52956,34.47717,14.33,22.4,60.5/+idf-poly "Polygons persist across views")
-...until explicitly removed from the hash.
-
-### Multiple External Layers
-
-[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah,+jabalia,+rafah "Three external layers")
-Stack multiple GeoJSON/CSV files and control each independently.
-
-### Z-Index Control via Source Hints
-
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track),+idf-poly-outlines "Paths above polygons")
-Use `(sourceHint)` to position layers relative to existing style layers for proper rendering order.
-
-### Removing External Layers
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20240215 "Load S2 layer")
-Historical imagery layers are added dynamically...
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0 "S2 layer removed")
-...and automatically removed from the map and UI when omitted from the hash.
-
-### Hash-Only Updates
-
-Changes to the hash trigger immediate map updates without page reload. This enables smooth navigation within an iframe or embedded context.
-
----
-
-## Embedding Best Practices
-
-### In an Iframe
-
-```html
-<iframe src="map/#31.42,34.35,10.0,0,0/+s2:20240215" 
-        width="800" height="600" 
-        style="border:none;"></iframe>
-```
-
-The layer control panel auto-hides when the map detects it's embedded.
-
-### With Inflect
-
-[](map/#31.52888,34.47937,18.14,15.0,0/+jabalia "Example inflection link with caption")
-Use Markdown link titles to add captions that appear as overlays when the map becomes active in the Inflect viewer.
-
-**Syntax:** `[](map/#... "Your caption text here")`
-
-### Performance Considerations
-
-- **Raster layers:** Sentinel-2 and Wayback tiles load on-demand; only visible tiles are fetched
-- **Vector layers:** GeoJSON files are parsed once and cached by the browser
-- **Animations:** Camera paths use requestAnimationFrame for smooth 60fps rendering
-
----
-
-## Summary of Hash Tokens
-
-| Token | Purpose | Example |
-|-------|---------|---------|
-| `+layername` | Show layer | `+satellite` |
-| `~layername` | Hide layer | `~satellite` |
-| `+file` | Load GeoJSON/CSV | `+jabalia-rafah` |
-| `+file(source)` | Load with styling | `+path(track)` |
-| `+file:follow` | Animate camera | `+path:follow` |
-| `+s2:YYYYMMDD` | Sentinel-2 imagery | `+s2:20240215` |
-| `+wayback:YYYYMMDD` | Wayback imagery | `+wayback:20231007` |
-
----
-
-## Next Steps
-
-- **Explore:** Try modifying the hash parameters in your browser's address bar
-- **Create:** Place your own GeoJSON or CSV files in `/map/` and load them
-- **Integrate:** Embed map views in your Inflect stories with caption overlays
-- **Experiment:** Combine layers, imagery, and animations to tell compelling spatial narratives
-
-[](map/#31.38169,34.34570,10.45,1.6,59.0/+jabalia,+rafah,+wayback:20241015 "Full feature demonstration")
-
-
-Example URL (camera + visible layers):
+The map is controlled entirely through URL hash parameters:
 
 `map/#lat,lng,zoom,bearing,pitch/+layerA,~layerB`
 
-Example with camera animation animation:
+[](map/#31.42380,34.35370,10.00,37.6,0.0 "Basic map view of Gaza")
 
-[map/#31.52888,34.47937,18.14,15.0,0/](map/#31.41976,34.39009,10.00,37.6,0.0/)
-
-
-Adding two layers:
-
-[map/#31.52888,34.47937,18.14,15.0,0/+jabalia,+rafah](map/#31.41976,34.39009,10.00,37.6,0.0/+jabalia,+rafah)
+**Hash components:**
+- **Camera:** `lat,lng,zoom,bearing,pitch` (all numeric)
+- **Layers:** `+show`, `~hide`, `+file(style)`, `+file:follow`
 
 
-Removing a layer:
-[map/#31.43315,34.35321,10.06,37.6,0.0/~satellite](map/#31.43315,34.35321,10.06,37.6,0.0/~satellite)
+{.heading}
+
+## Camera Control
+
+[](map/#31.52888,34.47937,18.14,15.0,0 "Jabalia at high zoom, 15° rotation")
+The camera position uses five parameters: latitude, longitude, zoom (0–22), bearing (0–360°), and pitch (0–60°).
 
 
-Adding a custom satellite overlay:
-[map/#31.52374,34.43343,15.00,37.6,0.0/~satellite,+overlay](map/#31.52374,34.43343,15.00,37.6,0.0/+overlay)
+[](map/#31.52956,34.47717,14.33,22.4,60.5 "Same location with 60° tilt")
+Adding pitch creates a 3D perspective view of the terrain.
 
 
-To reset the default layer visibility simply remove their custom mentions:
-[map/#31.51448,34.44919,12.64,37.6,0.0](map/#31.51448,34.44919,12.64,37.6,0.0)
+[](map/#31.41976,34.39009,10.00,37.6,0.0 "Wider view of Gaza")
+The camera smoothly flies between positions as you scroll or click links.
 
 
-So far we've only played with camera movements and layer visibility from the existing Mapbox style. But we can also use the same syntax to load external geojson layers. For example this path from Jabalia to Rafah:
-[map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah)
+{.heading}
 
-Simply place a `filename.geojson` in the `/map` directory and load it using the add layer synatax `+filename`.
+## Layer Management
 
-From that point on it can be shown and hidden like any other layer.
-
-
-[map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track)](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track))
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly-outlines "IDF evacuation zone outlines")
+Show built-in style layers by adding `+layername` to the hash.
 
 
-We can add a custom style to the new layer by noting which source layer should it look like. For example, we can use the hidden `track` layer as a source like this: `+filename(source)`:
-[map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track)](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track))
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly,+idf-poly-outlines "IDF zones with fills and outlines")
+Stack multiple layers together: polygons and their outlines.
 
 
-[map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow)
+[](map/#31.43315,34.35321,10.06,37.6,0.0/~satellite "Hide satellite layer")
+Hide layers with `~layername` — useful for replacing default basemaps.
 
-With externally loaded paths we can even animate the camera to follow the path by adding the `:follow` syntax:
-[map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow)
-[map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow)
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/~satellite,+overlay "Custom overlay replaces satellite")
+Combine hiding and showing to swap layers.
+
+
+[](map/#31.52929,34.47915,15.50,37.6,0.0/+satellite,+jabalia "Satellite with point markers")
+Available layers: `satellite`, `overlay`, `idf-poly`, `idf-poly-outlines`, `jabalia`, `rafah`.
+
+
+{.heading}
+
+## Loading External Data
+
+[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah "Displacement path from Jabalia to Rafah")
+Load GeoJSON files from `/map/` by adding `+filename` to the hash.
+
+
+[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track) "Styled path using track layer appearance")
+Copy styles from existing layers with `+filename(sourceLayer)` syntax. Available sources: `track`, `overlay`, `idf-poly`, `idf-poly-outlines`.
+
+
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+displacement-points "CSV point data with lat/lng columns")
+CSV files with `lat`/`lng` columns automatically convert to point markers.
+
+The system searches: `filename.geojson` → `filename.csv` → `data/filename.csv`
+
+
+{.heading}
+
+## Sentinel-2 Imagery
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20240215 "Sentinel-2 cloudless mosaic: Feb 2024")
+Load historical satellite imagery with `+s2:YYYYMMDD` — 10-meter resolution, cloud-free annual mosaics from EOX.
+
+
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815 "Sentinel-2: Summer 2023")
+View imagery from previous years. Available from June 2015 to 2024.
+
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20200601 "Sentinel-2: Pre-conflict baseline 2020")
+Free and open service, no authentication. Mosaics updated annually.
+
+
+{.heading}
+
+## Wayback Imagery
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20240215 "ESRI Wayback: Feb 15, 2024")
+Load very high-resolution imagery with `+wayback:YYYYMMDD` — 30cm resolution in urban areas from Maxar satellites.
+
+
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+wayback:20231007 "Wayback: Oct 7, 2023 — day before the attack")
+Historical archive back to February 2014. System selects closest available release date.
+
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20241101 "Wayback: Recent November 2024 imagery")
+Updated every few weeks. Free WMTS service, max zoom 22 for extreme detail.
+
+
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815,+idf-poly-outlines "Sentinel-2 with evacuation zone overlays")
+Stack historical imagery with vector layers for overlay analysis.
+
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20241015,+jabalia "Wayback with vector markers")
+Combine high-resolution imagery with vector annotations.
+
+
+{.heading}
+
+## Camera Animations
+
+[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow "Animate along displacement path")
+Create cinematic camera movements with `+layername:follow` — the camera flies along path geometry.
+
+
+[](map/#31.52103,34.46974,12.79,-14.4,30.4/+jabalia-rafah:follow,+jabalia,+rafah "Path animation with markers")
+Show origin and destination points during the ~30-second animation.
+
+
+[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+s2:20231001 "Fly over historical Sentinel-2 imagery")
+Combine path animation with historical satellite imagery.
+
+
+[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+wayback:20240215 "High-resolution flyover with Wayback")
+Use Wayback for detailed terrain visualization during animation.
+
+
+{.heading}
+
+## Multiple Layers
+
+[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah,+jabalia,+rafah "Three external layers stacked")
+Load and control multiple GeoJSON/CSV files independently.
+
+
+[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track),+idf-poly-outlines "Paths layered above polygons")
+Use `(sourceHint)` to control z-index and render order.
+
+
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly "Layers persist")
+Layers remain active across camera movements...
+
+
+[](map/#31.52956,34.47717,14.33,22.4,60.5/+idf-poly "...until removed from hash")
+...until explicitly removed from the hash URL.
+
+
+{.heading}
+
+## Embedding
+
+[](map/#31.52888,34.47937,18.14,15.0,0/+jabalia "Map with caption overlay")
+Use Markdown link titles for captions: `[](map/#... "Your caption")`
+
+Embed in iframes (control panel auto-hides). Hash updates trigger instant map changes without page reload.
+
+
+{.heading}
+
+## Quick Reference
+
+[](map/#31.38169,34.34570,10.45,1.6,59.0/+jabalia,+rafah,+wayback:20241015 "Combined features demo")
+
+**Hash tokens:**
+- `+layer` show | `~layer` hide | `+file` load GeoJSON/CSV
+- `+file(source)` copy styles | `+file:follow` animate camera
+- `+s2:YYYYMMDD` Sentinel-2 | `+wayback:YYYYMMDD` Maxar imagery
 
 
 ## TBC…

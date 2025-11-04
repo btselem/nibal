@@ -28,7 +28,7 @@
 
 /* Longer gap before chapter headings for visual separation */
 .chapter-heading-item {
-  border-top: 8px solid transparent;
+  border-top: 1rem solid transparent;
 }
 
 .chapter-heading-item:first-child {
