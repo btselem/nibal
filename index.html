@@ -608,6 +608,10 @@
             // Check if we're in dual-iframe mode
             const isDualMode = document.body.classList.contains('dual-iframe');
             
+            if (window.__inflectDebug) {
+                console.log('[IFRAME] setIframeIfPathChanged:', newPath, 'isDualMode:', isDualMode);
+            }
+            
             if (!isDualMode) {
                 // Single iframe mode (original behavior)
                 if (newPath !== lastIframePath) {
@@ -632,15 +636,29 @@
             } else {
                 // Dual iframe mode: route based on URL pattern
                 // map/ → background-frame, everything else (cmp/, img/, vid/, etc.) → foreground-frame
-                const isMapLink = newPath.includes('/map/') || newPath.includes('/map#');
+                const isMapLink = newPath.includes('/map/') || newPath.includes('/map#') || newPath.match(/\/map$/);
+                
+                if (window.__inflectDebug) {
+                    console.log('[IFRAME] Full href:', newHref);
+                    console.log('[IFRAME] Path only:', newPath);
+                    console.log('[IFRAME] Routing:', isMapLink ? 'BACKGROUND (map)' : 'FOREGROUND (other)');
+                }
                 
                 if (isMapLink) {
                     // Route to background frame
+                    if (window.__inflectDebug) {
+                        console.log('[IFRAME] Setting background-frame src to:', newHref);
+                        console.log('[IFRAME] backgroundFrame element:', backgroundFrame);
+                        console.log('[IFRAME] firstBackgroundFrame:', firstBackgroundFrame);
+                    }
                     if (newPath !== lastBackgroundPath) {
                         if (firstBackgroundFrame) {
                             firstBackgroundFrame = false;
                             backgroundFrame.style.opacity = '1';
                             backgroundFrame.src = newHref;
+                            if (window.__inflectDebug) {
+                                console.log('[IFRAME] FIRST background frame load, set opacity=1 and src');
+                            }
                         } else {
                             if (backgroundFrame.style.opacity !== '0') {
                                 backgroundFrame.style.opacity = '0';
@@ -828,8 +846,26 @@
                             } catch (e) { /* swallow */ }
                         }
 
-                        try { const full = new URL(raw, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(a.href); }
-                        try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(a); } catch(e){}
+                        // In dual-iframe mode, load ALL links in the section to their respective frames
+                        const isDualMode = document.body.classList.contains('dual-iframe');
+                        if (isDualMode) {
+                            // Find all inflection links in this section
+                            const allLinks = Array.from(sec.querySelectorAll('a:not(.dontinflect)'));
+                            allLinks.forEach(link => {
+                                const linkHref = link.getAttribute('href');
+                                if (linkHref) {
+                                    try { const full = new URL(linkHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(link.href); }
+                                }
+                            });
+                            // Set caption from first link
+                            if (allLinks.length > 0) {
+                                try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(allLinks[0]); } catch(e){}
+                            }
+                        } else {
+                            // Single iframe mode: only load first link
+                            try { const full = new URL(raw, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(a.href); }
+                            try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(a); } catch(e){}
+                        }
                     } catch(e) { /* swallow */ }
                     sectionObserver.unobserve(en.target);
                 }
@@ -1198,12 +1234,34 @@
             }
         });
 
-        const firstLink = document.querySelector('main a:not(.dontinflect)');
-        if (firstLink) {
-            firstLink.classList.add('active');
-            const rawHref = firstLink.getAttribute('href');
-            try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(firstLink.href); }
-            try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(firstLink); } catch(e){}
+        // Initial load: in dual-iframe mode, load all visible links from first section
+        // In single-iframe mode, just load the first link
+        const isDualMode = document.body.classList.contains('dual-iframe');
+        if (isDualMode) {
+            // Find first section and load all its links
+            const firstSection = document.querySelector('main section');
+            if (firstSection) {
+                const allLinks = Array.from(firstSection.querySelectorAll('a:not(.dontinflect)'));
+                allLinks.forEach((link, index) => {
+                    if (index === 0) link.classList.add('active');
+                    const rawHref = link.getAttribute('href');
+                    if (rawHref) {
+                        try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(link.href); }
+                    }
+                });
+                if (allLinks.length > 0) {
+                    try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(allLinks[0]); } catch(e){}
+                }
+            }
+        } else {
+            // Single iframe mode: original behavior
+            const firstLink = document.querySelector('main a:not(.dontinflect)');
+            if (firstLink) {
+                firstLink.classList.add('active');
+                const rawHref = firstLink.getAttribute('href');
+                try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(firstLink.href); }
+                try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(firstLink); } catch(e){}
+            }
         }
 
     }
