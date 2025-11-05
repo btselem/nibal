@@ -41,6 +41,50 @@
             height: 100%;
         }
 
+        /* Dual iframe mode styles - hidden by default */
+        body:not(.dual-iframe) #background-frame,
+        body:not(.dual-iframe) #foreground-frame {
+            display: none !important;
+        }
+        
+        body.dual-iframe #if {
+            display: none !important;
+        }
+        
+        #iframe-container {
+            position: relative;
+            height: 100%;
+        }
+        
+        #background-frame,
+        #foreground-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: opacity 0.4s ease;
+        }
+        
+        #background-frame {
+            z-index: 1;
+            background: transparent;
+            opacity: 0;
+        }
+        
+        #foreground-frame {
+            z-index: 2;
+            background: transparent;
+            opacity: 0;
+            pointer-events: auto;
+        }
+        
+        /* When foreground is inactive, allow clicks through to background */
+        #foreground-frame.inactive {
+            pointer-events: none;
+        }
+
           /* We will adjust only the transparency (alpha) of the body's
               background during iframe fades via inline styles. Avoid making a
               permanent change to the default background color here. */
@@ -49,7 +93,11 @@
 
 <body>
 
-<div id="iframe-container"><iframe id="if"></iframe></div>
+<div id="iframe-container">
+    <iframe id="if"></iframe>
+    <iframe id="background-frame"></iframe>
+    <iframe id="foreground-frame"></iframe>
+</div>
 
 <main></main>
 
@@ -105,27 +153,46 @@
                 requestAnimationFrame(step);
             } catch (e) { /* swallow */ }
         };
-    // Track last path (excluding hash)
+    // Track last path (excluding hash) for each iframe
     let lastIframePath = null;
+    let lastBackgroundPath = null;
+    let lastForegroundPath = null;
     let firstFrame = true;
+    let firstBackgroundFrame = true;
+    let firstForegroundFrame = true;
+    
     const iframe = document.getElementById('if');
+    const backgroundFrame = document.getElementById('background-frame');
+    const foregroundFrame = document.getElementById('foreground-frame');
     // (typewriter functionality removed)
 
     
 
-    // Ensure iframe prefers a transparent background and allow transparency
-    iframe.setAttribute('allowtransparency', 'true');
-    iframe.setAttribute('frameborder', '0');
-    iframe.style.background = 'transparent';
+    // Ensure all iframes prefer a transparent background and allow transparency
+    [iframe, backgroundFrame, foregroundFrame].forEach(frame => {
+        frame.setAttribute('allowtransparency', 'true');
+        frame.setAttribute('frameborder', '0');
+        frame.style.background = 'transparent';
+    });
 
     // No body background modifications: fades should affect only the iframe
     // opacity. Keeping the code minimal and non-invasive avoids changing the
     // default body color under any circumstances.
 
-        // Fade in once the iframe finishes loading. We only change the iframe's
+        // Fade in once the iframes finish loading. We only change the iframe's
         // opacity; do not modify the body's background or any other color.
         iframe.addEventListener('load', () => {
             iframe.style.opacity = '1';
+        });
+        
+        backgroundFrame.addEventListener('load', () => {
+            backgroundFrame.style.opacity = '1';
+        });
+        
+        foregroundFrame.addEventListener('load', () => {
+            foregroundFrame.style.opacity = '1';
+            // Remove inactive class to enable pointer events
+            foregroundFrame.classList.remove('inactive');
         });
 
     // Function to fetch and render the markdown
@@ -254,7 +321,7 @@
             }
 
             // --- Per-page front-matter and CSS marker parsing ---
-            // Extract YAML front-matter keys `css` and `body-class` (simple, line-based)
+            // Extract YAML front-matter keys `css`, `body-class`, and `dual-iframe` (simple, line-based)
             function extractFrontMatter(t) {
                 const fmRe = /^\s*---\n([\s\S]*?)\n---\s*\n?/;
                 const fm = t.match(fmRe);
@@ -262,10 +329,12 @@
                     const body = fm[1];
                     const cssMatch = body.match(/^\s*css:\s*(.+)\s*$/m);
                     const bcMatch = body.match(/^\s*body-class:\s*(.+)\s*$/m);
+                    const dualMatch = body.match(/^\s*dual-iframe:\s*(true|yes)\s*$/mi);
                     const cssPath = cssMatch ? cssMatch[1].trim().replace(/^['\"]|['\"]$/g, '') : null;
                     const bodyClass = bcMatch ? bcMatch[1].trim().replace(/^['\"]|['\"]$/g, '') : null;
+                    const dualIframe = !!dualMatch;
                     t = t.replace(fmRe, '');
-                    return { text: t, css: cssPath, bodyClass };
+                    return { text: t, css: cssPath, bodyClass, dualIframe };
                 }
 
                 // Single-line marker: {.css(src/path.css)} or {.css src/path.css}
@@ -274,10 +343,10 @@
                 if (m) {
                     const path = (m[1] || m[2] || '').trim().replace(/^['\"]|['\"]$/g, '');
                     t = t.replace(markerRe, '');
-                    return { text: t, css: path, bodyClass: null };
+                    return { text: t, css: path, bodyClass: null, dualIframe: false };
                 }
 
-                return { text: t, css: null, bodyClass: null };
+                return { text: t, css: null, bodyClass: null, dualIframe: false };
             }
 
             function isSafeCssPath(p) {
@@ -306,6 +375,7 @@
             // Defer applying the page CSS until after render so it overrides base.
             const pageCssPath = extracted.css;
             const fmBodyClass = extracted.bodyClass;
+            const dualIframeMode = extracted.dualIframe;
             // --- end per-page CSS marker parsing ---
 
                 // On GitHub Pages the repository is often served as generated HTML
@@ -427,6 +497,18 @@
                             console.warn('Failed to apply body classes from markdown marker', e);
                         }
 
+                        // Apply dual-iframe mode if specified in frontmatter
+                        try {
+                            if (dualIframeMode) {
+                                document.body.classList.add('dual-iframe');
+                                console.info('renderMarkdown: dual-iframe mode enabled');
+                            } else {
+                                document.body.classList.remove('dual-iframe');
+                            }
+                        } catch (e) {
+                            console.warn('Failed to toggle dual-iframe mode', e);
+                        }
+
             // Convert plain images or image links that reference /img/ into
             // explicit links the parent page can observe. This function used
             // to exist and was removed during edits; reintroduce a small,
@@ -523,30 +605,85 @@
             const pathOnly = new URL(parsedURL.href);
             pathOnly.hash = '';
             const newPath = pathOnly.href;
-
-            if (newPath !== lastIframePath) {
-                if (firstFrame) {
-                    firstFrame = false;
-                    iframe.style.opacity = '1';
-                    iframe.src = newHref;
-                } else {
-                    if (iframe.style.opacity !== '0') {
-                        // Only fade the iframe itself to transparent; do not touch
-                        // the body's background color.
-                        iframe.style.opacity = '0';
-                        setTimeout(() => {
-                            iframe.src = newHref;
-                        }, 400); // match transition duration
-                    } else {
+            
+            // Check if we're in dual-iframe mode
+            const isDualMode = document.body.classList.contains('dual-iframe');
+            
+            if (!isDualMode) {
+                // Single iframe mode (original behavior)
+                if (newPath !== lastIframePath) {
+                    if (firstFrame) {
+                        firstFrame = false;
+                        iframe.style.opacity = '1';
                         iframe.src = newHref;
+                    } else {
+                        if (iframe.style.opacity !== '0') {
+                            iframe.style.opacity = '0';
+                            setTimeout(() => {
+                                iframe.src = newHref;
+                            }, 400);
+                        } else {
+                            iframe.src = newHref;
+                        }
                     }
+                    lastIframePath = newPath;
+                } else {
+                    iframe.src = newHref;
                 }
-                lastIframePath = newPath;
             } else {
-                // Only hash changed — assign src to force the iframe to pick up the
-                // full hash token. This is more robust and avoids cross-window
-                // access issues in browsers/environments used in tests.
-                iframe.src = newHref;
+                // Dual iframe mode: route based on URL pattern
+                // map/ → background-frame, everything else (cmp/, img/, vid/, etc.) → foreground-frame
+                const isMapLink = newPath.includes('/map/') || newPath.includes('/map#');
+                
+                if (isMapLink) {
+                    // Route to background frame
+                    if (newPath !== lastBackgroundPath) {
+                        if (firstBackgroundFrame) {
+                            firstBackgroundFrame = false;
+                            backgroundFrame.style.opacity = '1';
+                            backgroundFrame.src = newHref;
+                        } else {
+                            if (backgroundFrame.style.opacity !== '0') {
+                                backgroundFrame.style.opacity = '0';
+                                setTimeout(() => {
+                                    backgroundFrame.src = newHref;
+                                }, 400);
+                            } else {
+                                backgroundFrame.src = newHref;
+                            }
+                        }
+                        lastBackgroundPath = newPath;
+                    } else {
+                        backgroundFrame.src = newHref;
+                    }
+                    // Make foreground inactive if no content
+                    if (!lastForegroundPath) {
+                        foregroundFrame.classList.add('inactive');
+                    }
+                } else {
+                    // Route to foreground frame (default for cmp/, img/, vid/, etc.)
+                    if (newPath !== lastForegroundPath) {
+                        if (firstForegroundFrame) {
+                            firstForegroundFrame = false;
+                            foregroundFrame.style.opacity = '1';
+                            foregroundFrame.src = newHref;
+                        } else {
+                            if (foregroundFrame.style.opacity !== '0') {
+                                foregroundFrame.style.opacity = '0';
+                                setTimeout(() => {
+                                    foregroundFrame.src = newHref;
+                                }, 400);
+                            } else {
+                                foregroundFrame.src = newHref;
+                            }
+                        }
+                        lastForegroundPath = newPath;
+                    } else {
+                        foregroundFrame.src = newHref;
+                    }
+                    // Ensure foreground is active
+                    foregroundFrame.classList.remove('inactive');
+                }
             }
         }
 
