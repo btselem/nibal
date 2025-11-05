@@ -1278,7 +1278,14 @@
                         if (window.__inflectDebug) {
                             console.log('[INITIAL LOAD] Processing link', index, ':', rawHref);
                         }
-                        try { const full = new URL(rawHref, window.location.href).href; setIframeNext(full); } catch(e){ setIframeNext(link.href); }
+                        // In dual-iframe mode, load all links immediately without timeout
+                        // (setIframeNext uses a single global timeout that gets cancelled by subsequent calls)
+                        try { 
+                            const full = new URL(rawHref, window.location.href).href; 
+                            setIframeIfPathChanged(full);
+                        } catch(e){ 
+                            setIframeIfPathChanged(link.href); 
+                        }
                     }
                 });
                 if (allLinks.length > 0) {
