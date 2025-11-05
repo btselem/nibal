@@ -7,6 +7,10 @@ body-class: snap
 
 This page demonstrates the new dual-iframe system where map links load in the background layer and other content (cmp, img, vid) loads in the foreground overlay with a transparent background.
 
+[](cmp/#opening.svg "Composition overlay - transparent background")
+
+[](map/#31.52888,34.47937,14,15.0,0 "Jabalia - map loads in background")
+
 
 ## Map Background
 
@@ -24,7 +28,7 @@ The follow animation with distance ticker runs in the background layer.
 
 ## CMP Overlay
 
-[](cmp/#basic&1920&1080&none&test.svg "Composition overlay - transparent background")
+[](cmp/#opening.svg "Composition overlay - transparent background")
 
 Composition content loads in the foreground iframe with transparent background, showing the map underneath.
 

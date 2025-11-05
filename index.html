@@ -51,31 +51,30 @@
             display: none !important;
         }
         
-        #iframe-container {
-            position: relative;
-            height: 100%;
-        }
+        /* Container doesn't need special positioning since iframes are fixed */
         
+        /* Dual iframes use same positioning as single iframe (from base.css) */
         #background-frame,
         #foreground-frame {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            bottom: 0;
+            width: 60vw;
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for mobile browsers */
             border: none;
+            background: transparent;
             transition: opacity 0.4s ease;
         }
         
         #background-frame {
             z-index: 1;
-            background: transparent;
             opacity: 0;
         }
         
         #foreground-frame {
             z-index: 2;
-            background: transparent;
             opacity: 0;
             pointer-events: auto;
         }

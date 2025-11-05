@@ -3,6 +3,15 @@ dual-iframe: true
 body-class: snap
 ---
 
+# Dual iframe Test
+
+This page demonstrates the new dual-iframe system where map links load in the background layer and other content (cmp, img, vid) loads in the foreground overlay with a transparent background.
+
+[](cmp/#opening.svg "Composition overlay - transparent background")
+
+[](map/#31.52888,34.47937,14,15.0,0 "Jabalia - map loads in background")
+
+
 # Dual Layer Demo: Map + Overlays
 
 Test the dual-iframe system with actual map and composition content.
