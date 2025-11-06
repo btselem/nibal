@@ -101,8 +101,8 @@ const defaultCamera = {
 // Parse hash: #lat,lng,zoom,bearing,pitch/+layer1,-layer2/load:filename
 function parseHash() {
   const hash = window.location.hash.replace('#', '');
-  if (!hash) return { camera: { ...defaultCamera }, layers: allStyleLayers.map(l => l.id), dynamicGeojsonToLoad: [] };
-  let cameraStr = '', layersStr = '', followId = null;
+  if (!hash) return { camera: { ...defaultCamera }, layers: allStyleLayers.map(l => l.id), dynamicGeojsonToLoad: [], followId: null, followOffset: 0 };
+  let cameraStr = '', layersStr = '', followId = null, followOffset = 0;
   const parts = hash.split('/');
   const restParts = [];
   for (let i = 0; i < parts.length; i++) {
@@ -121,19 +121,21 @@ function parseHash() {
     layersOn = [];
     const layerState = {};
     layersStr.split(',').forEach(token => {
-      // Support +id:follow, ~id:follow, +id(source):follow, and +s2:YYYYMMDD
-      // token examples: +name, ~name, +name:follow, +name(source), +name(source):follow, +s2:20240215
-      // Updated regex to allow colons in layer names (except for the :follow suffix)
-      const match = token.match(/^([+~])([^(]+?)(?:\(([^)]+)\))?(?::follow)?$/);
+      // Support +id:follow, ~id:follow, +id(source):follow, +id:follow+offset, and +s2:YYYYMMDD
+      // token examples: +name, ~name, +name:follow, +name:follow+15000, +name(source), +name(source):follow, +s2:20240215
+      // Updated regex to capture optional +offset separately from :follow
+      const match = token.match(/^([+~])([^(]+?)(?:\(([^)]+)\))?(?::follow)?(?:\+(\d+))?$/);
       if (!match) {
         console.warn('[HASH] Failed to parse layer token:', token);
         return;
       }
-      const [, sign, lname, sourceHint] = match;
+      const [, sign, lname, sourceHint, offset] = match;
+      const hasFollow = token.includes(':follow');
+      const parsedOffset = offset ? parseInt(offset, 10) : 0;
       // Always use the id without :follow for loading/toggling
-      layerState[lname] = { sign, sourceHint: sourceHint || null, follow: token.endsWith(':follow') };
+      layerState[lname] = { sign, sourceHint: sourceHint || null, follow: hasFollow, followOffset: parsedOffset };
     });
-    Object.entries(layerState).forEach(([lname, { sign, sourceHint, follow }]) => {
+    Object.entries(layerState).forEach(([lname, { sign, sourceHint, follow, followOffset: layerFollowOffset }]) => {
       if (sign === '+') {
         if (!allStyleLayers.some(l => l.id === lname)) {
           // Check if this is a Sentinel-2 layer (format: s2:YYYYMMDD)
@@ -154,13 +156,19 @@ function parseHash() {
           }
         }
         layersOn.push(lname);
-        if (follow) followId = lname;
+        if (follow) {
+          followId = lname;
+          followOffset = layerFollowOffset;
+        }
       } else if (sign === '~') {
         // For ~new-id, load as invisible (unchecked) dynamic layer
         if (!allStyleLayers.some(l => l.id === lname)) {
           dynamicGeojsonToLoad.push({ name: lname, sourceHint });
         }
-        if (follow) followId = lname;
+        if (follow) {
+          followId = lname;
+          followOffset = layerFollowOffset;
+        }
         // Do NOT add to layersOn, so it is not visible/checked
       }
     });
@@ -179,7 +187,8 @@ function parseHash() {
     },
     layers: layersOn,
     dynamicGeojsonToLoad,
-    followId
+    followId,
+    followOffset
   };
 }
 
@@ -1073,7 +1082,7 @@ const map = new mapboxgl.Map({
 
 map.on('load', () => {
   // After all layers are loaded, if :follow is present in the hash, trigger follow logic directly (no hashchange event)
-  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit } = parseHash();
+  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit } = parseHash();
   if (followInit) {
     // Only start follow if not already running (avoid double-trigger)
     if (!window._isFollowStarted) {
@@ -1105,13 +1114,14 @@ map.on('load', () => {
             const parts = hash.split('/');
             let layersStr = parts[1] || '';
             if (layersStr) {
-              layersStr = layersStr.replace(new RegExp(`([+~]${followInit}):follow`), '$1');
+              // Remove :follow or :follow+offset, allowing optional (source) part
+              layersStr = layersStr.replace(new RegExp(`([+~]${followInit})(?:\\([^)]+\\))?(?::follow(?:\\+\\d+)?)`), '$1');
             }
             const newHash = `#${cameraStr}` + (layersStr ? `/${layersStr}` : '');
             window._suppressNextFollowCancel = true;
             window.location.replace(newHash);
             window._isFollowStarted = false;
-          }, followInit);
+          }, followInit, followOffsetInit || 0);
         }
       };
       setTimeout(tryStartFollow, 0);
@@ -1225,7 +1235,7 @@ map.on('moveend', () => {
     const rawHash = window.location.hash.replace('#','');
     const parts = rawHash.split('/');
     const layersStr = parts[1] || '';
-    if (layersStr.split(',').some(t => /:follow$/.test(t))) return;
+  if (layersStr.split(',').some(t => /:follow(?:\+\d+)?$/.test(t))) return;
   } catch(e){}
   // Only update camera part of hash, preserve layer toggles
   updateHash(map, []);
@@ -1234,11 +1244,11 @@ map.on('moveend', () => {
 // Listen for hash changes (external navigation)
 let isFreeCameraAnimating = false;
 let pendingHashUpdate = null;
-function followPathWithFreeCamera(map, coords, onComplete, layerId) {
+function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset = 0) {
   // Periodic check for :follow in the hash
   // Escape layerId for regex
   const safeLayerId = layerId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  console.log('[FOLLOW START]', layerId, 'coords:', coords.length);
+  console.log('[FOLLOW START]', layerId, 'coords:', coords.length, 'startOffset:', startOffset);
   let followCheckInterval = setInterval(() => {
     const rawHash = window.location.hash;
     const hash = rawHash.replace('#', '');
@@ -1247,7 +1257,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId) {
     if (layersStr) {
       const tokens = layersStr.split(',');
       // Pattern must account for optional (sourceHint) after layer name: +layerId(source):follow
-      stillFollowing = tokens.some(token => token.match(new RegExp(`^[+~]${safeLayerId}(?:\\([^)]+\\))?:follow$`)));
+      stillFollowing = tokens.some(token => token.match(new RegExp(`^[+~]${safeLayerId}(?:\\([^)]+\\))?:follow(?:\\+\\d+)?$`)));
     }
     console.log(`[FOLLOW CHECK] hash: ${rawHash} | :follow present for ${layerId}?`, stillFollowing);
     if (!stillFollowing) {
@@ -1325,9 +1335,10 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId) {
   // Show distance ticker if we have a valid GeoJSON source
   const ticker = document.getElementById('distance-ticker');
   const totalDistKm = totalDist / 1000;
+  const startOffsetKm = startOffset / 1000;
   if (ticker && totalDistKm > 0) {
     ticker.classList.add('active');
-    ticker.textContent = '0 km';
+    ticker.textContent = startOffsetKm.toFixed(1) + ' km';
   }
   function getBearing(from, to) {
     // Calculate bearing in radians from point 'from' to point 'to'
@@ -1461,7 +1472,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId) {
       const tipPx = map.project({lng: tip[0], lat: tip[1]});
       ticker.style.left = tipPx.x + 'px';
       ticker.style.top = tipPx.y + 'px';
-      const currentDistKm = t * totalDistKm;
+      const currentDistKm = startOffsetKm + (t * totalDistKm);
       ticker.textContent = currentDistKm.toFixed(1) + ' km';
     }
     
@@ -1506,7 +1517,7 @@ window.addEventListener('hashchange', () => {
 
   // ...existing code...
 
-  const { camera, layers, dynamicGeojsonToLoad, followId } = parseHash();
+  const { camera, layers, dynamicGeojsonToLoad, followId, followOffset } = parseHash();
   console.log('[FOLLOW DEBUG] Hash:', window.location.hash, '| followId:', followId, '| layers:', layers, '| dynamicGeojsonToLoad:', dynamicGeojsonToLoad);
   console.log('[FOLLOW DEBUG] About to process layers and dynamic sources...');
 
@@ -1604,7 +1615,7 @@ window.addEventListener('hashchange', () => {
       if (coords.length > 1) {
         console.log('[FOLLOW DEBUG] Starting new follow animation for:', followId);
         window._isFollowStarted = true;
-        followPathWithFreeCamera(map, coords, () => {
+  followPathWithFreeCamera(map, coords, () => {
           // On completion: freeze current camera into the hash and remove :follow to avoid jumping back
           const c = map.getCenter();
           const z = map.getZoom().toFixed(2);
@@ -1615,13 +1626,14 @@ window.addEventListener('hashchange', () => {
           const parts = hash.split('/');
           let layersStr = parts[1] || '';
           if (layersStr) {
-            layersStr = layersStr.replace(new RegExp(`([+~]${followId}):follow`), '$1');
+            // Remove :follow or :follow+offset, allowing optional (source) part
+            layersStr = layersStr.replace(new RegExp(`([+~]${followId})(?:\\([^)]+\\))?(?::follow(?:\\+\\d+)?)`), '$1');
           }
           const newHash = `#${cameraStr}` + (layersStr ? `/${layersStr}` : '');
           window._suppressNextFollowCancel = true;
           window.location.replace(newHash);
           window._isFollowStarted = false;
-        }, followId);
+        }, followId, followOffset || 0);
       } else {
         console.log('[FOLLOW DEBUG] Not enough coordinates to follow for layer:', followId);
       }

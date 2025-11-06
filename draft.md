@@ -201,14 +201,14 @@ css: src/theme.css
 
 
 {.meta} 
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow,+family-home,+gaza,+nuseirat,+cities,+villages,+idf-poly-outlines)
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+gaza,+nuseirat,+cities,+villages,+idf-poly-outlines)
 משם ניבאל ממשיכה ברגל לדרום הרצועה, כשהיא סוחבת את ריתא בת החצי שנה בחיקה. 
 
 `מושון, נראה שהמסלול עדיין תקוע...`
 
 
 {.meta} 
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow,+family-home,+gaza,+nuseirat,+rafah,+cities,+villages,+idf-poly-outlines)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+gaza,+nuseirat,+rafah,+cities,+villages,+idf-poly-outlines)
 באיזור א-נוסייראת הן מתאחדות עם אחמד, אותו לא ראו מזה כחצי שנה.
 
 משם, שלושתם ממשיכים אל האוהל של אחמד ברפיח.
