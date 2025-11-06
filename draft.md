@@ -1,11 +1,12 @@
 ---
+dual-iframe: true
 body-class: snap
 css: src/theme.css
 ---
 
 # _מסע העקירה של_ ניבאל אל היסי
-
-[](svg/#opening.svg/~IDFareas)
+[](map/#31.33923,34.28541,9.56,37.6,0.0/~labels_he "Gaza map")
+[](svg/#opening.svg/~IDFareas~gazamap)
 
 <img src="img/bts_logo.svg" alt="בצלם: מסעות עקירה]" style="max-width:100px;height:auto;">
 
@@ -13,7 +14,8 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#opening.svg/-0.07,0.21,1.81/+gazamap)
+[](map/#31.41883,34.36259,10.11,37.6,0.0/~labels_he,~idf-poly-outlines)
+[](svg/#opening.svg/-0.07,0.21,1.81/~opening)
 במשך שנתיים, תושבי עזה נאלצו לעקור שוב ושוב ממקומם.
 `מושון, צריך להחליף תמונה למה ששלחתי בוואטסאפ`
 
