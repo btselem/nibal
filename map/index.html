@@ -153,6 +153,27 @@
     .layer-list-item button[data-follow]:hover {
       color: #4caf50;
     }
+    .follow-offset-input {
+      display: none;
+      width: 50px;
+      padding: 2px 4px;
+      margin-left: 2px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(76,175,80,0.4);
+      border-radius: 3px;
+      color: #4caf50;
+      font-size: 11px;
+      font-family: monospace;
+      text-align: center;
+      outline: none;
+    }
+    .follow-offset-input.active {
+      display: inline-block;
+    }
+    .follow-offset-input:focus {
+      border-color: #4caf50;
+      background: rgba(76,175,80,0.1);
+    }
     #layer-controls-footer {
       padding: 10px 15px;
       border-top: 1px solid rgba(255,255,255,0.15);
@@ -1319,15 +1340,17 @@ function createLayerControls(map, visibleLayers) {
   const [, layersStr] = hash.split('/');
   const explicitState = {};
   const followState = {}; // Track which layers have :follow
+  const followOffsets = {}; // Track follow offset values
   if (layersStr) {
     layersStr.split(',').forEach(token => {
-      // Match pattern: +layerName or +layerName(source) or +layerName:follow or +layerName(source):follow
-      const match = token.match(/^([+~])([^:(]+)(?:\(([^)]+)\))?(:follow(?:\+\d+)?)?$/);
+      // Match pattern: +layerName or +layerName(source) or +layerName:follow or +layerName(source):follow+15000
+      const match = token.match(/^([+~])([^:(]+)(?:\(([^)]+)\))?(:follow(?:\+(\d+))?)?$/);
       if (!match) return;
-      const [, sign, lname, sourceHint, followFlag] = match;
+      const [, sign, lname, sourceHint, followFlag, offset] = match;
       explicitState[lname] = sign;
       if (followFlag) {
         followState[lname] = true;
+        followOffsets[lname] = offset ? parseInt(offset, 10) : 0;
       }
     });
   }
@@ -1377,7 +1400,10 @@ function createLayerControls(map, visibleLayers) {
       // Add follow button for followable layers
       if (isFollowable) {
         const followClass = isFollowing ? ' class="active"' : '';
+        const offsetValue = followOffsets[layer.id] || 0;
+        const inputClass = isFollowing ? ' class="active"' : '';
         buttonHtml += ` <button data-follow="${layer.id}" title="Toggle follow animation"${followClass}>➠</button>`;
+        buttonHtml += ` <input type="number" data-follow-offset="${layer.id}" value="${offsetValue}" min="0" step="1000" placeholder="0"${inputClass} class="follow-offset-input" title="Start distance offset (meters)">`;
       }
       
       if (isExternalLayer) {
@@ -1493,6 +1519,10 @@ function createLayerControls(map, visibleLayers) {
       const layerId = this.getAttribute('data-follow');
       console.log('[FOLLOW BTN] Clicked for layer:', layerId);
       
+      // Get offset input for this layer
+      const offsetInput = container.querySelector(`input[data-follow-offset="${layerId}"]`);
+      const offsetValue = offsetInput ? parseInt(offsetInput.value, 10) || 0 : 0;
+      
       // Parse current hash
       const hash = window.location.hash.replace('#', '');
       const [cameraStr, layersStr] = hash.split('/');
@@ -1504,7 +1534,7 @@ function createLayerControls(map, visibleLayers) {
       
       // Parse layer tokens and toggle :follow for this layer
       const tokens = layersStr.split(',').map(token => {
-        // Match: +layerName or +layerName(source) with optional :follow
+        // Match: +layerName or +layerName(source) with optional :follow+offset
         const match = token.match(/^([+~])([^:(]+)(?:\(([^)]+)\))?(:follow(?:\+\d+)?)?$/);
         if (!match) return token;
         
@@ -1518,11 +1548,16 @@ function createLayerControls(map, visibleLayers) {
           if (followFlag) {
             // Remove :follow
             console.log('[FOLLOW BTN] Removing :follow from', layerId);
+            // Hide offset input
+            if (offsetInput) offsetInput.classList.remove('active');
             return newToken;
           } else {
-            // Add :follow
-            console.log('[FOLLOW BTN] Adding :follow to', layerId);
-            return newToken + ':follow';
+            // Add :follow with offset
+            console.log('[FOLLOW BTN] Adding :follow to', layerId, 'with offset:', offsetValue);
+            const followSuffix = offsetValue > 0 ? `:follow+${offsetValue}` : ':follow';
+            // Show offset input
+            if (offsetInput) offsetInput.classList.add('active');
+            return newToken + followSuffix;
           }
         }
         
@@ -1533,6 +1568,52 @@ function createLayerControls(map, visibleLayers) {
       const newHash = `#${cameraStr}/${newLayersStr}`;
       console.log('[FOLLOW BTN] New hash:', newHash);
       window.location.hash = newHash;
+    });
+  });
+
+  // Add offset input listeners to update hash when changed
+  container.querySelectorAll('input[data-follow-offset]').forEach(input => {
+    input.addEventListener('change', function(e) {
+      const layerId = this.getAttribute('data-follow-offset');
+      const newOffset = parseInt(this.value, 10) || 0;
+      console.log('[FOLLOW OFFSET] Changed for layer:', layerId, 'to:', newOffset);
+      
+      // Parse current hash
+      const hash = window.location.hash.replace('#', '');
+      const [cameraStr, layersStr] = hash.split('/');
+      
+      if (!layersStr) return;
+      
+      // Update the offset in the layer token
+      const tokens = layersStr.split(',').map(token => {
+        const match = token.match(/^([+~])([^:(]+)(?:\(([^)]+)\))?(:follow(?:\+\d+)?)?$/);
+        if (!match) return token;
+        
+        const [, sign, lname, sourceHint, followFlag] = match;
+        
+        if (lname === layerId && followFlag) {
+          // Update offset for this layer
+          let newToken = `${sign}${lname}`;
+          if (sourceHint) newToken += `(${sourceHint})`;
+          const followSuffix = newOffset > 0 ? `:follow+${newOffset}` : ':follow';
+          return newToken + followSuffix;
+        }
+        
+        return token;
+      });
+      
+      const newLayersStr = tokens.join(',');
+      const newHash = `#${cameraStr}/${newLayersStr}`;
+      console.log('[FOLLOW OFFSET] New hash:', newHash);
+      window.location.hash = newHash;
+    });
+    
+    // Prevent Enter key from submitting/refreshing
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        this.blur(); // Trigger change event
+      }
     });
   });
 
