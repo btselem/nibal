@@ -71,6 +71,10 @@ Load GeoJSON files from `/map/` by adding `+filename` to the hash.
 Copy styles from existing layers with `+filename(sourceLayer)` syntax.
 
 
+[](map/#31.45086,34.38246,11.54,37.6,0.0/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines "External polygons layered above polygon outlines")
+Use `(sourceHint)` to control z-index and render order.
+
+
 [](map/#31.42380,34.35370,10.00,37.6,0.0/+displacement-points "CSV point data with lat/lng columns")
 CSV files with `lat`/`lng` columns automatically convert to point markers.
 
@@ -115,26 +119,6 @@ Use Wayback for detailed terrain visualization during animation. In this case th
 
 {.heading}
 
-## Multiple Layers
-
-[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah,+jabalia,+rafah "Three external layers stacked")
-Load and control multiple GeoJSON/CSV files independently.
-
-
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track),+idf-poly-outlines "Paths layered above polygons")
-Use `(sourceHint)` to control z-index and render order.
-
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly "Layers persist")
-Layers remain active across camera movements...
-
-
-[](map/#31.52956,34.47717,14.33,22.4,60.5/+idf-poly "...until removed from hash")
-...until explicitly removed from the hash URL.
-
-
-{.heading}
-
 ## Embedding
 
 [](map/#31.52888,34.47937,18.14,15.0,0/+jabalia "Map with caption overlay")
@@ -154,7 +138,8 @@ Embed in iframes (control panel auto-hides). Hash updates trigger instant map ch
 - `+file(source)` copy styles | `+file:follow` animate camera
 
 **Distance Ticker:**
-- Appears automatically during `:follow` animations
+- Simply add + to start from 0 `:follow+`
+- Add offset after + to continue from say 1000km `:follow+1000`
 - White circular overlay (80px) at line tip position
 - Displays cumulative distance: `0.0 km` → `total km`
 - Updates in real-time, hides on completion/cancel
