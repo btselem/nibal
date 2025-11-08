@@ -39,7 +39,7 @@ The camera smoothly flies between positions as you scroll or click links.
 
 ## Layer Management
 
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly-outlines "IDF evacuation zone outlines")
+[](map/#31.42380,34.35370,10.00,37.6,0.0/+idf-poly "IDF evacuation zone outlines")
 Show built-in style layers by adding `+layername` to the hash.
 
 
@@ -47,16 +47,16 @@ Show built-in style layers by adding `+layername` to the hash.
 Stack multiple layers together: polygons and their outlines.
 
 
-[](map/#31.43315,34.35321,10.06,37.6,0.0/~satellite "Hide satellite layer")
-Hide layers with `~layername` — useful for replacing default basemaps.
+[](map/#31.42391,34.35369,10.00,37.6,0.0/~labels_he "Hide labels")
+Hide layers with `~layername` — useful for replacing default basemap layers.
 
 
-[](map/#31.52374,34.43343,15.00,37.6,0.0/~satellite,+overlay "Custom overlay replaces satellite")
+[](map/#31.52374,34.43343,15.00,37.6,0.0/+overlay,~Gaza_border_dash,~Gaza_border_base "Custom overlay without borders")
 Combine hiding and showing to swap layers.
 
 
-[](map/#31.52929,34.47915,15.50,37.6,0.0/+satellite,+jabalia "Satellite with point markers")
-Available layers: `satellite`, `overlay`, `idf-poly`, `idf-poly-outlines`, `jabalia`, `rafah`.
+[](map/#31.53410,34.48202,15.34,37.6,0.0/+satellite,+family-home "Satellite with point markers")
+Open editor (click "E") to view the layers available in the map, both shown and hidden by default.
 
 
 {.heading}
@@ -67,7 +67,7 @@ Available layers: `satellite`, `overlay`, `idf-poly`, `idf-poly-outlines`, `jaba
 Load GeoJSON files from `/map/` by adding `+filename` to the hash.
 
 
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(track) "Styled path using track layer appearance")
+[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(by-foot) "Styled path using track layer appearance")
 Copy styles from existing layers with `+filename(sourceLayer)` syntax. Available sources: `track`, `overlay`, `idf-poly`, `idf-poly-outlines`.
 
 

@@ -267,6 +267,11 @@ footer {
 }
 
 footer a.dontinflect { color: #333; }
+        
+body.editing-mode main {
+    opacity: 0.15; /* 15% opacity */
+    pointer-events: none; /* allow clicking through */
+}
 
 /* Responsive theme tweaks */
 @media (max-width: 1000px) and (orientation: portrait) {
