@@ -7,7 +7,7 @@
   gap: 0;
   z-index: 1200;
   pointer-events: auto;
-  align-items: flex-end;
+  align-items: baseline;
   justify-content: space-evenly;
   height: 96vh;
   height: 96dvh; /* Dynamic viewport height for mobile browsers */

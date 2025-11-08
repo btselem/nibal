@@ -63,34 +63,18 @@ Open editor (click "E") to view the layers available in the map, both shown and 
 
 ## Loading External Data
 
-[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah "Displacement path from Jabalia to Rafah")
+[](map/#31.43672,34.34664,10.16,37.6,0.0/+jabalia-rafah "Displacement path from Jabalia to Rafah: +jabalia-rafah")
 Load GeoJSON files from `/map/` by adding `+filename` to the hash.
 
 
-[](map/#31.45086,34.38246,11.54,37.6,0.0/+jabalia-rafah(by-foot) "Styled path using track layer appearance")
-Copy styles from existing layers with `+filename(sourceLayer)` syntax. Available sources: `track`, `overlay`, `idf-poly`, `idf-poly-outlines`.
+[](map/#31.47602,34.41973,11.17,37.6,0.0/+jabalia-deir-al-balah(by-foot) "Styled path using track layer appearance: +jabalia-deir-al-balah(by-foot)")
+Copy styles from existing layers with `+filename(sourceLayer)` syntax.
 
 
 [](map/#31.42380,34.35370,10.00,37.6,0.0/+displacement-points "CSV point data with lat/lng columns")
 CSV files with `lat`/`lng` columns automatically convert to point markers.
 
 The system searches: `filename.geojson` → `filename.csv` → `data/filename.csv`
-
-
-{.heading}
-
-## Sentinel-2 Imagery
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20240215 "Sentinel-2 cloudless mosaic: Feb 2024")
-Load historical satellite imagery with `+s2:YYYYMMDD` — 10-meter resolution, cloud-free annual mosaics from EOX.
-
-
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815 "Sentinel-2: Summer 2023")
-View imagery from previous years. Available from June 2015 to 2024.
-
-
-[](map/#31.52374,34.43343,15.00,37.6,0.0/+s2:20200601 "Sentinel-2: Pre-conflict baseline 2020")
-Free and open service, no authentication. Mosaics updated annually.
 
 
 {.heading}
@@ -109,9 +93,6 @@ Historical archive back to February 2014. System selects closest available relea
 Updated every few weeks. Free WMTS service, max zoom 22 for extreme detail.
 
 
-[](map/#31.42380,34.35370,10.00,37.6,0.0/+s2:20230815,+idf-poly-outlines "Sentinel-2 with evacuation zone overlays")
-Stack historical imagery with vector layers for overlay analysis.
-
 [](map/#31.52374,34.43343,15.00,37.6,0.0/+wayback:20241015,+jabalia "Wayback with vector markers")
 Combine high-resolution imagery with vector annotations.
 
@@ -121,15 +102,19 @@ Combine high-resolution imagery with vector annotations.
 ## Camera Animations
 
 [](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow "Animate along displacement path")
-Create cinematic camera movements with `+layername:follow` — the camera flies along path geometry. A **distance ticker** automatically appears showing the cumulative distance traveled (0 km to total path length).
+Create cinematic camera movements with `+layername:follow` — the camera flies along path geometry. 
+
+
+[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow+ "counter added with follow+")
+A **distance ticker** automatically appears showing the cumulative distance traveled (0 km to total path length).
+
+
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+s.gaza,+nuseirat,+cities,+villages,+idf-poly-outlines "offset can be added after like :follow+10100")
+The **distance ticker** can start with an offset by marking the km count after the :follow+.
 
 
 [](map/#31.52103,34.46974,12.79,-14.4,30.4/+jabalia-rafah:follow,+jabalia,+rafah "Path animation with markers")
 Show origin and destination points during the animation. The white circular ticker counts from 0.0 km to 37.0 km over ~74 seconds for this path.
-
-
-[](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+s2:20231001 "Fly over historical Sentinel-2 imagery")
-Combine path animation with historical satellite imagery. The distance ticker overlays cleanly on satellite layers.
 
 
 [](map/#31.52090,34.47332,14.00,19.2,48.5/+jabalia-rafah:follow,+wayback:20240215 "High-resolution flyover with Wayback")
@@ -175,7 +160,6 @@ Embed in iframes (control panel auto-hides). Hash updates trigger instant map ch
 **Hash tokens:**
 - `+layer` show | `~layer` hide | `+file` load GeoJSON/CSV
 - `+file(source)` copy styles | `+file:follow` animate camera
-- `+s2:YYYYMMDD` Sentinel-2 | `+wayback:YYYYMMDD` Maxar imagery
 
 **Distance Ticker:**
 - Appears automatically during `:follow` animations
