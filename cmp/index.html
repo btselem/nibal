@@ -4,6 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Inflect SVG Viewer</title>
+<!-- Plyr for Vimeo embeds -->
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 <style>
   html,body{height:100%;margin:0;background:#333;color:#fff;font-family:Helvetica,Arial,sans-serif}
   #app{position:relative;height:100vh;overflow:hidden}
@@ -13,6 +16,14 @@
   /* HTML overlays container sits above the SVG and follows its transforms */
   #overlays{position:absolute;left:0;top:0;right:0;bottom:0;pointer-events:none;z-index:9}
   #overlays .overlay{position:absolute;transform-origin:0 0;pointer-events:auto}
+  /* Ensure video iframes/players fill their container */
+  #overlays .overlay iframe,
+  #overlays .overlay .plyr,
+  #overlays .overlay .plyr__video-wrapper{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover!important}
+  /* Hide Plyr controls completely */
+  #overlays .overlay .plyr__controls{display:none!important}
+  #overlays .overlay .plyr__poster{display:none!important}
+  #overlays .overlay .plyr--video{background:transparent!important}
   #controls{position:absolute;right:8px;top:8px;background:rgba(255,255,255,0.06);padding:8px;border-radius:6px;color:#fff;font-size:13px}
   #controls label{display:block;margin-bottom:6px;font-size:12px}
   #controls input[type=range]{width:140px}
@@ -1654,11 +1665,12 @@ function autoAttachVideoOverlays(){
       }
       // Match patterns: vimeo-1234567, embed-vimeo.com%2F1234567, etc.
       let url = null;
-      // Pattern: vimeo-1234567 -> /embed/#vimeo.com%2F1234567/autoplay,loop,cover
+      // Pattern: vimeo-1234567 -> back to direct iframe embed
       const vimeoMatch = id.match(/^vimeo-(\d+)$/i);
       if (vimeoMatch){
         const videoId = vimeoMatch[1];
-        url = `/embed/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
+        // Use direct Vimeo iframe with autoplay, loop, no controls
+        url = `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=1&controls=0&title=0&byline=0&portrait=0&background=1`;
       }
       // Pattern: embed-* -> extract full embed URL from id
       // e.g., embed-vimeo.com%2F1234567 or embed-vimeo.com%2F1234567%2Fautoplay
@@ -1671,7 +1683,21 @@ function autoAttachVideoOverlays(){
         // Only attach if not already present
         if (!window.overlayManager.items || !window.overlayManager.items.has(key)) {
           console.log('[auto-attach] Attaching video to layer', key, 'with URL', url);
-          window.overlayManager.attachIframe(key, url);
+          // For Vimeo, create iframe directly (not wrapped in div)
+          if (vimeoMatch) {
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('allowtransparency', '');
+            iframe.setAttribute('allow', 'autoplay');
+            iframe.setAttribute('frameborder', '0');
+            iframe.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block;';
+            
+            window.overlayManager.attachToLayer(key, () => iframe);
+            console.log('[Vimeo] Iframe attached for', key, 'URL:', url);
+          } else {
+            window.overlayManager.attachIframe(key, url);
+          }
         }
       } else if (window.overlayManager && typeof window.overlayManager.remove === 'function') {
         window.overlayManager.remove(key);
@@ -1906,8 +1932,9 @@ window.viewerReady = false;
 
       // Apply unambiguous translate+rotate, with width/height defining scale
       overlay.style.transform = `translate(${tx}px, ${ty}px) rotate(${rotation}deg)`;
-      overlay.style.width = Math.max(0.001, width) + 'px';
-      overlay.style.height = Math.max(0.001, height) + 'px';
+      // foreignObject needs width/height as attributes, not CSS styles
+      overlay.setAttribute('width', Math.max(0.001, width));
+      overlay.setAttribute('height', Math.max(0.001, height));
       
       // mirror visibility/opacity/transition with smooth transitions
       const cs = window.getComputedStyle(el);
@@ -2016,6 +2043,10 @@ window.viewerReady = false;
       iframe.style.height = '100%';
       iframe.style.border = '0';
       iframe.style.display = 'block';
+      iframe.style.overflow = 'hidden';
+      iframe.style.position = 'absolute';
+      iframe.style.top = '0';
+      iframe.style.left = '0';
       try{ Object.entries(attrs || {}).forEach(([k,v]) => iframe.setAttribute(k, String(v))); }catch(e){}
       return iframe;
     });
