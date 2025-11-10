@@ -787,18 +787,29 @@ function parseHash() {
       const hasTickerFlag = !!plusSign; // true if group 5 captured anything (:follow+ or :follow+number)
       const parsedOffset = offset ? parseInt(offset, 10) : 0;
       
-      // Parse filter expression like "name=jabalia" or "type!=boundary"
+      // Parse filter expression like "name=jabalia" or "type!=boundary" or "name=jabalia|beit_hanoun"
       let filter = null;
       if (filterExpr) {
         const filterMatch = filterExpr.match(/^([^=!]+)(=|!=)(.+)$/);
         if (filterMatch) {
           const [, property, operator, value] = filterMatch;
-          // Try to parse value as number if possible
-          const parsedValue = isNaN(value) ? value : Number(value);
+          // Decode URI components and support multiple values separated by |
+          const decodedValue = decodeURIComponent(value);
+          const values = decodedValue.split('|').map(v => isNaN(v) ? v : Number(v));
           if (operator === '=') {
-            filter = ['==', ['get', property], parsedValue];
+            if (values.length === 1) {
+              filter = ['==', ['get', property], values[0]];
+            } else {
+              // OR filter: match any value
+              filter = ['any', ...values.map(val => ['==', ['get', property], val])];
+            }
           } else if (operator === '!=') {
-            filter = ['!=', ['get', property], parsedValue];
+            if (values.length === 1) {
+              filter = ['!=', ['get', property], values[0]];
+            } else {
+              // AND filter: exclude all values
+              filter = ['all', ...values.map(val => ['!=', ['get', property], val])];
+            }
           }
           console.log('[HASH PARSE] Filter for', lname, ':', filterExpr, '->', filter);
         } else {
