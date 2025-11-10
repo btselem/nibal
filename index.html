@@ -78,55 +78,122 @@
         
         // Toggle edit mode for current iframe content
         function toggleEditMode() {
-            const iframe = document.getElementById('if');
-            if (!iframe || !iframe.contentWindow) return;
+            // Check if we're in dual-iframe mode
+            const isDualMode = document.body.classList.contains('dual-iframe');
             
-            const type = getIframeType();
-            if (!type) return;
-            
-            try {
-                const iframeDoc = iframe.contentWindow.document;
+            if (isDualMode) {
+                // In dual-iframe mode, toggle both background and foreground frames
+                const backgroundFrame = document.getElementById('background-frame');
+                const foregroundFrame = document.getElementById('foreground-frame');
                 
-                if (type === 'map') {
-                    // Toggle map layer controls
-                    const layerControls = iframeDoc.getElementById('layer-controls');
-                    if (layerControls) {
-                        const isHidden = layerControls.classList.contains('hidden');
-                        layerControls.classList.toggle('hidden');
+                let mapEditEnabled = false;
+                let svgEditEnabled = false;
+                
+                // Toggle map in background-frame
+                if (backgroundFrame && backgroundFrame.contentWindow && backgroundFrame.src) {
+                    try {
+                        const bgDoc = backgroundFrame.contentWindow.document;
+                        const layerControls = bgDoc.getElementById('layer-controls');
+                        if (layerControls) {
+                            const isHidden = layerControls.classList.contains('hidden');
+                            layerControls.classList.toggle('hidden');
+                            
+                            if (isHidden) {
+                                backgroundFrame.classList.add('editing-mode');
+                                mapEditEnabled = true;
+                                console.log('[ROOT] Edit mode: ON (background map)');
+                            } else {
+                                backgroundFrame.classList.remove('editing-mode');
+                                console.log('[ROOT] Edit mode: OFF (background map)');
+                            }
+                        }
+                    } catch(err) {
+                        console.warn('[ROOT] Cannot access background-frame:', err);
+                    }
+                }
+                
+                // Toggle SVG/other content in foreground-frame
+                if (foregroundFrame && foregroundFrame.contentWindow && foregroundFrame.src) {
+                    try {
+                        const fgDoc = foregroundFrame.contentWindow.document;
+                        const docElement = fgDoc.documentElement;
+                        const isEmbedded = docElement.classList.contains('embedded');
                         
-                        if (isHidden) {
+                        if (isEmbedded) {
+                            docElement.classList.remove('embedded');
+                            foregroundFrame.classList.add('editing-mode');
+                            svgEditEnabled = true;
+                            console.log('[ROOT] Edit mode: ON (foreground svg)');
+                        } else {
+                            docElement.classList.add('embedded');
+                            foregroundFrame.classList.remove('editing-mode');
+                            console.log('[ROOT] Edit mode: OFF (foreground svg)');
+                        }
+                    } catch(err) {
+                        console.warn('[ROOT] Cannot access foreground-frame:', err);
+                    }
+                }
+                
+                // Update body classes based on what was toggled
+                if (mapEditEnabled || svgEditEnabled) {
+                    document.body.classList.add('editing-mode');
+                    if (mapEditEnabled) document.body.classList.add('map-edit');
+                    if (svgEditEnabled) document.body.classList.add('svg-edit');
+                } else {
+                    document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
+                }
+            } else {
+                // Single iframe mode (original behavior)
+                const iframe = document.getElementById('if');
+                if (!iframe || !iframe.contentWindow) return;
+                
+                const type = getIframeType();
+                if (!type) return;
+                
+                try {
+                    const iframeDoc = iframe.contentWindow.document;
+                    
+                    if (type === 'map') {
+                        // Toggle map layer controls
+                        const layerControls = iframeDoc.getElementById('layer-controls');
+                        if (layerControls) {
+                            const isHidden = layerControls.classList.contains('hidden');
+                            layerControls.classList.toggle('hidden');
+                            
+                            if (isHidden) {
+                                // Enable edit mode
+                                iframe.classList.add('editing-mode');
+                                document.body.classList.add('editing-mode', 'map-edit');
+                                console.log('[ROOT] Edit mode: ON (map)');
+                            } else {
+                                // Disable edit mode
+                                iframe.classList.remove('editing-mode');
+                                document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
+                                console.log('[ROOT] Edit mode: OFF');
+                            }
+                        }
+                    } else if (type === 'svg') {
+                        // Toggle SVG controls
+                        const docElement = iframeDoc.documentElement;
+                        const isEmbedded = docElement.classList.contains('embedded');
+                        
+                        if (isEmbedded) {
                             // Enable edit mode
+                            docElement.classList.remove('embedded');
                             iframe.classList.add('editing-mode');
-                            document.body.classList.add('editing-mode', 'map-edit');
-                            console.log('[ROOT] Edit mode: ON (map)');
+                            document.body.classList.add('editing-mode', 'svg-edit');
+                            console.log('[ROOT] Edit mode: ON (svg)');
                         } else {
                             // Disable edit mode
+                            docElement.classList.add('embedded');
                             iframe.classList.remove('editing-mode');
                             document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
                             console.log('[ROOT] Edit mode: OFF');
                         }
                     }
-                } else if (type === 'svg') {
-                    // Toggle SVG controls
-                    const docElement = iframeDoc.documentElement;
-                    const isEmbedded = docElement.classList.contains('embedded');
-                    
-                    if (isEmbedded) {
-                        // Enable edit mode
-                        docElement.classList.remove('embedded');
-                        iframe.classList.add('editing-mode');
-                        document.body.classList.add('editing-mode', 'svg-edit');
-                        console.log('[ROOT] Edit mode: ON (svg)');
-                    } else {
-                        // Disable edit mode
-                        docElement.classList.add('embedded');
-                        iframe.classList.remove('editing-mode');
-                        document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
-                        console.log('[ROOT] Edit mode: OFF');
-                    }
+                } catch(err) {
+                    console.warn('[ROOT] Cannot access iframe:', err);
                 }
-            } catch(err) {
-                console.warn('[ROOT] Cannot access iframe:', err);
             }
         }
         
@@ -145,21 +212,61 @@
         // Listen for messages from iframe about edit mode changes
         window.addEventListener('message', function(e) {
             if (e.data && (e.data.type === 'svg-edit-mode' || e.data.type === 'map-edit-mode')) {
-                const iframe = document.getElementById('if');
-                if (iframe) {
-                    if (e.data.enabled) {
-                        iframe.classList.add('editing-mode');
-                        if (e.data.type === 'svg-edit-mode') {
-                            document.body.classList.add('editing-mode', 'svg-edit');
-                            console.log('[ROOT] Edit mode enabled via message (svg)');
+                const isDualMode = document.body.classList.contains('dual-iframe');
+                
+                if (isDualMode) {
+                    // In dual-iframe mode, determine which frame sent the message
+                    const backgroundFrame = document.getElementById('background-frame');
+                    const foregroundFrame = document.getElementById('foreground-frame');
+                    
+                    // Identify the source iframe
+                    let sourceFrame = null;
+                    if (backgroundFrame && e.source === backgroundFrame.contentWindow) {
+                        sourceFrame = backgroundFrame;
+                    } else if (foregroundFrame && e.source === foregroundFrame.contentWindow) {
+                        sourceFrame = foregroundFrame;
+                    }
+                    
+                    if (sourceFrame) {
+                        if (e.data.enabled) {
+                            sourceFrame.classList.add('editing-mode');
+                            document.body.classList.add('editing-mode');
+                            if (e.data.type === 'svg-edit-mode') {
+                                document.body.classList.add('svg-edit');
+                                console.log('[ROOT] Edit mode enabled via message (svg) in dual mode');
+                            } else {
+                                document.body.classList.add('map-edit');
+                                console.log('[ROOT] Edit mode enabled via message (map) in dual mode');
+                            }
                         } else {
-                            document.body.classList.add('editing-mode', 'map-edit');
-                            console.log('[ROOT] Edit mode enabled via message (map)');
+                            sourceFrame.classList.remove('editing-mode');
+                            // Only remove body classes if both frames are not in edit mode
+                            const otherFrame = (sourceFrame === backgroundFrame) ? foregroundFrame : backgroundFrame;
+                            const otherInEditMode = otherFrame && otherFrame.classList.contains('editing-mode');
+                            if (!otherInEditMode) {
+                                document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
+                            }
+                            console.log('[ROOT] Edit mode disabled via message in dual mode');
                         }
-                    } else {
-                        iframe.classList.remove('editing-mode');
-                        document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
-                        console.log('[ROOT] Edit mode disabled via message');
+                    }
+                } else {
+                    // Single iframe mode (original behavior)
+                    const iframe = document.getElementById('if');
+                    if (iframe) {
+                        if (e.data.enabled) {
+                            iframe.classList.add('editing-mode');
+                            if (e.data.type === 'svg-edit-mode') {
+                                document.body.classList.add('editing-mode', 'svg-edit');
+                                console.log('[ROOT] Edit mode enabled via message (svg)');
+                            } else {
+                                document.body.classList.add('editing-mode', 'map-edit');
+                                console.log('[ROOT] Edit mode enabled via message (map)');
+                            }
+                        } else {
+                            iframe.classList.remove('editing-mode');
+                            document.body.classList.remove('editing-mode', 'map-edit', 'svg-edit');
+                            console.log('[ROOT] Edit mode disabled via message');
+                        }
                     }
                 }
             }

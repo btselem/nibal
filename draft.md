@@ -6,7 +6,7 @@ css: src/theme.css
 
 # _מסע העקירה של_ ניבאל אל היסי
 [](map/#31.33923,34.28541,9.56,37.6,0.0/~labels_he "Gaza map")
-[](cmp/#opening.svg/~IDFareas~gazamap)
+[](svg/#opening.svg/~IDFareas~gazamap)
 
 <img src="img/bts_logo.svg" alt="בצלם: מסעות עקירה]" style="max-width:100px;height:auto;">
 
@@ -14,25 +14,25 @@ css: src/theme.css
 
 
 {.meta}
-[](cmp/#opening.svg/~opening)
+[](svg/#opening.svg/~opening)
 [](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he)
 במשך שנתיים, ישראל כפתה על תושבי רצועת עזה לעקור שוב ושוב ממקומם.
 
 
 {.meta}
-[](cmp/#opening.svg/~opening)
+[](svg/#opening.svg/~opening)
 [](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones,+idf-poly-outlines "האזורים שנכללו תחת צווי הפינוי של הצבא בין אוקטובר 2023 לאוקטובר 2025")
 לרוב, היא עשתה זאת באמצעות צווי הפינוי שהוציא הצבא הישראלי.
 
 
 {.meta}
-[](cmp/#opening.svg/~opening)
+[](svg/#opening.svg/~opening)
 [](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones)
 במקרים רבים, הצווים היו בלתי-ברורים, מטעים, או שהוצאו רק לאחר שמתקפות הצבא באזורי הפינוי כבר החלו, מה שהגביר את החרדה, עורר בלבול ויצר סכנה ממשית לחיי העקורים.
 
 
 {.meta}
-[](cmp/#opening.svg/0.27,0.19,1.81/+displaced)
+[](svg/#opening.svg/0.27,0.19,1.81/+displaced)
 [](map/#31.43664,34.34673,10.18,37.6,0.0/+cities,+villages,+unosat-damage-231015)
 במקביל לעקירה בשל צווי הפינוי, תושבי עזה נאלצו לעקור בשל ההפצצות התכופות של הצבא הישראלי בכל רחבי הרצועה, שגרמו להרס ומוות בקנה מידה עצום.
 
