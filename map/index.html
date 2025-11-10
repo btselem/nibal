@@ -174,6 +174,37 @@
       border-color: #4caf50;
       background: rgba(76,175,80,0.1);
     }
+    .filter-input {
+      display: none;
+      width: 120px;
+      padding: 2px 4px;
+      margin-left: 2px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,165,0,0.4);
+      border-radius: 3px;
+      color: #ffa500;
+      font-size: 11px;
+      font-family: monospace;
+      outline: none;
+    }
+    .filter-input.active {
+      display: inline-block;
+    }
+    .filter-input:focus {
+      border-color: #ffa500;
+      background: rgba(255,165,0,0.1);
+    }
+    .layer-list-item button[data-filter] {
+      font-size: 14px;
+      padding: 2px 6px;
+    }
+    .layer-list-item button[data-filter].active {
+      color: #ffa500;
+      background: rgba(255,165,0,0.2);
+    }
+    .layer-list-item button[data-filter]:hover {
+      color: #ffa500;
+    }
     #layer-controls-footer {
       padding: 10px 15px;
       border-top: 1px solid rgba(255,255,255,0.15);
@@ -1441,17 +1472,19 @@ function createLayerControls(map, visibleLayers) {
   const [, layersStr] = hash.split('/');
   
   // Performance: Use cached parse result if hash hasn't changed
-  let explicitState, followState, followOffsets, showTicker;
+  let explicitState, followState, followOffsets, showTicker, layerFilters;
   if (cachedHashString === hash && cachedHashState) {
     explicitState = cachedHashState.explicitState;
     followState = cachedHashState.followState;
     followOffsets = cachedHashState.followOffsets;
     showTicker = cachedHashState.showTicker;
+    layerFilters = cachedHashState.layerFilters;
   } else {
     explicitState = {};
     followState = {}; // Track which layers have :follow
     followOffsets = {}; // Track follow offset values
     showTicker = {}; // Track whether to show ticker (true if :follow+ or :follow+number)
+    layerFilters = {}; // Track filter expressions for layers
     if (layersStr) {
       layersStr.split(',').forEach(token => {
         // Match pattern: +layerName or +layerName(source) or +layerName[filter] or +layerName:follow or +layerName(source):follow+15000 or +layerName[name=value]:follow
@@ -1468,11 +1501,14 @@ function createLayerControls(map, visibleLayers) {
           // Parse the offset value (default to 0 if no digits provided)
           followOffsets[lname] = offset ? parseInt(offset, 10) : 0;
         }
+        if (filterExpr) {
+          layerFilters[lname] = filterExpr;
+        }
       });
     }
     // Cache the result
     cachedHashString = hash;
-    cachedHashState = { explicitState, followState, followOffsets, showTicker };
+    cachedHashState = { explicitState, followState, followOffsets, showTicker, layerFilters };
   }
   // Include all style layers and any geojson-above-* layers
   const allLayers = [
@@ -1512,11 +1548,22 @@ function createLayerControls(map, visibleLayers) {
       const isFollowable = followableLayers.has(layer.id);
       const isFollowing = followState[layer.id] || false;
       const hasTickerFlag = showTicker[layer.id] || false;
+      // Check if this layer has a filter
+      const layerFilter = layerFilters[layer.id] || '';
+      const hasFilter = !!layerFilter;
       // Apply bold blue styling for external layers
       const labelStyle = isExternalLayer ? 'font-weight:bold;color:#4caf50;' : (bold ? 'font-weight:bold;' : '');
       
       // Build button HTML
       let buttonHtml = '';
+      
+      // Add filter button and input for external layers (GeoJSON layers)
+      if (isExternalLayer) {
+        const filterClass = hasFilter ? ' class="active"' : '';
+        const filterInputClass = hasFilter ? ' class="active"' : '';
+        buttonHtml += ` <button data-filter="${layer.id}" title="Add/edit filter"${filterClass}>🔍</button>`;
+        buttonHtml += ` <input type="text" data-filter-input="${layer.id}" value="${layerFilter}" placeholder="property=value"${filterInputClass} class="filter-input" title="Filter expression (e.g., name=jabalia or name=jabalia|beit_hanoun)">`;
+      }
       
       // Add follow button for followable layers
       if (isFollowable) {
@@ -1842,6 +1889,91 @@ function createLayerControls(map, visibleLayers) {
       }
     });
   });
+  
+  // Add filter button listeners
+  container.querySelectorAll('button[data-filter]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const layerId = this.getAttribute('data-filter');
+      const filterInput = container.querySelector(`input[data-filter-input="${layerId}"]`);
+      
+      if (filterInput) {
+        // Toggle input visibility
+        filterInput.classList.toggle('active');
+        this.classList.toggle('active');
+        
+        // Focus input when shown
+        if (filterInput.classList.contains('active')) {
+          filterInput.focus();
+        } else {
+          // If hiding input and it has a value, clear the filter from hash
+          if (!filterInput.value.trim()) {
+            updateFilterInHash(layerId, '');
+          }
+        }
+      }
+    });
+  });
+  
+  // Add filter input listeners to update hash when changed
+  container.querySelectorAll('input[data-filter-input]').forEach(input => {
+    const handleFilterUpdate = function(e) {
+      const layerId = this.getAttribute('data-filter-input');
+      const filterExpr = this.value.trim();
+      console.log('[FILTER INPUT] Update for layer:', layerId, 'expression:', filterExpr);
+      
+      updateFilterInHash(layerId, filterExpr);
+    };
+    
+    // Update on blur (when user leaves the input)
+    input.addEventListener('blur', handleFilterUpdate);
+    
+    // Also update on Enter key
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        this.blur(); // Trigger blur event which calls handleFilterUpdate
+      }
+    });
+  });
+}
+
+// Helper function to update filter in hash
+function updateFilterInHash(layerId, filterExpr) {
+  // Parse current hash
+  const hash = window.location.hash.replace('#', '');
+  const [cameraStr, layersStr] = hash.split('/');
+  
+  if (!layersStr) return;
+  
+  // Update the filter in the layer token
+  const tokens = layersStr.split(',').map(token => {
+    // Match: +layerName or +layerName(source) with optional [filter] and :follow
+    const match = token.match(/^([+~])([^\[(]+?)(?:\(([^)]+)\))?(?:\[([^\]]+)\])?(?::follow(\+(\d*))?)?$/);
+    if (!match) return token;
+    
+    const [, sign, lname, sourceHint, oldFilterExpr, followFlag] = match;
+    
+    if (lname === layerId) {
+      // Rebuild token with new or removed filter
+      let newToken = `${sign}${lname}`;
+      if (sourceHint) newToken += `(${sourceHint})`;
+      if (filterExpr) {
+        newToken += `[${filterExpr}]`;
+      }
+      if (followFlag) newToken += ':follow' + followFlag;
+      
+      console.log('[FILTER] Updated token from', token, 'to', newToken);
+      return newToken;
+    }
+    
+    return token;
+  });
+  
+  const newLayersStr = tokens.join(',');
+  const newHash = `#${cameraStr}/${newLayersStr}`;
+  console.log('[FILTER] New hash:', newHash);
+  window.location.hash = newHash;
 }
 
 const { camera, layers } = parseHash();
