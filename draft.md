@@ -13,7 +13,7 @@ css: src/theme.css
 
 
 {.meta}
-[](#opening.svg/-0.07,0.27,2.03/+gazamap)
+[](svg/#opening.svg/-0.07,0.27,2.03/+gazamap)
 במשך שנתיים, ישראל כפתה על תושבי רצועת עזה לעקור שוב ושוב ממקומם.
 
 
