@@ -1862,7 +1862,7 @@ function autoAttachVideoOverlays(){
       const vimeoMatch = id.match(/^vimeo-(\d+)$/i);
       if (vimeoMatch){
         const videoId = vimeoMatch[1];
-        url = `/embed/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
+        url = `../embed/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
       }
       // Pattern: embed-* -> extract full embed URL from id
       // e.g., embed-vimeo.com%2F1234567 or embed-vimeo.com%2F1234567%2Fautoplay
