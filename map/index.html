@@ -1017,7 +1017,7 @@ const defaultCamera = {
 // Parse hash: #lat,lng,zoom,bearing,pitch/+layer1,-layer2/load:filename
 function parseHash() {
   const hash = window.location.hash.replace('#', '');
-  if (!hash) return { camera: { ...defaultCamera }, layers: allStyleLayers.map(l => l.id), dynamicGeojsonToLoad: [], followId: null, followOffset: 0, showTicker: false, followHidden: false, showMapUI: false };
+  if (!hash) return { camera: { ...defaultCamera }, layers: allStyleLayers.map(l => l.id), dynamicGeojsonToLoad: [], followId: null, followOffset: 0, showTicker: false, followHidden: false, showMapUI: false, isStatic: false };
   let cameraStr = '', layersStr = '', followId = null, followOffset = 0, showTicker = false, followHidden = false, showMapUI = false;
   const parts = hash.split('/');
   const restParts = [];
@@ -1030,9 +1030,10 @@ function parseHash() {
   }
   cameraStr = restParts[0] || '';
   layersStr = restParts[1] || '';
-  // Detect optional flags in any additional segments (e.g., /mapui)
+  // Detect optional flags in any additional segments (e.g., /mapui, /static)
   const extraSegments = parts.slice(2);
   showMapUI = extraSegments.some(seg => seg.toLowerCase() === 'mapui');
+  const isStatic = extraSegments.some(seg => seg.toLowerCase() === 'static');
   const cameraParts = cameraStr ? cameraStr.split(',').map(Number) : [];
   let layersOn = allStyleLayers.map(l => l.id);
   let dynamicGeojsonToLoad = [];
@@ -1150,7 +1151,8 @@ function parseHash() {
     followOffset,
     showTicker,
     followHidden,
-    showMapUI
+    showMapUI,
+    isStatic
   };
 }
 
@@ -2385,14 +2387,15 @@ const map = new mapboxgl.Map({
   center: camera.center,
   zoom: camera.zoom,
   bearing: camera.bearing,
-  pitch: camera.pitch
+  pitch: camera.pitch,
+  interactive: true  // Will be disabled if /static flag is present
 });
 // Expose map globally for add-layer UI logic
 window.map = map;
 
 map.on('load', () => {
   // After all layers are loaded, if :follow is present in the hash, trigger follow logic directly (no hashchange event)
-  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit, showTicker: showTickerInit, followHidden: followHiddenInit, showMapUI } = parseHash();
+  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit, showTicker: showTickerInit, followHidden: followHiddenInit, showMapUI, isStatic } = parseHash();
   if (followInit) {
     // Only start follow if not already running (avoid double-trigger)
     if (!window._isFollowStarted) {
@@ -2499,6 +2502,17 @@ map.on('load', () => {
   // Inject map UI controls if flag present
   if (showMapUI) {
     ensureMapUIControls();
+  }
+  
+  // Disable map interactions if /static flag is present
+  if (isStatic) {
+    map.boxZoom.disable();
+    map.scrollZoom.disable();
+    map.dragPan.disable();
+    map.dragRotate.disable();
+    map.keyboard.disable();
+    map.doubleClickZoom.disable();
+    map.touchZoomRotate.disable();
   }
   
   // Re-apply camera from hash after style load to ensure bearing/pitch/zoom are honored
@@ -2895,7 +2909,7 @@ window.addEventListener('hashchange', () => {
 
   // ...existing code...
 
-  const { camera, layers, dynamicGeojsonToLoad, followId, followOffset, showTicker, followHidden, showMapUI } = parseHash();
+  const { camera, layers, dynamicGeojsonToLoad, followId, followOffset, showTicker, followHidden, showMapUI, isStatic } = parseHash();
   console.log('[FOLLOW DEBUG] Hash:', window.location.hash, '| followId:', followId, '| followOffset:', followOffset, '| showTicker:', showTicker, '| layers:', layers, '| dynamicGeojsonToLoad:', dynamicGeojsonToLoad);
   console.log('[FOLLOW DEBUG] About to process layers and dynamic sources...');
 
@@ -3018,6 +3032,25 @@ window.addEventListener('hashchange', () => {
   // Toggle map UI controls based on flag
   if (showMapUI) ensureMapUIControls();
   else removeMapUIControls();
+
+  // Toggle map interactions based on /static flag
+  if (isStatic) {
+    map.boxZoom.disable();
+    map.scrollZoom.disable();
+    map.dragPan.disable();
+    map.dragRotate.disable();
+    map.keyboard.disable();
+    map.doubleClickZoom.disable();
+    map.touchZoomRotate.disable();
+  } else {
+    map.boxZoom.enable();
+    map.scrollZoom.enable();
+    map.dragPan.enable();
+    map.dragRotate.enable();
+    map.keyboard.enable();
+    map.doubleClickZoom.enable();
+    map.touchZoomRotate.enable();
+  }
 
   // Load dynamic layers as needed (GeoJSON/CSV, Sentinel-2, or Wayback)
   if (dynamicGeojsonToLoad && dynamicGeojsonToLoad.length) {
