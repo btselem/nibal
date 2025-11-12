@@ -2024,6 +2024,22 @@ document.addEventListener('keydown', function(e) {
         } else {
           overlay.removeAttribute('transform');
         }
+        
+        // Safari-specific fix: Safari doesn't handle transform on foreignObject well
+        // Apply transform via CSS on inner div for Safari only
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        const innerDiv = overlay.querySelector('div[xmlns="http://www.w3.org/1999/xhtml"]');
+        
+        if (isSafari && transform && innerDiv) {
+          // For Safari: remove SVG transform and apply as CSS transform on inner div
+          overlay.removeAttribute('transform');
+          innerDiv.style.transformOrigin = '0 0';
+          innerDiv.style.transform = transform.replace(/\s+/g, ' ');
+        } else if (innerDiv) {
+          // For other browsers: clear any CSS transform on inner div
+          innerDiv.style.transform = '';
+          innerDiv.style.transformOrigin = '';
+        }
 
         // Mirror visibility/opacity/transition via style
         const cs = window.getComputedStyle(el);
