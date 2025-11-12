@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dynamic Mapbox Map with Hash Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* ============================================================================
+       BASE STYLES
+       ============================================================================ */
+    html, body, #map {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: #333;
+    }
+
+    /* ============================================================================
+       LAYER CONTROLS PANEL
+       ============================================================================ */
+    #layer-controls {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      color: #fff;
+    }
+    #layer-controls.hidden {
+      transform: translateX(-100%);
+    }
+
+    /* Header */
+    #layer-controls-header {
+      padding: 15px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    #layer-controls-header .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 5px;
+    }
+    #layer-controls-header h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      flex: 1;
+    }
+    #layer-controls-header .hint {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      margin: 0;
+    }
+
+    /* Buttons */
+    #reset-all-btn,
+    #add-layer-toggle-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      padding: 4px 8px;
+      line-height: 1;
+      border-radius: 3px;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    #reset-all-btn { font-size: 16px; }
+    #add-layer-toggle-btn { font-size: 18px; }
+    #reset-all-btn:hover,
+    #add-layer-toggle-btn:hover {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    /* Layer List */
+    #layer-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 15px;
+      font-size: 13px;
+    }
+    .layer-list-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 4px 0;
+    }
+    #layer-list label {
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px;
+      border-radius: 3px;
+      transition: background 0.15s;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      min-width: 0;
+    }
+    #layer-list label:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Item Buttons */
+    .layer-list-item button {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
+      padding: 4px 6px;
+      font-size: 14px;
+      line-height: 1;
+      border-radius: 3px;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .layer-list-item button:hover {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .layer-list-item button[data-delete] {
+      color: #ff4444;
+      font-weight: bold;
+    }
+    .layer-list-item button[data-delete]:hover {
+      color: #ff6666;
+      background: rgba(255,68,68,0.2);
+    }
+
+    /* Follow Button */
+    .layer-list-item button[data-follow] {
+      font-size: 16px;
+      padding: 2px 6px;
+    }
+    .layer-list-item button[data-follow].active {
+      color: #4caf50;
+      background: rgba(76,175,80,0.2);
+    }
+    .layer-list-item button[data-follow]:hover {
+      color: #4caf50;
+    }
+
+    /* Follow Offset Input */
+    .follow-offset-input {
+      display: none;
+      width: 50px;
+      padding: 2px 4px;
+      margin-left: 2px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(76,175,80,0.4);
+      border-radius: 3px;
+      color: #4caf50;
+      font-size: 11px;
+      font-family: monospace;
+      text-align: center;
+      outline: none;
+    }
+    .follow-offset-input.active {
+      display: inline-block;
+    }
+    .follow-offset-input:focus {
+      border-color: #4caf50;
+      background: rgba(76,175,80,0.1);
+    }
+
+    /* Filter Button & Input */
+    .layer-list-item button[data-filter] {
+      font-size: 14px;
+      padding: 2px 6px;
+    }
+    .layer-list-item button[data-filter].active {
+      color: #ffa500;
+      background: rgba(255,165,0,0.2);
+    }
+    .layer-list-item button[data-filter]:hover {
+      color: #ffa500;
+    }
+    .filter-input {
+      display: none;
+      width: 120px;
+      padding: 2px 4px;
+      margin-left: 2px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,165,0,0.4);
+      border-radius: 3px;
+      color: #ffa500;
+      font-size: 11px;
+      font-family: monospace;
+      outline: none;
+    }
+    .filter-input.active {
+      display: inline-block;
+    }
+    .filter-input:focus {
+      border-color: #ffa500;
+      background: rgba(255,165,0,0.1);
+    }
+
+    /* Filter Properties Dropdown */
+    .filter-prop-select {
+      display: none;
+      max-width: 140px;
+      padding: 2px 4px;
+      margin-left: 2px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,165,0,0.4);
+      border-radius: 3px;
+      color: #ffa500;
+      font-size: 11px;
+      outline: none;
+      cursor: pointer;
+    }
+    .filter-prop-select.active {
+      display: inline-block;
+    }
+
+    /* Footer */
+    #layer-controls-footer {
+      padding: 10px 15px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    #copy-link-btn {
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      color: #fff;
+    }
+    #copy-link-btn:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.4);
+    }
+    #copy-link-btn:active {
+      background: rgba(255,255,255,0.15);
+    }
+    #copy-link-btn.copied {
+      background: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
+
+    /* ============================================================================
+       ADD LAYER FORM
+       ============================================================================ */
+    #add-layer-form {
+      display: none;
+      margin-top: 8px;
+      padding: 8px 10px 4px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      backdrop-filter: blur(6px);
+    }
+    #add-layer-form.active {
+      display: block;
+    }
+    #add-layer-form label {
+      display: block;
+      font-size: 11px;
+      margin: 0 0 4px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* Tabs */
+    .layer-tab {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.6);
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .layer-tab:hover {
+      background: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8);
+    }
+    .layer-tab.active {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* Form Inputs */
+    #layer-type-select,
+    #new-layer-input,
+    #satellite-date-input,
+    #reference-layer-select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 12px;
+      font-family: inherit;
+      outline: none;
+    }
+    #layer-type-select,
+    #satellite-date-input,
+    #reference-layer-select {
+      cursor: pointer;
+    }
+    #layer-type-select { margin-bottom: 8px; }
+    #layer-type-select option,
+    #reference-layer-select option {
+      background: #222;
+      color: #fff;
+    }
+    #new-layer-input:focus,
+    #satellite-date-input:focus,
+    #reference-layer-select:focus {
+      border-color: rgba(255,255,255,0.5);
+    }
+    #satellite-date-input {
+      color-scheme: dark;
+    }
+    #satellite-date-input::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+    }
+    #reference-layer-select {
+      margin-top: 8px;
+    }
+    .layer-input-group {
+      margin-bottom: 8px;
+    }
+
+    /* Form Button */
+    #add-layer-confirm-btn {
+      margin-top: 6px;
+      width: 100%;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      color: #fff;
+      font-family: inherit;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    #add-layer-confirm-btn:hover {
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.4);
+    }
+    #add-layer-error {
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: #ff6666;
+      min-height: 14px;
+    }
+
+    /* ============================================================================
+       DISTANCE TICKER
+       ============================================================================ */
+    #distance-ticker {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      background: rgba(0,0,0,0.3);
+      border: #fffa solid 1px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      pointer-events: none;
+      z-index: 10;
+      transform: translate(-50%, -125%);
+    }
+    #distance-ticker.active {
+      display: flex;
+    }
+
+    /* ============================================================================
+       WAYBACK IFRAME
+       ============================================================================ */
+    #wayback-iframe-container {
+      position: fixed;
+      left: 280px;
+      top: 0;
+      width: calc(100% - 280px);
+      height: 100vh;
+      z-index: 999;
+      display: none;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+    }
+    #wayback-iframe-container.active {
+      display: block;
+    }
+    #wayback-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ============================================================================
+       MAP UI CONTROLS (Optional - shown with /mapui flag)
+       ============================================================================ */
+    #map-ui-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      z-index: 100;
+    }
+    #map-ui-controls button {
+      width: 32px;
+      height: 32px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    #map-ui-controls button:hover {
+      background: rgba(0,0,0,0.7);
+      border-color: rgba(255,255,255,0.4);
+    }
+    #map-ui-controls button.fullscreen-exit {
+      color: #4caf50;
+    }
+  </style>
+  
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+<div id="map"></div>
+<div id="wayback-iframe-container">
+  <iframe id="wayback-iframe" src="" allow="geolocation" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerpolicy="no-referrer"></iframe>
+</div>
+
+<div id="layer-controls">
+  <div id="layer-controls-header">
+    <div class="title-row">
+      <h3>Map Layers</h3>
+      <button id="add-layer-toggle-btn" title="Add new layer">＋</button>
+      <button id="reset-all-btn" title="Reset all layers to style defaults">↻</button>
+    </div>
+    <p class="hint">Press 'E' to toggle edit mode</p>
+    
+    <div id="add-layer-form">
+      <div id="layer-type-tabs" style="display: flex; gap: 4px; margin-bottom: 12px;">
+        <button id="tab-geodata" class="layer-tab active" data-tab="geodata">Geodata</button>
+        <button id="tab-satellite" class="layer-tab" data-tab="satellite">Satellite</button>
+      </div>
+      
+      <div id="geojson-input-group" class="layer-input-group">
+        <label for="new-layer-input">Layer filename</label>
+        <input id="new-layer-input" list="local-layer-files" placeholder="Type to search local files" autocomplete="off" />
+        <datalist id="local-layer-files"></datalist>
+        <label for="reference-layer-select" style="margin-top: 8px;">Position after layer (optional)</label>
+        <select id="reference-layer-select" title="Select a reference layer to insert after (optional)">
+          <option value="">-- No reference (add at top) --</option>
+        </select>
+      </div>
+      
+      <div id="satellite-input-group" class="layer-input-group" style="display:none;">
+        <label for="satellite-date-input">Satellite image date</label>
+        <input id="satellite-date-input" type="date" placeholder="YYYY-MM-DD" />
+        <p class="hint" style="font-size: 11px; margin: 4px 0 0; color: rgba(255,255,255,0.8);">
+          Choose date from <a id="wayback-open-new" href="https://livingatlas.arcgis.com/wayback/" target="_blank" rel="noopener noreferrer" style="color:#9fd1ff;text-decoration:underline;">Wayback site</a>
+        </p>
+      </div>
+      
+      <button id="add-layer-confirm-btn" title="Add the selected layer">Add Layer</button>
+      <div id="add-layer-error"></div>
+    </div>
+  </div>
+  
+  <div id="layer-list"></div>
+  
+  <div id="layer-controls-footer">
+    <button id="copy-link-btn" title="Copy a shareable link to this exact map view and layer configuration">📋 Copy Link</button>
+  </div>
+</div>
+
+<div id="distance-ticker"></div>
+
+<script>
+'use strict';
+
+/* ============================================================================
+   CONFIGURATION & CONSTANTS
+   ============================================================================ */
+
+// Mapbox configuration
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnRzZWxlbW9yZyIsImEiOiJjbWhuNnF6djQwNTVlMnNzZjAxd2dqeWFyIn0.jw164iQiqRTNP1QMu-cbTg';
+const MAPBOX_STYLE = 'mapbox://styles/btselemorg/cmhncne5l004p01qu9tpp7ih8/draft';
+
+// Default camera position
+const DEFAULT_CAMERA = {
+  center: [34.3537, 31.4238],
+  zoom: 10,
+  bearing: 37.6,
+  pitch: 0
+};
+
+// Layer types that support filtering
+const FILTERABLE_LAYER_TYPES = ['fill', 'line', 'circle', 'symbol', 'heatmap', 'fill-extrusion'];
+
+// Available local GeoJSON files (auto-generated list)
+const AVAILABLE_LOCAL_LAYERS = [
+  'IDF_zone_210824_240824','IDF_zone_210824_240824_NEW','Areas_Designated_for_Evacuation_by_the_IDF',
+  'IDF_Zones','IDF_zone_010724-210724','IDF_zone_010724-210724_NEW','IDF_zone_041223-281223',
+  'IDF_zone_041223-281223_NEW','IDF_zone_060524-110524','IDF_zone_061024','IDF_zone_061024_NEW',
+  'IDF_zone_090925','IDF_zone_090925_NEW','IDF_zone_110824_150824','IDF_zone_110824_150824_NEW',
+  'IDF_zone_160824_200824','IDF_zone_160824_200824_NEW','IDF_zone_191025','IDF_zone_210724-100824',
+  'IDF_zone_210724-100824_NEW','IDF_zone_250824_280824','IDF_zone_250824_280824_NEW','IDF_zone_290824',
+  'IDF_zone_290824_NEW','IDF_zone_300824','IDF_zone_300824_NEW','IDF_zone_ALL_UNTIL_101025',
+  'al-mawasi-jabalia','al-zawaida-al-mawasi','evac-orders-dec2','evac-orders-dec4','evac-orders-dec5',
+  'gaza-deir-al-balah','gaza-khan-younis','gaza-nuseirat','gaza','jabalia-al-mawasi',
+  'jabalia-deir-al-balah','jabalia-gaza','jabalia-rafah','nuseirat-rafah','oct7-hamas',
+  'oct7_23_hamas','rafah-bureij','safe-area','wrong','wrong2','wrong3','wrong4','wrong5','wrong6'
+];
+
+/* ============================================================================
+   GLOBAL STATE
+   ============================================================================ */
+
+// Map instance and layer data
+let map = null;
+let allStyleLayers = [];
+const externalLayers = new Set();          // Layers not in original style
+const followableLayers = new Set();        // Layers with path geometry
+const styleDefaultVisibility = {};         // Original visibility state
+const styleDefaultFilter = {};             // Original filter state
+
+// Animation state
+let isFreeCameraAnimating = false;
+
+/* ============================================================================
+   UI INITIALIZATION
+   ============================================================================ */
+
+// Hide control panel if in iframe
+if (window.self !== window.top) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const controls = document.getElementById('layer-controls');
+    if (controls) controls.classList.add('hidden');
+  });
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  
+  if (e.code === 'KeyE') {
+    e.preventDefault();
+    const controls = document.getElementById('layer-controls');
+    if (controls) {
+      const wasHidden = controls.classList.contains('hidden');
+      controls.classList.toggle('hidden');
+      
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ 
+          type: 'bg-edit-mode', 
+          enabled: wasHidden 
+        }, '*');
+      }
+    }
+  } else if (e.code === 'KeyF' && window.parent && window.parent !== window) {
+    e.preventDefault();
+    window.parent.postMessage({ type: 'toggle-foreground-edit' }, '*');
+  } else if (e.code === 'KeyB' && window.parent && window.parent !== window) {
+    e.preventDefault();
+    window.parent.postMessage({ type: 'toggle-background-edit' }, '*');
+  }
+});
+
+// Populate local layer datalist
+function populateLocalLayerDatalist() {
+  const dl = document.getElementById('local-layer-files');
+  if (!dl) return;
+  dl.innerHTML = '';
+  const seen = new Set();
+  AVAILABLE_LOCAL_LAYERS.forEach(name => {
+    if (!seen.has(name)) {
+      seen.add(name);
+      const opt = document.createElement('option');
+      opt.value = name;
+      dl.appendChild(opt);
+    }
+  });
+}
+
+// Populate reference layer dropdown
+function populateReferenceLayerSelect() {
+  const select = document.getElementById('reference-layer-select');
+  if (!select || !map) return;
+  
+  const defaultOpt = select.querySelector('option[value=""]');
+  select.innerHTML = '';
+  if (defaultOpt) {
+    defaultOpt.title = 'Add at the very top (no reference)';
+    select.appendChild(defaultOpt);
+  } else {
+    const opt = document.createElement('option');
+    opt.value = '';
+    opt.textContent = '-- No reference (add at top) --';
+    opt.title = 'Add at the very top (no reference)';
+    select.appendChild(opt);
+  }
+  
+  if (allStyleLayers && allStyleLayers.length > 0) {
+    const reversedLayers = [...allStyleLayers].reverse();
+    reversedLayers.forEach(layer => {
+      if (map.getLayer(layer.id)) {
+        const opt = document.createElement('option');
+        opt.value = layer.id;
+        opt.textContent = layer.name || layer.id;
+        opt.title = `Insert new layer immediately after '${layer.name || layer.id}'`;
+        select.appendChild(opt);
+      }
+    });
+  }
+}
+
+/* ============================================================================
+   This file is getting too long. I'll create a properly organized version.
+   Let me continue with a cleaner approach.
+   ============================================================================ */

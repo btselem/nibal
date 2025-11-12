@@ -361,6 +361,24 @@
     #distance-ticker.active {
       display: flex;
     }
+    #wayback-iframe-container {
+      position: fixed;
+      left: 280px;
+      top: 0;
+      width: calc(100% - 280px);
+      height: 100vh;
+      z-index: 999;
+      display: none;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+    }
+    #wayback-iframe-container.active {
+      display: block;
+    }
+    #wayback-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
     /* Make the date input calendar icon white (WebKit browsers) */
     #satellite-date-input::-webkit-calendar-picker-indicator {
       filter: invert(1);
@@ -424,6 +442,9 @@
 </head>
 <body>
 <div id="map"></div>
+<div id="wayback-iframe-container">
+  <iframe id="wayback-iframe" src="" allow="geolocation" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" referrerpolicy="no-referrer" style="position:absolute; top:0; left:0; width:100%; height:100%;"></iframe>
+</div>
 <div id="layer-controls">
   <div id="layer-controls-header">
     <div class="title-row">
@@ -497,6 +518,7 @@ document.addEventListener('keydown', function(e) {
           enabled: wasHidden 
         }, '*');
       }
+      console.log('[MAP] Edit mode:', wasHidden ? 'ON' : 'OFF');
     }
   } else if (e.code === 'KeyF') {
     // Foreground-only toggle - relay to parent
@@ -642,15 +664,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (geojsonGroup) geojsonGroup.style.display = tabName === 'geodata' ? 'block' : 'none';
     if (satelliteGroup) satelliteGroup.style.display = tabName === 'satellite' ? 'block' : 'none';
     
-    // Update Wayback link with current map view
+    // Show/hide Wayback iframe
+    const waybackContainer = document.getElementById('wayback-iframe-container');
+    const waybackIframe = document.getElementById('wayback-iframe');
     if (tabName === 'satellite') {
+      if (waybackContainer) waybackContainer.classList.add('active');
       const openLink = document.getElementById('wayback-open-new');
-      if (openLink && window.map) {
-        const center = window.map.getCenter();
-        const zoom = Math.round(window.map.getZoom());
+      const statusEl = document.getElementById('wayback-status');
+      // Initialize/update iframe URL to current map view each time we open
+      if (waybackIframe) {
+        const center = window.map ? window.map.getCenter() : {lng: 34.3537, lat: 31.4238};
+        const zoom = window.map ? Math.round(window.map.getZoom()) : 10;
         const url = `https://livingatlas.arcgis.com/wayback/#mapCenter=${center.lng.toFixed(5)}%2C${center.lat.toFixed(5)}%2C${zoom}`;
-        openLink.href = url;
+        try {
+          if (openLink) openLink.href = url;
+          // Always set/update src to ensure it loads
+          waybackIframe.src = url;
+          if (statusEl) statusEl.textContent = 'loading…';
+        } catch(e) {
+          if (statusEl) statusEl.textContent = 'open in new tab';
+        }
       }
+    } else {
+      if (waybackContainer) waybackContainer.classList.remove('active');
     }
   }
   
@@ -670,6 +706,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function setError(msg) { if (errorEl) errorEl.textContent = msg || ''; }
   
+  // Capture when opening add-layer form
+  const addLayerToggleBtn = document.getElementById('add-layer-toggle-btn');
+  if (addLayerToggleBtn) {
+    addLayerToggleBtn.addEventListener('click', () => {
+      const form = document.getElementById('add-layer-form');
+      const nowActive = form && form.classList.contains('active');
+      if (nowActive) {
+        // Will close - just hide the Wayback container if visible
+        const waybackContainer = document.getElementById('wayback-iframe-container');
+        if (waybackContainer) waybackContainer.classList.remove('active');
+      }
+    });
+  }
+
   confirmBtn.addEventListener('click', function(e) {
     e.preventDefault();
     setError('');
@@ -683,6 +733,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Build layer ID based on type
     if (layerType === 'geojson') {
       const raw = (geojsonInput.value || '').trim();
+      console.log('[ADD LAYER] GeoJSON/CSV, raw input:', raw, 'reference:', refLayer);
       if (!raw) { setError('Enter a local filename or URL.'); return; }
       // Accept any input, not just predefined list - datalist provides suggestions only
       if (!availableLocalLayerFiles.includes(raw)) { 
@@ -693,6 +744,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     } else if (layerType === 'satellite') {
       const dateValue = ((satelliteDateInput ? satelliteDateInput.value : '') || '').trim();
+      console.log('[ADD LAYER] Satellite, date:', dateValue, 'reference:', refLayer);
       if (!dateValue) { setError('Select a satellite image date.'); return; }
       
       // Convert YYYY-MM-DD to YYYYMMDD
@@ -706,6 +758,10 @@ document.addEventListener('DOMContentLoaded', function() {
     while (window.map && window.map.getLayer && window.map.getLayer(layerId)) {
       layerId = `${baseLayerId}#${counter}`;
       counter++;
+    }
+    
+    if (layerId !== baseLayerId) {
+      console.log('[ADD LAYER] Base layer exists, using auto-incremented ID:', layerId);
     }
     
     // Build token with potentially incremented layerId
@@ -748,6 +804,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const existingParts = existing.split('/');
   const trailing = existingParts.slice(2);
   const newHash = `#${cameraStr}` + (layersStr ? `/${layersStr}` : '') + (trailing.length ? `/${trailing.join('/')}` : '');
+    console.log('[ADD LAYER] Old hash:', existing);
+    console.log('[ADD LAYER] New hash:', newHash);
+    console.log('[ADD LAYER] New token:', newToken);
     // Apply new hash with selected layer and restore previous camera view
     window.location.hash = newHash;
     
@@ -759,8 +818,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide form and Wayback iframe
     const form = document.getElementById('add-layer-form');
     if (form) form.classList.remove('active');
+    const waybackContainer = document.getElementById('wayback-iframe-container');
+    if (waybackContainer) waybackContainer.classList.remove('active');
   
   });
+  
+  // Minimal status updates for the Wayback iframe
+  const waybackIframe = document.getElementById('wayback-iframe');
+  const waybackStatus = document.getElementById('wayback-status');
+  if (waybackIframe) {
+    waybackIframe.addEventListener('load', () => {
+      if (waybackStatus) waybackStatus.textContent = '';
+    });
+    waybackIframe.addEventListener('error', () => {
+      if (waybackStatus) waybackStatus.textContent = 'failed to load — open in new tab';
+    });
+  }
 });
 
 
@@ -915,6 +988,7 @@ function ensureMapUIControls() {
   });
   container.appendChild(fullscreenBtn);
   document.body.appendChild(container);
+  console.log('[MAP UI] Controls injected');
 }
 
 // Remove map UI controls if present
@@ -922,6 +996,7 @@ function removeMapUIControls() {
   const el = document.getElementById('map-ui-controls');
   if (el) {
     el.remove();
+    console.log('[MAP UI] Controls removed');
   }
 }
 
@@ -1005,6 +1080,8 @@ function parseHash() {
               filter = ['all', ...values.map(val => ['!=', ['get', property], val])];
             }
           }
+          console.log('[HASH PARSE] Filter for', lname, ':', filterExpr, '->', filter);
+        } else {
           console.warn('[HASH PARSE] Invalid filter expression:', filterExpr);
         }
       }
@@ -1108,6 +1185,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     // Try explicit path first
     if (isJSON) {
       try {
+        console.debug('[DATA] Trying GeoJSON:', path);
         const r = await fetch(path);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return await r.json();
@@ -1115,6 +1193,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         // Fallback to CSV beside it
         const csvPath = sameDirCsv;
         try {
+          console.debug('[DATA] GeoJSON not found. Trying CSV (same dir):', csvPath);
           const r2 = await fetch(csvPath);
           if (!r2.ok) throw new Error(`HTTP ${r2.status}`);
           const txt = await r2.text();
@@ -1122,12 +1201,14 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         } catch (e2) {
           // Try ./data/ and ../data/
           try {
+            console.debug('[DATA] Trying CSV (data/):', dataDirCsv);
             const r3 = await fetch(dataDirCsv);
             if (!r3.ok) throw new Error(`HTTP ${r3.status}`);
             const txt3 = await r3.text();
             return csvTextToGeoJSON(txt3);
           } catch (e3) {
             try {
+              console.debug('[DATA] Trying CSV (../data/):', upDataDirCsv);
               const r4 = await fetch(upDataDirCsv);
               if (!r4.ok) throw new Error(`HTTP ${r4.status}`);
               const txt4 = await r4.text();
@@ -1140,6 +1221,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
       }
     } else if (isCSV) {
       try {
+        console.debug('[DATA] Trying CSV:', path);
         const r = await fetch(path);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const txt = await r.text();
@@ -1148,6 +1230,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         // Fallback to GeoJSON beside it
         const gjPath = sameDirGeo;
         try {
+          console.debug('[DATA] CSV not found. Trying GeoJSON (same dir):', gjPath);
           const r2 = await fetch(gjPath);
           if (!r2.ok) throw new Error(`HTTP ${r2.status}`);
           return await r2.json();
@@ -1158,11 +1241,13 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     } else {
       // No extension provided: try .geojson then .csv
       try {
+        console.debug('[DATA] No extension. Trying GeoJSON (same dir):', sameDirGeo);
         const r = await fetch(sameDirGeo);
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return await r.json();
       } catch (e) {
         try {
+          console.debug('[DATA] Trying CSV (same dir):', sameDirCsv);
           const r2 = await fetch(sameDirCsv);
           if (!r2.ok) throw new Error(`HTTP ${r2.status}`);
           const txt = await r2.text();
@@ -1170,12 +1255,14 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         } catch (e2) {
           // Try ./data/ and ../data/
           try {
+            console.debug('[DATA] Trying CSV (data/):', dataDirCsv);
             const r3 = await fetch(dataDirCsv);
             if (!r3.ok) throw new Error(`HTTP ${r3.status}`);
             const txt3 = await r3.text();
             return csvTextToGeoJSON(txt3);
           } catch (e3) {
             try {
+              console.debug('[DATA] Trying CSV (../data/):', upDataDirCsv);
               const r4 = await fetch(upDataDirCsv);
               if (!r4.ok) throw new Error(`HTTP ${r4.status}`);
               const txt4 = await r4.text();
@@ -1289,6 +1376,9 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     // Add filter if provided
     if (filter) {
       layerDef.filter = filter;
+      console.log('[FILTER] Applied filter to layer', layerId, ':', filter);
+    } else {
+      console.log('[FILTER] No filter for layer', layerId);
     }
 
     // 7) Copy styling from sourceHint if provided
@@ -1401,6 +1491,8 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
 // toLayer: optional { visibility, sourceHint }
 async function loadWaybackLayer(dateStr, toLayer) {
   try {
+    console.log('[WAYBACK] Loading ESRI Wayback layer for date:', dateStr);
+    
     const layerId = `wayback:${dateStr}`;
     const sourceId = layerId;
     
@@ -1416,6 +1508,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
     const requestDate = `${year}-${month}-${day}`;
     
     // Fetch Wayback configuration
+    console.log('[WAYBACK] Fetching Wayback release catalog...');
     const configResponse = await fetch('https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json');
     if (!configResponse.ok) {
       throw new Error('Failed to fetch Wayback configuration');
@@ -1458,10 +1551,19 @@ async function loadWaybackLayer(dateStr, toLayer) {
       }
     }
     
+    console.log(`[WAYBACK] Requested: ${requestDate}, Using release: ${closestRelease.date} (ID: ${closestRelease.releaseId})`);
+    
     // ESRI Wayback tile URL
+    // High resolution Maxar satellite imagery + aerial imagery
+    // Updated every few weeks since February 2014
     const tileUrl = `https://wayback.maptiles.arcgis.com/arcgis/rest/services/world_imagery/wmts/1.0.0/default028mm/mapserver/tile/${closestRelease.releaseId}/{z}/{y}/{x}`;
     
-    // Extract sourceHint - default to 'satellite' layer for positioning
+    console.log('[WAYBACK] Using ESRI World Imagery Wayback (Maxar satellite imagery)');
+    console.log('[WAYBACK] Tile URL pattern:', tileUrl.replace('{z}/{y}/{x}', 'Z/Y/X'));
+    console.log('[WAYBACK] ✓ High resolution imagery (up to 30cm in urban areas)');
+    console.log('[WAYBACK] ℹ️  Release:', closestRelease.title);
+    
+    // Extract sourceHint - default to 'satellite' layer for positioning (changed from 'overlay')
     let sourceHint = 'satellite';
     if (typeof toLayer === 'object' && toLayer !== null && toLayer.sourceHint) {
       sourceHint = toLayer.sourceHint;
@@ -1480,6 +1582,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
       maxzoom: 22,  // Wayback supports very high zoom levels
       attribution: '© Esri, Maxar, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community'
     });
+    console.log('[WAYBACK] Added raster source:', sourceId);
     
     // Visibility
     let visibility = 'visible';
@@ -1504,6 +1607,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
         const styleLayer = map.getStyle().layers.find(l => l.id === sourceHint);
         if (styleLayer && styleLayer.paint && styleLayer.paint['raster-opacity'] !== undefined) {
           layerDef.paint['raster-opacity'] = styleLayer.paint['raster-opacity'];
+          console.log('[WAYBACK] Copied raster-opacity from', sourceHint);
         }
       }
     } catch (ex) {
@@ -1517,8 +1621,10 @@ async function loadWaybackLayer(dateStr, toLayer) {
         const sourceIndex = allLayers.findIndex(l => l.id === sourceHint);
         if (sourceIndex >= 0 && sourceIndex < allLayers.length - 1) {
           const beforeId = allLayers[sourceIndex + 1].id;
+          console.log('[WAYBACK] Placing', layerId, 'right after', sourceHint, '(before', beforeId + ')');
           map.addLayer(layerDef, beforeId);
         } else {
+          console.log('[WAYBACK] Source layer', sourceHint, 'is last or not found, adding at top');
           map.addLayer(layerDef);
         }
       } else {
@@ -1528,6 +1634,8 @@ async function loadWaybackLayer(dateStr, toLayer) {
       console.warn('[WAYBACK] Failed to add layer with positioning:', ex);
       map.addLayer(layerDef);
     }
+    
+    console.log('[WAYBACK] Layer loaded:', layerId);
     
     // Mark as external layer
     externalLayers.add(layerId);
@@ -1546,6 +1654,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
           const sourceIdx = allStyleLayers.findIndex(l => l.id === sourceHint);
           if (sourceIdx >= 0) {
             allStyleLayers.splice(sourceIdx + 1, 0, { id: layerId, name: `Wayback ${requestDate}` });
+            console.log('[WAYBACK] Inserted', layerId, 'after', sourceHint, 'in UI list');
           } else {
             allStyleLayers.push({ id: layerId, name: `Wayback ${requestDate}` });
           }
@@ -1742,6 +1851,7 @@ function createLayerControls(map, visibleLayers) {
         const inputClass = shouldShowInput ? ' class="active"' : '';
         // Set input value to "+" by default when following without ticker, otherwise show offset number
         const inputValue = (isFollowing && !hasTickerFlag) ? '+' : offsetValue;
+        console.log('[UI] Layer', layer.id, 'isFollowing:', isFollowing, 'hasTickerFlag:', hasTickerFlag, 'shouldShowInput:', shouldShowInput, 'inputValue:', inputValue);
         buttonHtml += ` <button data-follow="${layer.id}" title="Toggle follow animation"${followClass}>➠</button>`;
         buttonHtml += ` <input type="text" data-follow-offset="${layer.id}" value="${inputValue}" placeholder="+"${inputClass} class="follow-offset-input" title="Distance offset in meters, or + to show ticker from 0">`;
       }
@@ -1886,6 +1996,8 @@ function createLayerControls(map, visibleLayers) {
   const parts = raw.split('/');
   const trailing = parts.slice(2);
   window.location.replace(`#${cameraStr}` + (trailing.length ? `/${trailing.join('/')}` : ''));
+      
+      console.log('[MAP] All layers reset to style defaults');
     });
   }
 
@@ -1894,6 +2006,7 @@ function createLayerControls(map, visibleLayers) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       const layerId = this.getAttribute('data-follow');
+      console.log('[FOLLOW BTN] Clicked for layer:', layerId);
       
       // Get offset input for this layer
       const offsetInput = container.querySelector(`input[data-follow-offset="${layerId}"]`);
@@ -1924,9 +2037,11 @@ function createLayerControls(map, visibleLayers) {
           
           if (followFlag) {
             // Remove :follow
+            console.log('[FOLLOW BTN] Removing :follow from', layerId);
             return newToken;
           } else {
             // Add :follow (no ticker by default)
+            console.log('[FOLLOW BTN] Adding :follow to', layerId);
             // After hash updates, focus the offset input so user can easily add ticker
             setTimeout(() => {
               const input = container.querySelector(`input[data-follow-offset="${layerId}"]`);
@@ -1949,6 +2064,7 @@ function createLayerControls(map, visibleLayers) {
       const parts = raw.split('/');
       const trailing = parts.slice(2);
       const newHash = `#${cameraStr}/${newLayersStr}` + (trailing.length ? `/${trailing.join('/')}` : '');
+      console.log('[FOLLOW BTN] New hash:', newHash);
       window.location.hash = newHash;
     });
   });
@@ -1958,6 +2074,7 @@ function createLayerControls(map, visibleLayers) {
     const handleOffsetUpdate = function(e) {
       const layerId = this.getAttribute('data-follow-offset');
       const inputValue = this.value.trim();
+      console.log('[FOLLOW OFFSET] Update for layer:', layerId, 'raw value:', inputValue);
       
       // Parse current hash
       const hash = window.location.hash.replace('#', '');
@@ -1988,14 +2105,17 @@ function createLayerControls(map, visibleLayers) {
             // Empty: remove ticker, just follow
             followSuffix = ':follow';
             this.value = '+'; // Reset input to default
+            console.log('[FOLLOW OFFSET] Removed ticker for', layerId);
           } else if (inputValue === '+') {
             // Just +: ticker at 0, keep as :follow+
             followSuffix = ':follow+';
             this.value = '+'; // Keep as +
+            console.log('[FOLLOW OFFSET] Set ticker to + for', layerId);
           } else if (inputValue === '0' || inputValue === '+0') {
             // Explicit 0: ticker at 0
             followSuffix = ':follow+0';
             this.value = '0'; // Normalize display
+            console.log('[FOLLOW OFFSET] Set ticker to 0 for', layerId);
           } else {
             // Parse as number (remove leading + if present)
             const cleanValue = inputValue.startsWith('+') ? inputValue.slice(1) : inputValue;
@@ -2003,10 +2123,12 @@ function createLayerControls(map, visibleLayers) {
             if (!isNaN(numValue) && numValue >= 0) {
               followSuffix = `:follow+${numValue}`;
               this.value = numValue.toString(); // Normalize display
+              console.log('[FOLLOW OFFSET] Set ticker to', numValue, 'for', layerId);
             } else {
               // Invalid input, default to +
               followSuffix = ':follow+';
               this.value = '+';
+              console.log('[FOLLOW OFFSET] Invalid input, defaulting to + for', layerId);
             }
           }
           return newToken + followSuffix;
@@ -2020,6 +2142,7 @@ function createLayerControls(map, visibleLayers) {
       const parts2 = raw2.split('/');
       const trailing2 = parts2.slice(2);
       const newHash = `#${cameraStr}/${newLayersStr}` + (trailing2.length ? `/${trailing2.join('/')}` : '');
+      console.log('[FOLLOW OFFSET] New hash:', newHash);
       window.location.hash = newHash;
     };
     
@@ -2110,6 +2233,7 @@ function createLayerControls(map, visibleLayers) {
     const handleFilterUpdate = function(e) {
       const layerId = this.getAttribute('data-filter-input');
       const filterExpr = this.value.trim();
+      console.log('[FILTER INPUT] Update for layer:', layerId, 'expression:', filterExpr);
       
       updateFilterInHash(layerId, filterExpr);
     };
@@ -2173,6 +2297,7 @@ function updateFilterInHash(layerId, filterExpr) {
       }
       if (followFlag) newToken += ':follow' + followFlag;
       
+      console.log('[FILTER] Updated token from', token, 'to', newToken);
       return newToken;
     }
     
@@ -2184,6 +2309,7 @@ function updateFilterInHash(layerId, filterExpr) {
   const parts = raw.split('/');
   const trailing = parts.slice(2);
   const newHash = `#${cameraStr}/${newLayersStr}` + (trailing.length ? `/${trailing.join('/')}` : '');
+  console.log('[FILTER] New hash:', newHash);
   window.location.hash = newHash;
 }
 
@@ -2400,6 +2526,7 @@ map.on('load', () => {
         pitch: parsedCamera.pitch,
         animate: false
       });
+      console.log('[INIT] Applied camera from hash on load:', parsedCamera);
     }
   } catch (e) {
     console.warn('[INIT] Failed to apply parsed camera on load', e);
@@ -2478,6 +2605,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
   // Periodic check for :follow in the hash
   // Escape layerId for regex
   const safeLayerId = layerId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  console.log('[FOLLOW START]', layerId, 'coords:', coords.length, 'startOffset:', startOffset, 'showTicker:', showTicker);
   let followCheckInterval = setInterval(() => {
     const rawHash = window.location.hash;
     const hash = rawHash.replace('#', '');
@@ -2488,9 +2616,12 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
       // Pattern must account for optional (sourceHint) after layer name and optional ticker flag: +layerId(source):follow or :follow+ or :follow+number
       stillFollowing = tokens.some(token => token.match(new RegExp(`^[+~]${safeLayerId}(?:\\([^)]+\\))?:follow(?:\\+\\d*)?$`)));
     }
+    console.log(`[FOLLOW CHECK] hash: ${rawHash} | :follow present for ${layerId}?`, stillFollowing);
     if (!stillFollowing) {
+      console.log(`[FOLLOW CHECK] :follow removed for ${layerId}, stopping animation and applying hash params.`);
       if (window._follow && typeof window._follow.cancel === 'function') {
         window._follow.cancel();
+        console.log('[FOLLOW] Cancelled by hashchange or flag removal');
       } else {
         // Fallback cleanup
         isFreeCameraAnimating = false;
@@ -2501,10 +2632,12 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
             if (src && src.setData) src.setData(originalData);
           }
         } catch(e) {}
+        console.log('[FOLLOW] Fallback cancel cleanup');
       }
     }
   }, 1000);
   isFreeCameraAnimating = true;
+  console.log('[FOLLOW] Animation state set: isFreeCameraAnimating = true');
   
   // Capture original visibility and only force-visible if not instructed to keep hidden
   let originalVisibility = null;
@@ -2512,6 +2645,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
     try { originalVisibility = map.getLayoutProperty(layerId, 'visibility'); } catch(e) { originalVisibility = null; }
     if (!keepLayerHidden) {
       map.setLayoutProperty(layerId, 'visibility', 'visible');
+      console.log('[FOLLOW] Made layer visible:', layerId);
     }
   }
   
@@ -2569,10 +2703,13 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
   const ticker = document.getElementById('distance-ticker');
   const totalDistKm = totalDist / 1000;
   const startOffsetKm = startOffset / 1000;
+  console.log('[FOLLOW] showTicker:', showTicker, 'ticker element:', !!ticker, 'totalDistKm:', totalDistKm);
   if (showTicker && ticker && totalDistKm > 0) {
     ticker.classList.add('active');
     ticker.textContent = startOffsetKm.toFixed(1) + ' km';
+    console.log('[FOLLOW] Ticker activated');
   } else {
+    console.log('[FOLLOW] Ticker NOT activated - showTicker:', showTicker, 'ticker:', !!ticker, 'totalDistKm:', totalDistKm);
   }
   function getBearing(from, to) {
     // Calculate bearing in radians from point 'from' to point 'to'
@@ -2630,6 +2767,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
 
   function animate(ts) {
     if (!isFreeCameraAnimating) {
+      console.log('[FOLLOW] Animation interrupted: isFreeCameraAnimating = false');
       return;
     }
     // (Hash :follow check now handled by periodic interval)
@@ -2710,6 +2848,9 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
       // Store the current tip coordinates for post-animation updates
       ticker.dataset.lng = tip[0];
       ticker.dataset.lat = tip[1];
+      console.log('[FOLLOW ANIMATE] Ticker updated:', currentDistKm.toFixed(1), 'km');
+    } else {
+      console.log('[FOLLOW ANIMATE] Ticker NOT updated - ticker:', !!ticker, 'hasActive:', ticker ? ticker.classList.contains('active') : false);
     }
     
     if (t < 1) {
@@ -2736,6 +2877,7 @@ function followPathWithFreeCamera(map, coords, onComplete, layerId, startOffset 
       try { if (followCheckInterval) clearInterval(followCheckInterval); } catch(e){}
       if (typeof onComplete === 'function') onComplete();
       window._follow = null;
+  console.log('[FOLLOW END]', layerId);
     }
   }
   requestAnimationFrame(animate);
@@ -2768,6 +2910,8 @@ window.addEventListener('hashchange', () => {
   // ...existing code...
 
   const { camera, layers, dynamicGeojsonToLoad, followId, followOffset, showTicker, followHidden, showMapUI, isStatic } = parseHash();
+  console.log('[FOLLOW DEBUG] Hash:', window.location.hash, '| followId:', followId, '| followOffset:', followOffset, '| showTicker:', showTicker, '| layers:', layers, '| dynamicGeojsonToLoad:', dynamicGeojsonToLoad);
+  console.log('[FOLLOW DEBUG] About to process layers and dynamic sources...');
 
   // Apply layer visibility from hash for all existing layers
   const hashStr = window.location.hash.replace('#', '');
@@ -2802,11 +2946,13 @@ window.addEventListener('hashchange', () => {
           // Explicitly shown in hash
           if (map.getLayoutProperty(id, 'visibility') !== 'visible') {
             map.setLayoutProperty(id, 'visibility', 'visible');
+            console.log('[HASHCHANGE] Showing layer:', id);
           }
         } else if (explicit === '~') {
           // Explicitly hidden in hash
           if (map.getLayoutProperty(id, 'visibility') !== 'none') {
             map.setLayoutProperty(id, 'visibility', 'none');
+            console.log('[HASHCHANGE] Hiding layer:', id);
           }
         } else {
           // Not mentioned - check if it's an external layer
@@ -2825,6 +2971,7 @@ window.addEventListener('hashchange', () => {
             // Style layers - restore to style default
             if (map.getLayoutProperty(id, 'visibility') !== defaultVis) {
               map.setLayoutProperty(id, 'visibility', defaultVis);
+              console.log('[HASHCHANGE] Restoring layer to default:', id, defaultVis);
             }
           }
         }
@@ -2855,12 +3002,14 @@ window.addEventListener('hashchange', () => {
           // Hide external layers when no layers in hash
           if (map.getLayoutProperty(layer.id, 'visibility') !== 'none') {
             map.setLayoutProperty(layer.id, 'visibility', 'none');
+            console.log('[HASHCHANGE] Hiding external layer (no flags in hash):', layer.id);
           }
         } else {
           // Restore style layers to defaults
           const defaultVis = styleDefaultVisibility[layer.id] || 'visible';
           if (map.getLayoutProperty(layer.id, 'visibility') !== defaultVis) {
             map.setLayoutProperty(layer.id, 'visibility', defaultVis);
+            console.log('[HASHCHANGE] Restoring layer to default (no flags in hash):', layer.id, defaultVis);
           }
         }
       }
@@ -2928,15 +3077,19 @@ window.addEventListener('hashchange', () => {
       if (isWayback && waybackDate) {
         // ESRI Wayback layer
         if (!layerExists) {
+          console.log('[HASHCHANGE] Loading new Wayback layer:', name);
           loadWaybackLayer(waybackDate, { visibility, sourceHint, filter });
         } else if (sourceHint) {
+          console.log('[HASHCHANGE] Reloading Wayback layer:', name, 'with sourceHint:', sourceHint);
           loadWaybackLayer(waybackDate, { visibility, sourceHint, filter });
         }
       } else {
         // GeoJSON/CSV layer
         if (!layerExists) {
+          console.log('[HASHCHANGE] Loading new layer:', name, 'with sourceHint:', sourceHint, 'filter:', filter, 'visibility:', visibility);
           loadAndAddOrReplaceGeoJSON(name + '.geojson', { visibility, sourceHint, filter });
         } else if (sourceHint || filter) {
+          console.log('[HASHCHANGE] Reloading existing layer:', name, 'with sourceHint:', sourceHint, 'filter:', filter);
           loadAndAddOrReplaceGeoJSON(name + '.geojson', { visibility, sourceHint, filter });
         }
       }
@@ -2953,15 +3106,19 @@ window.addEventListener('hashchange', () => {
   };
 
   // Always start follow if followId is present after camera update
+  console.log('[FOLLOW DEBUG] Calling map.flyTo with:', flyOpts);
   map.flyTo(flyOpts);
   if (followId) {
+    console.log('[FOLLOW DEBUG] followId detected, setting up follow for:', followId);
     // Wait for both flyTo and source readiness before starting follow
     let followReady = false;
     let flyDone = false;
     const tryStartFollow = () => {
+      console.log('[FOLLOW DEBUG] tryStartFollow called. flyDone:', flyDone, 'followReady:', followReady);
       if (!flyDone || !followReady) return;
       const src = map.getSource(followId);
       if (!(src && src._data && src._data.features)) {
+        console.log('[FOLLOW DEBUG] No source or features found for followId:', followId);
         return;
       }
       // Extract coords
@@ -2975,7 +3132,9 @@ window.addEventListener('hashchange', () => {
         if (f.geometry.type === 'MultiLineString') coords = coords.concat(...f.geometry.coordinates);
         if (f.geometry.type === 'MultiPolygon') coords = coords.concat(...f.geometry.coordinates.map(ring => ring[0]));
       });
+      console.log('[FOLLOW DEBUG] Layer:', followId, 'Geom types:', geomTypes, 'Coords count:', coords.length);
       if (coords.length > 1) {
+        console.log('[FOLLOW DEBUG] Starting new follow animation for:', followId, 'with showTicker:', showTicker, 'offset:', followOffset);
         window._isFollowStarted = true;
   followPathWithFreeCamera(map, coords, () => {
           // On completion: freeze current camera into the hash and remove :follow to avoid jumping back
@@ -2998,10 +3157,12 @@ window.addEventListener('hashchange', () => {
           window._isFollowStarted = false;
   }, followId, followOffset || 0, showTicker, followHidden);
       } else {
+        console.log('[FOLLOW DEBUG] Not enough coordinates to follow for layer:', followId);
       }
     };
     // Listen for flyend
     map.once('moveend', () => {
+      console.log('[FOLLOW DEBUG] map.moveend fired, setting flyDone = true');
       flyDone = true;
       tryStartFollow();
     });
@@ -3009,24 +3170,31 @@ window.addEventListener('hashchange', () => {
     const checkSource = () => {
       const src = map.getSource(followId);
       if (src && src._data && src._data.features) {
+        console.log('[FOLLOW DEBUG] Source', followId, 'is ready with', src._data.features.length, 'features');
         followReady = true;
         tryStartFollow();
         return true;
       }
+      console.log('[FOLLOW DEBUG] Source', followId, 'not ready yet. src:', !!src, 'src._data:', !!(src && src._data), 'features:', !!(src && src._data && src._data.features));
       return false;
     };
     if (!checkSource()) {
+      console.log('[FOLLOW DEBUG] Source not ready, listening for sourcedata events...');
       const onSourceData = (e) => {
+        console.log('[FOLLOW DEBUG] sourcedata event for:', e.sourceId);
         if (e.sourceId === followId && checkSource()) {
+          console.log('[FOLLOW DEBUG] Removing sourcedata listener for:', followId);
           map.off('sourcedata', onSourceData);
         }
       };
       map.on('sourcedata', onSourceData);
     } else {
+      console.log('[FOLLOW DEBUG] Source already ready, calling tryStartFollow immediately');
       followReady = true;
       tryStartFollow();
     }
   } else {
+    console.log('[FOLLOW DEBUG] No followId in hash, skipping follow setup');
   }
 });
 </script>
