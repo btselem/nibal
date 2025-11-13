@@ -32,8 +32,7 @@
     .plyr__control--overlaid{display:none !important;}
     .plyr__poster{display:none !important;}
   </style>
-  <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-  <script src="../src/players/adapter.js"></script>
+  <!-- Plyr and adapter scripts will be loaded dynamically for performance -->
 </head>
 <body>
   <div id="canvas">
@@ -54,6 +53,7 @@
   </div>
 
 <script>
+
 (function(){
   const injected = document.getElementById('injected');
   const floating = document.getElementById('floating');
@@ -65,8 +65,31 @@
   const loopChk = document.getElementById('loop');
   const coverChk = document.getElementById('cover');
   const autoChk = document.getElementById('auto');
-  
   let playerAdapter = null;
+
+  // Mobile detection
+  function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+  }
+
+  // Dynamically load Plyr and adapter only when needed
+  function loadPlyrAndAdapter() {
+    return new Promise((resolve, reject) => {
+      if (window.Plyr && window.createAdapter) return resolve();
+      let loaded = 0;
+      function checkDone() { loaded++; if (loaded === 2) resolve(); }
+      const plyrScript = document.createElement('script');
+      plyrScript.src = 'https://cdn.plyr.io/3.7.8/plyr.js';
+      plyrScript.onload = checkDone;
+      plyrScript.onerror = reject;
+      document.head.appendChild(plyrScript);
+      const adapterScript = document.createElement('script');
+      adapterScript.src = '../src/players/adapter.js';
+      adapterScript.onload = checkDone;
+      adapterScript.onerror = reject;
+      document.head.appendChild(adapterScript);
+    });
+  }
 
   // --- Hash state helpers -------------------------------------------------
   function parseHash(){
@@ -163,54 +186,46 @@
 
   async function loadUrl(u){
     if(!u) return;
+    if(!shouldUsePlyrAdapter(u)) return;
 
-    if(!shouldUsePlyrAdapter(u)){
-  /* Only YouTube, Vimeo, and direct video files are supported log removed */
-      return;
-    }
+    // On mobile, force autoplay off unless explicitly checked
+    let st = parseHash();
+    if(isMobile() && !st.autoplay) st.autoplay = false;
 
-    try{
-      // Destroy any existing adapter
-      if(playerAdapter){ 
-        try{ playerAdapter.destroy(); }catch(e){} 
-        playerAdapter = null; 
+    // Clean up previous player and DOM
+    if(playerAdapter){ try{ playerAdapter.destroy(); }catch(e){} playerAdapter = null; }
+    injected.innerHTML = '';
+
+    // Defer Plyr/adapter loading
+    await loadPlyrAndAdapter();
+
+    // Create wrapper and adapter
+    const wrap = document.createElement('div');
+    wrap.className = 'embed-wrapper plyr-container';
+    injected.appendChild(wrap);
+    playerAdapter = window.createAdapter(wrap, u);
+
+    // Wire player events
+    playerAdapter.on('ready', () => {
+      st = parseHash();
+      injected.classList.remove('cover', 'auto');
+      if(st.cover){
+        injected.classList.add('cover');
+      } else if(st.auto){
+        injected.classList.add('auto');
       }
-      injected.innerHTML = '';
-
-      // Create wrapper and adapter
-      const wrap = document.createElement('div');
-      wrap.className = 'embed-wrapper plyr-container';
-      injected.appendChild(wrap);
-
-      playerAdapter = window.createAdapter(wrap, u);
-      
-      // Wire player events
-      playerAdapter.on('ready', () => {
-        const st = parseHash();
-  /* [embed] Player ready, state: log removed */
-        
-        // Toggle classes based on mode
-        injected.classList.remove('cover', 'auto');
-        if(st.cover){
-          injected.classList.add('cover');
-        } else if(st.auto){
-          injected.classList.add('auto');
-        }
-        
-        // Apply player state
-        applyPlayerState(st);
-        
-        // Auto-hide UI if embedded
-        try{ if(window.top !== window.self){ hideFloatingUI(); } }catch(e){}
+      applyPlayerState(st);
+      // Hide UI after load on mobile or if embedded
+      if(isMobile() || (function(){try{return window.top!==window.self}catch(e){return true}})()){
+        hideFloatingUI();
+        setTimeout(()=>{ if(floating && floating.parentNode) floating.parentNode.removeChild(floating); }, 500);
+      } else {
         animateFloatingToBottom();
-      });
+      }
+    });
 
-      // Load the player
-      await playerAdapter.load(u);
-
-    }catch(err){
-  /* Player load failed log removed */
-    }
+    // Load the player
+    await playerAdapter.load(u);
   }
 
   function applyPlayerState(state){
@@ -261,6 +276,8 @@
       floating.style.transition = 'opacity 300ms ease';
       floating.style.opacity = '0';
       floating.style.pointerEvents = 'none';
+      // Remove all event listeners to free memory
+      loadBtn.onclick = clearBtn.onclick = autoplayChk.onchange = loopChk.onchange = coverChk.onchange = autoChk.onchange = urlIn.onkeydown = null;
     }catch(e){}
   }
 
@@ -376,7 +393,8 @@
     }
   });
 
-  urlIn.focus();
+  // On mobile, do not focus input (prevents keyboard pop-up)
+  if(!isMobile()) urlIn.focus();
 })();
 </script>
 </body>
