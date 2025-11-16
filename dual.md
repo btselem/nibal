@@ -818,7 +818,6 @@ IDF_order_gaza_city_9_sep_25.jpeg
 
 ### צילומים ווידאו
 - באדיבות ניבאל אל היסי
-- מוחמד ג׳ענון?
 - Activestills
 - REUTERS
 - דובר צה״ל
