@@ -659,22 +659,7 @@ function buildLayerList(){
     controls.appendChild(cb);
     controls.appendChild(label);
     
-    // Add "Only" button (focus button)
-    const onlyBtn = document.createElement('button');
-    onlyBtn.type = 'button';
-    onlyBtn.className = 'only-btn';
-    onlyBtn.title = 'Show only this layer';
-    onlyBtn.textContent = '⊙';
-    onlyBtn.style.padding = '4px 8px';
-    onlyBtn.style.background = 'transparent';
-    onlyBtn.style.border = 'none';
-    onlyBtn.style.borderRadius = '3px';
-    onlyBtn.style.color = 'inherit';
-    onlyBtn.style.cursor = 'pointer';
-    onlyBtn.style.fontSize = '16px';
-    controls.appendChild(onlyBtn);
-    
-    // Add video button for vimeo layers
+    // Add video button for vimeo layers (before "Only" button)
     const isVimeoLayer = baseKey.match(/^vimeo-(\d+)$/i);
     if (isVimeoLayer) {
       const videoBtn = document.createElement('button');
@@ -692,6 +677,22 @@ function buildLayerList(){
       videoBtn.style.fontSize = '16px';
       controls.appendChild(videoBtn);
     }
+    
+    // Add "Only" button (focus button) after video button
+    const onlyBtn = document.createElement('button');
+    onlyBtn.type = 'button';
+    onlyBtn.className = 'only-btn';
+    onlyBtn.title = 'Show only this layer';
+    onlyBtn.textContent = '⊙';
+    onlyBtn.style.padding = '4px 8px';
+    onlyBtn.style.background = 'transparent';
+    onlyBtn.style.border = 'none';
+    onlyBtn.style.borderRadius = '3px';
+    onlyBtn.style.color = 'inherit';
+    onlyBtn.style.cursor = 'pointer';
+    onlyBtn.style.fontSize = '16px';
+    controls.appendChild(onlyBtn);
+    
     
     li.appendChild(controls);
     
