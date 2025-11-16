@@ -90,8 +90,18 @@
       var iframe = document.getElementById('vimeo-embed');
       if (iframe) iframe.src = src;
     }
-    window.addEventListener('hashchange', updateVimeoEmbed);
+    // Only control video via hash changes
+    window.addEventListener('hashchange', updateVimeoEmbed, { passive: true });
     updateVimeoEmbed();
+    // Remove any direct event listeners on iframe
+    var iframe = document.getElementById('vimeo-embed');
+    if (iframe) {
+      iframe.removeEventListener('touchstart', null);
+      iframe.removeEventListener('touchmove', null);
+      iframe.addEventListener('touchstart', function() {}, { passive: true });
+      iframe.addEventListener('touchmove', function() {}, { passive: true });
+      iframe.addEventListener('wheel', function() {}, { passive: true });
+    }
   </script>
 </body>
 </html>

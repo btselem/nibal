@@ -289,7 +289,7 @@ function parseHash(){
   if (!raw) return { url: '', params: {}, view: null };
   // New compact format: filename/x,y,zoom/layers
   // filename may be a path containing .svg; layers is optional (encoded after a slash)
-  const compactRe = /^(?<file>[^\/,]+\.svg|\/[^\/,]+\.svg|[^\/,]+\.svg)\/(?<xyzoom>[\d\-\.]+,[\d\-\.]+,[\d\-\.]+)(?:\/(?<layers>.*))?$/i;
+  const compactRe = /^(?<file>[^\/,.]+\.svg|\/[^\/,.]+\.svg|[^\/,.]+\.svg)\/(?<xyzoom>[\d\-.]+,[\d\-.]+,[\d\-.]+)(?:\/(?<layers>.*))?$/i;
   const m = raw.match(compactRe);
   if (m && m.groups && m.groups.file){
     const file = m.groups.file;
@@ -308,13 +308,16 @@ function parseHash(){
       // Split by comma first, then process each token
       const tokens = layers.split(',').map(t => t.trim()).filter(t => t);
       tokens.forEach(token => {
-        const re = /([+~@])([^+~@\/]+)/g;
-        let mm;
-        while ((mm = re.exec(token)) !== null){
-          const sym = mm[1]; const name = decodeURIComponent(mm[2]);
-          if (sym === '+') vis.show.push(name);
-          else if (sym === '~') vis.hide.push(name);
-          else if (sym === '@') vis.video.push(name);
+        // Support combined tokens like +@vimeo-id, @+vimeo-id, etc.
+        if (token.startsWith('+@')) {
+          vis.show.push(decodeURIComponent(token.slice(2)));
+          vis.video.push(decodeURIComponent(token.slice(2)));
+        } else if (token.startsWith('@')) {
+          vis.video.push(decodeURIComponent(token.slice(1)));
+        } else if (token.startsWith('+')) {
+          vis.show.push(decodeURIComponent(token.slice(1)));
+        } else if (token.startsWith('~')) {
+          vis.hide.push(decodeURIComponent(token.slice(1)));
         }
       });
     }
@@ -367,21 +370,32 @@ function buildCompactHash(file, params, vis){
     
     const tokens = [];
     
-    // If we have any + or @ tokens, output those (focus mode or explicit show)
-    if ((vis.show && vis.show.length) || (vis.video && vis.video.length)) {
-      if (vis.show && vis.show.length) {
-        const showTokens = vis.show.map(item => `+${encodeURIComponent(String(shortLabel(item)))}`);
-        tokens.push(...showTokens);
+    // If we have any +@ tokens, output those first
+    if (vis.show && vis.video && vis.show.length && vis.video.length) {
+      for (const k of vis.show) {
+        if (vis.video.includes(k)) {
+          tokens.push(`+@${encodeURIComponent(String(shortLabel(k)))}`);
+        } else {
+          tokens.push(`+${encodeURIComponent(String(shortLabel(k)))}`);
+        }
       }
-      if (vis.video && vis.video.length) {
-        const videoTokens = vis.video.map(item => `@${encodeURIComponent(String(shortLabel(item)))}`);
-        tokens.push(...videoTokens);
+      for (const k of vis.video) {
+        if (!vis.show.includes(k)) {
+          tokens.push(`@${encodeURIComponent(String(shortLabel(k)))}`);
+        }
       }
-    }
-    // Otherwise, if we only have ~ tokens (normal mode), output ~ tokens
-    else if (vis.hide && vis.hide.length) {
-      const hideTokens = vis.hide.map(item => `~${encodeURIComponent(String(shortLabel(item)))}`);
-      tokens.push(...hideTokens);
+    } else if (vis.show && vis.show.length) {
+      for (const k of vis.show) {
+        tokens.push(`+${encodeURIComponent(String(shortLabel(k)))}`);
+      }
+    } else if (vis.hide && vis.hide.length) {
+      for (const k of vis.hide) {
+        tokens.push(`~${encodeURIComponent(String(shortLabel(k)))}`);
+      }
+    } else if (vis.video && vis.video.length) {
+      for (const k of vis.video) {
+        tokens.push(`@${encodeURIComponent(String(shortLabel(k)))}`);
+      }
     }
     
     if (tokens.length > 0) {
@@ -862,7 +876,6 @@ function buildLayerList(){
       const shortKey = key.split('/').pop();
       const hasVideoToken = parsed.vis && parsed.vis.video && 
         (parsed.vis.video.includes(key) || parsed.vis.video.includes(shortKey));
-      
       if (hasVideoToken) {
         videoBtn.textContent = '▶️'; // Playing video
         videoBtn.title = 'Video playing (click to hide)';
@@ -871,47 +884,29 @@ function buildLayerList(){
         videoBtn.title = 'Show image only (click to play video)';
       }
     };
-    
     updateButtonState();
-    
     videoBtn.addEventListener('click', (ev) => {
       ev.preventDefault(); ev.stopPropagation();
-      
       const parsed = parseHash();
       parsed.vis = parsed.vis || { show: [], hide: [], video: [] };
       const shortKey = key.split('/').pop();
-      
       const hasVideoToken = parsed.vis.video && 
         (parsed.vis.video.includes(key) || parsed.vis.video.includes(shortKey));
-      
       if (hasVideoToken) {
         // Remove @ token (switch from video to image)
         parsed.vis.video = parsed.vis.video.filter(k => k !== key && k !== shortKey);
-        // Ensure layer has + token for image display
-        if (!parsed.vis.show.includes(key) && !parsed.vis.show.includes(shortKey)) {
-          parsed.vis.show.push(key);
-        }
       } else {
         // Add @ token (switch from image to video)
         if (!parsed.vis.video.includes(key)) {
           parsed.vis.video.push(key);
         }
-        // Remove + token if present (@ replaces +)
-        parsed.vis.show = parsed.vis.show.filter(k => k !== key && k !== shortKey);
-        // Ensure checkbox is checked
-        cb.checked = true;
-        showExceptions.add(key);
       }
-      
-      // Update hash
+      // Do not touch + token here; checkbox controls +/~ independently
       suppressHashFor(120);
       const token = buildCompactHash(parsed.url, parsed.params, parsed.vis);
       location.hash = '#' + token;
-      
-      // Update video overlays
       try { if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays(); } catch(e){}
       try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
-      
       updateButtonState();
       refreshLayerListCheckboxes();
     });
@@ -1197,7 +1192,7 @@ function applyVisibilityFromVis(vis, opts){
   const rawHides = (vis && Array.isArray(vis.hide)) ? vis.hide.slice() : [];
   const rawShows = (vis && Array.isArray(vis.show)) ? vis.show.slice() : [];
   const rawVideos = (vis && Array.isArray(vis.video)) ? vis.video.slice() : [];
-    const resolveToken = (tok) => {
+  const resolveToken = (tok) => {
     if (!tok) return tok;
     if (String(tok).includes('/')) return tok;
     // find keys whose last segment matches tok
@@ -1210,11 +1205,42 @@ function applyVisibilityFromVis(vis, opts){
   const hides = rawHides.map(resolveToken);
   const shows = rawShows.map(resolveToken);
   const videos = rawVideos.map(resolveToken);
-  // Layers with @ tokens should also be visible (shown), just with video loaded
-  // So merge videos into shows for visibility purposes
-  const allShows = [...shows, ...videos];
-  // Sync in-memory exceptions with parsed vis.show+video so parsed state wins
-  showExceptions = new Set(allShows);
+  showExceptions = new Set(shows);
+  // New logic:
+  // If / (no tokens), show all layers as images
+  // If +layer(s), show only those layers
+  // If ~layer(s), hide only those layers
+  // If @vimeo, show all layers, play video for that layer
+  // If +@vimeo, show/play only that layer
+  const hasTokens = shows.length || hides.length || videos.length;
+  let onlyShowVideo = false;
+  if (videos.length && shows.length === 0 && hides.length === 0) {
+    onlyShowVideo = false;
+  }
+  let onlyShow = null;
+  if (shows.length && shows.length === videos.length && shows.length === 1) {
+    onlyShow = shows[0];
+  }
+  for (const [key, el] of layerKeyMap.entries()) {
+    let visible = true;
+    if (shows.length) {
+      visible = shows.includes(key);
+    } else if (hides.length) {
+      visible = !hides.includes(key);
+    } else if (videos.length && !onlyShow) {
+      visible = true;
+    } else if (onlyShow) {
+      visible = key === onlyShow;
+    } else {
+      visible = true;
+    }
+    toggleLayerVisibility(el, visible, { animate: animateGlobally ? true : false });
+    try { const cb = document.querySelector(`input[data-layer-key="${key}"]`); if (cb) cb.checked = Boolean(visible); } catch(e){}
+    if (!visible && window.overlayManager && typeof window.overlayManager.remove === 'function') window.overlayManager.remove(key);
+  }
+  if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+  if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
+  refreshLayerListCheckboxes();
   // Ancestor-preserve behavior for +/@ tokens: for each shown key, walk up its
   // ancestor chain and hide all direct sibling branches at each ancestor level
   // (unless those siblings are explicitly shown or marked as exceptions).
@@ -1372,56 +1398,78 @@ function applyVisibilityFromVis(vis, opts){
 
 function refreshLayerListCheckboxes(){
   const layerList = document.getElementById('layerList'); if (!layerList) return;
-  // traverse labels and update checkboxes based on element's computed visibility
   const inputs = Array.from(layerList.querySelectorAll('input[type=checkbox]'));
-  // build a map key -> input for ancestor lookups
-  const inputMap = new Map();
-  inputs.forEach(cb => { if (cb.dataset && cb.dataset.layerKey) inputMap.set(cb.dataset.layerKey, cb); });
-
-  // first, set each checkbox to reflect the element's computed visibility and enable it
-  inputs.forEach(cb => {
+  const parsed = parseHash();
+  const vis = parsed.vis || {};
+  const showSet = new Set(vis.show || []);
+  const hideSet = new Set(vis.hide || []);
+  for (const cb of inputs) {
     const key = cb.dataset.layerKey;
-    if (!key) return;
-    const el = layerKeyMap.get(key);
-    if (!el) return;
-    // do not override cb.checked here — leave checked as the authoritative state (user or programmatic)
-    cb.disabled = false;
-  });
-
-  // then, for each checkbox, if any ancestor parent checkbox exists and is unchecked,
-  // mark this checkbox as checked and disabled to indicate it's controlled by the parent
-  inputs.forEach(cb => {
-    const key = cb.dataset.layerKey; if (!key) return;
-    // walk up the key path
-    const parts = key.split('/');
-    for (let i = parts.length - 1; i > 0; i--) {
-      const ancestorKey = parts.slice(0, i).join('/');
-      const ancestorInput = inputMap.get(ancestorKey);
-      if (ancestorInput) {
-          if (!ancestorInput.checked) {
-            // parent is unchecked -> child should appear checked but disabled immediately
-            cb.checked = true;
-            cb.disabled = true;
-          }
-          break; // stop at nearest ancestor found
-        }
+    if (!key) continue;
+    // Only + and ~ affect checkbox state
+    if (showSet.size) {
+      cb.checked = showSet.has(key);
+    } else if (hideSet.size) {
+      cb.checked = !hideSet.has(key);
+    } else {
+      cb.checked = true;
     }
-  });
-
-  // now compute indeterminate state for parents: if a parent has some direct children
-  // that are shown as exceptions (or mixed), mark the parent.indeterminate = true
-  for (const [key, ancestorInput] of inputMap.entries()){
-    const children = getDirectChildrenKeys(key);
-    if (!children.length) { ancestorInput.indeterminate = false; continue; }
-    let exceptions = 0, visible = 0, hidden = 0;
-    children.forEach(childKey => {
-      const cb = inputMap.get(childKey);
-      if (!cb) return;
-      if (cb.disabled && showExceptions.has(childKey)) exceptions++;
-      if (cb.checked) visible++; else hidden++;
+    cb.disabled = false;
+    cb.indeterminate = false;
+  }
+  // Update video buttons independently for @
+  const videoBtns = Array.from(layerList.querySelectorAll('button.video-btn'));
+  const videoSet = new Set(vis.video || []);
+  for (const btn of videoBtns) {
+    const key = btn.dataset.layerKey;
+    if (!key) continue;
+    const shortKey = key.split('/').pop();
+    const hasVideoToken = videoSet.has(key) || videoSet.has(shortKey);
+    if (hasVideoToken) {
+      btn.textContent = '▶️';
+      btn.title = 'Video playing (click to hide)';
+    } else {
+      btn.textContent = '⏹️';
+      btn.title = 'Show image only (click to play video)';
+    }
+  }
+  // Optionally, you can add indeterminate logic for parents if needed
+  // Add delegated event listener for checkboxes to update hash with new syntax
+  const layerListEl = document.getElementById('layerList');
+  if (layerListEl && !layerListEl._hashListenerAdded) {
+    layerListEl.addEventListener('change', (ev) => {
+      const cb = ev.target;
+      if (cb && cb.type === 'checkbox' && cb.dataset.layerKey) {
+        const key = cb.dataset.layerKey;
+        const parsed = parseHash();
+        let vis = parsed.vis || {};
+        let newHash = '/';
+        if (vis.show && vis.show.length) {
+          let showArr = Array.from(vis.show);
+          if (cb.checked) {
+            if (!showArr.includes(key)) showArr.push(key);
+          } else {
+            showArr = showArr.filter(k => k !== key);
+          }
+          newHash = '/' + showArr.map(k => '+'+k).join(',');
+        } else if (vis.hide && vis.hide.length) {
+          let hideArr = Array.from(vis.hide);
+          if (!cb.checked) {
+            if (!hideArr.includes(key)) hideArr.push(key);
+          } else {
+            hideArr = hideArr.filter(k => k !== key);
+          }
+          newHash = '/' + hideArr.map(k => '~'+k).join(',');
+        } else {
+          // Default: show all
+          if (!cb.checked) {
+            newHash = '/~'+key;
+          }
+        }
+        location.hash = newHash;
+      }
     });
-    // parent is indeterminate if some children are exceptions or mixed visibility
-    ancestorInput.indeterminate = (exceptions>0) || (visible>0 && hidden>0);
+    layerListEl._hashListenerAdded = true;
   }
 }
 
@@ -1977,87 +2025,126 @@ function autoAttachVideoOverlays(){
   
   // Get list of layers with @ tokens (video mode)
   const parsed = parseHash();
-  const videoLayers = new Set(parsed.vis && parsed.vis.video ? parsed.vis.video : []);
-  
-  // Also check by short label
-  const videoLayersByShort = new Set();
-  for (const layer of videoLayers) {
-    videoLayersByShort.add(layer);
-    const shortLabel = String(layer).split('/').pop();
-    if (shortLabel) videoLayersByShort.add(shortLabel);
+  const shows = parsed.vis && parsed.vis.show ? parsed.vis.show : [];
+  const hides = parsed.vis && parsed.vis.hide ? parsed.vis.hide : [];
+  const videos = parsed.vis && parsed.vis.video ? parsed.vis.video : [];
+  const hasTokens = shows.length || hides.length || videos.length;
+  let onlyShow = null;
+  if (shows.length && shows.length === videos.length && shows.length === 1) {
+    onlyShow = shows[0];
   }
-  
-  for (const [key, el] of layerKeyMap.entries()){
-    try{
-      const id = el.id || String(key).split('/').pop();
-      if (!id) continue;
-      
-      // Check if this layer has @ token (video mode)
-      const hasVideoMode = videoLayersByShort.has(key) || videoLayersByShort.has(id);
-      
-      // Only attach overlays for displayed layers with @ token
-      const cs = window.getComputedStyle(el);
-      const isDisplayed = cs.display !== 'none' && cs.visibility !== 'hidden';
-      
-      // Remove overlay if not displayed or no @ token
-      if ((!isDisplayed || !hasVideoMode) && window.overlayManager && typeof window.overlayManager.remove === 'function') {
-        window.overlayManager.remove(key);
-        continue;
+  for (const [key, el] of layerKeyMap.entries()) {
+    let visible = true;
+    if (shows.length) {
+      visible = shows.includes(key);
+    } else if (hides.length) {
+      visible = !hides.includes(key);
+    } else if (videos.length && !onlyShow) {
+      visible = true;
+    } else if (onlyShow) {
+      visible = key === onlyShow;
+    } else {
+      visible = true;
+    }
+    el.style.display = visible ? '' : 'none';
+    // Remove overlay/iframe if not explicitly in hash (no @ token), regardless of visibility
+    const isVideo = videos.includes(key) || videos.includes(key.split('/').pop());
+    if (!isVideo && window.overlayManager && typeof window.overlayManager.remove === 'function') {
+      window.overlayManager.remove(key);
+      continue;
+    }
+    // Only attach overlays for displayed layers with @ token
+    const cs = window.getComputedStyle(el);
+    const isDisplayed = cs.display !== 'none' && cs.visibility !== 'hidden';
+    if (!isVideo || !isDisplayed) {
+      continue;
+    }
+    // Match patterns: vimeo-1234567, embed-vimeo.com%2F1234567, etc.
+    let url = null;
+    const id = el.id || String(key).split('/').pop();
+    const vimeoMatch = id.match(/^vimeo-(\d+)$/i);
+    if (vimeoMatch){
+      const videoId = vimeoMatch[1];
+      url = `../vim/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
+    }
+    const embedMatch = id.match(/^embed-(.+)$/i);
+    if (embedMatch && !url){
+      const embedPath = embedMatch[1];
+      url = `/vim/#${embedPath}`;
+    }
+    if (!url && id.startsWith('vimeo-')) {
+      const videoId = id.replace('vimeo-', '');
+      if (/^\d+$/.test(videoId)) {
+        url = `../vim/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
       }
-      
-      // Only proceed if layer has @ token
-      if (!hasVideoMode) continue;
-      
-      // Match patterns: vimeo-1234567, embed-vimeo.com%2F1234567, etc.
-      let url = null;
-      // Pattern: vimeo-1234567 -> /embed/#vimeo.com%2F1234567/autoplay,loop,cover
-      const vimeoMatch = id.match(/^vimeo-(\d+)$/i);
-      if (vimeoMatch){
-        const videoId = vimeoMatch[1];
-        url = `../embed/#vimeo.com%2F${videoId}/autoplay,loop,cover`;
-      }
-      // Pattern: embed-* -> extract full embed URL from id
-      // e.g., embed-vimeo.com%2F1234567 or embed-vimeo.com%2F1234567%2Fautoplay
-      const embedMatch = id.match(/^embed-(.+)$/i);
-      if (embedMatch && !url){
-        const embedPath = embedMatch[1];
-        url = `/embed/#${embedPath}`;
-      }
-      if (url && isDisplayed && hasVideoMode){
-        // Only attach if not already present
-        const wasAlreadyAttached = window.overlayManager.items && window.overlayManager.items.has(key);
-        if (!wasAlreadyAttached) {
-          /* [auto-attach] Attaching video to layer log removed */
-          window.overlayManager.attachIframe(key, url);
+    }
+    if (url && isVideo && isDisplayed){
+      const item = window.overlayManager.items && window.overlayManager.items.get(key);
+      let iframe = null;
+      let needsAttach = true;
+      if (item && item.el && item.el.querySelector) {
+        iframe = item.el.querySelector('iframe');
+        if (iframe && iframe.src && iframe.src === url) {
+          needsAttach = false;
         }
-        // Start playing visible video layers (both newly attached and existing)
-        try {
-          const item = window.overlayManager.items.get(key);
-          if (item && item.el && item.el.tagName === 'FOREIGNOBJECT') {
-            const iframe = item.el.querySelector('iframe');
-            if (iframe && iframe.contentWindow) {
-              iframe.contentWindow.postMessage({ type: 'start-video' }, '*');
-            }
+      }
+      if (needsAttach) {
+        window.overlayManager.attachIframe(key, url);
+        const itemAfter = window.overlayManager.items && window.overlayManager.items.get(key);
+        if (itemAfter && itemAfter.el && itemAfter.el.querySelector) {
+          const iframeAfter = itemAfter.el.querySelector('iframe');
+          if (iframeAfter && iframeAfter.src !== url) {
+            iframeAfter.src = url;
           }
-        } catch(e) {
-    /* [auto-attach] Failed to start video for */
         }
-      } else if (window.overlayManager && typeof window.overlayManager.remove === 'function') {
-        window.overlayManager.remove(key);
+      } else if (iframe && iframe.src !== url) {
+        iframe.src = url;
       }
-    }catch(e){ console.warn('[auto-attach] Failed for key', key, e); }
+      try {
+        const item2 = window.overlayManager.items.get(key);
+        if (item2 && item2.el && item2.el.tagName === 'FOREIGNOBJECT') {
+          const iframe2 = item2.el.querySelector('iframe');
+          if (iframe2 && iframe2.contentWindow) {
+            iframe2.contentWindow.postMessage({ type: 'start-video' }, '*');
+          }
+        }
+      } catch(e) {
+        // Failed to start video for this layer
+      }
+    }
   }
 }
 
-// Update reference frame and SVG transform on window resize
-window.addEventListener('resize', () => {
-  try { 
-    updateReferenceFrame();
-    render(); // Re-render SVG to match new reference frame scale
-    // Ensure overlays update after resize
-    if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
-  } catch(e){}
-});
+  // Update reference frame and SVG transform on window resize
+  window.addEventListener('resize', () => {
+    try { 
+      updateReferenceFrame();
+      render(); // Re-render SVG to match new reference frame scale
+      // Ensure overlays update after resize
+      if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
+    } catch(e){}
+  }, { passive: true });
+
+  // Ensure overlays and iframes do not add non-passive touch event listeners
+  // Remove any direct listeners on overlays/iframes
+  function makeOverlayPassive(overlay) {
+    if (!overlay) return;
+    // Remove any touchstart/touchmove listeners
+    overlay.removeEventListener('touchstart', null);
+    overlay.removeEventListener('touchmove', null);
+    // Add passive listeners for scroll/zoom events
+    overlay.addEventListener('touchstart', function() {}, { passive: true });
+    overlay.addEventListener('touchmove', function() {}, { passive: true });
+    overlay.addEventListener('wheel', function() {}, { passive: true });
+  }
+  // Patch overlays after update
+  if (window.overlayManager && window.overlayManager.items) {
+    for (const item of window.overlayManager.items.values()) {
+      makeOverlayPassive(item.el);
+      const iframe = item.el && item.el.querySelector && item.el.querySelector('iframe');
+      if (iframe) makeOverlayPassive(iframe);
+    }
+  }
 
 window.viewerReady = false;
 
@@ -2165,16 +2252,31 @@ document.addEventListener('keydown', function(e) {
         
         // Apply attributes to foreignObject
         overlay.removeAttribute('display');
-        overlay.setAttribute('x', String(x));
-        overlay.setAttribute('y', String(y));
-        overlay.setAttribute('width', String(width));
-        overlay.setAttribute('height', String(height));
+        // Strip 'px' units for SVG attributes to avoid scaling errors
+        function stripPx(val) {
+          if (typeof val === 'string' && val.endsWith('px')) return val.slice(0, -2);
+          return val;
+        }
+        overlay.setAttribute('x', stripPx(x));
+        overlay.setAttribute('y', stripPx(y));
+        overlay.setAttribute('width', stripPx(width));
+        overlay.setAttribute('height', stripPx(height));
         
         // Copy transform attribute if present, otherwise remove it
         if (transform) {
           overlay.setAttribute('transform', transform);
         } else {
           overlay.removeAttribute('transform');
+        }
+        // Ensure the inner <div> and <iframe> match the SVG layer's pixel size and units
+        if (innerDiv) {
+          innerDiv.style.width = (width ? stripPx(width) + 'px' : '100%');
+          innerDiv.style.height = (height ? stripPx(height) + 'px' : '100%');
+          const iframe = innerDiv.querySelector('iframe');
+          if (iframe) {
+            iframe.style.width = (width ? stripPx(width) + 'px' : '100%');
+            iframe.style.height = (height ? stripPx(height) + 'px' : '100%');
+          }
         }
         
         // Safari-specific fix: Safari doesn't handle transform on foreignObject well
@@ -2457,17 +2559,43 @@ document.addEventListener('keydown', function(e) {
   }
 
   function attachIframe(key, src, attrs){
-    // Build FO overlay and set iframe src (lazy loaded)
+    // Patch: Set iframe width/height based on SVG layer aspect ratio
+    let width = 1920, height = 1080; // default wide
+    try {
+      const target = getTargetForKey(key);
+      if (target) {
+        const bb = target.getBBox();
+        if (bb && bb.width && bb.height) {
+          if (bb.height > bb.width) {
+            width = 720;
+            height = 1280;
+          } else {
+            width = 1920;
+            height = 1080;
+          }
+        }
+      }
+    } catch(e) {}
     const fo = attachToLayer(key, () => {
       const iframe = document.createElement('iframe');
       iframe.src = '';
       iframe.setAttribute('frameborder','0');
-      iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture');
+      iframe.setAttribute('allow','autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share');
+      iframe.setAttribute('width', width);
+      iframe.setAttribute('height', height);
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.setAttribute('title', 'video-embed');
+      iframe.style.maxWidth = '100%';
+      iframe.style.maxHeight = '100%';
       iframe.style.width = '100%';
       iframe.style.height = '100%';
       iframe.style.border = '0';
       iframe.style.display = 'block';
       try{ Object.entries(attrs || {}).forEach(([k,v]) => iframe.setAttribute(k, String(v))); }catch(e){}
+      // Passive event listeners
+      iframe.addEventListener('touchstart', function(){}, { passive: true });
+      iframe.addEventListener('touchmove', function(){}, { passive: true });
+      iframe.addEventListener('wheel', function(){}, { passive: true });
       return iframe;
     }, src);
     return fo;
