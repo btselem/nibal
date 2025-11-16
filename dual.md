@@ -363,6 +363,8 @@ css: src/theme.css
 
 `שם תמונה ל-overlay:
 2024-06-23T000000Z_116671089_MT1NURPHO000S49GI0_RTRMADP_3_DAILY-LIFE-PALESTINE.JPG`
+שם תמונת צו הפינוי:
+IDF_order_rafah_11_may_24.jpeg`
 
 
 {.meta} 
@@ -377,8 +379,8 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](about:blank)
 [](svg/#warehouse_bureij.svg/-1.25,-1.19,3.47/+vimeo-1130687838,+warehouse "מחנה הפליטים אל־בוריג׳, 2 באוקטובר 2024. (Anadolu / מועיז סאלחי)")
+[](about:blank)
 
 החיים במחסן היו קצת יותר יציבים מאשר החיים באוהל, אבל הרגשתי חצויה. מצד אחד שמחתי להיות עם בעלי והבת שלי, ומצד שני התגעגעתי למשפחה שלי. המרחק מהמשפחה ומהבית שלי גרם לי להרגיש בודדה ומנוכרת.
 
@@ -391,6 +393,7 @@ css: src/theme.css
 ### Oct 24
 
 [](svg/#warehouse_bureij.svg/-1.02,-0.79,3.47/+@vimeo-1130687838 "ריתא במחסן באל-בוריג׳, מתוך חשבון הטיקטוק של ניבאל")
+[](about:blank)
 
 גרנו שם בערך חמישה חודשים. חיינו בתנאים לא פשוטים, אבל הרגשתי שלאט לאט הצלחנו למצוא קצת נחת.
 
@@ -426,7 +429,8 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](img/#nibal_xray.jpg)
+[](svg/#warehouse_bureij.svg/-1.49,0.8,2.47/+nibal_xray)
+[](about:blank)
 
 התעוררתי בבית החולים וראיתי שנכרתו לי הידיים. 
 
@@ -438,15 +442,11 @@ css: src/theme.css
 
 
 {.meta}
+[](svg/#warehouse_bureij.svg/0.38,0.74,3.11/+leaving_to_mawasi)
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
 ניבאל השתחררה מבית החולים לאחר 40 יום. בשלב זה, היא, אחמד וריתא נאלצו לעקור שוב.
 
 מבית החולים הם הגיעו ל״אזור ההומניטרי״ הצפוף שהגדיר הצבא הישראלי באל-מוואסי.
-
-`שם תמונה ל-overlay: 
-2024-11-20T000000Z_1782804767_MT1NURPHO000P9FN31_RTRMADP_3_ISRAEL-PALESTINIANS.JPG
-שם תמונת צו הפינוי:
-IDF_order_rafah_11_may_24.jpeg`
 
 
 {.meta} 
