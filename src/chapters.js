@@ -392,43 +392,43 @@ document.addEventListener('DOMContentLoaded', function () {
         ev.preventDefault();
         const target = document.getElementById(targetId);
         if (!target) return;
-        
-        // Suppress the page "snap" behavior during programmatic scroll
         window.__snapSuppressUntil = Date.now() + 1500;
-        
-        // Mark that we're in a programmatic scroll animation
         window.__chaptersAnimating = true;
-        
-        // Use custom smooth scroll to center the target
         const scroller = document.querySelector('main') || document.scrollingElement || document.documentElement;
         const viewportHeight = scroller.clientHeight || window.innerHeight;
         const targetTop = target.getBoundingClientRect().top + (scroller.scrollTop || window.pageYOffset);
         const centeredTop = targetTop - (viewportHeight / 2) + (target.offsetHeight / 2);
-        
-        // Use the global smooth helper if available for a softer animation
+        let scrollDone = false;
+        function onScrollDone() {
+          if (scrollDone) return;
+          scrollDone = true;
+          window.__chaptersAnimating = false;
+          // Now update overlays/iframes for the target section
+          if (window.overlayManager && typeof window.overlayManager.update === 'function') {
+            window.overlayManager.update();
+          }
+        }
         if (window.__smoothScrollTo) {
           try {
-            window.__smoothScrollTo(scroller, centeredTop, { source: 'nav' });
+            window.__smoothScrollTo(scroller, centeredTop, { source: 'nav', callback: onScrollDone });
           } catch (e) {
-            // fallback to native
             try {
               if (scroller === document.scrollingElement || scroller === document.documentElement) {
                 window.scrollTo({ top: centeredTop, behavior: 'smooth' });
               } else {
                 scroller.scrollTo({ top: centeredTop, behavior: 'smooth' });
               }
-              setTimeout(() => { window.__chaptersAnimating = false; }, 1000);
+              setTimeout(onScrollDone, 1000);
             } catch (e) { /* swallow */ }
           }
         } else {
-          // Native smooth scroll fallback
           try {
             if (scroller === document.scrollingElement || scroller === document.documentElement) {
               window.scrollTo({ top: centeredTop, behavior: 'smooth' });
             } else {
               scroller.scrollTo({ top: centeredTop, behavior: 'smooth' });
             }
-            setTimeout(() => { window.__chaptersAnimating = false; }, 1000);
+            setTimeout(onScrollDone, 1000);
           } catch (e) { /* swallow */ }
         }
       };
@@ -716,21 +716,26 @@ document.addEventListener('DOMContentLoaded', function () {
       console.warn('[chapters] Section not found:', targetId);
       return;
     }
-    
     console.log('[chapters] Jumping to section:', targetId);
-    
-    // Use the same scroll logic as the nav buttons
     window.__snapSuppressUntil = Date.now() + 1500;
     window.__chaptersAnimating = true;
-    
     const scroller = document.querySelector('main') || document.scrollingElement || document.documentElement;
     const viewportHeight = scroller.clientHeight || window.innerHeight;
     const targetTop = target.getBoundingClientRect().top + (scroller.scrollTop || window.pageYOffset);
     const centeredTop = targetTop - (viewportHeight / 2) + (target.offsetHeight / 2);
-    
+    let scrollDone = false;
+    function onScrollDone() {
+      if (scrollDone) return;
+      scrollDone = true;
+      window.__chaptersAnimating = false;
+      // Now update overlays/iframes for the target section
+      if (window.overlayManager && typeof window.overlayManager.update === 'function') {
+        window.overlayManager.update();
+      }
+    }
     if (window.__smoothScrollTo) {
       try {
-        window.__smoothScrollTo(scroller, centeredTop, { source: 'hash' });
+        window.__smoothScrollTo(scroller, centeredTop, { source: 'hash', callback: onScrollDone });
       } catch (e) {
         try {
           if (scroller === document.scrollingElement || scroller === document.documentElement) {
@@ -738,7 +743,7 @@ document.addEventListener('DOMContentLoaded', function () {
           } else {
             scroller.scrollTo({ top: centeredTop, behavior: 'smooth' });
           }
-          setTimeout(() => { window.__chaptersAnimating = false; }, 1000);
+          setTimeout(onScrollDone, 1000);
         } catch (e) { /* swallow */ }
       }
     } else {
@@ -748,7 +753,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           scroller.scrollTo({ top: centeredTop, behavior: 'smooth' });
         }
-        setTimeout(() => { window.__chaptersAnimating = false; }, 1000);
+        setTimeout(onScrollDone, 1000);
       } catch (e) { /* swallow */ }
     }
   }
