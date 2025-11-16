@@ -294,18 +294,25 @@ function buildUrlField(url, params, vis){
 function parseHash(){
   const raw = location.hash.slice(1).trim();
   if (!raw) return { url: '', params: {}, view: null };
-  // New compact format: filename/x,y,zoom/layers
-  // filename may be a path containing .svg; layers is optional (encoded after a slash)
-  const compactRe = /^(?<file>[^\/,.]+\.svg|\/[^\/,.]+\.svg|[^\/,.]+\.svg)\/(?<xyzoom>[\d\-.]+,[\d\-.]+,[\d\-.]+)(?:\/(?<layers>.*))?$/i;
+  // Compact formats supported:
+  // - file.svg
+  // - file.svg/layers
+  // - file.svg/x,y,scale
+  // - file.svg/x,y,scale/layers
+  // filename may be a path containing .svg
+  const compactRe = /^(?<file>.+?\.svg)(?:\/(?:(?<xyzoom>[\d\-.]+,[\d\-.]+,[\d\-.]+)(?:\/(?<layers>.*))?|(?<layersOnly>.*)))?$/i;
   const m = raw.match(compactRe);
   if (m && m.groups && m.groups.file){
     const file = m.groups.file;
     const xyzoom = m.groups.xyzoom || '';
-    const layers = m.groups.layers || '';
-    const parts = xyzoom.split(',').map(Number);
-    const x = !isNaN(parts[0]) ? parts[0] : null;
-    const y = !isNaN(parts[1]) ? parts[1] : null;
-    const s = !isNaN(parts[2]) ? parts[2] : null;
+    const layers = (m.groups.layers || m.groups.layersOnly || '').trim();
+    let x = null, y = null, s = null;
+    if (xyzoom) {
+      const parts = xyzoom.split(',').map(Number);
+      x = !isNaN(parts[0]) ? parts[0] : null;
+      y = !isNaN(parts[1]) ? parts[1] : null;
+      s = !isNaN(parts[2]) ? parts[2] : null;
+    }
     // parse layers section which follows +/~/@ tokens
     // + = show layer (image only for vimeo layers)
     // ~ = hide layer
