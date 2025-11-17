@@ -86,7 +86,6 @@ section:first-child h1{
     line-height: 0.5em;
 }
 
-
 section:first-child p{
     border: 0;
 }
@@ -229,6 +228,24 @@ section:first-of-type.current img:last-of-type{
     transform: translateX(-50%) translateY(0);
 }
 
+div#lang {
+    position: absolute;
+    bottom: 30vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+div#lang a {
+    color: #FA5F5F;
+    padding: 0 8px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+div#lang a:hover {
+    color: #fff;
+}
+
 p {
     font-size: 1.25em;
     line-height: 1.5em;
@@ -334,7 +351,7 @@ section:first-of-type {
 }
  
 section:first-of-type {
-    min-height: 85vh;
+    min-height: 75vh;
     padding: 0 0 15vh;
     margin: 0 auto;
 }

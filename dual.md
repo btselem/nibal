@@ -10,6 +10,12 @@ css: src/theme.css
 
 <img src="img/bts_logo.svg" alt="בצלם: מסעות עקירה]" style="max-width:100px;height:auto;">
 
+<div id="lang">
+    <a href="#"target="blank" class="dontinflect">עברית</a>
+    <a href="#en"target="blank" class="dontinflect">English</a>
+    <a href="#ar"target="blank" class="dontinflect">عربي</a>
+</div>
+
 <img src="img/scrol-signal.svg" alt="יש לגלול את הדף למטה" style="max-width:100px;height:auto;">
 
 
