@@ -495,37 +495,37 @@ IDF_order_rafah_11_may_24.jpeg`
 
 
 {.testimony typewriter}
-[](img/#0,0,0,0&100&&&nibal_after_amputation.jpg&0)
+[](svg/#warehouse_bureij3.svg/-1.15,1.03,3.32/~vimeo-1132490042.jpg,~vimeo-1137390641.jpg,~vimeo-1131630900.jpg)
 
 התקשיתי לקבל את הגוף החדש שלי. 
 
 
 {.testimony typewriter}
-[](img/#nibal_red.jpg)
+[](svg/#warehouse_bureij3.svg/-0.77,1.03,3.32/~vimeo-1132490042.jpg,~vimeo-1137390641.jpg,~vimeo-1131630900.jpg,~nibal_after_amputation)
 
 השתדלתי להישאר מטופחת, ועם עזרה גם להתלבש, להתאפר ולצאת מהאוהל.
 
 
 {.testimony typewriter}
-[](img/#nibal_red2.jpg)
+[](svg/#warehouse_bureij3.svg/-0.24,1.03,3.32/~vimeo-1132490042.jpg,~vimeo-1137390641.jpg,~vimeo-1131630900.jpg,~nibal_after_amputation,~nibal_red.jpg)
 
 אבל לא העזתי להסתכל במראה. 
 
 
 {.testimony typewriter}
-[](embed/#vimeo.com%2F1132490042%3Fshare%3Dcopy%26fl%3Dsv%26fe%3Dci/autoplay,loop,cover "מתוך חשבון האינסטגרם של ניבאל")
+[](svg/#warehouse_bureij3.svg/-0.58,-1.18,3.14/+@vimeo-1132490042.jpg,+vimeo-1137390641.jpg,+vimeo-1131630900.jpg "מתוך חשבון האינסטגרם של ניבאל")
 
 הרגשתי שגם ריתא בקושי מזהה אותי. פחדתי שהיא משתנה, שהיא מאבדת משמחת החיים ומהחיוניות שלה.
 
 
 {.testimony typewriter}
-[](embed/#vimeo.com%2F1131602000%3Fshare%3Dcopy%26fl%3Dsv%26fe%3Dci/autoplay,loop,cover)
+[](svg/#warehouse_bureij3.svg/0.09,-0.74,3.14/+vimeo-1137390641.jpg,+@vimeo-1131630900.jpg,vimeo-1132490042.jpg)
 
 אבל אחמד היה שם בשבילי. הוא אמר לי, ״אני אהיה הידיים שלך, העיקר שלך ולריתא יהיה טוב״.
 
 
 {.testimony typewriter}
-[](embed/#vimeo.com%2F1131630900%3Fshare%3Dcopy%26fl%3Dsv%26fe%3Dci/autoplay,loop,cover  "מתוך חשבון הטיקטוק של ניבאל")
+[](svg/#warehouse_bureij3.svg/0.84,-0.2,3.14/+@vimeo-1131630900.jpg  "מתוך חשבון הטיקטוק של ניבאל")
 
 חלמתי שנחזור לצפון הרצועה, לחיק המשפחה שלי, לימים שבהם כולנו היינו ביחד. כל-כך התגעגעתי אליהם. ייחלתי לרגע שבו תהיה הפסקת אש ואוכל לחזור אליהם ולהרגיש בטוחה שוב. 
 
