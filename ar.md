@@ -258,7 +258,7 @@ css: src/theme.css
 
 
 {.meta thumb} 
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,~oct23-IDF_heatmap,~idf-poly)
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+IDF_zone_060524-110524_NEW(idf-poly),+idf-poly-outlines,~oct23_idf,~idf-poly)
 في 6 مايو 2024، بعد أقل من شهرين من وصول نبال وأحمد وريتا إلى المدينة، أصدر الجيش الإسرائيلي أوامر إخلاء جديدة تطالب سكان رفح بالإخلاء.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">

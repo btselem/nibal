@@ -268,7 +268,7 @@ css: src/theme.css
 
 
 {.meta thumb} 
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,~oct23-IDF_heatmap,~idf-poly)
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+IDF_zone_060524-110524_NEW(idf-poly),+idf-poly-outlines,~oct23_idf,~idf-poly)
 ב-6 במאי 2024, פחות מחודשיים לאחר הגעתם של ניבאל, אחמד וריתא לעיר, הפיץ הצבא הישראלי צווי פינוי חדשים שדרשו מתושבי רפיח ומהעקורים ששהו בה להתפנות.  
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">

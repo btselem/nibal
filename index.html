@@ -627,21 +627,42 @@
                 const start = (scroller === document.scrollingElement || scroller === document.documentElement) ? (window.pageYOffset || document.documentElement.scrollTop || 0) : (scroller.scrollTop || 0);
                 const distance = Math.max(-start, to - start); // clamp to avoid negative over-scroll
                 const absDist = Math.abs(distance);
-                // Duration grows with distance but is clamped so long trips don't feel slow
-                const duration = opts.duration || Math.min(900, Math.max(300, Math.round(absDist * 0.45) + 150));
+                
+                // For snap animations, use shorter, gentler duration
+                // For hash jumps, use longer duration
+                const isSnap = opts.source === 'snap';
+                let duration;
+                if (opts.duration) {
+                    duration = opts.duration;
+                } else if (isSnap) {
+                    // Shorter, snappier duration for snaps
+                    duration = Math.min(400, Math.max(150, Math.round(absDist * 0.2) + 80));
+                } else {
+                    // Longer duration for intentional navigation
+                    duration = Math.min(900, Math.max(300, Math.round(absDist * 0.45) + 150));
+                }
                 const startTime = performance.now();
 
-                // cubic ease-out
-                function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+                // Stronger ease-out curve: faster initial movement, quicker stop
+                // Using cubic for snaps (stronger), quadratic for hash jumps
+                function easeOutCubic(t) { 
+                    return 1 - Math.pow(1 - t, 3);
+                }
+                function easeOutQuad(t) { 
+                    return 1 - (1 - t) * (1 - t);
+                }
+                const easingFn = isSnap ? easeOutCubic : easeOutQuad;
 
                 // Suppress other snap/scroll handlers while animating
-                window.__snapSuppressUntil = Date.now() + duration + 80;
+                // Use Math.max to preserve any existing longer suppression (e.g., from hash jumps)
+                const newSuppressUntil = Date.now() + duration + 80;
+                window.__snapSuppressUntil = Math.max(window.__snapSuppressUntil || 0, newSuppressUntil);
                 window.__chaptersAnimating = true;
                 window.__scrollAnimating = true;
 
                 function step(now) {
                     const elapsed = Math.min(duration, Math.max(0, now - startTime));
-                    const progress = easeOutCubic(elapsed / duration);
+                    const progress = easingFn(elapsed / duration);
                     const cur = Math.round(start + (distance * progress));
                     try {
                         if (scroller === document.scrollingElement || scroller === document.documentElement) {
@@ -758,14 +779,14 @@
                     ];
                 }
             } else {
-                // For other files, try absolute HTML then MD, then relative fallbacks
+                // For other files, try MD first (most common), then HTML fallback
                 candidatePaths = [
-                    origin + basePath + file + '.html',
                     origin + basePath + file + '.md',
-                    file + '.html',
-                    './' + file + '.html',
+                    origin + basePath + file + '.html',
                     file + '.md',
                     './' + file + '.md',
+                    file + '.html',
+                    './' + file + '.html',
                     origin + basePath + 'README.html',
                     origin + basePath + 'readme.md',
                     'README.html',
@@ -1274,12 +1295,19 @@
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(en => {
                 if (en.isIntersecting) {
+                    const sec = en.target;
+                    
+                    // Skip inflection for intermediate sections during hash jumps
+                    // Only process the target section when skip flag is active
+                    if (window.__skipSectionInflection && sec.id !== window.__targetSectionId) {
+                        return; // Skip all non-target sections during programmatic jumps
+                    }
+                    
                     // Signal to typewriter that section change is in progress
                     // This prevents typewriter from starting until iframes are updated
                     window.__typewriterSuppressed = true;
                     
                     try {
-                        const sec = en.target;
                         const a = sec.querySelector('a:not(.dontinflect)');
                         if (!a) {
                             return;

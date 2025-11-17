@@ -392,6 +392,8 @@ document.addEventListener('DOMContentLoaded', function () {
           if (scrollDone) return;
           scrollDone = true;
           window.__chaptersAnimating = false;
+            // Extend snap suppression to cover the skip flag clearing delay
+            window.__snapSuppressUntil = Math.max(window.__snapSuppressUntil || 0, Date.now() + 600);
           // Now update overlays/iframes for the target section
           if (window.overlayManager && typeof window.overlayManager.update === 'function') {
             window.overlayManager.update();
@@ -705,6 +707,9 @@ document.addEventListener('DOMContentLoaded', function () {
       console.warn('[chapters] Section not found:', targetId);
       return;
     }
+    // Set flag to suppress section observer inflection during jump
+    window.__skipSectionInflection = true;
+    window.__targetSectionId = targetId;
     window.__snapSuppressUntil = Date.now() + 1500;
     window.__chaptersAnimating = true;
     const scroller = document.querySelector('main') || document.scrollingElement || document.documentElement;
@@ -716,6 +721,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (scrollDone) return;
       scrollDone = true;
       window.__chaptersAnimating = false;
+      // Delay clearing skip flag to ensure all IntersectionObserver callbacks have processed
+      // IntersectionObserver callbacks can be batched/delayed, so wait longer
+      setTimeout(() => {
+        window.__skipSectionInflection = false;
+        window.__targetSectionId = null;
+      }, 500);
       // Now update overlays/iframes for the target section
       if (window.overlayManager && typeof window.overlayManager.update === 'function') {
         window.overlayManager.update();

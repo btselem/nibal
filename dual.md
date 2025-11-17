@@ -346,8 +346,8 @@ css: src/theme.css
 
 
 {.meta thumb} 
-[](svg/#south.svg/0.29,-1.35,3.18/+IDF_order_rafah)
-[](map/#31.42134,34.23382,10.36,-48.0,25.0/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly))
+[](svg/#south.svg/0.03,-1.03,2.76/+rita_tent1,+IDF_order_rafah,+rita_tent2)
+[](map/#31.42134,34.23382,10.36,-48.0,25.0/+IDF_zone_060524-110524_NEW(idf-poly),~oct23_idf,+idf-poly-outlines)
 ב-6 במאי 2024, פחות מחודשיים לאחר הגעתם של ניבאל, אחמד וריתא לעיר, הפיץ הצבא הישראלי צווי פינוי חדשים שדרשו מתושבי רפיח ומהעקורים השוהים בה להתפנות.  
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">

@@ -1195,8 +1195,10 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
   const extension = counterMatch ? (counterMatch[3] || '') : '';
   
   // Reconstruct: baseFile is for loading (includes extension if provided), geojsonFile stays as-is for layer ID
-  // If extension was explicitly provided in hash, use it directly; otherwise try both .geojson and .csv
+  // If extension was explicitly provided in hash, use baseName + extension directly to avoid double extensions
   const baseFile = extension ? (baseName + extension) : baseName;
+  
+  // Important: Don't append extensions if file already has one to prevent pois.csv.geojson
   
   // 1) Attempt to fetch and normalize into GeoJSON
   async function loadAsGeoJSONOrCSV(path) {
@@ -1204,10 +1206,11 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     const isCSV = lower.endsWith('.csv');
     const isJSON = lower.endsWith('.geojson') || lower.endsWith('.json');
     const hasExtension = isCSV || isJSON;
-    const base = path.replace(/\.(geo)?json$/i, '').replace(/\.csv$/i, '');
+    // Remove extension only if present, otherwise use path as-is
+    const base = hasExtension ? path.replace(/\.(geo)?json$/i, '').replace(/\.csv$/i, '') : path;
     const nameOnly = base.split('/').pop();
-    const sameDirGeo = `${base}.geojson`;
-    const sameDirCsv = `${base}.csv`;
+    const sameDirGeo = hasExtension ? path : `${base}.geojson`;
+    const sameDirCsv = hasExtension ? path : `${base}.csv`;
     const dataDirCsv = `${base.substring(0, base.lastIndexOf('/')) !== '' ? base.substring(0, base.lastIndexOf('/')) + '/' : ''}data/${nameOnly}.csv`;
     const upDataDirCsv = `../data/${nameOnly}.csv`;
 
