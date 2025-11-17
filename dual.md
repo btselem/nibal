@@ -451,7 +451,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-0.12,-0.81,2.26/~nibal_xray,~vimeo-1129846713,~rita_tent1)
+[](svg/#warehouse_bureij2.svg/-0.07,-0.93,2.26/+leaving_to_mawasi_triple_comp.jpg)
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
 ניבאל השתחררה מבית החולים לאחר 40 יום. בשלב זה, היא, אחמד וריתא נאלצו לעקור שוב.
 
@@ -467,7 +467,7 @@ css: src/theme.css
 
 
 {.meta thumb} 
-[](fg:blank))
+[](fg:blank)
 [](map/#31.35465,34.26392,15.27,40.0,1.2/~unosat-damage-231015,~unosat-damage,+wayback:20251023 "תצלום לוויין של חלקו הצפוני של ״האזור ההומניטרי״ באל-מוואסי, ינואר 2025. מקור: ESRI Wayback")
 
 תוך מספר חודשים, ״האזור ההומניטרי״ התמלא עד אפס מקום באוהלים, בהם נאלצו לחיות מעל למיליון בני אדם שנעקרו מכל רחבי הרצועה.
@@ -486,7 +486,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.61,0.01,2.78/~nibal_xray,~vimeo-1129846713,~rita_tent1,~leaving_to_mawasi_triple_comp.jpg,~winter_triple_comp.jpg "אקרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
+[](svg/#warehouse_bureij2.svg/0.61,0.01,2.77/+wheelchaor_triple_comp.jpg "אקרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
 ניבאל נאלצה להתחיל את תהליך ההחלמה שלה בתנאים בלתי-אנושיים.
 
 עד היום, עשרות אלפי פצועים, נכים ובעלי מוגבלויות, חלקם הגדול כתוצאה מהמתקפה הישראלית, מתקשים  לשרוד את התנאים הקשים במחנות העקורים.
@@ -566,19 +566,19 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.74,-0.33,1.45/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,+@vimeo-1129854927 "מתוך חשבון הטיקטוק של ניבאל")
+[](svg/#ceasefire_hope.svg/-0.77,-0.44,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,+@vimeo-1129854927 "מתוך חשבון הטיקטוק של ניבאל")
 
 המשפחה קיבלה אותי בבית בחיבוקים, שירים ובכי. בלילות נפגשנו כל האחים בבית ההורים שלי.
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.35,-0.31,1.45/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,@vimeo-1129854927)
 
 האחיות שלי היו לצידי כל הזמן ועזרו לי בהכל: להתקלח, להתלבש, לאכול ולטפל בריתא. 
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.11,-0.38,1.45/+nibal_rita_home.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg,@vimeo-1129854927)
 
 הן החליפו לה חיתולים, חיבקו אותה ושיחקו איתה. בזכותן הרגשתי שהחיים שלי מתחילים לחזור למסלול.
 
@@ -739,6 +739,7 @@ css: src/theme.css
 
 
 {.testimony typewriter}
+[](fg:blank)
 [](svg/#permanent_impermanence.svg/0.8,-0.49,3.32/+@vimeo-1132487425 "ניבאל ואביה באוהל בדיר אל-בלח")
 
 כל דבר בחיים שלי כרוך בסבל עכשיו. החום באוהל נורא, ואני מזיעה אבל לא יכולה להתרחץ לבד. אני סובלת מאוד מעקיצות, כי אני לא יכולה אפילו להתגרד. 
@@ -749,6 +750,7 @@ css: src/theme.css
 {.meta showdate}
 ### Oct 25
 
+[](fg:blank)
 [](svg/#permanent_impermanence.svg/0.76,-0.84,4.06/+@vimeo-1130690065,+@vimeo-1132487425 "ריתא במחנה העקורים בדיר אל-בלח")
 ב-10 לאוקטובר 2025 נכנסה לתוקף הפסקת האש בין ישראל לחמאס. 
 
@@ -768,6 +770,7 @@ css: src/theme.css
 
 
 {.meta}
+[](fg:blank)
 [](svg/#permanent_impermanence.svg/-0.78,-0.29,2.09/+refugees_end-comp.jpg,@vimeo-1132487425,@vimeo-1130690065)
 סיפורה של ניבאל הוא רק אחד מבין שני מיליון סיפורים של תושבי עזה שחוו אובדן, רעב ועקירה מתמשכים.
 
