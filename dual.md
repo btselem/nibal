@@ -453,7 +453,7 @@ IDF_order_rafah_11_may_24.jpeg`
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-0.38,-0.17,0.9/~nibal_xray,~vimeo-1129846713,~rita_tent1)
+[](svg/#warehouse_bureij2.svg/-0.12,-0.81,2.26/~nibal_xray,~vimeo-1129846713,~rita_tent1)
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
 ניבאל השתחררה מבית החולים לאחר 40 יום. בשלב זה, היא, אחמד וריתא נאלצו לעקור שוב.
 
@@ -505,7 +505,7 @@ IDF_order_rafah_11_may_24.jpeg`
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/-1.29,1.22,3.78/~vimeo-1132490042,~vimeo-1137390641,~vimeo-1131630900,~vimeo-1131630900)
+[](svg/#warehouse_bureij3.svg/-1.13,0.99,3.13/~vimeo-1132490042,~vimeo-1137390641,~vimeo-1131630900,~vimeo-1131630900)
 
 התקשיתי לקבל את הגוף החדש שלי. 
 
@@ -657,7 +657,7 @@ IDF_order_rafah_11_may_24.jpeg`
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.84,0.19,1.59/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg,+nibal_home_smile3.heic)
+[](svg/#back_home.svg/-0.82,0.28,1.98/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "הפצצות בשכונת א-נזלה בג׳אבליא, אוגוסט 2025")
 
 ההפצצות באזור שלנו נמשכו כל הזמן והרבה אנשים עקרו. אבל המשפחה המורחבת שלי גדולה מאוד ולא היה לנו לאן ללכת בלי שנצטרך להתפצל.
 
@@ -675,7 +675,7 @@ IDF_order_rafah_11_may_24.jpeg`
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.31,0.03,1.59/+@vimeo-1137392312,+nibal_ruined_home1.jpg "תושבים נעקרים משכונת א-נזלה בג׳אבליא ביום ההפצצה")
+[](svg/#back_home.svg/-0.19,0.08,2/+@vimeo-1137392312,+nibal_ruined_home1.jpg "תושבים נעקרים משכונת א-נזלה בג׳אבליא ביום ההפצצה")
 
 שמענו פיצוץ עז, ואז המון צעקות מבחוץ. ראינו אנשים רצים. אמרו לנו שהצבא הישראלי ציווה לפנות את האזור תוך רבע שעה. 
 
