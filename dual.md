@@ -770,14 +770,6 @@ css: src/theme.css
 
 
 {.meta}
-[](map/#31.35976,34.26766,15.31,40.0,1.2/~unosat-damage-231015,~unosat-damage,+wayback:20231101,+khan-yunis)
-
-
-{.meta}
-[](map/#31.35976,34.26766,15.31,40.0,1.2/~unosat-damage-231015,~unosat-damage,+wayback:20251023,+khan-yunis)
-
-
-{.meta}
 [](fg:blank)
 [](svg/#permanent_impermanence.svg/-0.78,-0.29,2.09/+refugees_end-comp.jpg,@vimeo-1132487425,@vimeo-1130690065)
 סיפורה של ניבאל הוא רק אחד מבין שני מיליון סיפורים של תושבי עזה שחוו אובדן, רעב ועקירה מתמשכים.
