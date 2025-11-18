@@ -127,8 +127,8 @@ css: src/theme.css
 
 
 {.subheader}
-[](svg/#intro-pre.svg/-0.08,-2.31,0.54/+vimeo-1130634480)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he)
+[](fg:blank)
+[](bg:blank)
 ## 7 באוקטובר 2023 
 
 
@@ -154,8 +154,8 @@ css: src/theme.css
 
 
 {.meta} 
-[](fg:blank)
-[](map/#31.49053,34.58209,9.30,25.1,38.8/+unosat-damage-231015,~labels_he)
+[](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1137388732)
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he)
 ניבאל הייתה אז בביתה בג׳באליא עם בתה ריתא, אז בת חודש בלבד. 
 
 אחמד, בעלה, היה באותה עת בתוך ישראל במסגרת עבודתו.
@@ -163,7 +163,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
 ניבאל המבוהלת החליטה לעבור עם ריתא לבית הוריה הסמוך.
 
 
@@ -238,7 +238,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(pois,id=khan-yunis),+arrow,+unosat-damage-231015,+unosat-damage-240107)
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=khan-yunis),+arrow,+unosat-damage-240107)
 בפברואר 2024 שיחרר הצבא הישראלי את אחמד, והוא הגיע לח'אן יונס שבדרום הרצועה.  
 
 למרות התנגדותם הנחרצת של הוריה, ניבאל החליטה לצאת דרומה, בתקווה להתאחד עם בעלה.
@@ -246,50 +246,50 @@ css: src/theme.css
 
 {.subheader}
 [](fg:blank)
-[](map/#31.39624,34.33155,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(pois,id=khan-yunis),+arrow,~labels_he,~Gaza_border_dash,~Gaza_border_base)
+[](bg:blank)
 ## המסע דרומה  
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(pois,id=gaza-2403),+idf-poly-outlines)
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403))
 את תחילת הדרך עושה ניבאל עם אביה, שמסיע אותה ואת ריתא מביתם בג'אבליא לפאתי העיר עזה.
 
 
 {.meta}
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "מתוך חשבון האינסטגרם של ניבאל")
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(pois,id=gaza-2403),+idf-poly-outlines)
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403))
 בעדותה תיארה ניבאל נסיעה רוויית אימה, במהלכה ראתה מבעד לחלון המכונית את ההפצצות הכבדות של הצבא הישראלי.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(pois,id=gaza-2403),+pois.csv#3(pois,id=nuseirat),+idf-poly-outlines)
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(pois,id=nuseirat))
 מהעיר עזה ניבאל המשיכה לדרום הרצועה ברגל, כשהיא נושאת בחיקה את ריתא בת החצי שנה.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(pois,id=gaza-2403),+pois.csv#3(pois,id=nuseirat),+pois.csv#4(pois,id=rafah),+idf-poly-outlines)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah))
 באזור א-נוסייראת הן התאחדו עם אחמד, אותו לא ראו מזה כחצי שנה.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+idf-poly-outlines,+pois.csv(poi,id=rafah)) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah)) 
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+idf-poly-outlines,+pois.csv(poi,id=rafah)) 
+[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah)) 
 
 התרגשתי מאוד לראות את אחמד. הוא חיבק ונישק את ריתא בלי הפסקה. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26859,34.25352,16.36,0.0,39.0/+idf-poly-outlines,+pois.csv(poi,id=rafah)) 
+[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
 אבל המפגש איתו היה גם מזעזע. הוא ירד המון במשקל, ונראה שהוא איבד את ניצוץ החיים שלו. 
 
 
@@ -314,13 +314,13 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#south.svg/-0.14,-0.04,5.24/+rafah_tent_comp.jpg "עקורים במחנה אוהלים בח׳אן יונס, 11 בדצמבר 2023. (רויטרס / איברהים אבו מוסטפא)")
+[](svg/#south.svg/-0.14,-0.04,5.24/+rafah_tent_comp.jpg "עקורים במחנה אוהלים בח'אן יונס, 11 בדצמבר 2023. (רויטרס / איברהים אבו מוסטפא)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+idf-poly-outlines,+pois.csv(poi,id=rafah)) 
 על אף שמחת האיחוד עם אחמד, ניבאל התקשתה להסתגל לחיים באוהל ברפיח. 
 
 
 {.meta thumb}
-[](svg/#south.svg/-0.14,-0.04,5.24/+tent_rafah,+rafah_tent_comp.jpg "עקורים במחנה אוהלים בח׳אן יונס, 11 בדצמבר 2023. (רויטרס / איברהים אבו מוסטפא)")
+[](svg/#south.svg/-0.14,-0.04,5.24/+tent_rafah,+rafah_tent_comp.jpg "עקורים במחנה אוהלים בח'אן יונס, 11 בדצמבר 2023. (רויטרס / איברהים אבו מוסטפא)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+idf-poly-outlines,+pois.csv(poi,id=rafah)) 
 
 הצפיפות, המחסור במים ובמזון, תנאי הסניטציה הירודים והיעדר הפרטיות, הפכו את החיים במחנות העקורים לבלתי נסבלים, במיוחד עבור נשים ונערות.
@@ -371,7 +371,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij))
 ניבאל ומשפחתה המצומצמת הגיעו למחנה הפליטים אל-בוריג׳ שבמרכז הרצועה, שם שכרו מחסן קטן מחברים.
 
 
@@ -382,7 +382,7 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.25,-0.19,1.15/+warehouse_comp-compressed.jpg,+vimeo-1130687838 "מחנה הפליטים אל־בוריג׳, 2 באוקטובר 2024. (Anadolu / מועיז סאלחי)")
+[](svg/#warehouse_bureij1.svg/-0.25,-0.19,1.15/+warehouse_comp-compressed.jpg,+vimeo-1130687838 "מחנה הפליטים אל־בוריג', 2 באוקטובר 2024. (Anadolu / מועיז סאלחי)")
 [](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij))
 החיים במחסן היו קצת יותר יציבים מאשר החיים באוהל, אבל הרגשתי חצויה. מצד אחד שמחתי להיות עם בעלי והבת שלי, ומצד שני התגעגעתי למשפחה שלי. המרחק מהמשפחה ומהבית שלי גרם לי להרגיש בודדה ומנוכרת.
 
