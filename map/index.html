@@ -1082,9 +1082,12 @@ function parseHash() {
     layersStr = cameraStr;
     cameraStr = '';
   }
-  // Detect optional flags in any additional segments (e.g., /mapui, /static)
+  // Detect optional flags in any additional segments (e.g., /mapui, /show-ui, /static)
   const extraSegments = parts.slice(2);
-  showMapUI = extraSegments.some(seg => seg.toLowerCase() === 'mapui');
+  showMapUI = extraSegments.some(seg => {
+    const lower = seg.toLowerCase();
+    return lower === 'mapui' || lower === 'show-ui';
+  });
   const isStatic = extraSegments.some(seg => seg.toLowerCase() === 'static');
   const cameraParts = cameraStr ? cameraStr.split(',').map(Number) : [];
   let layersOn = allStyleLayers.map(l => l.id);
