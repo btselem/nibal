@@ -541,7 +541,8 @@ css: src/theme.css
 
 
 {.subheader}
-[](about:blank)
+[](fg:blank)
+[](bg:blank)
 ## הפסקת האש: שביב של תקווה 
 
 
@@ -618,7 +619,8 @@ css: src/theme.css
 
 
 {.subheader}
-[](about:blank)
+[](fg:blank)
+[](bg:blank)
 ## בחזרה הביתה 
 
 
@@ -690,7 +692,8 @@ css: src/theme.css
 
 
 {.subheader}
-[](about:blank)
+[](fg:blank)
+[](bg:blank)
 ## ארעיות קבועה 
 
 
@@ -791,7 +794,7 @@ css: src/theme.css
 
 
 {.meta thumb closing}
-[](about:blank)
+[](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **המסע של ניבאל וריתא טרם נגמר.**  
 
