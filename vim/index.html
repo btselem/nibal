@@ -49,20 +49,24 @@
       background: #000;
       border: none;
       pointer-events: auto;
+      will-change: transform;
+      contain: layout style paint;
     }
   </style>
 </head>
 <body>
   <div id="vimeo-crop-container">
-    <iframe id="vimeo-embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="vimeo_embed"></iframe>
+    <iframe id="vimeo-embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" title="vimeo_embed"></iframe>
   </div>
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
+    // Defer player.js loading - not needed for basic iframe embed
+    
     function getVimeoIdFromHash() {
       var hash = decodeURIComponent(location.hash.replace(/^#/, ''));
       // Format: vimeo.com/123456789/flags
       var match = hash.match(/vimeo\.com\/(\d+)/);
-      return match ? match[1] : null;
+      var id = match ? match[1] : null;
+      return id;
     }
     function getFlagsFromHash() {
       var hash = decodeURIComponent(location.hash.replace(/^#/, ''));
@@ -70,38 +74,88 @@
       return parts[1] ? parts[1].split(',') : [];
     }
     function buildVimeoSrc(id, flags) {
+      var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
       var params = [
         'badge=0',
         'autopause=0',
-        'player_id=0',
-        'app_id=58479',
         'autoplay=1',
         'muted=1',
         'loop=1',
-        'background=1' // Hide Vimeo UI
+        'background=1', // Hide Vimeo UI
+        'controls=0',
+        'title=0',
+        'byline=0',
+        'portrait=0'
       ];
+      // Lower quality on mobile to reduce crashes
+      if (isMobile) {
+        params.push('quality=360p');
+      }
       return 'https://player.vimeo.com/video/' + id + '?' + params.join('&');
     }
+    var loadTimeout = null;
+    var isVisible = true; // Start as visible since iframe fills viewport
+    var hasLoadedOnce = false;
+    
     function updateVimeoEmbed() {
-      var id = getVimeoIdFromHash();
-      if (!id) return;
-      var flags = getFlagsFromHash();
-      var src = buildVimeoSrc(id, flags);
-      var iframe = document.getElementById('vimeo-embed');
-      if (iframe) iframe.src = src;
+      try {
+        var id = getVimeoIdFromHash();
+        if (!id) return;
+        
+        // Debounce rapid hash changes
+        if (loadTimeout) clearTimeout(loadTimeout);
+        
+        loadTimeout = setTimeout(function() {
+          var flags = getFlagsFromHash();
+          var src = buildVimeoSrc(id, flags);
+          var iframe = document.getElementById('vimeo-embed');
+          
+          if (!iframe) return;
+          
+          // Load immediately on first load, or if visible
+          if (isVisible || !hasLoadedOnce) {
+            // Prevent redundant reloads
+            if (iframe.src !== src) {
+              iframe.src = src;
+              hasLoadedOnce = true;
+            }
+          }
+        }, 50);
+      } catch(e) {
+        console.error('[vimeo] Update failed:', e);
+      }
     }
+    
+    // Lazy load with IntersectionObserver for visibility changes
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !hasLoadedOnce) {
+            updateVimeoEmbed();
+          }
+        });
+      }, { threshold: 0.01 });
+      
+      var container = document.getElementById('vimeo-crop-container');
+      if (container) observer.observe(container);
+    }
+    
     // Only control video via hash changes
     window.addEventListener('hashchange', updateVimeoEmbed, { passive: true });
+    
+    // Initial load
     updateVimeoEmbed();
-    // Remove any direct event listeners on iframe
-    var iframe = document.getElementById('vimeo-embed');
-    if (iframe) {
-      iframe.removeEventListener('touchstart', null);
-      iframe.removeEventListener('touchmove', null);
-      iframe.addEventListener('touchstart', function() {}, { passive: true });
-      iframe.addEventListener('touchmove', function() {}, { passive: true });
-      iframe.addEventListener('wheel', function() {}, { passive: true });
-    }
+    // Memory cleanup on page unload
+    window.addEventListener('pagehide', function() {
+      try {
+        var iframe = document.getElementById('vimeo-embed');
+        if (iframe) {
+          iframe.src = 'about:blank';
+        }
+        if (loadTimeout) clearTimeout(loadTimeout);
+      } catch(e) {}
+    }, { passive: true });
   </script>
 </body>
 </html>
