@@ -697,8 +697,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Accept any input with or without extension - datalist provides suggestions only
       // Files can be specified as 'pois', 'pois.csv', or 'safe-area.geojson'
       if (!availableLocalLayerFiles.includes(raw) && !availableLocalLayerFiles.includes(raw.replace(/\.(geojson|json|csv)$/i, ''))) { 
-        console.warn('[ADD LAYER] Custom file/URL not in predefined list:', raw);
-        // Don't return error - allow custom files/URLs
+        // Custom file/URL not in predefined list - allow it
       }
       baseLayerId = raw;
       
@@ -1420,7 +1419,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         }
       }
     } catch (ex) {
-      console.warn('[STYLE COPY] Failed to apply source hint style:', ex);
+      // Failed to apply source hint style
     }
     
     // Add explicit filter if provided in hash (overrides sourceHint filter)
@@ -1451,7 +1450,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
         map.addLayer(layerDef);
       }
     } catch (ex) {
-      console.warn('[LAYER ORDER] Failed to add layer with positioning:', ex);
+      // Failed to add layer with positioning, try fallback
       // Fallback: add without beforeId
       try {
         map.addLayer(layerDef);
@@ -1506,7 +1505,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
           allStyleLayers.push({ id: layerId, name: cleanId });
         }
       } catch (ex) {
-        console.warn('Failed to position layer in list:', ex);
+        // Failed to position layer in list, add at end
         allStyleLayers.push({ id: layerId, name: cleanId });
       }
       styleDefaultVisibility[layerId] = 'visible';
@@ -1629,7 +1628,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
         }
       }
     } catch (ex) {
-      console.warn('[WAYBACK] Failed to copy paint from source hint:', ex);
+      // Failed to copy paint from source hint
     }
     
     // Add layer positioned right after the source hint layer
@@ -1647,7 +1646,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
         map.addLayer(layerDef);
       }
     } catch (ex) {
-      console.warn('[WAYBACK] Failed to add layer with positioning:', ex);
+      // Failed to add layer with positioning, fallback
       map.addLayer(layerDef);
     }
     
@@ -1675,7 +1674,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
           allStyleLayers.push({ id: layerId, name: `Wayback ${requestDate}` });
         }
       } catch (ex) {
-        console.warn('[WAYBACK] Failed to position layer in list:', ex);
+        // Failed to position layer in list, add at end
         allStyleLayers.push({ id: layerId, name: `Wayback ${requestDate}` });
       }
       styleDefaultVisibility[layerId] = 'visible';
@@ -2028,7 +2027,6 @@ function createLayerControls(map, visibleLayers) {
       const [cameraStr, layersStr] = hash.split('/');
       
       if (!layersStr) {
-        console.warn('[FOLLOW BTN] No layers in hash');
         return;
       }
       
@@ -2987,9 +2985,9 @@ window.addEventListener('hashchange', () => {
           // Style layers always maintain their default filter (no hash modification)
         });
       } else {
-        console.warn('[HASHCHANGE] Style not loaded yet, skipping filter application');
+        // Style not loaded yet, skipping filter application
       }
-    } catch(e) { console.warn('[HASHCHANGE] Filter application error', e); }
+    } catch(e) { /* ignore filter errors */ }
   } else {
     // No layers specified in hash - restore all layers to their style defaults
     allStyleLayers.forEach(layer => {

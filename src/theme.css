@@ -4,7 +4,7 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;500;700&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@400..700&display=swap'); */
+
 @font-face {
     font-family: "Levit_1950";
     src: url("fonts/Levit_1950-BlackExtended.woff") format("woff2-variations");
@@ -64,11 +64,11 @@ section img {
 strong { font-weight: 700; }
 
 h1, h2, h3 { font-family: Levit_1950, sans-serif; font-feature-settings: 'calt' off;}
-h1 { font-size: 2.4em; font-weight: 200; margin-bottom: 0;}
+h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 0;}
 h2 { font-size: 1.8em; }
 h3 { font-size: 1.4em; }
 h4 { font-size: 1.2em; }
-h2, h3, h4 { font-weight: 500; }
+h2, h3, h4 { font-weight: 700; }
 
 section {
     /* theme: color, text-shadow */
@@ -91,12 +91,13 @@ section:first-child h1 em{
     font-size: 0.8em;
     margin-bottom: 0.5em;
     display: block;
-    color: #fff;
+    color: #FA5F5F;
     font-style: normal;
 }
 
 section:first-child h1{
-    line-height: 0.5em;
+    line-height: 0.75em;
+    color: #fff;
 }
 
 section:first-child p{
@@ -153,7 +154,7 @@ section.thumb.gofundme > a:hover{
 }
 
 section.testimony {
-    font-family: "Heb_hand";
+    font-family: "Heb_hand", "Shadows Into Light Two", cursive;
     max-width: 40vw;
 }
 
@@ -202,10 +203,6 @@ section:first-of-type h1,
 section:first-of-type h2 {
     margin: 0;
     font-weight: 700;
-}
-
-section:first-of-type h1 {
-    color: #FA5F5F;
 }
 
 section:first-of-type>#scroll-indicator,
@@ -586,6 +583,7 @@ iframe {
     }
 
     section:first-of-type h1{
-        margin: 0 0 40px;
+        margin: 0;
     }
 }
+

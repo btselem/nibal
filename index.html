@@ -870,16 +870,17 @@
             }
 
             function applyPageCss(cssPath) {
-                const id = 'page-css';
-                const existing = document.getElementById(id);
-                if (existing) existing.remove();
+                // Remove any previously added page CSS links
+                document.querySelectorAll('link[data-page-css]').forEach(link => link.remove());
                 if (!cssPath) return;
-                if (!isSafeCssPath(cssPath)) { console.warn('Rejected unsafe page css path:', cssPath); return; }
-                const link = document.createElement('link');
-                link.id = id;
-                link.rel = 'stylesheet';
-                link.href = cssPath;
-                document.head.appendChild(link);
+                cssPath.split(',').map(s => s.trim()).forEach(path => {
+                    if (!isSafeCssPath(path)) { console.warn('Rejected unsafe page css path:', path); return; }
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = path;
+                    link.setAttribute('data-page-css', 'true');
+                    document.head.appendChild(link);
+                });
             }
 
             const extracted = extractFrontMatter(text);

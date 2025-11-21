@@ -1,0 +1,12 @@
+/* LTR adjustments */
+
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+
+.ltr section{
+    direction: ltr;
+}
+
+.ltr section p{
+    border-right: none;
+    border-left: 8px solid #FA5F5F;
+}
