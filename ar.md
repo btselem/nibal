@@ -16,9 +16,7 @@ css: src/theme.css, src/ar.css
     <a href="#"target="blank" class="dontinflect">עברית</a>
     <a href="#en"target="blank" class="dontinflect">English</a>
     <a href="#ar"target="blank" class="dontinflect">عربي</a>
-</div><img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/84cbb72d-4ab8-46b0-ae74-f5fe5e12d840" />
-<img width="468" height="24" alt="image" src="https://github.com/user-attachments/assets/13ff3836-0089-437c-8b4f-9d44f12c955d" />
-
+</div>
 
 <img id="scroll-indicator" src="img/scrol-signal.svg" alt="יש לגלול את הדף למטה" style="max-width:100px;height:auto;">
 
@@ -136,13 +134,13 @@ Throughout the offensive, Israel prevented the Internally Displaced Persons (IDP
 ### Oct 23
 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en#2(bubbles))
+[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-ar#2(bubbles))
 في 7 تشرين الأول 2023، نفذت حركة حماس وفصائل فلسطينية مسلحة أخرى من قطاع غزة الهجوم الأكثر دموية الذي وقع ضد مدنيين إسرائيليين، على الإطلاق.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-ar(label-focused),+oct7-hamas-ar#2(bubbles))
 قُتل 1,220 شخصًا في ذلك الهجوم، بمن فيهم نساء ومسنون وأطفال. 
 
 وأصيب عشرات الآلاف واختُطف إلى قطاع غزة 252 شخصًا أحياء وجثث.
