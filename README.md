@@ -405,12 +405,12 @@ css: src/theme.css
 
 
 {.testimony typewriter}
+[](fg:blank)
+[](bg:blank)
 אבל אז הכול השתנה.
 
 
 {.meta}
-[](fg:blank)
-[](bg:blank)
 ### Oct 24
 [](svg/#warehouse_bureij2.svg/-55.25,60.89,157.92/+nibal_xray)
 [](bg:blank)
