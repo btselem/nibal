@@ -155,7 +155,7 @@ css: src/theme.css
 
 {.meta} 
 [](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,,+pois(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois-he(label-main,id=couple-home))
 ניבאל הייתה אז בביתה בג׳באליא עם בתה ריתא, אז בת חודש בלבד. 
 
 אחמד, בעלה, היה באותה עת בעבודתו בבניין בתוך ישראל.
@@ -163,7 +163,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home),+pois-he(label-main,id=home),+pois#2(label-main,id=couple-home))
 ניבאל המבוהלת החליטה לעבור עם ריתא לבית הוריה הסמוך.
 
 
@@ -239,7 +239,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=couple-home) "הערכת צפיפות בניינים שניזוקו ברצועת עזה לאחר החודש הראשון למתקפה. מקור: UNOSAT")
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois-he(label-main,id=khan-yunis),+pois#2(label-main,id=couple-home) "הערכת צפיפות בניינים שניזוקו ברצועת עזה לאחר החודש הראשון למתקפה. מקור: UNOSAT")
 בפברואר 2024 שיחרר הצבא הישראלי את אחמד, והוא הגיע לח'אן יונס שבדרום הרצועה.  
 
 למרות התנגדותם הנחרצת של הוריה, ניבאל החליטה לצאת דרומה, בתקווה להתאחד עם בעלה.
@@ -253,7 +253,7 @@ css: src/theme.css
 
 {.meta} 
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "מתוך חשבון האינסטגרם של ניבאל")
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2403))
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-he(label-main,id=home),+pois#2(label-main,id=gaza-2403))
 את תחילת הדרך עושה ניבאל עם אביה, שמסיע אותה ואת ריתא מביתם בג'אבליא לפאתי העיר עזה.
 
 
@@ -265,19 +265,19 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois(label-main,id=gaza-2403),+pois#2(label-main,id=nuseirat))
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-he(label-main,id=gaza-2403),+pois#2(label-main,id=nuseirat))
 מהעיר עזה ניבאל המשיכה לדרום הרצועה ברגל, כשהיא נושאת בחיקה את ריתא בת החצי שנה.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah))
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-he(label-main,id=nuseirat),+pois#2(label-main,id=rafah))
 באזור א-נוסייראת הן התאחדו עם אחמד, אותו לא ראו מזה כחצי שנה.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah)) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-he(label-main,id=rafah)) 
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
 
 
@@ -362,14 +362,14 @@ css: src/theme.css
 
 {.meta} 
 [](svg/#south.svg/-1.59,-2.33,5.6/+leaving_rafah-comp.jpg)
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+cities,+villages,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij) "תושבי אל-בוריג׳ צועדים בין מבנים שנהרסו בהפצצות ישראליות, 24 ביוני 2024. (NurPhoto / מג׳די פאתחי)")
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+cities,+villages,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah),+pois#2(label-main,id=bureij) "תושבי אל-בוריג׳ צועדים בין מבנים שנהרסו בהפצצות ישראליות, 24 ביוני 2024. (NurPhoto / מג׳די פאתחי)")
 
 ניבאל, אחמד וריתא נאלצו להימלט מרפיח יחד עם כמיליון איש נוספים, רובם המוחלט עקורים להם הורה הצבא הישראלי להתרכז בעיר בחודשים שלפני כן.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois(label-main,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois-he(label-main,id=bureij))
 ניבאל ומשפחתה המצומצמת הגיעו למחנה הפליטים אל-בוריג׳ שבמרכז הרצועה, שם שכרו מחסן קטן מחברים.
 
 
@@ -461,7 +461,7 @@ css: src/theme.css
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/-0.07,-0.93,2.26/+leaving_to_mawasi_triple_comp.jpg)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi) "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
+[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines,+pois-he(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi) "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
 ניבאל השתחררה מבית החולים לאחר 40 יום. בשלב זה, היא, אחמד וריתא נאלצו לעקור שוב.
 
 הם הגיעו ל״אזור ההומניטרי״ באל-מוואסי, שם הם חיו שוב באוהל.
@@ -572,7 +572,7 @@ css: src/theme.css
 
 {.meta}
 [](svg/#ceasefire_hope.svg/-0.54,-0.16,0.87/+@vimeo-1136076448,~prisoners_2-comp.jpg)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=couple-home),+pois#2(label-main,id=al-mawasi),+pois#3(label-main,id=home))
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+cities,+villages,+idf-poly-outlines,+pois-he(label-main,id=couple-home),+pois#2(label-main,id=al-mawasi),+pois#3(label-main,id=home))
 
 גם ניבאל ואחמד יצאו צפונה עם ריתא בת השנה וארבעה חודשים. 
 
@@ -642,7 +642,7 @@ css: src/theme.css
 
 {.meta}
 [](svg/#back_home.svg/-0.73,0.57,2.67/+@vimeo-1129860275 "תיעוד של בית אחותה של ניבאל לאחר ההפצצה, לצד תמונות של ילדיה שנהרגו")
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=alaa-home),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=alaa-home),+pois-he(label-main,id=alaa-home),+pois#2(label-main,id=couple-home))
 
 באפריל 2025 הפציץ הצבא הישראלי את ביתה של אחותה של ניבאל בג׳אבליא. כתוצאה מההפצצה נהרגו שלושת ילדיה של אלאא, אחותה: וסים, בן 10, מוהנד, בן 8, וח'וולה, בת 5. 
 
@@ -659,7 +659,7 @@ css: src/theme.css
 
 {.meta}
 [](svg/#back_home.svg/-0.16,-0.11,1.43/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~nibal_home_smile3.heic "תושבים בסמוך לגופות הרוגים באתר תקיפה ישראלית על בית בג'באליא, 18 באפריל 2025. (סאהר אל־ע'ורה / ZUMA Press Wire)")
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois-he(label-main,id=home),+pois#2(label-main,id=couple-home))
 
 בתחילת יוני 2025, החליטה ניבאל לחזור עם ריתא לבית הוריה הסמוך.
  
@@ -670,7 +670,7 @@ css: src/theme.css
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-1.01,-0.36,1.86/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~vimeo-1129860275)
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois-he(label-main,id=home))
 
 הייתי מתוסכלת מאוד כי לא יכולתי לעשות כלום בעצמי והתקשיתי לטפל בריתא. 
 
@@ -722,14 +722,14 @@ css: src/theme.css
 
 {.meta}
 [](svg/#permanent_impermanence.svg/-0.83,0.97,2.66/+nibal_ruined_home2.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
+[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois-he(label-main,id=home))
 ניבאל, ריתא וכ-50 מבני משפחתן המורחבת - הוריה של ניבאל, אחיה, בני זוגם וילדיהם - צעדו ברגל מג׳אבליא לעיר עזה בחיפוש אחר מקום בטוח. 
 
 הם התמקמו במסעדה נטושה של חברים, ואחר-כך עברו לדירה קטנה וצפופה בעיר עזה.
 
 
 {.meta} 
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2509))
+[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),+pois-he(label-main,id=home),+pois#2(label-main,id=gaza-2509))
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,+@vimeo-1136076786 "תושבים נעקרים ממחנה א-שאטי הסמוך לעיר עזה, 19 בספטמבר 2025. (Activestills / יוסף זענון)")
 
 שבועות ספורים לאחר שמשפחתה של ניבאל הגיעה אליה, פתחה ישראל במתקפה קרקעית נוספת על העיר עזה. 
