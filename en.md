@@ -5,8 +5,8 @@ css: src/theme.css, src/ltr.css
 ---
 
 
-# _The Displacement Journey of_ Nibal Al-Hissi
-[](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_en)
+# _The Displacement Journey of_ Nibal Al-Hisi
+[](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/-0.01,0.45,1.52/+nibal2023,+home,+displacement)
 
 <div id="logo">
@@ -24,37 +24,37 @@ css: src/theme.css, src/ltr.css
 
 {.meta}
 [](svg/#intro-pre.svg/-0.02,1.21,1.52/+nibal2023,~home,~displacement)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_en)
+[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he)
 For two years, Israel has forced Palestinians throughout the Gaza Strip to flee from place to place.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_en,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023 - Oct. 2025")
+[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023 - Oct. 2025")
 In most cases, they were ordered to evacuate by the Israeli military.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_en,+idf-zones "In red: Places included in military evacuation orders, Oct. 2023 - Oct. 2025")
+[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones "In red: Places included in military evacuation orders, Oct. 2023 - Oct. 2025")
 Yet the evacuation orders were often misleading or issued after an attack began – leaving residents panicked, confused and in extreme danger.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.43664,34.34673,10.18,37.6,0.0/~labels_en,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
+[](map/#31.43664,34.34673,10.18,37.6,0.0/~labels_he,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
 People also fled of their own accord, escaping the frequent airstrikes that rained down death and destruction throughout the Strip.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "Residents of Gaza City flee after the Israeli military ordered them to evacuate south, 15 Sept. 2025. (Reuters / Mahmoud Issa)")
-[](map/#31.49997,34.25627,10.18,37.6,0.0/~labels_en,+unosat-damage-231015)
+[](map/#31.49997,34.25627,10.18,37.6,0.0/~labels_he,+unosat-damage-231015)
 Throughout the offensive, Israel prevented the Internally Displaced Persons (IDPs) from finding safe shelter with food, water and basic services.
 
 
 {.meta}
 [](svg/#intro-pre.svg/-0.01,0.27,1.02/+displacement,+nibal2023)
-[](map/#31.40864,34.38832,9.39,37.6,0.0/~labels_en)
+[](map/#31.40864,34.38832,9.39,37.6,0.0/~labels_he)
 Among the IDPs is 25-year-old Nibal al-Hisi, who has been repeatedly displaced with her baby daughter.
 
 
@@ -64,7 +64,7 @@ This is her story.
 
 {.subheader}
 [](svg/#intro-pre.svg/-0.28,1.05,1/+nibal2023)
-[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_en,+Gaza_border_dash,+Gaza_border_base)
+[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 ## Life Before
 
 
@@ -121,7 +121,7 @@ A year after the wedding, in September 2023, Nibal gave birth to Rita.
 
 {.meta}
 [](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/)
+[](map/#31.72716,34.76485,8.57,0.0,35.0/~labels_he,+villages,+cities)
 Five days later, Ahmad received a permit to work in Israel and started a job in construction.
 
 
@@ -135,13 +135,13 @@ Five days later, Ahmad received a permit to work in Israel and started a job in 
 ### Oct 23
 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_en,+oct7-hamas-en#2(bubbles))
+[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en#2(bubbles))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_en,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
 The assailants killed 1,220 people, including women, elderly people and children. 
 
 Tens of thousands were injured, and 252 people, living and dead, were taken to Gaza.
@@ -149,13 +149,13 @@ Tens of thousands were injured, and 252 people, living and dead, were taken to G
 
 {.meta} 
 [](fg:blank)
-[](map/#31.43664,34.34673,10.18,37.6,0.0/+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
+[](map/#31.43664,34.34673,10.18,37.6,0.0/~labels_he,+villages,+cities,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
 That same day, Israel launched a massive wave of strikes across Gaza. 
 
 
 {.meta} 
 [](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_en,+pois(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois(label-main,id=couple-home))
 Nibal was at home in Jabalya with one-month-old Rita.
 
 Ahmad was working in Israel. 
@@ -163,13 +163,13 @@ Ahmad was working in Israel.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_en,+pois.csv(poi,id=home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home))
 Terrified, Nibal moved with Rita to her parents’ home nearby. 
 
 
 {.meta} 
 [](svg/#oct7.svg/0.47,0.52,2.02/+detainies-1 "Palestinians who had been detained by Israel released in Rafah, 28 Dec. 2023. (Reuters/Bassam Masoud)")
-[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_en)
+[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_he)
 A few days later, Israel revoked the work permits of all tens of thousands of laborers from Gaza. Many were still in Israel and could not return to Gaza. 
 
 
@@ -179,19 +179,19 @@ Ahmad and thousands of others instantly became “illegal aliens”.
 
 {.meta} 
 [](svg/#oct7.svg/0.45,0.41,2/+detainies-1,+detainies-2 "Palestinians who had been detained by Israel released in Rafah, 28 Dec. 2023. (Reuters/Bassam Masoud)")
-[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_en)
+[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_he)
 In the following days, Israel arrested thousands of workers within its territory, including Ahmad. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37771,34.43288,10.00,37.6,0.0/+IDF_zone_081023(idf-poly) "In red: Places included in military evacuation orders, 8 Oct. 2023")
+[](map/#31.37771,34.43288,10.00,37.6,0.0/+IDF_zone_081023(idf-poly),~labels_he,+villages,+cities "In red: Places included in military evacuation orders, 8 Oct. 2023")
 At the same time, the military began issuing evacuation orders in Gaza.
 
 
 {.meta thumb} 
 [](svg/#oct7.svg/0.04,-0.06,1.77/+IDF_order_north)
-[](map/#31.56174,34.26564,9.50,-45.3,0.0/+north,+arrow "A resident of Gaza City holding an evacuation order dropped by an Israeli plane, warning of an “impending attack” on the Gaza Strip and called on residents to move south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
+[](map/#31.56174,34.26564,9.50,-45.3,0.0/+north,+arrow,~labels_he,+villages,+cities "A resident of Gaza City holding an evacuation order dropped by an Israeli plane, warning of an “impending attack” on the Gaza Strip and called on residents to move south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to leave home and go south within 24 hours.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">
@@ -204,42 +204,42 @@ For more information, see:
 
 {.meta} 
 [](svg/#oct7.svg/-0.39,-0.38,1.97/+@vimeo-1136099759 "Traveling along Salah a-Din Road, 14 Oct. 2023. (Mohammed Zaanoun)")
-[](map/#31.38336,34.21994,10.31,-10.4,42.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home))
+[](map/#31.38336,34.21994,10.31,-10.4,42.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 Hundreds of thousands had to decide under heavy bombardment where to run, without knowing whether they would ever return. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.52287,34.46534,12.90,-3.2,39.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home) "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+villages,+cities "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
 Nibal was afraid to travel alone with her newborn and stayed with her parents in Jabalya.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.63,1.25,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home))
+[](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 We didn’t leave and go south despite the bombing, hunger and fear. I suffered a lot during that time. I missed Ahmad so much, and I couldn’t imagine going south alone with my baby, without the support of my husband and family.
 
 
 {.testimony typewriter}
-[](map/#31.52965,34.48083,14.83,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home))
+[](map/#31.52965,34.48083,14.83,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 I was so scared something would happen to Rita. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.50989,34.46989,12.68,39.2,0.5/+unosat-damage-231015,+unosat-damage-240107,+pois.csv(poi,id=home) "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
+[](map/#31.50989,34.46989,12.68,39.2,0.5/+unosat-damage-231015,+unosat-damage-240107,+pois.csv(poi,id=home),~labels_he,+villages,+cities "Assessed density of damage to buildings in the Gaza Strip after the first week of the offensive. Source: UNOSAT")
 Within a few months, the Israeli offensive had transformed northern Gaza beyond recognition. 
 
 
 {.meta} 
 [](svg/#oct7.svg/0.01,-0.42,1.99/+ruined_jabalia "Residents inspect the site of an Israeli strike on a house in Jabalya, 3 Jan. 2024. (Reuters/Emad Gabon)")
-[](map/#31.50989,34.46989,12.68,39.2,0.5/)
+[](map/#31.50989,34.46989,12.68,39.2,0.5/~labels_he,+villages,+cities)
 People who stayed in Jabalya were filmed walking among ruins, trying to salvage what was left of their belongings.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=couple-home) "Assessed density of damage to buildings in the Gaza Strip after the first month of the offensive. Source: UNOSAT")
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=couple-home),~labels_he,+villages,+cities "Assessed density of damage to buildings in the Gaza Strip after the first month of the offensive. Source: UNOSAT")
 In February 2024, Israel released Ahmad and he reached Khan Yunis in southern Gaza.
 
 Despite her parents’ strong objections, Nibal decided to try and meet him there.
@@ -253,57 +253,57 @@ Despite her parents’ strong objections, Nibal decided to try and meet him ther
 
 {.meta} 
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "From Nibal’s Instagram account")
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2403))
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2403),~labels_he,+villages,+cities)
 Nibal’s father drove her and six-month-old Rita to Gaza City.
 
 
 {.meta}
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "From Nibal’s Instagram account")
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403))
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),~labels_he,+villages,+cities)
 She told B’Tselem of a terrifying ride through roads in ruins, watching bombs rain down nearby. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois(label-main,id=gaza-2403),+pois#2(label-main,id=nuseirat))
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois(label-main,id=gaza-2403),+pois#2(label-main,id=nuseirat),~labels_he,+villages,+cities)
 From Gaza City, Nibal continued south on foot, carrying her baby. 
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah))
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he,+villages,+cities)
 In the area of a-Nuseirat, the two reunited with Ahmad. 
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah)) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he,+villages,+cities) 
 The young family went together to the tent Ahmad had set up in Rafah. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 
 I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
 
 
 {.meta} 
 [](svg/#south.svg/0.73,0.65,2.87/+ahmed_detained-comp.jpg "Palestinians who had been detained by Israel released in Rafah, 28 Dec. 2023. (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 Nibal and Rita met Ahmad after he was held in an Israeli detention facility for months, without trial. 
 
 
 {.meta} 
 [](svg/#south.svg/-0.02,0.65,2.87/+ahmed_detained-comp.jpg "Palestinians who had been detained by Israel released in Rafah, 28 Dec. 2023. (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 Since the 7 October attack, B’Tselem and other human rights groups have documented a systemic Israeli policy of harsh violence, starvation and denial of medical care against Palestinian detainees, leading to dozens of deaths to date. 
 
 Israel continues to deny most of them the right to due process and other basic rights, holding them in facilities run as a network of torture camps.
@@ -311,12 +311,12 @@ Israel continues to deny most of them the right to due process and other basic r
 
 {.meta} 
 [](svg/#south.svg/-0.82,2.16,7.52/+ahmed_detained-comp.jpg "Palestinians who had been detained by Israel released in Rafah, 28 Dec. 2023. (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 Some Gaza residents arrested in Israel after 7 October are still in custody. 
 
 {.meta}
 [](svg/#south.svg/-0.02,0,3.98/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023. (Reuters/Ibraheem Abu Mustafa)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah)) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 Despite the joy of reuniting, Nibal struggled to adjust to life in a tent in Rafah. 
 
 
@@ -332,7 +332,7 @@ Crammed together, without enough food and water, struggling with poor sanitation
 
 {.testimony typewriter}
 [](svg/#south.svg/-0.52,-1.83,7.04/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah))    
+[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities)    
 It was constant torment, probably the hardest period of my life.
 
 
@@ -344,7 +344,7 @@ I was ashamed to tell them how I was living.
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45870,34.34010,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly) "Evacuation orders issued by the Israeli military for residents of Rafah on 6 May 2024")
+[](map/#31.45870,34.34010,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+villages,+cities "Evacuation orders issued by the Israeli military for residents of Rafah on 6 May 2024")
 In early May 2024, less than two months after the young family arrived in Rafah, Israel issued evacuation orders for residents and IDPs to leave the area.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">
@@ -362,14 +362,14 @@ At the same time as issuing the evacuation orders, Israel intensified its strike
 
 {.meta} 
 [](svg/#south.svg/-1.59,-2.33,5.6/+leaving_rafah-comp.jpg)
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+cities,+villages,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij) "People walk among buildings destroyed by an Israeli airstrike in al-Bureij R.C., 23 June 2024 (NurPhoto/Majdi Fathi)")
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij),~labels_he,+villages,+cities "People walk among buildings destroyed by an Israeli airstrike in al-Bureij R.C., 23 June 2024 (NurPhoto/Majdi Fathi)")
 
 Nibal, Ahmad and Rita were forced to flee Rafah along with about one million people, most of them IDPs previously ordered by the military to shelter in the city. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois(label-main,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois(label-main,id=bureij),~labels_he,+villages,+cities)
  This time, the small family reached al-Bureij Refugee Camp in central Gaza and rented a small storage room from friends.
 
 
@@ -381,7 +381,7 @@ Nibal, Ahmad and Rita were forced to flee Rafah along with about one million peo
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/-0.47,-0.31,1.15/+warehouse_new-compressed.jpg "A-Shati R.C. in Gaza City, 15 July 2025. (Reuters/Mahmoud Issa)")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
 
 Life in the storage room was a bit more stable than in the tent, but I felt torn. I was grateful to be with my husband and daughter but also missed my family. I felt lonely and alienated far from home. 
 
@@ -393,14 +393,14 @@ Whenever I could, I checked in with the family up north over the phone.
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/-0.1,0.4,1.53/+@vimeo-1130687838 "Rita in the storage room in al-Bureij. From Nibal’s TikTok account")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
 
 We stayed there for about five months. The conditions were tough, but I felt we were slowly finding some peace. 
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/-0.1,0.4,1.53/+@vimeo-1130687838 "Rita in the storage room in al-Bureij. From Nibal’s TikTok account")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij))
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
 On the morning of 7 October 2024, Rita called me “Mama” for the first time. It was so exciting.
 
 
@@ -463,7 +463,7 @@ That and having Ahmad with me.
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/-0.07,-0.93,2.26/+leaving_to_mawasi_triple_comp.jpg)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi) "Displaced women carry their belongings along Salah a-Din Road in the Deir al-Balah area, 20 Nov. 2024 (NurPhoto/Majdi Fathi)")
+[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi),~labels_he,+villages,+cities "Displaced women carry their belongings along Salah a-Din Road in the Deir al-Balah area, 20 Nov. 2024 (NurPhoto/Majdi Fathi)")
 After 40 days, Nibal was discharged from the hospital. She, Ahmad and Rita had to flee again. 
 
 They reached the “humanitarian zone” in al-Mawasi and again stayed in a tent. 
@@ -574,7 +574,7 @@ In the weeks that followed, about half a million displaced people began returnin
 
 {.meta}
 [](svg/#ceasefire_hope.svg/-0.54,-0.16,0.87/+@vimeo-1136076448,~prisoners_2-comp.jpg)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=couple-home),+pois#2(label-main,id=al-mawasi),+pois#3(label-main,id=home))
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois(label-main,id=couple-home),+pois#2(label-main,id=al-mawasi),+pois#3(label-main,id=home),~labels_he,+villages,+cities)
 
 Nibal and Ahmad walked north with Rita, now almost one and a half years old. 
 
@@ -607,7 +607,7 @@ Despite her parents’ concerns, she went back to their apartment with Rita, and
 
 {.meta}
 [](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines "באדום: צווי הפינוי שהפציץ הצבא הישראלי לתושבי עזה בשבוע שלאחר הפרת הפסקת האש במרץ 2025")
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+villages,+cities "In red: Places included in military evacuation orders issued in the week after israel broke the ceasefire in March 2025")
 But then the war resumed. 
 
 Under the pressure of bombardments and blockade, tensions in the marriage resurfaced. 
@@ -643,7 +643,7 @@ Through everything, I tried to focus on Rita. She was the most important thing i
 
 {.meta}
 [](svg/#back_home.svg/-0.73,0.57,2.67/+@vimeo-1129860275 "The home of Nibal’s sister after it was bombed, and photos of her children who were killed")
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=alaa-home),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=alaa-home),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),~labels_he,+villages,+cities)
 
 In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, killing all three of her children: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
 
@@ -660,7 +660,7 @@ At some point, he demanded that I go back to my parents.
 
 {.meta}
 [](svg/#back_home.svg/-0.16,-0.11,1.43/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~nibal_home_smile3.heic "Residents next to bodies of people killed in an Israeli attack on a home in Jabalya, 18 April 2025. (ZUMA Press Wire/Saher Alghorra")
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois(label-main,id=home),+pois#2(label-main,id=couple-home),~labels_he,+villages,+cities)
 
 In early June 2025, several months after returning to their apartment, Nibal decided to move back to her parents with Rita. 
 
@@ -671,7 +671,7 @@ My family welcomed us with love again, but the house was full of grief. My siste
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-1.01,-0.36,1.86/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~vimeo-1129860275)
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
+[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home),~labels_he,+villages,+cities)
 
 I was frustrated because I couldn’t do anything on my own, and I struggled to care for Rita. 
 
@@ -680,13 +680,13 @@ Even with all the support from my parents, I felt like I’d become a burden for
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-0.82,0.28,1.98/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "Bombing in a-Nazlah neighborhood in Jabalya, August 2025")
-[](map/#31.52909,34.48128,15.23,38.4,0.0/+pois.csv(poi,id=home))
+[](map/#31.52909,34.48128,15.23,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 
 The bombings in our area never stopped. Many people were being displaced again. But my extended family is huge, and we had nowhere to go without splitting up. 
 
 
 {.meta}
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home))
+[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 At the end of August 2025, Israeli forces entered Jabalya and advanced toward the family’s neighborhood.
 
 
@@ -721,21 +721,21 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 {.meta}
 [](svg/#permanent_impermanence.svg/-0.83,0.97,2.66/+nibal_ruined_home2.jpg "The area of Nibal’s home after the bombing")
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
+[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home),~labels_he,+villages,+cities)
 Nibal walked with Rita and about 50 relatives – her parents, her siblings and their spouses and children – from Jabalya to Gaza City, searching for safety. 
 
 They stayed in an abandoned restaurant belonging to friends, and later in a cramped apartment in Gaza City. 
 
 
 {.meta} 
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2509))
+[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2509),~labels_he,+villages,+cities)
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
 
 Throughout those weeks, Israel launched another ground invasion into Gaza City. 
 
 {.meta thumb} 
 [](svg/#permanent_impermanence.svg/0.12,0.54,2.43/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,@vimeo-1136076786 "A man in Gaza City holds an evacuation order dropped by an Israeli plane, 9 Sept. 2025. (Reuters/Dawoud Abu Alkas)")
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509))
+[](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509),~labels_he,+villages,+cities)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel issued evacuation orders for about 1.2 million people to leave the city.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect">
@@ -748,7 +748,7 @@ In early September 2025, just weeks after Nibal arrived in Gaza City, Israel iss
 
 {.meta}
 [](svg/#permanent_impermanence.svg/0.16,0.34,2.41/+leaving_gaza_city_comp.jpg,@vimeo-1136076786)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines "IDPs flee the northern Gaza Strip, 1 Sept. 2025 (NurPhoto/Majdi Fathi)")
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+villages,+cities "IDPs flee the northern Gaza Strip, 1 Sept. 2025 (NurPhoto/Majdi Fathi)")
 The family fled south again, this time to a tent camp in Deir al-Balah.  
 
 
@@ -765,7 +765,7 @@ Our lives have been destroyed and now feel like a slow death. Lives of humiliati
 
 {.testimony typewriter}
 [](svg/#permanent_impermanence.svg/0.8,-0.49,3.32/+@vimeo-1132487425 "Nibal and her father in a tent in Deir al-Balah")
-[](map/#31.41150,34.38598,9.96,38.4,0.0/+pois.csv(poi,id=deir-al-balah))
+[](map/#31.41150,34.38598,9.96,38.4,0.0/+pois.csv(poi,id=deir-al-balah),~labels_he,+villages,+cities)
 
 Every part of my life is now filled with suffering.  The heat in the tent is unbearable. I sweat but can’t shower alone. I suffer from insect bites because I can’t even scratch myself. 
 
@@ -774,7 +774,7 @@ I look around and see my brothers’ wives caring for their families, and I’m 
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly) "In red: The area remaining under Israeli control according to the first phase of the ceasefire agreement")
+[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),~labels_he,+villages,+cities "In red: The area remaining under Israeli control according to the first phase of the ceasefire agreement")
 ### Oct 25
 On 10 October 2025, another ceasefire between Israel and Hamas took effect. 
 
@@ -783,7 +783,7 @@ In the weeks that followed, Israel continued to carry out strikes of varying int
 
 {.meta}
 [](svg/#permanent_impermanence.svg/1.77,-1.95,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
-[](map/#31.54931,34.18377,9.91,38.4,0.0/+pois.csv(poi,id=deir-al-balah),+IDF_zone_191025(idf-poly))
+[](map/#31.54931,34.18377,9.91,38.4,0.0/+pois.csv(poi,id=deir-al-balah),+IDF_zone_191025(idf-poly),~labels_he,+villages,+cities)
 Despite the ceasefire, Nibal and her family remain in constant danger. 
 
 
@@ -801,7 +801,7 @@ Nibal is one of nearly two million Gaza residents who have endured loss, hunger 
 
 
 {.meta}
-[](map/#31.54931,34.18377,9.91,38.4,0.0/~labels_en,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023-Oct.2025")
+[](map/#31.54931,34.18377,9.91,38.4,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023-Oct.2025")
 Their story is the story of how the Gaza Strip was destroyed.
 
 
@@ -818,7 +818,7 @@ In recent months, Nibal has shared her story with the media and on social networ
 
 {.meta thumb closing}
 [](fg:blank)
-[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_en)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **Nibal and Rita’s ordeal is not over.**  
 
 B’Tselem will continue to follow their story and share any developments in our newsletter:
