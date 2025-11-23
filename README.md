@@ -570,7 +570,7 @@ css: src/theme.css
 
 {.meta}
 [](svg/#ceasefire_hope.svg/-0.54,-0.16,0.87/+@vimeo-1136076448,~prisoners_2-comp.jpg)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=jabalia),+pois#2(label-main,id=al-mawasi))
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+cities,+villages,+idf-poly-outlines,+pois(label-main,id=couple-home),+pois#2(label-main,id=al-mawasi),+pois#3(label-main,id=home))
 
 גם ניבאל ואחמד יצאו צפונה עם ריתא בת השנה וארבעה חודשים. 
 
