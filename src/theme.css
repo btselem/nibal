@@ -139,9 +139,9 @@ section > a.thumb{
     background-repeat: no-repeat;
     background-position: right bottom;
     border-right: #FA5F5F 8px solid;
-    padding: 48px 220px 0 0;
+    padding: 48px 220px 8px 0;
     color:#FA5F5F;
-    height: 80px;
+    min-height: 80px;
     cursor: pointer;
     text-shadow: none;
     text-decoration: none;
