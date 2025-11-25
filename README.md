@@ -457,7 +457,7 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.82,1.79,12.66/+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.04,1.3,10.73/+rita_tent1)
 [](bg:blank)
 שאלתי מה עם ריתא, וענו לי שהיא בריאה ושלמה. זה מה שהחזיק אותי. 
 זה, וזה שאחמד היה לצדי.
@@ -465,7 +465,7 @@ css: src/theme.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines,+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=al-mawasi) "עקורות נושאות את חפציהן על כביש סלאח א־דין באיזור דיר אל־בלח, 20 בנובמבר 2024. (NurPhoto / מג׳די פאתחי)")
+[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+cities,+villages,+idf-poly-outlines,+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=al-mawasi))
 ניבאל השתחררה מבית החולים לאחר 40 יום. בשלב זה, היא, אחמד וריתא נאלצו לעקור שוב.
 
 הם הגיעו ל״אזור ההומניטרי״ באל-מוואסי, שם הם חיו שוב באוהל.
@@ -498,12 +498,12 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.28,-0.43,2.78/~nibal_xray,~vimeo-1129846713,~rita_tent1,~leaving_to_mawasi_triple_comp.jpg "חורף במחנה עקורים בח׳אן יונס, 31 בדצמבר 2024. (Activestills / דועאא אל-באז)")
+[](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "חורף במחנה עקורים בח׳אן יונס, 31 בדצמבר 2024. (Activestills / דועאא אל-באז)")
 בנובמבר 2024, החודש בו ניבאל ומשפחתה הגיעו ל״אזור ההומניטרי״, עקורים רבים שחסו במתחם תיארו חיים בצפיפות אדירה, עם מחסור אקוטי במים ובמזון, כשהם חשופים לחלוטין לקור ולגשמים העזים.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.61,0.01,2.77/+wheelchaor_triple_comp.jpg "אקרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
+[](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "אקרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
 ניבאל נאלצה להתחיל את תהליך ההחלמה שלה בתנאים בלתי-אנושיים.
 
 עד היום, עשרות אלפי פצועים, נכים ובעלי מוגבלויות, חלקם הגדול כתוצאה מהמתקפה הישראלית, מתקשים  לשרוד את התנאים הקשים במחנות העקורים.
@@ -590,13 +590,13 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg)
 
 האחיות שלי היו לצידי כל הזמן ועזרו לי בהכל: להתקלח, להתלבש, לאכול ולטפל בריתא. 
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg)
 
 הן החליפו לה חיתולים, חיבקו אותה ושיחקו איתה. בזכותן הרגשתי שהחיים שלי מתחילים לחזור למסלול.
 
@@ -608,7 +608,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg "מתוך חשבון הטיקטוק של ניבאל")
+[](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines "באדום: צווי הפינוי שהפציץ הצבא הישראלי לתושבי עזה בשבוע שלאחר הפרת הפסקת האש במרץ 2025")
 אבל אז התחדשה המלחמה ביתר שאת. 
 
@@ -616,6 +616,8 @@ css: src/theme.css
 
 
 {.meta}
+[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg "מתוך חשבון הטיקטוק של ניבאל")
+[](bg:blank)
 אחמד התמודד באותה תקופה עם החותם שהותירה בו השהות במתקני הכליאה הישראליים.
 
 
@@ -717,7 +719,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#back_home.svg/0.53,-0.13,2.39/+nibal_ruined_home1.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
+[](svg/#back_home.svg/1,-0.16,2.95/+nibal_ruined_home1.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
 בהמשך, נודע לניבאל כי הבניין בו גרה רוב חייה לצד משפחתה המורחבת נהרס כליל בהפצצות הכבדות על ג׳אבליא.
 
 

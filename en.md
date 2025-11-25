@@ -369,7 +369,7 @@ At the same time as ordering the evacuation, Israel intensified its strikes on t
 
 {.meta} 
 [](fg:blank)
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij),~labels_he,+villages,+cities "Walking among  buildings bombed in al-Bureij R.C., 23 June 2024 (NurPhoto/Majdi Fathi)")
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij),~labels_he,+villages,+cities "Walking among buildings bombed in al-Bureij R.C., 23 June 2024 (NurPhoto/Majdi Fathi)")
 
 Nibal, Ahmad and Rita fled Rafah along with about 1 million people – most of them IDPs the military previously ordered to shelter in the city. 
 
@@ -459,7 +459,7 @@ I was in shock. It felt like they were still there, or were going to grow back.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.82,1.79,12.66/+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.04,1.3,10.73/+rita_tent1)
 [](bg:blank)
 I asked about Rita, and they told me she was fine. That’s what kept me going, along with Ahmad by my side. 
 That and having Ahmad with me.
@@ -500,12 +500,12 @@ Within months, the area was crammed with tents sheltering over 1 million IDPs fr
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.28,-0.43,2.78/~nibal_xray,~vimeo-1129846713,~rita_tent1,~leaving_to_mawasi_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
+[](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
 IDP accounts from November 2024, when the family arrived, describe extreme overcrowding, acute shortages of food and water, and no shelter from the harsh winter.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.61,0.01,2.77/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
+[](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
 Nibal had to start begin her recovery in inhumane conditions. 
 
 Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many caused in Israeli attacks, are still struggling to survive in tents.
@@ -592,13 +592,13 @@ My family welcomed me with hugging, singing and tears. My  brothers and sisters 
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg)
 
 My sisters never left my side. They helped me with everything: showering, dressing, eating, caring for Rita.
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg)
 
 They changed her diapers, held her and played with her. Thanks to them, I felt my life was slowly getting back on track. 
 
@@ -610,7 +610,7 @@ Despite her parents’ concerns, she went back to their apartment with Rita and 
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+villages,+cities "In red: Areas ordered to evacuate in the week after Israel violated the ceasefire in March 2025")
 But then the war resumed. 
 
@@ -618,6 +618,8 @@ Living under the pressure of the Israeli blockade and airstrikes, tensions in th
 
 
 {.meta}
+[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](bg:blank)
 Ahmad was struggling with the consequences  of his time in Israeli detention.
 
 
@@ -715,7 +717,7 @@ We walked the streets, terrified.
 
 
 {.meta}
-[](svg/#back_home.svg/0.53,-0.13,2.39/+nibal_ruined_home1.jpg "The area of Nibal’s home after the bombing")
+[](svg/#back_home.svg/1,-0.16,2.95/+nibal_ruined_home1.jpg "The area of Nibal’s home after the bombing")
 Later, Nibal learned that the building she had lived in most of her life with her extended family had been completely destroyed.
 
 

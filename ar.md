@@ -453,7 +453,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.82,1.79,12.66/+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.04,1.3,10.73/+rita_tent1)
 [](bg:blank)
 سألت عن ريتا فأخبروني أنها سليمة وبصحة جيدة. هذا ما أبقاني صامدة. كان أحمد إلى جانبي.
 
@@ -493,12 +493,12 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.28,-0.43,2.78/~nibal_xray,~vimeo-1129846713,~rita_tent1,~leaving_to_mawasi_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
+[](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
 في تشرين الأول 2024، وهو الشهر الذي وصلت فيه نِبال وعائلتها إلى "المنطقة الإنسانية"، كان العديد من المهجرين الذين لجأوا إلى المجمع يتحدثون عن ظروف الحياة في كثافة هائلة، مع نقص حاد في المياه والغذاء، وتعرّضهم للبرد والأمطار الغزيرة.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.61,0.01,2.77/+wheelchaor_triple_comp.jpg "أكرم عديل، طفل فلسطيني فقد إحدى رجليه جرّاء هجوم إسرائيلي، في خيمة في مدينة غزة، 13 كانون الأول 2024 (Anadolu/ محمود عيسى)")
+[](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "أكرم عديل، طفل فلسطيني فقد إحدى رجليه جرّاء هجوم إسرائيلي، في خيمة في مدينة غزة، 13 كانون الأول 2024 (Anadolu/ محمود عيسى)")
 اضطرت نِبال إلى بدء مسيرة تعافيها في ظروف غير إنسانية.
 
 حتى اليوم، لا يزال عشرات آلاف الجرحى والمعاقين وذوي الاحتياجات الخاصة، معظمهم بسبب الهجوم الإسرائيلي، يجدون صعوبة في البقاء على قيد الحياة في الخيام في مخيمات المهجرين.
@@ -583,13 +583,13 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.39,-0.4,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg)
 
 كانت أخواتي بجانبي طوال الوقت وساعدنني في كل شيء: الاستحمام، ارتداء الملابس، تناول الطعام والاعتناء بريتا. 
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg,@vimeo-1129854927)
+[](svg/#ceasefire_hope.svg/-0.13,-0.49,1.93/+nibal_rita_home.jpg)
 
 كنّ يغيرن حفاضاتها، يحتضنّها ويلعبن معها. بفضلهن، شعرت أن حياتي بدأت تعود إلى مسارها.
 
@@ -601,12 +601,15 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar "بالأحمر: أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان قطاع غزة خلال الأسبوع الذي تلا انتهاك وقف إطلاق النار في آذار 2025")
 ولكن عندها تجددت الحرب بضراوة أشدّ. تحت ضغط القصف والحصار، عادت علاقة نِبال وأحمد إلى التأزم من جديد.
 
 
 {.meta}
+[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](bg:blank)
+
 كان أحمد يعاني في ذلك الوقت من الآثار التي خلّفها التنكيل الذي تعرّض له في مراكز الاعتقال الإسرائيلية.
 
 
@@ -704,7 +707,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#back_home.svg/0.53,-0.13,2.39/+nibal_ruined_home1.jpg "منطقة منزل نبال بعد القصف")
+[](svg/#back_home.svg/1,-0.16,2.95/+nibal_ruined_home1.jpg "منطقة منزل نبال بعد القصف")
 في وقت لاحق، علمت نِبال أن المبنى الذي عاشت فيه معظم حياتها، بجانب عائلتها الموسعة، قد دُمر بالكامل جرّاء القصف العنيف على جباليا.
 
 
