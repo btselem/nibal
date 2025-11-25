@@ -192,13 +192,13 @@ He and thousands of others were arrested in Israel within days.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37771,34.43288,10.00,37.6,0.0/+IDF_zone_081023(idf-poly),~labels_he,+villages,+cities "In red: Areas ordered to evacuate on 8 Oct. 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+IDF_zone_081023(idf-poly),~labels_he,+villages,+cities "In red: Areas ordered to evacuate on 8 Oct. 2023")
 Meanwhile, the military began issuing evacuation orders for areas throughout Gaza.
 
 
 {.meta thumb} 
 [](svg/#oct7.svg/0.04,-0.06,1.77/+IDF_order_north)
-[](map/#31.56174,34.26564,9.50,-45.3,0.0/+north,+arrow,~labels_he,+villages,+cities "A leaflet dropped by the military in Gaza City warning of an “impending attack” and ordering residents to evacuate south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
+[](map/#31.54982,34.25067,9.50,-48.5,0.0/+north,+arrow,~labels_he,+villages,+cities "A leaflet dropped by the military in Gaza City warning of an “impending attack” and ordering residents to evacuate south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to go south within 24 hours.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
@@ -222,7 +222,7 @@ Nibal was afraid to travel alone with her baby and stayed with her parents.
 
 
 {.testimony typewriter}
-[](svg/#oct7.svg/-1.63,1.25,3.54/+nibal_rita_hands-comp.jpg)
+[](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
 [](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 We didn’t leave and go south despite the bombing, hunger and fear. I suffered a lot during that time. I missed Ahmad so much, and I couldn’t imagine going south alone with Rita without help from my husband and family.
 
@@ -239,7 +239,7 @@ Several months of heavy bombardment left northern Gaza unrecognizable.
 
 
 {.meta} 
-[](svg/#oct7.svg/0.01,-0.42,1.99/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
+[](svg/#oct7.svg/0.02,-0.6,2.64/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
 [](map/#31.50989,34.46989,12.68,39.2,0.5/~labels_he,+villages,+cities)
 Residents who stayed in Jabalya were documented trying to salvage what was left of their belongings from the rubble.
 
@@ -322,7 +322,7 @@ Some of the Gazans detained inside Israel in October 2023 are still in custody.
 
 
 {.meta}
-[](svg/#south.svg/-0.02,0,3.98/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
+[](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities) 
 Despite the joyous reunion, Nibal struggled to adjust to life in a tent in Rafah. 
 
@@ -338,7 +338,7 @@ Living crammed together without enough food and water, with no privacy and poor 
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.52,-1.83,7.04/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
+[](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+villages,+cities)    
 It was constant torment, probably the hardest time in my life.
 
@@ -351,7 +351,7 @@ I was ashamed to tell them how I was living.
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45870,34.34010,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+villages,+cities "Military evacuation orders for Rafah issued in early May 2024")
+[](map/#31.45106,34.33247,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+villages,+cities "Military evacuation orders for Rafah issued in early May 2024")
 Less than two months after the family arrived in Rafah, Israel ordered the city evacuated in early May 2024.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
@@ -363,12 +363,12 @@ Less than two months after the family arrived in Rafah, Israel ordered the city 
 
 
 {.meta} 
-[](svg/#south.svg/-0.01,-3.65,8.67/+rafah_bomb_comp.jpg "A resident watches smoke rising while Israeli forces launch a ground and air operation in eastern Rafah, 7 May 2024 (Reuters/Hatem Khaled)")
+[](svg/#south.svg/0,-3.69,8.67/+rafah_bomb_comp.jpg "A resident watches smoke rising while Israeli forces launch a ground and air operation in eastern Rafah, 7 May 2024 (Reuters/Hatem Khaled)")
 At the same time as ordering the evacuation, Israel intensified its strikes on the city. 
 
 
 {.meta} 
-[](svg/#south.svg/-1.59,-2.33,5.6/+leaving_rafah-comp.jpg)
+[](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij),~labels_he,+villages,+cities "Walking among  buildings bombed in al-Bureij R.C., 23 June 2024 (NurPhoto/Majdi Fathi)")
 
 Nibal, Ahmad and Rita fled Rafah along with about 1 million people – most of them IDPs the military previously ordered to shelter in the city. 
@@ -387,8 +387,8 @@ The family reached al-Bureij Refugee Camp in the central Gaza Strip and rented a
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.47,-0.31,1.15/+warehouse_new-compressed.jpg "A-Shati R.C. in Gaza City, 15 July 2025 (Reuters/Mahmoud Issa)")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
+[](svg/#warehouse_bureij1.svg/-0.08,-0.43,2.71/+warehouse_new-compressed.jpg "A-Shati R.C. in Gaza City, 15 July 2025 (Reuters/Mahmoud Issa)")
+[](bg:blank)
 
 Living in the storage room was a bit more stable than in the tent, but I felt torn. I was grateful to be with my husband and daughter, but really missed my family up north. I felt lonely and alienated, far from home.
 
@@ -399,15 +399,13 @@ Whenever I could, I checked in with them over the phone.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.1,0.4,1.53/+@vimeo-1130687838 "Rita in the storage room in al-Bureij. From Nibal’s TikTok account")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
+[](svg/#warehouse_bureij1.svg/0.18,0.57,2.26/+@vimeo-1130687838 "Rita in the storage room in al-Bureij. From Nibal’s TikTok account")
+[](bg:blank)
 
 We stayed there for about five months.  It was rough, but I felt we were slowly finding some peace. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.1,0.4,1.53/+@vimeo-1130687838 "Rita in the storage room in al-Bureij. From Nibal’s TikTok account")
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+pois.csv(poi,id=bureij),~labels_he,+villages,+cities)
 On the morning of 7 October 2024, Rita called me “Mama” for the first time. I was thrilled.
 
 
@@ -469,8 +467,8 @@ That and having Ahmad with me.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-0.07,-0.93,2.26/+leaving_to_mawasi_triple_comp.jpg)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi),~labels_he,+villages,+cities "IDPs carry their belongings along the coastal road in the Deir al-Balah area, 20 Nov. 2024 (NurPhoto/Majdi Fathi)")
+[](fg:blank)
+[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi),~labels_he,+villages,+cities)
 Nibal was discharged from the hospital after 40 days. The family had to flee again.
 
 They went to the “humanitarian zone” in al-Mawasi and got a tent.
