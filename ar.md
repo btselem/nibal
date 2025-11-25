@@ -161,7 +161,7 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois-ar(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he)
 كانت نِبال في ذلك الوقت في منزلها في جباليا مع ابنتها ريتا، التي كانت تبلغ من العمر شهرًا واحدًا فقط.
 
 كان أحمد، زوجها، في ذلك الوقت، في عمله في داخل إسرائيل.
@@ -169,7 +169,7 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home),+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=couple-home))
+[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
 بعد 7 تشرين الأول بأيام قليلة، ألغت إسرائيل جميع تصاريح العمل لعشرات آلاف العمال الفلسطينيين من قطاع غزة، بينما كان بعضهم لا يزال داخل إسرائيل دون تمكّنهم من العودة إلى بيوتهم.
 
 
@@ -242,7 +242,7 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois-ar(label-main,id=khan-yunis),+pois-ar#2(label-main,id=couple-home),~labels_he,+labels_ar "تقديرات اكتظاظ المباني التي تضررت في قطاع غزة بعد ثلاثة أشهر من الهجوم. المصدر: UNOSAT")
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+unosat-damage-240107,+pois-ar(label-main,id=khan-yunis),+pois-ar#2(label-main,id=family-home),~labels_he,+labels_ar "تقديرات اكتظاظ المباني التي تضررت في قطاع غزة بعد ثلاثة أشهر من الهجوم. المصدر: UNOSAT")
 في شباط 2024، أطلق الجيش الإسرائيلي سراح أحمد، فوصل إلى خان يونس في جنوب قطاع غزة. 
 
 على الرغم من معارضة والديها الشديدة، قررت نِبال التوجه جنوبًا، على أمل لم شملها بزوجها.
@@ -287,7 +287,7 @@ css: src/theme.css, src/ar.css
 [](fg:blank)
 [](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_ar) 
 
-تأثرتُ كثيرًا برؤية أحمد. كان يعانق ويقبل ريتا ويقبّلها بلا توقف.
+تأثرتُ كثيرًا برؤية أحمد. كان يعانق ريتا ويقبّلها بلا توقف.
 
 
 {.testimony typewriter}
@@ -447,8 +447,6 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-1.59,0.55,5.23/+nibal_xray)
-[](bg:blank)
 نتيجة للقصف، بُترت يدا نِبال من تحت المرفقين وأصيبت بحروق خطيرة. كان المستشفى الذي نُقلت إليه يعاني من عبء هائل من الجرحى وعالجها الأطباء في ظل ظروف صعبة.
 
 
@@ -576,7 +574,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.54,-0.16,0.87/+@vimeo-1136076448,~prisoners_2-comp.jpg)
+[](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois-ar(label-main,id=jabalia),+pois-ar#2(label-main,id=al-mawasi),~labels_he,+labels_ar)
 
 سارت نبال وأحمد، أيضًا، شمالًا، مع ريتا التي أصبح عمرها عامًا وأربعة أشهر. عند حاجز "نتساريم"، أخذهم أقارب نِبال من هناك. أخذوا أحمد إلى شقة الزوجين ونِبال وريتا إلى منزل والديها.
@@ -816,10 +814,33 @@ css: src/theme.css, src/ar.css
 
 تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
 
-[ عنوان بريدي الإلكتروني ]
-أضيفوني إلى قائمة بتسيلم البريدية
+<div id="mc_embed_shell">
+      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <div id="mc_embed_signup">
+         <form action="https://btselem.us5.list-manage.com/subscribe/post?u=920751e31402107695c00c26f&amp;id=19d0d9bede&amp;f_id=00cee2e4f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <div id="mc_embed_signup_scroll">
+                <h2>Subscribe</h2>
+                <div class="indicates-required"><span class="asterisk">*</span>Mandatory fields</div>
+                <div class="mc-field-group"><label for="mce-EMAIL">Email:<span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First name:</label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last name:</label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value="">
+            </div>
+            <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display: none;">
+            </div>
+            <div class="response" id="mce-success-response" style="display: none;"></div>
+        </div>
+        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+            <input type="text" name="b_920751e31402107695c00c26f_19d0d9bede" tabindex="-1" value="">
+        </div>
+        <div class="clear">
+            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+        </div>
+    </div>
+</form>
+</div>
 
-[ أعلِموني بمصير نِبال ]
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script type="text/javascript" src="/src/mailchimp-script.js"></script>
+  </div>
 
 
 {.meta thumb closing}
@@ -828,7 +849,7 @@ css: src/theme.css, src/ar.css
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
 للتقرير الكامل حول التهجير في قطاع غزة، 2023-2025: 
     <strong>
-    لا مكان تحت السماء
+    ״لا مكان تحت السماء״
     </strong>
 </a>
 
