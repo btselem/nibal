@@ -449,13 +449,11 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.17,0.86,3.93/+nibal_xray,+nibal_after_amputation)
-[](bg:blank)
 كنت في حالة صدمة. شعرت وكأن يديّ لا تزالان موجودتين، أو كأنهما ستعودان إلى النموّ يومًا ما.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.82,1.79,12.66/+nibal_xray,+nibal_after_amputation,+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.82,1.79,12.66/+rita_tent1)
 [](bg:blank)
 سألت عن ريتا فأخبروني أنها سليمة وبصحة جيدة. هذا ما أبقاني صامدة. كان أحمد إلى جانبي.
 
@@ -526,7 +524,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/-1.44,1.19,4.06/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
 [](bg:blank)
 
 حاولت أن أبقى أنيقة وأن أحصل على مساعدة فأرتدي ملابسي وأضع المكياج وأخرج من الخيمة.
@@ -655,13 +653,16 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#back_home.svg/-0.16,-0.11,1.43/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~nibal_home_smile3.heic "سكان قرب جثث القتلى في منزل تعرض لهجوم إسرائيلي في جباليا، 18 نيسان 2025 (ZUMA Press Wire: ساهر الغورة)")
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=couple-home),~labels_he,+labels_ar)
+[](fg:blank)
+[](map/#31.52971,34.48003,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=couple-home),+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=couple-home),~labels_he,+labels_ar)
 
 في بداية حزيران 2025، بعد بضعة أشهر من عودتها إلى شقتها وشقة أحمد، تركت نِبال منزلها وعادت مع ريتا إلى منزل والديها.
 
 
 {.testimony typewriter}
+[](svg/#back_home.svg/0.4,-0.18,2.6/+jabalia_april_25.JPG "سكان قرب جثث القتلى في منزل تعرض لهجوم إسرائيلي في جباليا، 18 نيسان 2025 (ZUMA Press Wire: ساهر الغورة)")
+[](bg:blank)
+
 استقبلتنا العائلة مرة أخرى بحُب، لكن الحزن الشديد خيّم على المنزل. أنا وأختي، التي فقدت أطفالها الثلاثة، حاولنا مواساة بعضنا البعض.
 
 
@@ -682,7 +683,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_ar)
+[](map/#31.52971,34.48003,14.64,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_ar)
 في نهاية آب 2025، دخلت قوات الجيش الإسرائيلي إلى جباليا وتقدمت نحو حيّ نِبال.
 
 
