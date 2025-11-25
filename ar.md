@@ -607,7 +607,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](svg/#ceasefire_hope.svg/0.3,0.51,2.15/+@vimeo-1129871187,+vimeo-1137391158)
 [](bg:blank)
 
 كان أحمد يعاني في ذلك الوقت من الآثار التي خلّفها التنكيل الذي تعرّض له في مراكز الاعتقال الإسرائيلية.
@@ -620,7 +620,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/0.25,0.39,1.74/+@vimeo-1137391158,+prisoners_2-comp.jpg  "من حساب نبال على تيك توك")
+[](svg/#ceasefire_hope.svg/0.72,0.42,2.15/+@vimeo-1137391158  "من حساب نبال على تيك توك")
 وصفت نِبال أيضًا إحباط أحمد المستمر، الذي كان يجد صعوبة في جلب الماء والغذاء لعائلته في واقع الحصار المشدد الذي فرضته إسرائيل مرة أخرى، وروت كيف كان هذا الإحباط يُوجَّه إليها أحيانًا. 
 
 
@@ -670,8 +670,8 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-1.01,-0.36,1.86/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~vimeo-1129860275)
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois-ar(label-main,id=home),~labels_he,+labels_ar)
+[](svg/#back_home.svg/-0.95,-0.47,2.45/+nibal_home_smile3.heic)
+[](map/#31.53433,34.47235,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois-ar(label-main,id=home))
 
 كنت محبطة للغاية لأنني لم أستطع فعل أي شيء بنفسي ووجدتُ صعوبة في الاعتناء بريتا. 
 
@@ -680,7 +680,7 @@ css: src/theme.css, src/ar.css
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-0.82,0.28,1.98/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "القصف في حي النزلة في جباليا، آب 2025")
-[](map/#31.52909,34.48128,15.23,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_ar)
+[](map/#31.53433,34.47235,14.64,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_ar)
 
 استمر القصف في منطقتنا طوال الوقت ونزح الكثير من الناس. لكن عائلتي الموسعة كبيرة جدًا ولم يكن لدينا مكان نذهب إليه من دون أن نتفرّق.
 
@@ -718,7 +718,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.83,0.97,2.66/+nibal_ruined_home2.jpg "منطقة منزل نبال بعد القصف")
+[](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "منطقة منزل نبال بعد القصف")
 [](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois-ar(label-main,id=home),~labels_he,+labels_ar)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
 
@@ -733,7 +733,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.12,0.54,2.43/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,@vimeo-1136076786 "أحد سكان مدينة غزة يحمل أمر إخلاء ألقته طائرة إسرائيلية، 9 أيلول 2025 (رويترز: داود أبو الكاس)")
+[](svg/#permanent_impermanence.svg/0.55,0.69,2.43/+IDF_order_gaza_city-comp.jpg "أحد سكان مدينة غزة يحمل أمر إخلاء ألقته طائرة إسرائيلية، 9 أيلول 2025 (رويترز: داود أبو الكاس)")
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509),~labels_he,+labels_ar)
 أوامر الإخلاء التي أصدرها الجيش الإسرائيلي في أوائل أيلول 2025، بعد أسابيع قليلة من وصول عائلة نِبال إلى المدينة، تأمر حوالي 1,2 مليون شخص بالنزوح من مكان إقامتهم، مرة أخرى.
 
@@ -746,8 +746,8 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.16,0.34,2.41/+leaving_gaza_city_comp.jpg,@vimeo-1136076786)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar "مهجرون هاربون من شمال قطاع غزة، 1 أيلول 2025 (NurPhoto: مجدي فتحي)")
+[](fg:blank)
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar )
 نزحت العائلة مرة أخرى، إلى الجنوب هذه المرة، إلى مجمع خيام في دير البلح.
 
 
@@ -770,14 +770,14 @@ css: src/theme.css, src/ar.css
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
+[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar(label-main,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
 ### Oct 25
 في 10 تشرين الأول 2025، دخل وقف إطلاق النار بين إسرائيل وحماس حيز التنفيذ.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/1.77,-1.95,5.68/+@vimeo-1139274686 "من حساب نِبال على إنستغرام")
-[](map/#31.54931,34.18377,9.91,38.4,0.0/+pois.csv(poi,id=deir-al-balah),+IDF_zone_191025(idf-poly),~labels_he,+labels_ar)
+[](svg/#permanent_impermanence.svg/2.02,-1.82,5.68/+@vimeo-1139274686 "من حساب نِبال على إنستغرام")
+[](bg:blank)
 في الأسابيع التي تلت ذلك، واصلت إسرائيل هجماتها على القطاع بدرجات متفاوتة من القوة والشدّة.
 
 
@@ -790,12 +790,12 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.4,-1.2,3.23/+@vimeo-1139274686,+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
+[](svg/#permanent_impermanence.svg/0.76,-1.17,3.23/+@vimeo-1139274686,+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
 قصة نِبال هي واحدة فقط من بين حوالي مليونيّ قصة لسكان قطاع غزة الذين عانوا من الفقدان والجوع والتهجير المستمر.
 
 
 {.meta}
-[](map/#31.54931,34.18377,9.91,38.4,0.0/~labels_he,+idf-zones,+idf-poly-outlines "أحمر: المناطق التي شملتها أوامر الإخلاء التي أصدرها الجيش بين تشرين الأول 2023 وتشرين الأول 2025")
+[](map/#31.40796,34.38347,9.91,38.4,0.0/~labels_he,+idf-zones,+idf-poly-outlines "أحمر: المناطق التي شملتها أوامر الإخلاء التي أصدرها الجيش بين تشرين الأول 2023 وتشرين الأول 2025")
 قصتهم هي قصة دمار قطاع غزة نفسه.
 
 
