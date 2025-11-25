@@ -11,21 +11,43 @@
     border-left: 8px solid #FA5F5F;
 }
 
-.ltr section.thumb > a{
+.ltr section > a.thumb{
     border-right: none;
     border-left: #FA5F5F 8px solid;
-    padding: 48px 220px 0 16px;
+    padding: 48px 16px 0 220px;
+    background-position: left bottom;
+    background-image: image-set(
+        url(assets/report_thumb_en.png) 1x,
+        url(assets/report_thumb_en@2x.png) 2x
+    );
 }
 
-.ltr section.thumb.gofundme p{
+.ltr section > a.thumb:hover{
+    background-image: image-set(
+        url(assets/report_thumb_en-hover.png) 1x,
+        url(assets/report_thumb_en-hover@2x.png) 2x
+    );
+}
+
+.ltr section.gofundme p{
     border-right: none;
     border-left: #02A85C 8px solid;
 }
 
-.ltr section.thumb.gofundme > a{
+.ltr section.gofundme > a.thumb{
     border-right: none;
     border-left: #02A85C 8px solid;
-    padding: 48px 220px 0 16px;
+    background-image: image-set(
+        url(assets/gofundme_thumb_en.png) 1x,
+        url(assets/gofundme_thumb_en@2x.png) 2x
+    );
+}
+
+.ltr section.gofundme > a.thumb:hover{
+    background-image: image-set(
+        url(assets/gofundme_thumb_en-hover.png) 1x,
+        url(assets/gofundme_thumb_en-hover@2x.png) 2x
+    );
 }
 
 .ltr #mc_embed_signup {

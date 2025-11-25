@@ -18,6 +18,13 @@ css: src/theme.css, src/ar.css
     <a href="#ar"target="blank" class="dontinflect">عربي</a>
 </div>
 
+<a href="https://www.btselem.org/hebrew/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
+   إلى التقرير الكامل:
+    <strong>
+   لا مكان تحت السماء
+    </strong>
+</a>
+
 <img id="scroll-indicator" src="img/scrol-signal.svg" alt="יש לגלול את הדף למטה" style="max-width:100px;height:auto;">
 
 
@@ -189,7 +196,7 @@ css: src/theme.css, src/ar.css
 [](map/#31.56174,34.26564,9.50,-45.3,0.0/+north,+arrow,~labels_he,+labels_ar "أحد سكان مدينة غزة يحمل أمر الإخلاء الذي ألقته طائرة إسرائيلية، والذي يحذّر من ״هجوم وشيك״ على قطاع غزة ويدعو السكان إلى الانتقال جنوبًا، 13 تشرين الأول 2023 (Anadolu: دعاء الباز)")
 أوامر الإخلاء الجماعي الأولى، التي صدرت في 13 تشرين الأول، أمرت نحو مليون شخص من سكان شمال القطاع بمغادرة منازلهم والنزوح إلى جنوب القطاع في غضون 24 ساعة.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong>
     أوامر الإخلاء و"الممرات الآمنة"
@@ -320,7 +327,7 @@ css: src/theme.css, src/ar.css
 
 الاكتظاظ، نقص المياه والغذاء، تردي ظروف الصرف الصحي وانعدام الخصوصية، جعلت الحياة في مراكز المهجّرين لا تطاق، وخاصة بالنسبة للنساء والفتيات.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong> ظروف الحياة في مجمّعات المهجَّرين compounds</strong>
 </a>
@@ -343,7 +350,7 @@ css: src/theme.css, src/ar.css
 [](map/#31.45870,34.34010,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_ar "أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان رفح في أيار 2024")
 في بداية أيار 2024، بعد أقل من شهرين من وصول نِبال وأحمد وريتا إلى المدينة، وزّع الجيش الإسرائيلي أوامر إخلاء جديدة تطالب سكان رفح والمهجّرين المتواجدين فيها بإخلاء المنطقة.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong>
    أيار 2024: اقتحام رفح
@@ -483,7 +490,7 @@ css: src/theme.css, src/ar.css
 
 خلال بضعة أشهر، امتلأت "المنطقة الإنسانية"، بالكامل، بالخيام التي اضطر أكثر من مليون شخص هُجِّروا من جميع أنحاء القطاع إلى العيش فيها.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong>
     موجات الهجرة و״المناطق الإنسانية״
@@ -730,7 +737,7 @@ css: src/theme.css, src/ar.css
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509),~labels_he,+labels_ar)
 أوامر الإخلاء التي أصدرها الجيش الإسرائيلي في أوائل أيلول 2025، بعد أسابيع قليلة من وصول عائلة نِبال إلى المدينة، تأمر حوالي 1,2 مليون شخص بالنزوح من مكان إقامتهم، مرة أخرى.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong>
     آب ـ أيلول 2025: تدمير مدينة غزة
@@ -795,7 +802,7 @@ css: src/theme.css, src/ar.css
 {.meta thumb gofundme}
 خلال الأشهر الأخيرة، نُشرت قصة نبال في الصحافة وعلى وسائل التواصل الاجتماعي. تأمل أن تتمكن بفضل النشر من جمع المال لمغادرة القطاع والخضوع لزراعة أطراف صناعية.
 
-<a href="https://www.gofundme.com/f/help-nebal-survive-in-gaza" target="blank">
+<a href="https://www.gofundme.com/f/help-nebal-survive-in-gaza" target="blank" class="thumb">
     انضموا إلى الحملة:
     <strong>
     مد يد العون لنبال
@@ -818,7 +825,7 @@ css: src/theme.css, src/ar.css
 {.meta thumb closing}
 ## المنهجية والمصادر
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
 للتقرير الكامل حول التهجير في قطاع غزة، 2023-2025: 
     <strong>
     لا مكان تحت السماء

@@ -19,6 +19,13 @@ css: src/theme.css, src/ltr.css
     <a href="#ar"target="blank" class="dontinflect">عربي</a>
 </div>
 
+<a href="https://www.btselem.org/hebrew/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
+    To the full report:
+    <strong>
+    No Place Under Heaven
+    </strong>
+</a>
+
 <img id="scroll-indicator" src="img/scrol-signal.svg" alt="יש לגלול את הדף למטה" style="max-width:100px;height:auto;">
 
 
@@ -194,7 +201,7 @@ Meanwhile, the military began issuing evacuation orders for areas throughout Gaz
 [](map/#31.56174,34.26564,9.50,-45.3,0.0/+north,+arrow,~labels_he,+villages,+cities "A leaflet dropped by the military in Gaza City warning of an “impending attack” and ordering residents to evacuate south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to go south within 24 hours.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     For more information, see:
     <strong>
     Evacuation orders and “safe corridors”
@@ -324,7 +331,7 @@ Despite the joyous reunion, Nibal struggled to adjust to life in a tent in Rafah
 
 Living crammed together without enough food and water, with no privacy and poor sanitation was unbearable – especially for women.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     For more information, see:
     <strong>Conditions in IDP camps</strong>
 </a>
@@ -347,7 +354,7 @@ I was ashamed to tell them how I was living.
 [](map/#31.45870,34.34010,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+villages,+cities "Military evacuation orders for Rafah issued in early May 2024")
 Less than two months after the family arrived in Rafah, Israel ordered the city evacuated in early May 2024.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     For more information, see:
     <strong>
     May 2024: The invasion of Rafah
@@ -489,7 +496,7 @@ Most of this sandy area is not connected to electricity, water or sewage network
 
 Within months, the “humanitarian zone” became overcrowded with tents housing more than one million IDPs from all over Gaza.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     For more information, see:
     <strong>
     Waves of displacement and “humanitarian zones”
@@ -740,7 +747,7 @@ Throughout those weeks, Israel launched another ground invasion into Gaza City.
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509),~labels_he,+villages,+cities)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel issued evacuation orders for about 1.2 million people to leave the city.
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
     For more information, see:
     <strong>
     August-September 2025: Destruction of Gaza City
@@ -810,7 +817,7 @@ Their story is the story of how the Gaza Strip was destroyed.
 {.meta thumb gofundme}
 In recent months, Nibal has shared her story with the media and on social networks. She hopes the publicity will help her raise enough money to get prosthetic limb surgery outside Gaza, so she can regain some of her independence.
 
-<a href="https://www.gofundme.com/f/help-nebal-and-her-family-survive-in-gaza?attribution_id=sl%3Ac8f825db-4dc9-4cf2-aeea-40e4e79fb7ef&utm_campaign=natman_sharesheet_dash&utm_content=amp13_c&utm_medium=customer&utm_source=whatsapp&fbclid=PAb21jcAN4JUJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadzjiJkT7H9BLMjCNGSUD5VvOkcMtgK2I4dNb9OkV-9HZq4k7IwSljiCJ-xNw_aem_RLk6gsE3EAadchTzhrw3Gg`" target="blank">
+<a href="https://www.gofundme.com/f/help-nebal-and-her-family-survive-in-gaza?attribution_id=sl%3Ac8f825db-4dc9-4cf2-aeea-40e4e79fb7ef&utm_campaign=natman_sharesheet_dash&utm_content=amp13_c&utm_medium=customer&utm_source=whatsapp&fbclid=PAb21jcAN4JUJleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadzjiJkT7H9BLMjCNGSUD5VvOkcMtgK2I4dNb9OkV-9HZq4k7IwSljiCJ-xNw_aem_RLk6gsE3EAadchTzhrw3Gg`" target="blank" class="thumb">
     Join the campaign:
     <strong>
     Reach out to Nibal
@@ -857,7 +864,7 @@ B’Tselem will continue to follow their story and share any developments in our
 {.meta thumb closing}
 ## Methodology and sources
 
-<a href="https://btselem.org/" target="blank" class="dontinflect">
+<a href="https://btselem.org/" target="blank" class="dontinflect thumb">
 For the full publication on displacement in the Gaza Strip, 2023–2025:
     <strong>
     No Place Under the Sky

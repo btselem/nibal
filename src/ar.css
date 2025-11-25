@@ -18,3 +18,19 @@ section.testimony {
      font-weight: 400;
     -webkit-text-stroke: 0;
 }
+
+
+
+.ar section > a.thumb{
+    background-image: image-set(
+        url(assets/report_thumb_ar.png) 1x,
+        url(assets/report_thumb_ar@2x.png) 2x
+    );
+}
+
+.ar section > a.thumb:hover{
+    background-image: image-set(
+        url(assets/report_thumb_ar-hover.png) 1x,
+        url(assets/report_thumb_ar-hover@2x.png) 2x
+    );
+}
