@@ -11,6 +11,10 @@
     border-left: 8px solid #FA5F5F;
 }
 
+.ltr #chapter-nav .chapter-item{
+    direction: ltr;
+}
+
 .ltr section > a.thumb{
     border-right: none;
     border-left: #FA5F5F 8px solid;

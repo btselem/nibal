@@ -15,6 +15,7 @@
   top: 2dvh;
   bottom: 2vh;
   bottom: 2dvh;
+  direction: ltr;
 }
 
 .chapter-item {
@@ -24,6 +25,7 @@
   justify-content: center;
   /* Use transparent border instead of margin for gaps - makes entire area clickable */
   border-bottom: 1px solid transparent;
+  direction: rtl;
 }
 
 /* Longer gap before chapter headings for visual separation */
