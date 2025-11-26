@@ -61,7 +61,7 @@ Throughout the offensive, Israel has prevented these Internally Displaced Person
 
 {.meta}
 [](svg/#intro-pre.svg/-0.01,0.27,1.02/+displacement,+nibal2023)
-[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois.csv#5(poi,id=bureij),+pois.csv#6(poi,id=al-mawasi),+pois.csv#7(poi,id=deir-al-balah),~labels_he,~labels_he)
 Nibal al-Hisi, 25, has been repeatedly displaced with her baby daughter.
 
 
