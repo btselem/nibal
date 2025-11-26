@@ -7,7 +7,7 @@ css: src/theme.css, src/ltr.css
 
 # _The Displacement Journey of_ Nibal Al-Hisi
 [](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
-[](svg/#intro-pre.svg/-0.01,0.45,1.52/+nibal2023,+home,+displacement)
+[](svg/#intro-pre.svg/-0.01,0.45,1.52/+nibal2023,+displacement)
 
 <div id="logo">
 <a href="https://btselem.org" title="בצלם" class="dontinflect" target="blank"><img src="img/bts_logo.svg" alt="בצלם" style="max-width:100px;height:auto;"></a>
@@ -22,7 +22,7 @@ css: src/theme.css, src/ltr.css
 <a href="https://www.btselem.org/hebrew/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
     To the full report:
     <strong>
-    No Place Under Heaven
+    "No Place Under Heaven"
     </strong>
 </a>
 
@@ -30,38 +30,38 @@ css: src/theme.css, src/ltr.css
 
 
 {.meta}
-[](svg/#intro-pre.svg/-0.02,1.21,1.52/+nibal2023,~home,~displacement)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he)
+[](svg/#intro-pre.svg/-0.02,1.21,1.52/+nibal2023,~displacement)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he)
 For two years, Israel has been displacing Palestinians repeatedly throughout Gaza.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Areas ordered to evacuate from Oct. 2023 to Oct. 2025")
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Areas ordered to evacuate from Oct. 2023 to Oct. 2025")
 Most of the displacement follows on military evacuation orders.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.42380,34.35370,10.00,37.6,0.0/~labels_he,+idf-zones "In red: Areas ordered to evacuate from Oct. 2023 to Oct. 2025")
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+idf-zones "In red: Areas ordered to evacuate from Oct. 2023 to Oct. 2025")
 Even without orders, many have fled the massive bombardments throughout the Strip.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.43664,34.34673,10.18,37.6,0.0/~labels_he,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 People also fled of their own accord, escaping the frequent airstrikes that rained down death and destruction throughout the Strip.
 
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
-[](map/#31.49997,34.25627,10.18,37.6,0.0/~labels_he,+unosat-damage-231015)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+unosat-damage-231015)
 Throughout the offensive, Israel has prevented these Internally Displaced Persons (IDPs) from accessing safe shelter with food, water and basic services.
 
 
 {.meta}
 [](svg/#intro-pre.svg/-0.01,0.27,1.02/+displacement,+nibal2023)
-[](map/#31.40864,34.38832,9.39,37.6,0.0/~labels_he)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he)
 Nibal al-Hisi, 25, has been repeatedly displaced with her baby daughter.
 
 
@@ -122,7 +122,7 @@ We were unemployed and survived with our families’ help.
 
 
 {.meta}
-[](svg/#intro-pre.svg/1.17,-0.61,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053,+vimeo-1137390294,+vimeo-1137388732,+vimeo-1137388732 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053,+vimeo-1137390294,+vimeo-1137388732,+vimeo-1137388732 "From Nibal’s TikTok account")
 Baby Rita was born in September 2023.
 
 
@@ -142,13 +142,13 @@ Five days later, Ahmad was issued a work permit and started a job as a construct
 ### Oct 23
 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en#2(bubbles))
+[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas-en#2(bubbles))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38551,34.37811,10.31,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
 Entering from Gaza, the attackers killed 1,220 people, including women, elderly people and children, and left tens of thousands injured. 
 
 They carried 252 people, some living and others dead, back to Gaza.
@@ -156,13 +156,13 @@ They carried 252 people, some living and others dead, back to Gaza.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.43664,34.34673,10.18,37.6,0.0/~labels_he,+villages,+cities,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+villages,+cities,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 That same day, Israel launched a massive wave of strikes across Gaza. 
 
 
 {.meta} 
-[](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he)
+[](svg/#intro-pre.svg/0.46,-0.31,0.5/+vimeo-1138452992)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 Nibal was at home in Jabalya with her newborn. 
 
 Ahmad was at work in Israel.
@@ -170,13 +170,13 @@ Ahmad was at work in Israel.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
 Nibal was terrified and went to stay with her parents nearby. 
 
 
 {.meta} 
 [](svg/#oct7.svg/0.47,0.52,2.02/+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_he)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 A few days later, Israel revoked tens of thousands of permits from all workers from Gaza. Many were inside Israel and could not go home.
 
 
@@ -186,7 +186,7 @@ Ahmad and thousands of others instantly became “illegal aliens” in Israel.
 
 {.meta} 
 [](svg/#oct7.svg/0.45,0.41,2/+detainies-1,+detainies-2 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.63011,34.71983,8.57,24.0,41.5/+unosat-damage-231015,~labels_he)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 He and thousands of others were arrested in Israel within days.
 
 
@@ -197,8 +197,8 @@ Meanwhile, the military began issuing evacuation orders for areas throughout Gaz
 
 
 {.meta thumb} 
-[](svg/#oct7.svg/0.04,-0.06,1.77/+IDF_order_north)
-[](map/#31.54982,34.25067,9.50,-48.5,0.0/+north,+arrow,~labels_he,+villages,+cities "A leaflet dropped by the military in Gaza City warning of an “impending attack” and ordering residents to evacuate south, 13 Oct. 2023 (Anadolu / Doaa Albaz)")
+[](fg:blank)
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+villages,+cities)
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to go south within 24 hours.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
@@ -618,9 +618,9 @@ Living under the pressure of the Israeli blockade and airstrikes, tensions in th
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.12,0.29,1.48/+@vimeo-1129871187,+vimeo-1137391158,~prisoners_2-comp.jpg)
+[](svg/#ceasefire_hope.svg/0.3,0.51,2.15/+@vimeo-1129871187,+vimeo-1137391158 "From Nibal’s TikTok account")
 [](bg:blank)
-Ahmad was struggling with the consequences  of his time in Israeli detention.
+Ahmad was struggling with the consequences of his time in Israeli detention.
 
 
 {.testimony typewriter}
@@ -630,7 +630,7 @@ In a way, it felt like he’d lost a part of himself there.
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/0.25,0.39,1.74/+@vimeo-1137391158,+prisoners_2-comp.jpg  "From Nibal’s TikTok account")
+[](svg/#ceasefire_hope.svg/0.72,0.42,2.15/+@vimeo-1137391158  "From Nibal’s TikTok account")
 Nibal described Ahmad’s psychological challenges, which worsened as the small family struggled to survive under blockade.
 
 
@@ -680,8 +680,8 @@ My family welcomed us again with love, but the house was full of grief. My siste
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-1.01,-0.36,1.86/~vimeo-1137391856,~vimeo-1137392312,~nibal_ruined_home1.jpg,~vimeo-1129860275)
-[](map/#31.53551,34.47021,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home),~labels_he,+villages,+cities)
+[](svg/#back_home.svg/-0.95,-0.47,2.45/+nibal_home_smile3.heic)
+[](map/#31.53433,34.47235,14.64,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
 
 I was frustrated because I couldn’t do anything on my own, and I struggled to care for Rita. 
 
@@ -690,7 +690,7 @@ Even with all the support from my parents, I felt like a burden for them, too.
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-0.82,0.28,1.98/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
-[](map/#31.52909,34.48128,15.23,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+villages,+cities)
+[](map/#31.53433,34.47235,14.64,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+villages,+cities)
 
 There were airstrikes in our area all the time. Many people were displaced again. But my extended family is huge, and we had nowhere to go without splitting up.
 
@@ -717,7 +717,7 @@ We walked the streets, terrified.
 
 
 {.meta}
-[](svg/#back_home.svg/1,-0.16,2.95/+nibal_ruined_home1.jpg "The area of Nibal’s home after the bombing")
+[](svg/#back_home.svg/1,-0.16,2.95/+nibal_ruined_home1.jpg "The area of Nibal’s family home after the bombing")
 Later, Nibal learned that the building she had lived in most of her life with her extended family had been completely destroyed.
 
 
@@ -728,7 +728,7 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.83,0.97,2.66/+nibal_ruined_home2.jpg "The area of Nibal’s home after the bombing")
+[](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
 [](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home),~labels_he,+villages,+cities)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
 
@@ -737,12 +737,12 @@ They sheltered in an abandoned restaurant belonging to friends, and later in a c
 
 {.meta} 
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2509),~labels_he,+villages,+cities)
-[](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
+[](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
 
 During those weeks, Israel launched another ground invasion into Gaza City.
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.12,0.54,2.43/+IDF_order_gaza_city-comp.jpg,+leaving_gaza_city_comp.jpg,@vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
+[](svg/#permanent_impermanence.svg/0.64,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~@vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),+pois.csv(poi,id=gaza-2509),~labels_he,+villages,+cities)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
@@ -755,8 +755,8 @@ In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ord
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.16,0.34,2.41/+leaving_gaza_city_comp.jpg,@vimeo-1136076786)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+villages,+cities "IDPs flee the northern Gaza Strip, 1 Sept. 2025 (NurPhoto/Majdi Fathi)")
+[](fg:blank)
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+villages,+cities)
 The family fled south again, this time to a tent camp in Deir al-Balah.  
 
 
@@ -768,7 +768,13 @@ The Israeli army keeps dropping leaflets ordering us to evacuate. We are living 
 
 
 {.testimony typewriter}
-Our lives have been destroyed and now it feels like a slow death. A life of humiliation, with no dignity, home or any stability.
+[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "Nibal’s family home, before Oct. 2023")
+Our lives have been destroyed.
+
+
+{.testimony typewriter}
+[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "Nibal’s family home, Oct. 2025")
+Now it feels like a slow death. A life of humiliation, with no dignity, home or any stability.
 
 
 {.testimony typewriter}
@@ -782,7 +788,7 @@ I look around and see my brothers’ wives caring for their families, and I’m 
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),~labels_he,+villages,+cities "In red: The area remaining under Israeli control according to the first phase of the Oct. 2025 ceasefire deal")
+[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-he(label-main,id=deir-al-balah),~labels_he,+villages,+cities "In red: The area remaining under Israeli control according to the first phase of the Oct. 2025 ceasefire deal")
 ### Oct 25
 On 10 October 2025, another ceasefire between Israel and Hamas took effect. 
 
@@ -790,8 +796,8 @@ Israel continued to bomb the Gaza Strip in the weeks that followed.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/1.77,-1.95,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
-[](map/#31.54931,34.18377,9.91,38.4,0.0/+pois.csv(poi,id=deir-al-balah),+IDF_zone_191025(idf-poly),~labels_he,+villages,+cities)
+[](svg/#permanent_impermanence.svg/2.02,-1.82,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
+[](bg:blank)
 Despite the ceasefire, Nibal and her family are still in constant danger.
 
 
@@ -804,12 +810,13 @@ She is fighting to imagine a better future for herself and for Rita.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.4,-1.2,3.23/+@vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
+[](svg/#permanent_impermanence.svg/0.76,-1.17,3.23/+@vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
 Nibal is one of nearly 2 million people in Gaza enduring loss, hunger and prolonged displacement.
 
 
 {.meta}
-[](map/#31.54931,34.18377,9.91,38.4,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023-Oct.2025")
+[](fg:blank)
+[](map/#31.40796,34.38347,9.91,38.4,0.0/~labels_he,+idf-zones,+idf-poly-outlines "In red: Places included in military evacuation orders, Oct. 2023-Oct.2025")
 Their story is the story of how the Gaza Strip was destroyed.
 
 
