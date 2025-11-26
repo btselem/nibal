@@ -161,7 +161,7 @@ css: src/theme.css
 
 
 {.meta} 
-[](svg/#intro-pre.svg/-0.02,0.02,0.5/+vimeo-1138452992)
+[](svg/#intro-pre.svg/0.46,-0.31,0.5/+vimeo-1138452992)
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 ניבאל הייתה אז בביתה בג׳באליא עם בתה ריתא, אז בת חודש בלבד. 
 
@@ -197,8 +197,8 @@ css: src/theme.css
 
 
 {.meta} 
-[](svg/#oct7.svg/0.04,-0.06,1.77/+IDF_order_north)
-[](map/#31.54982,34.25067,9.50,-48.5,0.0/+north,+arrow "תושב העיר עזה מחזיק בצו פינוי שהוטל ממטוס ישראלי, המזהיר מפני ״מתקפה קרובה״ על רצועת עזה וקורא לתושבים לעבור דרומה, 13 באוקטובר 2023. (Anadolu / דועאא אל-באז)")
+[](fg:blank)
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow)
 צווי הפינוי ההמוניים הראשונים, שהוצאו ב-13 לאוקטובר, הורו לכמיליון תושבי צפון הרצועה לעזוב את בתיהם ולעקור לדרום הרצועה תוך 24 שעות.
 
 <a href="https://www.btselem.org/hebrew/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#evacuation_orders" target="blank" class="dontinflect thumb">
