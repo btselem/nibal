@@ -59,7 +59,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#intro-pre.svg/-0.01,0.27,1.02/+displacement,+nibal2023)
+[](svg/#intro-pre.svg/-0.01,0.31,1.28/+displacement,+nibal2023)
 [](map/#31.41661,34.37347,10.01,37.6,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois.csv#5(poi,id=bureij),+pois.csv#6(poi,id=al-mawasi),+pois.csv#7(poi,id=deir-al-balah),~labels_he)
 إحدى هؤلاء المهجّرين كانت نِبال الهسي (25 عامًا)، التي هُجِّرت من منزلها مع ابنتها ريتا.
 
@@ -126,8 +126,8 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#intro-pre.svg/0.46,-0.31,0.5/+vimeo-1138452992)
-[](map/#31.72716,34.76485,8.57,0.0,35.0/~labels_he,+labels_ar)
+[](svg/#intro-pre.svg/0.41,-0.23,0.5/+vimeo-1138452992)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/~labels_he,+labels_ar)
 بعد خمسة أيام من ولادتها، حصل أحمد على تصريح للعمل في إسرائيل وبدأ يعمل في البناء.
 
 
@@ -160,7 +160,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta} 
-[](svg/#intro-pre.svg/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,+vimeo-1138452992)
+[](svg/#intro-pre.svg/0.41,-0.23,0.5/+vimeo-1138452992)
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 كانت نِبال في ذلك الوقت في منزلها في جباليا مع ابنتها ريتا، التي كانت تبلغ من العمر شهرًا واحدًا فقط.
 
@@ -205,7 +205,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta} 
-[](svg/#oct7.svg/-0.39,-0.38,1.97/+@vimeo-1136099759 "رحلة على شارع صلاح الدين، 14 تشرين الأول 2023 (محمد زعنون)")
+[](svg/#oct7.svg/-0.32,-0.25,2.53/+@vimeo-1136099759 "رحلة على شارع صلاح الدين، 14 تشرين الأول 2023 (محمد زعنون)")
 [](map/#31.38336,34.21994,10.31,-10.4,42.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_ar)
 تحت القصف العنيف، اضطر مئات الآلاف من الناس إلى اتخاذ قرار سريع بشأن المكان الذي سيهربون إليه، دون معرفة ما إذا كانوا سيتمكنون من العودة إلى منازلهم ومتى.
 
@@ -240,7 +240,7 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-ar(label-main,id=khan-yunis),+pois-ar#2(label-main,id=family-home),~labels_he,+labels_ar "تقديرات اكتظاظ المباني التي تضررت في قطاع غزة بعد ثلاثة أشهر من الهجوم. المصدر: UNOSAT")
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-ar(label-main,id=khan-yunis),+pois-ar#2(label-main,id=home),~labels_he,+labels_ar "تقديرات اكتظاظ المباني التي تضررت في قطاع غزة بعد ثلاثة أشهر من الهجوم. المصدر: UNOSAT")
 في شباط 2024، أطلق الجيش الإسرائيلي سراح أحمد، فوصل إلى خان يونس في جنوب قطاع غزة. 
 
 على الرغم من معارضة والديها الشديدة، قررت نِبال التوجه جنوبًا، على أمل لم شملها بزوجها.
