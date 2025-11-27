@@ -398,14 +398,14 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.08,-0.43,2.71/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
+[](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
 [](bg:blank)
 
 كانت الحياة في المخزن أكثر استقرارًا بعض الشيء، لكنني كنت أشعر بأنني ممزقة. من ناحية، كنت سعيدة بوجودي مع زوجي وابنتي، ومن ناحية أخرى، اشتقت لعائلتي. البعد عن عائلتي ومنزلي جعلني أشعر بالوحدة والاغتراب.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/-0.08,-0.43,2.71/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
+[](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
 [](bg:blank)
 
 
