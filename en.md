@@ -198,7 +198,7 @@ Meanwhile, the military began issuing evacuation orders for areas throughout Gaz
 
 {.meta thumb} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+villages,+cities)
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+villages,+cities "In red: Areas ordered to evacuate on 13 Oct. 2023")
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to go south within 24 hours.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
@@ -437,7 +437,7 @@ While she was on the phone, a shell hit the room.
 {.meta}
 [](svg/#warehouse_bureij2.svg/-14.33,5.34,54.39/+nibal_xray)
 [](bg:blank)
-Badly injured, Nibal managed to call for help among the ruins. She was taken to the hospital and neighbors took Rita. 
+Badly injured, Nibal managed to call for help among the ruins and was taken to the hospital. 
 
 
 {.testimony typewriter}
@@ -468,6 +468,8 @@ That and having Ahmad with me.
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi),~labels_he,+villages,+cities)
 Nibal was discharged from the hospital after 40 days. The family had to flee again.
 
+
+{.meta}
 They went to the “humanitarian zone” in al-Mawasi and got a tent.
 
 
@@ -523,19 +525,19 @@ An intelligent, sensitive girl from a tent near us took pity on me and came ever
 
 {.testimony typewriter}
 [](fg:blank)
-[](bg:blank)
+[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
 
 I struggled to accept my new body.
+
+
+{.testimony typewriter}
+I tried to stay well-groomed, to get dressed and put on makeup with help, and leave the tent.
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
 [](bg:blank)
 
-I tried to stay well-groomed, to get dressed and put on makeup with help, and leave the tent.
-
-
-{.testimony typewriter}
 But I couldn’t look in the mirror.
 
 
@@ -585,6 +587,7 @@ Nibal’s relatives picked them up at the Netzarim checkpoint. They took Ahmad t
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,+@vimeo-1129854927 "From Nibal’s TikTok account")
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home))
 
 My family welcomed me with hugging, singing and tears. My  brothers and sisters came over every evening.
 
