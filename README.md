@@ -571,10 +571,11 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
 [](bg:blank)
-אבל לא העזתי להסתכל במראה. 
+אבל לא העזתי להסתכל במראה.
 
 
-[](embed/#vimeo.com%2F1141224369%3Fshare%3Dcopy%26fl%3Dsv%26fe%3Dci/autoplay,loop,cover)
+{.testimony typewriter}
+[](embed/#vimeo.com%2F1141224369%3Fshare%3Dcopy%26fl%3Dsv%26fe%3Dci/autoplay,loop,auto)
 [](bg:blank)
 הרגשתי שגם ריתא בקושי מזהה אותי. 
 
