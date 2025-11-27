@@ -193,7 +193,7 @@ css: src/theme.css, src/ar.css
 
 {.meta thumb} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_ar)
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_ar "بالأحمر: المناطق التي شملتها أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان قطاع غزة في 13 تشرين الأول 2023")
 أوامر الإخلاء الجماعي الأولى، التي صدرت في 13 تشرين الأول، أمرت نحو مليون شخص من سكان شمال القطاع بمغادرة منازلهم والنزوح إلى جنوب القطاع في غضون 24 ساعة.
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
@@ -432,7 +432,7 @@ css: src/theme.css, src/ar.css
 {.meta}
 [](svg/#warehouse_bureij2.svg/-14.33,5.34,54.39/+nibal_xray)
 [](bg:blank)
-أصيبت نِبال بجروح خطيرة وتمكنت من طلب المساعدة من داخل المخزن المدمر. تم إخلاء نِبال إلى المستشفى، وأخذ الجيران ريتا إلى منزلهم.
+أصيبت نِبال بجروح خطيرة، لكنها تمكنت من طلب المساعدة من داخل المخزن المدمّر، ثم تم إخلاؤها إلى المستشفى.
 
 
 {.testimony typewriter}
@@ -461,6 +461,8 @@ css: src/theme.css, src/ar.css
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois-ar(label-main,id=al-zawaida),+pois-ar#2(label-main,id=al-mawasi),~labels_he,+labels_ar)
 خرجت نِبال من المستشفى بعد 40 يومًا، وكان عليهم، هي وأحمد وريتا، أن يواجِهوا نزوحًا آخر.
 
+
+{.meta}
 وصلوا إلى "المنطقة الإنسانية" في المواصي، حيث أقاموا في خيمة، مرة أخرى.
 
 
@@ -515,20 +517,19 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](fg:blank)
+[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
 [](bg:blank)
 
 وجدتُ صعوبة في تقبُّل جسدي الجديد.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
-[](bg:blank)
-
 حاولت أن أبقى أنيقة وأن أحصل على مساعدة فأرتدي ملابسي وأضع المكياج وأخرج من الخيمة.
 
 
 {.testimony typewriter}
+[](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
+[](bg:blank)
  لكني لم أجرؤ على النظر في المرآة. 
 
  
@@ -576,6 +577,7 @@ css: src/theme.css, src/ar.css
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+nibal_rita_home.jpg,+nibal_rita_happy.jpg,+@vimeo-1129854927 "من حساب نبال على تيك توك")
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
 
 استقبلتني العائلة بالأحضان والأغاني والبكاء. في الليالي، كنا نلتقي جميعًا، جميع الأخوة، في منزل والديّ.
 
