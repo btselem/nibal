@@ -793,7 +793,7 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 {.meta}
 [](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+home-gaza-city(2-by-foot):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),~labels_he,+villages,+cities)
+[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),~labels_he,+villages,+cities)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
 They sheltered in an abandoned restaurant belonging to friends, and later in a cramped apartment in Gaza City.
 

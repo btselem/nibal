@@ -786,7 +786,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "منطقة منزل نبال بعد القصف")
-[](map/#31.53196,34.47651,15.28,38.4,0.0/+home-gaza-city(2-by-foot):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),~labels_he,+labels_ar)
+[](map/#31.53196,34.47651,15.28,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509),~labels_he,+labels_ar)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
 استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة في مدينة غزة.
 
