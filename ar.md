@@ -19,7 +19,7 @@ css: src/theme.css, src/ar.css
 </div>
 
 <a href="https://www.btselem.org/hebrew/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
-   إلى التقرير الكامل:
+   للتقرير الكامل حول التهجير في قطاع غزة:
     <strong>
    ״لا مكان تحت السماء״
     </strong>
@@ -412,7 +412,6 @@ css: src/theme.css, src/ar.css
 [](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
 [](bg:blank)
 
-
 كلما سنحت لي الفرصة، كنت أتفقد هاتفي لمعرفة وضع العائلة في جباليا.
 
 
@@ -641,8 +640,6 @@ css: src/theme.css, src/ar.css
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
-
-
 كنّ يغيرن حفاضاتها، يحتضنّها ويلعبن معها. بفضلهن، شعرت أن حياتي بدأت تعود إلى مسارها.
 
 
@@ -655,7 +652,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](svg/#ceasefire_hope.svg/-1.26,-1.49,3.09/+attack_march_25.JPG)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar "بالأحمر: أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان قطاع غزة خلال الأسبوع الذي تلا انتهاك وقف إطلاق النار في آذار 2025")
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar "!!!بالأحمر: أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان قطاع غزة خلال الأسبوع الذي تلا انتهاك وقف إطلاق النار في آذار 2025")
 ولكن عندها تجددت الحرب بضراوة أشدّ. تحت ضغط القصف والحصار، عادت علاقة نِبال وأحمد إلى التأزم من جديد.
 
 
@@ -937,7 +934,7 @@ css: src/theme.css, src/ar.css
 ## المنهجية والمصادر
 
 <a href="https://btselem.org/" target="blank" class="dontinflect thumb">
-للتقرير الكامل حول التهجير في قطاع غزة،: 
+للتقرير الكامل حول التهجير في قطاع غزة: 
     <strong>
     ״لا مكان تحت السماء״
     </strong>
