@@ -347,7 +347,8 @@ Despite the joyous reunion, Nibal struggled to adjust to life in a tent in Rafah
 
 
 {.meta thumb}
-
+[](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
 Living crammed together without enough food and water, with no privacy and poor sanitation was unbearable – especially for women.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#living_conditions" target="blank" class="dontinflect thumb">
@@ -535,11 +536,13 @@ Within months, the area was crammed with tents sheltering over 1 million IDPs fr
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 IDP accounts from November 2024, when the family arrived, describe extreme overcrowding, acute shortages of food and water, and no shelter from the harsh winter.
 
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 Nibal had to start begin her recovery in inhumane conditions. 
 Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many caused in Israeli attacks, are still struggling to survive in tents.
 
@@ -898,6 +901,7 @@ Their story is the story of how the Gaza Strip was destroyed.
 
 
 {.meta thumb gofundme}
+[](fg:blank)
 [](bg:blank)
 In recent months, Nibal has shared her story on social and mainstream media. She hopes it will help raise money to get prosthetic limb surgery outside Gaza, so she can regain some of her independence.
 
@@ -945,6 +949,8 @@ B’Tselem will follow their story and share any developments in our newsletter:
   </div>
 
 {.meta thumb closing}
+[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 ## Methodology and sources
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">

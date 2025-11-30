@@ -112,7 +112,7 @@ css: src/theme.css, src/ar.css
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137390294,+vimeo-1137392053,+@vimeo-1137391389 "من حساب نبال على تيك توك")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-تزوجت منه رغم معارضة أهلي. كنت أعرف أننا لن نعيش حياة رغيدة، لكنني شعرت أنه ذهَبي.
+تزوجت منه رغم معارضة أهلي. كنت أعرف أننا لن نعيش حياة رغيدة، لكنني شعرت أنه جوهرَتي.
 
 
 {.testimony typewriter}
@@ -186,19 +186,19 @@ css: src/theme.css, src/ar.css
 
 
 {.meta} 
-[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سرحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
+[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سراحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 بعد 7 تشرين الأول بأيام قليلة، ألغت إسرائيل جميع تصاريح العمل لعشرات آلاف العمال الفلسطينيين من قطاع غزة، بينما كان بعضهم لا يزال داخل إسرائيل دون تمكّنهم من العودة إلى بيوتهم.
 
 
 {.meta} 
-[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سرحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
+[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سراحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 أصبح أحمد وآلاف العمال، فجأة، "مقيمين غير شرعيين".
 
 
 {.meta} 
-[](svg/#oct7.svg/0.67,0.68,2.51/+detainies-1,+detainies-2 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سرحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
+[](svg/#oct7.svg/0.67,0.68,2.51/+detainies-1,+detainies-2 "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سراحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 في الأيام التي تلت ذلك، اعتقلت إسرائيل آلاف العمال داخل أراضيها، بمن فيهم أحمد، زوج نِبال، أيضًا.
 
@@ -260,7 +260,7 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-ar(label-main,id=khan-yunis),+pois-ar#2(label-main,id=home),~labels_he,+labels_ar)
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-ar(label-main-ar,id=khan-yunis),+pois-ar#2(label-main-ar,id=home),~labels_he,+labels_ar)
 في شباط 2024، أطلق الجيش الإسرائيلي سراح أحمد، فوصل إلى خان يونس في جنوب قطاع غزة. 
 
 على الرغم من معارضة والديها الشديدة، قررت نِبال التوجه جنوبًا، على أمل لم شملها بزوجها.
@@ -274,30 +274,31 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "من حساب نِبال على إنستغرام")
-[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=gaza-2403),~labels_he,+labels_ar)
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=gaza-2403),~labels_he,+labels_ar)
 تبدأ نِبال رحلتها مع والدها، الذي يقلّها هي وريتا من منزلهما في جباليا إلى مدينة غزة. 
 
 
 {.meta}
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "من حساب نِبال على إنستغرام")
+[](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=gaza-2403),~labels_he,+labels_ar)
 في إفادتها، تحدثت نِبال عن رحلة مليئة بالرعب في طرقات مدمّرة، شاهدت خلالها من نافذة السيارة قصفًا عنيفًا على المناطق المحيطة بهم.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-ar(label-main,id=gaza-2403),+pois-ar#2(label-main,id=nuseirat),~labels_he,+labels_ar)
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-ar(label-main-ar,id=gaza-2403),+pois-ar#2(label-main-ar,id=nuseirat),~labels_he,+labels_ar)
 من مدينة غزة، تواصل نِبال رحلتها إلى جنوب القطاع سيرًا على الأقدام، حاملةً ريتا البالغة من العمر ستة أشهر بين ذراعيها.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-ar(label-main,id=nuseirat),+pois-ar#2(label-main,id=rafah),~labels_he,+labels_ar)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-ar(label-main-ar,id=nuseirat),+pois-ar#2(label-main-ar,id=rafah),~labels_he,+labels_ar)
 في منطقة النصيرات، تجتمعان مع أحمد، الذي لم تلتقياه منذ نحو ستة أشهر.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-ar(label-main,id=rafah),~labels_he,+labels_ar) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-ar(label-main-ar,id=rafah),~labels_he,+labels_ar) 
 من هناك، يواصل الثلاثة طريقهم إلى الخيمة التي أقامها أحمد في رفح.
 
 
@@ -322,14 +323,14 @@ css: src/theme.css, src/ar.css
 
 
 {.meta} 
-[](svg/#south.svg/-0.02,0.65,2.87/+ahmed_detained-comp.jpg "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سرحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
+[](svg/#south.svg/-0.02,0.65,2.87/+ahmed_detained-comp.jpg "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سراحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_ar) 
 وثقت بتسيلم ومنظمات أخرى لحقوق الإنسان كيف أن إسرائيل تبنّت، منذ 7 تشرين الأول 2023، سياسة منهجية تجاه السجناء الفلسطينيين تقوم على العنف المتواتر، الشديد والتعسفي، التجويع ومنع العلاج الطبي، مما أدى إلى عشرات الوفيات.
 منذ ذلك الحين وحتى اليوم، تحرم إسرائيل معظم هؤلاء من الحقوق الأساسية، بما في ذلك الحق في محاكمة عادلة، وتحتجزهم في مرافق اعتقال تعمل كشبكة من معسكرات التعذيب.
 
 
 {.meta} 
-[](svg/#south.svg/-0.82,2.16,7.52/+ahmed_detained-comp.jpg "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سرحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
+[](svg/#south.svg/-0.82,2.16,7.52/+ahmed_detained-comp.jpg "فلسطينيون اعتقلهم الجيش الإسرائيلي بعد أن تم إطلاق سراحهم إلى رفح. 28 كانون الأول 2023 (رويترز: باسم مسعود)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_ar) 
 لا يزال بعض سكان غزة الذين اعتقلوا داخل إسرائيل في الأيام التي أعقبت 7 تشرين الأول محتجَزين في مراكز الاعتقال الإسرائيلية حتى اليوم.
 
@@ -341,6 +342,8 @@ css: src/theme.css, src/ar.css
 
 
 {.meta thumb}
+[](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "مهجَّرون في معسكر خيام في خان يونس، 11 كانون الأول 2023 (رويترز: إبراهيم أبو مصطفى)")
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_ar) 
 
 الاكتظاظ، نقص المياه والغذاء، تردي ظروف الصرف الصحي وانعدام الخصوصية، جعلت الحياة في مراكز المهجّرين لا تطاق، وخاصة بالنسبة للنساء والفتيات.
 
@@ -370,7 +373,7 @@ css: src/theme.css, src/ar.css
 [](map/#31.45106,34.33247,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_ar "أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان رفح في أيار 2024")
 في بداية أيار 2024، بعد أقل من شهرين من وصول نِبال وأحمد وريتا إلى المدينة، وزّع الجيش الإسرائيلي أوامر إخلاء جديدة تطالب سكان رفح والمهجّرين المتواجدين فيها بإخلاء المنطقة.
 
-<a href="https://www.btselem.org/arabic/202511_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
+<a href="https://www.btselem.org/arabic/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
     للمزيد، أنظروا:
     <strong>
    أيار 2024: اقتحام رفح
@@ -387,13 +390,13 @@ css: src/theme.css, src/ar.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-ar(label-main,id=rafah),+pois-ar#2(label-main,id=bureij),~labels_he,+labels_ar)
+[](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-ar(label-main-ar,id=rafah),+pois-ar#2(label-main-ar,id=bureij),~labels_he,+labels_ar)
 اضطرت نِبال وأحمد وريتا إلى الفرار من رفح، مع حوالي مليون شخص آخر من السكان، غالبيتهم العظمى من المهجرين الذين جاؤوا إلى المدينة مثلهم خلال الأشهر التي سبقت ذلك، بأوامر من الجيش.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois-ar(label-main,id=bureij),~labels_he,+labels_ar)
+[](map/#31.44772,34.39655,13.00,0.0,39.0/+rafah-bureij(2-by-foot),+pois.csv(poi,id=bureij),+pois-ar(label-main-ar,id=bureij),~labels_he,+labels_ar)
 اضطرت نِبال وعائلتها الصغيرة إلى الفرار مرة أخرى ووصلوا إلى مخيم البريج للاجئين في وسط القطاع، حيث استأجروا مستودعًا صغيرًا من أصدقاء.
 
 
@@ -488,13 +491,13 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois-ar(label-main,id=al-zawaida),+pois-ar#2(label-main,id=al-mawasi),~labels_he,+labels_ar)
+[](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois-ar(label-main-ar,id=al-zawaida),+pois-ar#2(label-main-ar,id=al-mawasi),~labels_he,+labels_ar)
 خرجت نِبال من المستشفى بعد 40 يومًا، وكان عليهم، هي وأحمد وريتا، أن يواجِهوا نزوحًا آخر.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.36106,34.26832,13.74,0.0,39.0/+pois-ar(label-main,id=al-mawasi))
+[](map/#31.36106,34.26832,13.74,0.0,39.0/+pois-ar(label-main-ar,id=al-mawasi))
 وصلوا إلى "المنطقة الإنسانية" في المواصي، حيث أقاموا في خيمة، مرة أخرى.
 
 
@@ -619,21 +622,21 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois-ar(label-main,id=jabalia),+pois-ar#2(label-main,id=al-mawasi),~labels_he,+labels_ar)
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois-ar(label-main-ar,id=jabalia),+pois-ar#2(label-main-ar,id=al-mawasi),~labels_he,+labels_ar)
 
 سارت نبال وأحمد، أيضًا، شمالًا، مع ريتا التي أصبح عمرها عامًا وأربعة أشهر. عند حاجز "نتساريم"، أخذهم أقارب نِبال من هناك. أخذوا أحمد إلى شقة الزوجين ونِبال وريتا إلى منزل والديها.
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+@vimeo-1129854927 "من حساب نبال على تيك توك")
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main-ar,id=home))
 
 استقبلتني العائلة بالأحضان والأغاني والبكاء. في الليالي، كنا نلتقي جميعًا، جميع الأخوة، في منزل والديّ.
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.05,-0.56,2.32/+nibal_rita_happy.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main-ar,id=home))
 
 
 كانت أخواتي بجانبي طوال الوقت وساعدنني في كل شيء: الاستحمام، ارتداء الملابس، تناول الطعام والاعتناء بريتا. 
@@ -641,13 +644,13 @@ css: src/theme.css, src/ar.css
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main-ar,id=home))
 كنّ يغيرن حفاضاتها، يحتضنّها ويلعبن معها. بفضلهن، شعرت أن حياتي بدأت تعود إلى مسارها.
 
 
 {.meta}
 [](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-ar(label-main-ar,id=home))
 بعد حوالي شهر من الراحة والتعافي في منزل والديها، طلب أحمد من نِبال العودة إليه.
 استجابت نِبال لطلبه، رغم تحفظ والديها، وعادت مع ريتا إلى شقتهم، حيث استأجروا مساعِدة لها.
 
@@ -701,7 +704,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-ar(label-main,id=alaa-home),+pois-ar#2(label-main,id=couple-home),+pois-ar#3(label-main,id=home),~labels_he)
+[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-ar(label-main-ar,id=alaa-home),+pois-ar#2(label-main-ar,id=couple-home),+pois-ar#3(label-main-ar,id=home),~labels_he)
 في نيسان 2025، قصف الجيش الإسرائيلي منزل آلاء، شقيقة نِبال، في جباليا. 
 
 
@@ -722,7 +725,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=couple-home),~labels_he)
+[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=couple-home),~labels_he)
 
 في بداية حزيران 2025، بعد بضعة أشهر من عودتها إلى شقتها وشقة أحمد، تركت نِبال منزلها وعادت مع ريتا إلى منزل والديها.
 
@@ -796,7 +799,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta} 
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois-ar(label-main,id=home),+pois-ar#2(label-main,id=gaza-2509),~labels_he,+labels_ar)
+[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=gaza-2509),~labels_he,+labels_ar)
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "سكان مهجّرون من مخيم الشاطئ للاجئين، قرب مدينة غزة، 19 أيلول 2025 (Activestills: يوسف زعنون)")
 
 في تلك الأسابيع ذاتها، شنت إسرائيل هجومًا بريًا آخر على مدينة غزة.
@@ -817,7 +820,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar,+pois-ar(label-main,id=deir-al-balah)))
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+pois.csv(poi,id=gaza-2509),+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar,+pois-ar(label-main-ar,id=deir-al-balah))
 نزحت العائلة مرة أخرى، إلى الجنوب هذه المرة، إلى مجمع خيام في دير البلح.
 
 
@@ -849,7 +852,7 @@ css: src/theme.css, src/ar.css
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar(label-main,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
+[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar(label-main-ar,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
 ### Oct 25
 في 10 تشرين الأول 2025، دخل وقف إطلاق النار بين إسرائيل وحماس حيز التنفيذ.
 
@@ -885,6 +888,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta thumb gofundme}
+[](fg:blank)
 [](bg:blank)
 خلال الأشهر الأخيرة، نُشرت قصة نبال في الصحافة وعلى وسائل التواصل الاجتماعي. تأمل أن تتمكن بفضل النشر من جمع المال لمغادرة القطاع والخضوع لزراعة أطراف صناعية.
 
@@ -933,6 +937,8 @@ css: src/theme.css, src/ar.css
 
 
 {.meta thumb closing}
+[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 ## المنهجية والمصادر
 
 <a href="https://www.btselem.org/arabic/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">

@@ -394,7 +394,7 @@ css: src/theme.css
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah),+pois-he#2(label-main,id=bureij))
 
-ניבאל, אחמד וריתא נאלצו אז להימלט מרפיח יחד עם כמיליון איש נוספים, רובם המוחלט עקורים להם הצבא הישראלי הורה להתרכז בעיר בחודשים שלפני כן.
+אחמד וריתא נאלצו אז להימלט מרפיח יחד עם כמיליון איש נוספים, שרובם המוחלט עקורים שהצבא הישראלי הורה להם להתרכז בעיר בחודשיים שלפני כן.
 
 
 {.meta} 
@@ -905,6 +905,7 @@ css: src/theme.css
 
 
 {.meta thumb gofundme}
+[](fg:blank)
 [](bg:blank)
 במהלך החודשים האחרונים, סיפורה של ניבאל פורסם בעיתונות וברשתות החברתיות. 
 היא מקווה שבעזרת הפרסום תצליח לגייס כסף כדי לצאת מהרצועה ולעבור השתלה של גפיים תותבות, שיעזרו לה להחזיר לעצמה מעט מהעצמאות שאיבדה.
@@ -946,6 +947,8 @@ css: src/theme.css
 
 
 {.meta thumb closing}
+[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 ## מתודולוגיה ומקורות
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
