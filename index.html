@@ -1509,7 +1509,7 @@
                         
                         // During programmatic scroll to target, suppress inflection until scroll completes
                         const duringProgrammaticScroll = window.__scrollInflectionPending && sec.id !== window.__scrollTargetId;
-                        const programmaticScrollActive = !!(window.__scrollAnimating || (window.__snapSuppressUntil && now < window.__snapSuppressUntil));
+                        const programmaticScrollActive = !!(window.__scrollAnimating || window.__snapAnimationInProgress || (window.__snapSuppressUntil && now < window.__snapSuppressUntil));
 
                         // If a recent user gesture occurred and no programmatic
                         // scroll suppression is active, perform the same centering
@@ -1696,16 +1696,18 @@
             function _snapCurrentIndex() {
                 const secs = Array.from(scroller.querySelectorAll('section'));
                 if (!secs.length) return 0;
-                const scrollTop = scroller.scrollTop || 0;
-                const viewTop = scrollTop;
-                const viewBottom = scrollTop + (scroller.clientHeight || window.innerHeight);
-                const viewMiddle = (viewTop + viewBottom) / 2;
+                
+                // Use viewport-relative coordinates (getBoundingClientRect) for accuracy
+                const viewportHeight = scroller.clientHeight || window.innerHeight;
+                const viewportMiddle = viewportHeight / 2;
                 
                 let best = 0, bestDist = Infinity;
                 secs.forEach((s, i) => {
-                    // Find the section whose top is closest to the middle of viewport
-                    const secTop = s.offsetTop;
-                    const d = Math.abs(secTop - viewMiddle);
+                    // Get viewport-relative position
+                    const rect = s.getBoundingClientRect();
+                    // Find section whose center is closest to viewport center
+                    const secCenter = rect.top + (rect.height / 2);
+                    const d = Math.abs(secCenter - viewportMiddle);
                     if (d < bestDist) { bestDist = d; best = i; }
                 });
                 return best;
@@ -1754,17 +1756,24 @@
                         top = Math.max(0, sec.offsetTop - Math.round((scroller.clientHeight - sec.offsetHeight) / 2));
                     }
                     
+                    // Mark snap animation as in progress
+                    window.__snapAnimationInProgress = true;
+                    
                     // If our global helper exists, use it for a softer, velocity-like animation
                     if (window.__smoothScrollTo && smooth) {
                         window.__smoothScrollTo(scroller, top, { source: 'snap' });
+                        // smoothScrollTo should manage suppression, but ensure flag clears
+                        setTimeout(() => { window.__snapAnimationInProgress = false; }, 1600);
                     } else {
                         // fallback to native smooth behavior
-                        try { window.__snapSuppressUntil = Date.now() + 700; } catch(e){}
+                        try { window.__snapSuppressUntil = Date.now() + 1000; } catch(e){}
                         if (scroller === document.scrollingElement || scroller === document.documentElement) {
                             window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
                         } else {
                             scroller.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
                         }
+                        // Clear animation flag after scroll completes
+                        setTimeout(() => { window.__snapAnimationInProgress = false; }, 1000);
                     }
                 } catch (e) { /* swallow */ }
             }
@@ -1831,7 +1840,8 @@
                         try { ev.preventDefault(); ev.stopPropagation(); } catch(e){}
                         
                         // Suppress all events during animation - NO velocity effect
-                        if (Date.now() < (window.__snapSuppressUntil || 0)) return;
+                        // Check both the time-based flag AND the animation-in-progress flag
+                        if (Date.now() < (window.__snapSuppressUntil || 0) || window.__snapAnimationInProgress) return;
                         
                         const delta = ev.deltaY || 0;
                         if (Math.abs(delta) < 1) return; // ignore tiny deltas
@@ -1870,7 +1880,8 @@
                         try { wev.preventDefault(); wev.stopPropagation(); } catch(e){}
                         
                         // Suppress all events during animation - NO velocity effect
-                        if (Date.now() < (window.__snapSuppressUntil || 0)) return;
+                        // Check both the time-based flag AND the animation-in-progress flag
+                        if (Date.now() < (window.__snapSuppressUntil || 0) || window.__snapAnimationInProgress) return;
                         
                         const delta = wev.deltaY || 0;
                         if (Math.abs(delta) < 1) return; // ignore tiny deltas
@@ -1903,7 +1914,8 @@
             // Keyboard navigation for snapping (remain on document)
             document.addEventListener('keydown', (ev) => {
                 try {
-                    if (Date.now() < (window.__snapSuppressUntil || 0)) return;
+                    // Skip if animation or snap suppression is active
+                    if (Date.now() < (window.__snapSuppressUntil || 0) || window.__snapAnimationInProgress) return;
                     if (!['ArrowDown','PageDown',' ','ArrowUp','PageUp'].includes(ev.key)) return;
                     // Ignore when focus is on an input/textarea/select
                     const tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();

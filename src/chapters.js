@@ -423,6 +423,9 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           scroller.scrollTop = jumpScrollTop;
         }
+        
+        // Reset snap suppression flag to allow wheel snap immediately after jump
+        window.__snapSuppressUntil = Date.now();
       };
     }
 
@@ -759,6 +762,9 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       scroller.scrollTop = jumpScrollTop;
     }
+    
+    // Reset snap suppression flag to allow wheel snap immediately after jump
+    window.__snapSuppressUntil = Date.now();
   }
 
   // Listen for hash changes
