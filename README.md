@@ -394,7 +394,7 @@ css: src/theme.css
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah),+pois-he#2(label-main,id=bureij))
 
-ניבאל, אחמד וריתא נאלצו אז להימלט מרפיח יחד עם כמיליון איש נוספים, רובם המוחלט עקורים להם הצבא הישראלי הורה להתרכז בעיר בחודשים שלפני כן.
+אחמד וריתא נאלצו אז להימלט מרפיח יחד עם כמיליון איש נוספים, שרובם המוחלט עקורים שהצבא הישראלי הורה להם להתרכז בעיר בחודשיים שלפני כן.
 
 
 {.meta} 
