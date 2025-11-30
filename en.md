@@ -54,7 +54,7 @@ People also fled of their own accord, escaping the frequent airstrikes that rain
 
 
 {.meta}
-[](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
+[](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "In the photo: residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
 [](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+unosat-damage-231015)
 Throughout the offensive, Israel has prevented these Internally Displaced Persons (IDPs) from accessing safe shelter with food, water and basic services.
 
@@ -146,8 +146,8 @@ Baby Rita was born in September 2023.
 
 
 {.meta}
-[](svg/#intro-pre.svg/0.57,-0.33,1.16/+vimeo-1138452992)
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/~labels_he,+labels_en)
+[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053,+vimeo-1137390294,+vimeo-1137388732,+vimeo-1137388732 "From Nibal’s TikTok account")
+[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 Five days later, Ahmad was issued a work permit and started a job as a construction laborer in Israel.
 
 
@@ -186,20 +186,9 @@ Ahmad was at work in Israel.
 
 
 {.meta} 
-[](fg:blank)
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
-Nibal was terrified and went to stay with her parents nearby. 
-
-
-{.meta} 
 [](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 A few days later, Israel revoked tens of thousands of permits from all workers from Gaza. Many were inside Israel and could not go home.
-
-
-{.meta}
-[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 Ahmad and thousands of others instantly became “illegal aliens” in Israel.
 
 
@@ -237,7 +226,7 @@ Under heavy fire, hundreds of thousands had to decide where to run without knowi
 {.meta} 
 [](fg:blank)
 [](map/#31.52287,34.46534,12.90,-3.2,39.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
-Nibal was afraid to travel alone with her baby and stayed with her parents.
+Nibal was afraid to travel alone with her baby, and moved with Rita to her nearby parents’ home.
 
 
 {.testimony typewriter}
@@ -613,7 +602,7 @@ But I was losing hope.
 {.subheader}
 [](fg:blank)
 [](bg:blank)
-## Ceasefire
+## Ceasefire: January 2025
 
 
 {.meta}
