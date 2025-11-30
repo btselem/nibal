@@ -905,6 +905,7 @@ css: src/theme.css
 
 
 {.meta thumb gofundme}
+[](fg:blank)
 [](bg:blank)
 במהלך החודשים האחרונים, סיפורה של ניבאל פורסם בעיתונות וברשתות החברתיות. 
 היא מקווה שבעזרת הפרסום תצליח לגייס כסף כדי לצאת מהרצועה ולעבור השתלה של גפיים תותבות, שיעזרו לה להחזיר לעצמה מעט מהעצמאות שאיבדה.
@@ -946,6 +947,8 @@ css: src/theme.css
 
 
 {.meta thumb closing}
+[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 ## מתודולוגיה ומקורות
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
