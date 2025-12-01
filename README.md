@@ -177,7 +177,7 @@ css: src/theme.css
 
 
 {.meta} 
-[](svg/#intro-pre.svg/0.57,-0.33,1.16/+vimeo-1138452992)
+[](fg:blank)
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
 ניבאל הייתה אז בביתה בג׳באליא עם בתה ריתא, אז בת חודש בלבד. 
 אחמד, בעלה, היה באותה עת בעבודתו בבניין בתוך ישראל.
@@ -198,13 +198,13 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+IDF_zone_081023(idf-poly) "באדום: האיזורים שנכללו בצווי הפינוי שהפיץ הצבא לתושבי עזה ב-8 באוקטובר 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow "באדום: האיזורים שנכללו בצווי הפינוי שהפיץ הצבא לתושבי עזה ב-13 באוקטובר 2023")
 במקביל, הצבא החל להפיץ צווי פינוי לתושבי עזה.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow "באדום: האיזורים שנכללו בצווי הפינוי שהפיץ הצבא לתושבי עזה ב-13 באוקטובר 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow)
 צווי הפינוי ההמוניים הראשונים שהוציא הצבא ב-13 לאוקטובר הורו לכמיליון תושבי צפון הרצועה לעזוב את בתיהם ולעקור לדרום הרצועה תוך 24 שעות.
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#evacuation_orders" target="blank" class="dontinflect thumb">
@@ -217,25 +217,25 @@ css: src/theme.css
 
 {.meta} 
 [](svg/#oct7.svg/-0.32,-0.25,2.53/+@vimeo-1136099759 "נסיעה על כביש סלאח א-דין החוצה את הרצועה מצפון לדרום, 14 באוקטובר 2023. (מוחמד זענון)")
-[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow,+pois.csv(poi,id=home))
+[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow)
 תחת ההפצצות הכבדות, נאלצו מאות אלפי בני אדם להחליט במהירות לאן להימלט, מבלי לדעת אם ומתי יוכלו לשוב לבתיהם.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.52287,34.46534,12.90,-3.2,39.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home) "הערכת צפיפות בניינים שניזוקו ברצועת עזה לאחר השבוע הראשון למתקפה. מקור: UNOSAT")
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+unosat-damage-231015,+pois.csv(poi,id=home)) "הערכת צפיפות בניינים שניזוקו ברצועת עזה לאחר השבוע הראשון למתקפה. מקור: UNOSAT")
 ניבאל, שחששה מיציאה למסע הקשה לדרום הרצועה לבדה עם בתה בת החודש, עברה עם ריתא לבית הוריה הסמוך. 
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home))
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+unosat-damage-231015,+pois-he(label-main,id=home))
 נשארנו בג׳אבליא למרות ההפצצות, הרעב והפחד. סבלתי מאוד בתקופה הזאת. אחמד חסר לי מאוד ולא יכולתי לדמיין את העקירה לבד עם ריתא, בלעדיו ובלי התמיכה של המשפחה שלי.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home))
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+unosat-damage-231015,+pois-he(label-main,id=home))
 פחדתי על ריתא מאוד.
 
 
@@ -279,7 +279,7 @@ css: src/theme.css
 {.meta} 
 [](fg:blank)
 [](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-he(label-main,id=gaza-2403),+pois-he#2(label-main,id=nuseirat))
-משם, כשהיא נושאת בחיקה את ריתא בת החצי שנה, המשיכה ניבאל לדרום הרצועה ברגל.
+משם המשיכה ניבאל ברגל, כשהיא נושאת את ריתא בת החצי שנה בידיה.
 
 
 {.meta}
@@ -490,7 +490,7 @@ css: src/theme.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.36106,34.26832,13.74,0.0,39.0/+pois-he(label-main,id=al-mawasi))
+[](map/#31.36106,34.26832,13.74,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot),+pois-he(label-main,id=al-mawasi))
 הם הגיעו ל״אזור ההומניטרי״ באל-מוואסי, שם הם חיו שוב באוהל.
 
 
@@ -623,7 +623,7 @@ css: src/theme.css
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+@vimeo-1129854927 "מתוך חשבון הטיקטוק של ניבאל")
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-he(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+al-mawasi-jabalia(by-car),+pois-he(label-main,id=home))
 
 המשפחה קיבלה אותי בבית בחיבוקים, שירים ובכי. בלילות נפגשנו כל האחים בבית ההורים שלי.
 
@@ -924,7 +924,7 @@ css: src/theme.css
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
 <div id="mc_embed_signup">
     <form action="https://btselem.us5.list-manage.com/subscribe/post?u=920751e31402107695c00c26f&amp;id=19d0d9bede&amp;f_id=00cfe2e4f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll"><h2>הרשמה לרשימת התפוצה באימייל</h2>
+        <div id="mc_embed_signup_scroll"><h2>הרשמה לניוזלטר</h2>
             <div class="indicates-required"><span class="asterisk">*</span>שדות חובה</div>
             <div class="mc-field-group"><label for="mce-EMAIL">כתובת אימייל:<span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">שם פרטי:</label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">שם משפחה:</label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div>
 <div hidden=""><input type="hidden" name="tags" value="20413,4403872"></div>
@@ -941,9 +941,8 @@ css: src/theme.css
 
 
 {.meta thumb closing}
-[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-## מתודולוגיה ומקורות
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
 לפרסום המלא על העברה בכפייה ברצועת עזה:
@@ -951,6 +950,15 @@ css: src/theme.css
     ״אין מקום מתחת לשמיים״
     </strong>
 </a>
+
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#legality_of_displacement" target="blank" class="dontinflect">חוקיות הפינוי</a>
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#displacement_waves" target="blank" class="dontinflect">גלי העקירה וה"אזורים ההומניטריים"</a>
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#evacuation_orders" target="blank" class="dontinflect">צווי הפינוי וה"מסדרונות הבטוחים"</a>
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#living_conditions" target="blank" class="dontinflect">תנאי החיים במתחמי העקורים</a>
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#strikes_on_idp_sites" target="blank" class="dontinflect">הפצצות במתחמי העקורים</a>
+- <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">מחיקת המרחב האזרחי</a>
+
+
 
 ### צילומים ווידאו
 - באדיבות ניבאל אל-היסי
