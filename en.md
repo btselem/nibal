@@ -179,7 +179,7 @@ That same day, Israel launched a massive wave of strikes across Gaza.
 
 
 {.meta} 
-[](svg/#intro-pre.svg/0.57,-0.33,1.16/+vimeo-1138452992)
+[](fg:blank)
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
 Nibal was at home in Jabalya with her newborn. 
 Ahmad was at work in Israel.
@@ -200,13 +200,13 @@ He and thousands of others were arrested in Israel within days.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+IDF_zone_081023(idf-poly),~labels_he,+labels_en "In red: Areas ordered to evacuate on 8 Oct. 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_en "In red: Areas ordered to evacuate on 13 Oct. 2023")
 Meanwhile, the military began issuing evacuation orders for areas throughout Gaza.
 
 
 {.meta thumb} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_en "In red: Areas ordered to evacuate on 13 Oct. 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_en)
 The first mass orders, issued on 13 October, ordered about 1 million people in northern Gaza to go south within 24 hours.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#evacuation_orders" target="blank" class="dontinflect thumb">
@@ -219,25 +219,25 @@ The first mass orders, issued on 13 October, ordered about 1 million people in n
 
 {.meta} 
 [](svg/#oct7.svg/-0.32,-0.25,2.53/+@vimeo-1136099759 "Evacuating south along the the coastal road, 14 Oct. 2023 (Mohammed Zaanoun)")
-[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en)
+[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow,+unosat-damage-231015,~labels_he,+labels_en)
 Under heavy fire, hundreds of thousands had to decide where to run without knowing if they would ever return.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.52287,34.46534,12.90,-3.2,39.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 Nibal was afraid to travel alone with her baby, and moved with Rita to her nearby parents’ home.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.53103,34.47759,13.51,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en)
+[](map/#31.53103,34.47759,13.51,38.4,0.0/+unosat-damage-231015,+pois(label-main,id=home),~labels_he,+labels_en)
 We didn’t leave and go south despite the bombing, hunger and fear. I suffered a lot during that time. I missed Ahmad so much, and I couldn’t imagine going south alone with Rita without help from my husband and family.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.52965,34.48083,14.83,38.4,0.0/+north,+arrow,+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en)
+[](map/#31.52965,34.48083,14.83,38.4,0.0/+unosat-damage-231015,+pois(label-main,id=home),~labels_he,+labels_en)
 I was so scared something would happen to my baby.
 
 
@@ -281,7 +281,7 @@ Nibal described a terrifying ride through ruins, seeing bombs rain down nearby.
 {.meta} 
 [](fg:blank)
 [](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois(label-main,id=gaza-2403),+pois#2(label-main,id=nuseirat),~labels_he,+labels_en)
-From Gaza City, Nibal continued south on foot, carrying her baby. 
+From Gaza City, Nibal continued south on foot, carrying her baby in her hands. 
 
 
 {.meta}
@@ -493,7 +493,7 @@ Nibal was discharged from the hospital after 40 days. The family had to flee aga
 
 {.meta}
 [](fg:blank)
-[](map/#31.36106,34.26832,13.74,0.0,39.0/+pois(label-main,id=al-mawasi))
+[](map/#31.36106,34.26832,13.74,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot),+pois(label-main,id=al-mawasi))
 They went to the “humanitarian zone” in al-Mawasi and got a tent.
 
 
@@ -627,7 +627,7 @@ Nibal’s relatives picked them up at the Netzarim checkpoint. They took Ahmad t
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+@vimeo-1129854927 "From Nibal’s TikTok account")
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+al-mawasi-jabalia(by-car),+pois(label-main,id=home))
 
 My family welcomed me with hugging, singing and tears. My  brothers and sisters came over every evening.
 
@@ -860,9 +860,14 @@ Israel continued to bomb the Gaza Strip in the weeks that followed.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/2.02,-1.82,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
+[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins3.jpg)
 [](bg:blank)
 Despite the ceasefire, Nibal and her family are still in constant danger.
+
+
+{.meta}
+[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins1.jpg)
+[](bg:blank)
 
 
 {.meta}
@@ -937,10 +942,10 @@ B’Tselem will follow their story and share any developments in our newsletter:
 <script type="text/javascript" src="/src/mailchimp-script.js"></script>
   </div>
 
+
 {.meta thumb closing}
-[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-## Methodology and sources
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025" target="blank" class="dontinflect thumb">
 For the full report on forced displacement in Gaza:
@@ -948,6 +953,13 @@ For the full report on forced displacement in Gaza:
     “No Place Under Heaven”
     </strong>
 </a>
+
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#legality_of_displacement" target="blank" class="dontinflect">Legality of displacement</a>
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#displacement_waves" target="blank" class="dontinflect">Displacement waves and “humanitarian zones”</a>
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#evacuation_orders" target="blank" class="dontinflect">Evacuation orders and “safe corridors”</a>
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#living_conditions" target="blank" class="dontinflect">Living conditions in IDP compounds</a>
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#strikes_on_idp_sites" target="blank" class="dontinflect">Airstrikes on IDP compounds</a>
+- <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">Erasure of civilian space</a>
 
 
 ### Photos and Video
