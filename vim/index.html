@@ -52,6 +52,7 @@
       will-change: transform;
       contain: layout style paint;
       opacity: 0;
+      z-index: 20;
     }
     #vimeo-embed.playing {
       opacity: 1;
@@ -175,7 +176,11 @@
                   var iframe = document.getElementById('vimeo-embed');
                   var preloader = document.querySelector('.preloader');
                   console.log('[vimeo] Timeout reached, showing iframe');
-                  if (iframe) iframe.classList.add('playing');
+                  if (iframe) {
+                    iframe.classList.add('playing');
+                    // Force visibility as absolute fallback
+                    iframe.style.opacity = '1';
+                  }
                   if (preloader) preloader.classList.add('hidden');
                   playerReady = true;
                   
@@ -225,6 +230,8 @@
           console.log('[vimeo] Event received: ' + data.event);
           if (iframe && !playerReady) {
             iframe.classList.add('playing');
+            // Force visibility as absolute fallback
+            iframe.style.opacity = '1';
             if (preloader) preloader.classList.add('hidden');
             playerReady = true;
             console.log('[vimeo] Video ready via ' + data.event);
