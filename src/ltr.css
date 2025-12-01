@@ -18,7 +18,7 @@
 .ltr section > a.thumb{
     border-right: none;
     border-left: #FA5F5F 8px solid;
-    padding: 32px 16px 4px 144px;
+    padding: 32px 16px 4px 224px;
     background-position: left bottom;
     background-image: image-set(
         url(assets/report_thumb_en.png) 1x,
@@ -69,4 +69,30 @@
     text-align: left;
     left: 7vw;
     right: auto;
+}
+
+.ltr section.closing > a.thumb{
+    padding: 130px 16px 8px;
+    background-position: top left;
+}
+
+.ltr section.closing ul {
+    border-right: none;
+    border-left: #FA5F5F 8px solid;
+    padding: 0px 16px 0 48px;
+}
+
+@media (max-width: 1000px) and (orientation: portrait) {
+    .ltr section.closing ul {
+        padding: 0px 8px 0 40px;
+    }
+
+    .ltr section.closing > a.thumb{
+        padding: 88px 16px 16px;
+        background-position: top left;
+    }
+
+    .ltr section > a.thumb{
+        padding: 32px 8px 4px 144px;
+    }
 }

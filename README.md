@@ -959,7 +959,7 @@ css: src/theme.css
 - <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">מחיקת המרחב האזרחי</a>
 
 
-
+{.meta closing}
 ### צילומים ווידאו
 - באדיבות ניבאל אל-היסי
 - Activestills
@@ -973,4 +973,4 @@ css: src/theme.css
 
 ### עיצוב ופיתוח מוצר
 - <a href="http://mushon.com" target="blank" class="dontinflect">מושון זר-אביב</a>, סטודיו שועל
-- Made with <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
+- Built on top of <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>

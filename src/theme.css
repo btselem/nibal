@@ -220,11 +220,7 @@ section.testimony p:last-child{
 }
 
 section.closing {
-    padding-top: 40vh;
-}
-
-section.closing a {
-    color: #FA5F5F;
+    
 }
 
 section.closing h2 {
@@ -238,9 +234,30 @@ section.closing h3 {
     line-height: 1em;
 }
 
+section.closing > a.thumb{
+    padding: 130px 16px 0;
+    background-position: top right;
+    min-height: auto;
+    font-size: 1em;
+}
+
 section.closing ul {
     margin-top: 0;
-    padding: 0 1em;
+    background-color: #000;
+    list-style: decimal-leading-zero;
+    padding: 1em 48px;
+    border-right: #FA5F5F 8px solid;
+    color: #FA5F5F;
+}
+
+section.closing ul a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section.closing ul a:hover {
+    color: #FA5F5F;
+    text-decoration: underline;
 }
 
 /* used as placeholder */
@@ -653,4 +670,22 @@ input#mce-EMAIL{
 
     section:first-child > a.thumb{
         margin-bottom: 80px;
+    }
+
+    section.closing > a.thumb{
+        padding-top: 88px;
+        font-size: 1em;
+    }
+
+    section.closing > ul {
+        padding: 1em 40px;
+    }
+
+    #mc_embed_signup>form>div>div>input {
+        height: 24px;
+    }
+
+    #mc_embed_signup {
+        margin-bottom: 0;
+    }
 }

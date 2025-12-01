@@ -954,6 +954,7 @@ css: src/theme.css, src/ar.css
 - <a href="https://www.btselem.org/arabic/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">محو الحيّز المدني</a>
 
 
+{.meta closing}
 ### صور وفيديو
 - من نبال الهسي مشكورة
 - REUTERS
@@ -967,4 +968,4 @@ css: src/theme.css, src/ar.css
 ### تصميم وتطوير المنتج
  
 - <a href="http://mushon.com" target="blank" class="dontinflect">موشون زر- أفيف</a>, ستوديو شوعال
-- Made with <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
+- Built on top of <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>

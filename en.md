@@ -962,6 +962,7 @@ For the full report on forced displacement in Gaza:
 - <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">Erasure of civilian space</a>
 
 
+{.meta thumb closing}
 ### Photos and Video
 - Courtesy of Nibal Al-Hisi
 - Activestills
@@ -973,10 +974,6 @@ For the full report on forced displacement in Gaza:
 - ESRI Wayback
 - Gazamap.com
 
-## Credits
-
-<img width="468" height="59" alt="image" src="https://github.com/user-attachments/assets/8eef2b08-b2da-4907-8bae-7702389d7486" />
-
 ### Product Design and Development
 - <a href="http://mushon.com" target="blank" class="dontinflect">Mushon Zer-Aviv</a>, Studio Shual
-- Made with <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
+- Built on top of  <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
