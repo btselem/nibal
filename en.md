@@ -286,58 +286,58 @@ From Gaza City, Nibal continued south on foot, carrying her baby in her hands.
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he,+labels_en)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he)
 In the area of a-Nuseirat, the two reunited with Ahmad. 
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he) 
 The young family went together to a tent Ahmad had set up in Rafah. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
 
 
 {.meta} 
 [](svg/#south.svg/-2.43,-3.55,12.19/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (Majdi Fathi/NurPhoto)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Nibal and Rita met Ahmad after he had been held in an Israeli detention facility for months, without trial. 
 
 
 {.meta} 
 [](svg/#south.svg/-0.02,0.65,2.87/+ahmed_detained-comp.jpg "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Since the 7 October attack, B’Tselem and other human rights groups have documented a systemic Israeli policy of harsh violence, starvation and denial of medical care against Palestinian detainees, leading to dozens of deaths to date. 
 Israel continues to deny most detainees the right to due process and other basic rights, holding them in facilities run as a network of torture camps.
 
 
 {.meta} 
 [](svg/#south.svg/-0.82,2.16,7.52/+ahmed_detained-comp.jpg "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Some of the Gazans detained inside Israel in October 2023 are still in custody. 
 
 
 {.meta}
 [](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Despite the joyous reunion, Nibal struggled to adjust to life in a tent in Rafah. 
 
 
 {.meta thumb}
 [](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Living crammed together without enough food and water, with no privacy and poor sanitation was unbearable – especially for women.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#living_conditions" target="blank" class="dontinflect thumb">
@@ -348,13 +348,13 @@ Living crammed together without enough food and water, with no privacy and poor 
 
 {.testimony typewriter}
 [](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en)    
+[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 It was constant torment, probably the hardest time in my life.
 
 
 {.testimony typewriter}
 [](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 I didn’t tell my parents how hard it was, because they didn’t want me to go south.
 I was ashamed to tell them how I was living.  
 
