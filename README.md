@@ -91,14 +91,14 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.64,-0.11,2.4/+parents-w-baby,+@vimeo-1137390294)
+[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base "מתוך חשבון הטיקטוק של ניבאל")
 
 בגלל שאני הקטנה, ההורים והאחים שלי תמיד פינקו אותי.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+vimeo-1137390294,+parents-w-baby,+@vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
+[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 אחרי התיכון, המשכתי ללימודי אנגלית ותרגום באוניברסיטת אל-אזהר בעיר עזה.
@@ -165,7 +165,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
+[](map/#31.37022,34.37989,9.79,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
 1,220 בני אדם נהרגו באותה מתקפה, ובהם נשים, זקנים וילדים.  
 עשרות אלפים נפצעו, ו-252 בני אדם חיים וגופות נחטפו לרצועת עזה.
 
@@ -198,7 +198,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow "באדום: האיזורים שנכללו בצווי הפינוי שהפיץ הצבא לתושבי עזה ב-13 באוקטובר 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north "באדום: האיזורים שנכללו בצווי הפינוי שהפיץ הצבא לתושבי עזה ב-13 באוקטובר 2023")
 במקביל, הצבא החל להפיץ צווי פינוי לתושבי עזה.
 
 
@@ -362,7 +362,7 @@ css: src/theme.css
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45106,34.33247,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly) "בתמונה: צווי הפינוי שהפיץ הצבא לתושבי ושוהי רפיח ב-6 במאי 2024")
+[](map/#31.46074,34.32738,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly) "בתמונה: צווי הפינוי שהפיץ הצבא לתושבי ושוהי רפיח ב-6 במאי 2024")
 בתחילת מאי 2024, פחות מחודשיים לאחר הגעתם של ניבאל, אחמד וריתא לעיר, הפיץ הצבא הישראלי צווי פינוי חדשים שדרשו מתושבי רפיח ומהעקורים השוהים בה להתפנות.  
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -480,6 +480,13 @@ css: src/theme.css
 [](svg/#warehouse_bureij2.svg/-2.38,1.57,10.5/+nibal_xray,+nibal_after_amputation,+rita_tent1)
 [](bg:blank)
 שאלתי מה עם ריתא, וענו לי שהיא בריאה ושלמה. זה מה שהחזיק אותי. זה, וזה שאחמד היה לצדי.
+
+
+{.testimony typewriter}
+[](fg:blank)
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=home))
+ההורים שלי השתגעו מדאגה. הם חששו שלא אשרוד, וכל הזמן התעדכנו במצבי דרך אחמד. 
+כשמצבי השתפר קצת במהלך האשפוז, הצלחתי סוף סוף להתקשר בעצמי לאמא שלי. רציתי שהיא תשמע שאני בסדר. היא לא האמינה שאני עדיין חיה, ולא הפסיקה לבכות דרך הטלפון.
 
 
 {.meta}
