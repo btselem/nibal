@@ -865,7 +865,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg)
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins1.jpg)
 [](bg:blank)
 
 
