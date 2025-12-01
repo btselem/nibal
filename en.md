@@ -92,28 +92,28 @@ I’m the youngest of nine brothers and three sisters.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.64,-0.11,2.4/+parents-w-baby,+@vimeo-1137390294)
+[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 So my family always spoiled me.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+vimeo-1137390294,+parents-w-baby,+@vimeo-1137392053 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 After high-school, I majored in English and Translation at Al-Azhar University in Gaza City.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137390294,+vimeo-1137392053,+@vimeo-1137391389 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 In my final year, I met Ahmad. I felt that he really got me.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137390294,+vimeo-1137392053,+@vimeo-1137391389 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 I married him even though my parents objected. I knew we wouldn’t live in luxury, but he was my precious treasure.
 
@@ -140,13 +140,13 @@ We led a happy life, surrounded by the love and warmth of family.
 
 
 {.meta}
-[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053,+vimeo-1137390294,+vimeo-1137388732,+vimeo-1137388732 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 Baby Rita was born in September 2023.
 
 
 {.meta}
-[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053,+vimeo-1137390294,+vimeo-1137388732,+vimeo-1137388732 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053 "From Nibal’s TikTok account")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 Five days later, Ahmad was issued a work permit and started a job as a construction laborer in Israel.
 
@@ -167,7 +167,7 @@ On 7 October 2023, Hamas and other armed Palestinian groups carried out the dead
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.37022,34.37989,9.79,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
 Entering from Gaza, the attackers killed 1,220 people, including women, elderly people and children, and left tens of thousands injured. 
 They carried 252 people, some living and others dead, back to Gaza.
 
@@ -200,7 +200,7 @@ He and thousands of others were arrested in Israel within days.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,+arrow,~labels_he,+labels_en "In red: Areas ordered to evacuate on 13 Oct. 2023")
+[](map/#31.41869,34.37279,10.00,37.6,0.0/+north,~labels_he,+labels_en "In red: Areas ordered to evacuate on 13 Oct. 2023")
 Meanwhile, the military began issuing evacuation orders for areas throughout Gaza.
 
 
@@ -286,58 +286,58 @@ From Gaza City, Nibal continued south on foot, carrying her baby in her hands.
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he,+labels_en)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he)
 In the area of a-Nuseirat, the two reunited with Ahmad. 
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he) 
 The young family went together to a tent Ahmad had set up in Rafah. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
 
 
 {.meta} 
 [](svg/#south.svg/-2.43,-3.55,12.19/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (Majdi Fathi/NurPhoto)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Nibal and Rita met Ahmad after he had been held in an Israeli detention facility for months, without trial. 
 
 
 {.meta} 
 [](svg/#south.svg/-0.02,0.65,2.87/+ahmed_detained-comp.jpg "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Since the 7 October attack, B’Tselem and other human rights groups have documented a systemic Israeli policy of harsh violence, starvation and denial of medical care against Palestinian detainees, leading to dozens of deaths to date. 
 Israel continues to deny most detainees the right to due process and other basic rights, holding them in facilities run as a network of torture camps.
 
 
 {.meta} 
 [](svg/#south.svg/-0.82,2.16,7.52/+ahmed_detained-comp.jpg "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Some of the Gazans detained inside Israel in October 2023 are still in custody. 
 
 
 {.meta}
 [](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Despite the joyous reunion, Nibal struggled to adjust to life in a tent in Rafah. 
 
 
 {.meta thumb}
 [](svg/#south.svg/-0.03,0.03,5.52/+rafah_tent_comp.jpg "IDPs shelter in a tent camp in Khan Yunis, 11 Dec. 2023 (Reuters/Ibraheem Abu Mustafa)")
-[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Living crammed together without enough food and water, with no privacy and poor sanitation was unbearable – especially for women.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#living_conditions" target="blank" class="dontinflect thumb">
@@ -348,20 +348,20 @@ Living crammed together without enough food and water, with no privacy and poor 
 
 {.testimony typewriter}
 [](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en)    
+[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 It was constant torment, probably the hardest time in my life.
 
 
 {.testimony typewriter}
 [](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he,+labels_en) 
+[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 I didn’t tell my parents how hard it was, because they didn’t want me to go south.
 I was ashamed to tell them how I was living.  
 
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45106,34.33247,10.35,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_en "Military evacuation orders for Rafah issued in early May 2024")
+[](map/#31.46074,34.32738,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_en "Military evacuation orders for Rafah issued in early May 2024")
 Less than two months after the family arrived in Rafah, Israel ordered the city evacuated in early May 2024.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -483,6 +483,13 @@ I was in shock. It felt like they were still there, or were going to grow back.
 [](bg:blank)
 I asked about Rita, and they told me she was fine. That’s what kept me going, along with Ahmad by my side. 
 That and having Ahmad with me.
+
+
+{.testimony typewriter}
+[](fg:blank)
+[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois(label-main,id=al-zawaida),+pois#2(label-main,id=home))
+My parents were beside themselves with worry. They were afraid I wouldn’t survive, and they kept checking on me through Ahmad.
+When my condition improved slightly, I finally managed to call my mother myself. She couldn’t believe I was still alive, and broke down crying.
 
 
 {.meta}
@@ -790,14 +797,14 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 {.meta}
 [](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
-[](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509)~labels_he,+labels_en)
+[](map/#31.52947,34.47929,18.15,38.4,0.0/~labels_he,+labels_en)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
 They sheltered in an abandoned restaurant belonging to friends, and later in a cramped apartment in Gaza City.
 
 
 {.meta} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+pois(label-main,id=home),+pois#2(label-main,id=gaza-2509),~labels_he,+labels_en)
+[](map/#31.50774,34.46034,14.51,38.4,0.0/~labels_he,+labels_en)
 
 During those weeks, Israel launched another ground invasion into Gaza City.
 
@@ -885,7 +892,7 @@ She is fighting to imagine a better future for herself and for Rita.
 {.meta}
 [](svg/#permanent_impermanence.svg/0.7,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
-Nibal is one of nearly 2 million people in Gaza enduring loss, hunger and prolonged displacement.
+Nibal’s story is just one of 2 million stories in Gaza – stories of people suffering loss, hunger and ongoing displacement, forced by Israel to live in unbearable conditions, abandoned by the international community and left with no real hope for a better future.
 
 
 {.meta}
