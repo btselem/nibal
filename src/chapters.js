@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let navItemCount = 0;
     
     // Build nav items for all main children in order
-    allMainChildren.forEach(child => {
+    allMainChildren.forEach((child, idx) => {
       navItemCount++;
       
       // Check if this child is a heading or contains a heading
@@ -132,7 +132,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const label = document.createElement('span');
         label.className = 'chapter-label';
-        label.textContent = chapterTitle;
+        // In editor mode, append section number to label
+        const displayText = document.body && document.body.classList.contains('editor') 
+          ? `${chapterTitle}: ${String(idx + 1).padStart(2, '0')}` 
+          : chapterTitle;
+        label.textContent = displayText;
 
         // Attach handlers to the container so entire area including borders is clickable
         chapterItem.addEventListener('click', createScrollHandler(child.id));
@@ -176,7 +180,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add tooltip label
         const sectionLabel = document.createElement('span');
         sectionLabel.className = 'chapter-label';
-        sectionLabel.textContent = sectionTitle;
+        // In editor mode, append section number to label
+        const sectionDisplayText = document.body && document.body.classList.contains('editor')
+          ? `${sectionTitle}: ${String(idx + 1).padStart(2, '0')}`
+          : sectionTitle;
+        sectionLabel.textContent = sectionDisplayText;
 
         // Attach handlers to the container so entire area including borders is clickable
         sectionItem.addEventListener('click', createScrollHandler(child.id));

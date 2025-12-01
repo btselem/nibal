@@ -654,7 +654,7 @@ Despite her parents’ concerns, she went back to their apartment with Rita and 
 
 
 {.meta}
-[](http://svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "Israeli airstrike in central Gaza City, 22 March 2025 (Saher Alghorra/ZUMA Press Wire)")
+[](svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "Israeli airstrike in central Gaza City, 22 March 2025 (Saher Alghorra/ZUMA Press Wire)")
 [](bg:blank)
 But then the war resumed. 
 

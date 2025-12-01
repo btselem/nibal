@@ -536,6 +536,8 @@ async function loadSVG(url){
     try { window.layerKeyMap = layerKeyMap; } catch(e){}
     // auto-attach video overlays for layers with vimeo-* or embed-* IDs
     try { autoAttachVideoOverlays(); } catch(e) { /* auto-attach videos failed */ }
+    // Ensure overlays are positioned correctly after attachment
+    try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
     // Fade in SVG after a tick (ensures positioned)
     setTimeout(() => { if (svgEl) svgEl.style.opacity = '1'; }, 60);
   } catch (e) {
@@ -1712,10 +1714,38 @@ function render(){
   // Update reference frame display (called here for consistency, also called on resize)
   updateReferenceFrame();
 
-  // Update HTML overlays to match current SVG transform
-  try { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); } catch(e){}
-  // Also schedule a second update on next animation frame for robustness
-  try { requestAnimationFrame(() => { if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update(); }); } catch(e){}
+  // Cache the current transform state for overlay calculations
+  try {
+    window.__svgCurrentTransform = {
+      svgEl: svgEl,
+      bbox: bbox,
+      state: { ...state },
+      ref: { ...ref },
+      viewportScale: viewportScale,
+      viewportTx: viewportTx,
+      viewportTy: viewportTy,
+      scaleToFitInRef: scaleToFitInRef,
+      timestamp: performance.now()
+    };
+  } catch(e) {}
+  
+  // Update HTML overlays to match current SVG transform with dual-pass strategy:
+  // 1. Immediate update during this frame
+  // 2. RAF-scheduled second pass to catch any async updates
+  try { 
+    if (window.overlayManager && typeof window.overlayManager.update === 'function') {
+      window.overlayManager.update(); 
+    }
+  } catch(e){}
+  
+  try { 
+    cancelAnimationFrame(window.__overlayUpdateRaf || 0);
+    window.__overlayUpdateRaf = requestAnimationFrame(() => { 
+      if (window.overlayManager && typeof window.overlayManager.update === 'function') {
+        window.overlayManager.update(); 
+      }
+    });
+  } catch(e){}
 }
 
 // simple tweening helper for numeric state transitions
@@ -1956,6 +1986,8 @@ function suppressHashFor(ms){ try { window.__suppressHashChangeUntil = Date.now(
 // debounced hash write to avoid immediate reapplication during animations
 let __hashWriteTimeout = null;
 let __viewHashTimeout = null;
+// Track last fully applied hash fields to avoid skipping real changes
+try { window.__lastAppliedHash = { url: '', params: null, vis: null }; } catch(e){}
 
 function scheduleViewHashWrite(delay = 100){
   try { if (__viewHashTimeout) clearTimeout(__viewHashTimeout); } catch(e){}
@@ -2045,17 +2077,69 @@ setTimeout(() => { startViewer(); }, 0);
 window.addEventListener('hashchange', ()=>{
   // If this hashchange was caused by our own UI write, skip re-applying
   // visibility/state to avoid cancelling user-initiated animations.
-  if (typeof window.__suppressHashChangeUntil === 'number' && Date.now() < window.__suppressHashChangeUntil) { return; }
-  /* hashchange: debug log removed */
+  const now = Date.now();
+  const suppressed = (typeof window.__suppressHashChangeUntil === 'number' && now < window.__suppressHashChangeUntil);
   const parsed = parseHash();
+  // Decide whether to override suppression: if url or vis changed from last applied, we must process
+  let mustProcess = false;
+  try {
+    const last = window.__lastAppliedHash || { url: '', params: null, vis: null };
+    const visChanged = JSON.stringify(parsed.vis || {}) !== JSON.stringify(last.vis || {});
+    const urlChanged = (parsed.url || '') !== (last.url || '');
+    mustProcess = urlChanged || visChanged;
+  } catch(e) { mustProcess = true; }
+  if (suppressed && !mustProcess) { return; }
   if (!parsed) return;
   // if URL changed, load new svg immediately
   if (parsed.url && parsed.url !== currentUrl) {
     currentUrl = parsed.url;
+    
+    // Before loading new SVG, completely clear all overlays to ensure clean state
+    try {
+      if (window.overlayManager && window.overlayManager.items) {
+        const allKeys = Array.from(window.overlayManager.items.keys());
+        allKeys.forEach(key => {
+          if (typeof window.overlayManager.remove === 'function') {
+            window.overlayManager.remove(key);
+          }
+        });
+      }
+    } catch(e) {
+      console.warn('[svg] Error clearing overlays before SVG load:', e);
+    }
+    
+    // Load new SVG
     loadSVG(currentUrl).then(()=>{
-      if (window.overlayManager && typeof window.overlayManager.update === 'function') window.overlayManager.update();
-      if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+      // After SVG loads, apply visibility from parsed hash
+      if (parsed.vis) {
+        try {
+          applyVisibilityFromVis(parsed.vis, { animate: false, skipOverlayUpdate: false });
+        } catch(e) {
+          console.warn('[svg] Error applying visibility after load:', e);
+        }
+      }
+      
+      // Explicitly re-attach all video overlays with correct visibility state
+      if (typeof autoAttachVideoOverlays === 'function') {
+        try {
+          autoAttachVideoOverlays(parsed.vis);
+        } catch(e) {
+          console.warn('[svg] Error attaching video overlays:', e);
+        }
+      }
+      
+      // Final overlay update to ensure all positioning is correct
+      if (window.overlayManager && typeof window.overlayManager.update === 'function') {
+        try {
+          window.overlayManager.update();
+        } catch(e) {
+          console.warn('[svg] Error updating overlays:', e);
+        }
+      }
+    }).catch(e => {
+      console.warn('[svg] Error loading SVG:', e);
     });
+    try { window.__lastAppliedHash = { url: parsed.url || '', params: parsed.params || null, vis: parsed.vis || null }; } catch(e){}
     return;
   }
   // if same URL but params changed, animate to new params
@@ -2073,6 +2157,7 @@ window.addEventListener('hashchange', ()=>{
     }
     // Always re-attach overlays in case layers changed
     if (typeof autoAttachVideoOverlays === 'function') autoAttachVideoOverlays();
+    try { window.__lastAppliedHash = { url: parsed.url || '', params: parsed.params || null, vis: parsed.vis || null }; } catch(e){}
   }
 });
 
@@ -2415,36 +2500,93 @@ document.addEventListener('keydown', function(e) {
       const bb = el.getBBox();
       if (!bb) { overlay.style.display = 'none'; return; }
 
-      // Recreate the same CSS transform math used by the viewer's render()
-      const ref = (typeof getReferenceFrame === 'function') ? getReferenceFrame() : {
-        size: Math.min(window.innerWidth || 0, window.innerHeight || 0),
-        centerX: (window.innerWidth || 0) / 2,
-        centerY: (window.innerHeight || 0) / 2
-      };
-      // Use the global svg bbox captured at load/fit, not the element's bbox
-      const vb = (typeof bbox !== 'undefined' && bbox) ? bbox : (svgEl && svgEl.getBBox ? svgEl.getBBox() : bb);
-      // Use the viewer's state (scale/tx/ty) from the global, not window
-      const st = (typeof state !== 'undefined' && state) ? state : { tx: 0, ty: 0, scale: 1 };
-      const scaleToFitInRef = Math.min(ref.size / vb.width, ref.size / vb.height);
-      const viewportScale = st.scale * scaleToFitInRef;
-      const offsetXpx = st.tx * ref.size;
-      const offsetYpx = st.ty * ref.size;
-      const viewportTx = ref.centerX + offsetXpx - (vb.x + vb.width / 2) * viewportScale;
-      const viewportTy = ref.centerY + offsetYpx - (vb.y + vb.height / 2) * viewportScale;
+      // Prefer cached transform from render() for perfect sync
+      // Use cached values if available and fresh (within 500ms)
+      let ref, vb, st, scaleToFitInRef, viewportScale, viewportTx, viewportTy;
+      
+      const useCache = window.__svgCurrentTransform && 
+                       window.__svgCurrentTransform.timestamp && 
+                       (performance.now() - window.__svgCurrentTransform.timestamp) < 500 &&
+                       window.__svgCurrentTransform.ref &&
+                       window.__svgCurrentTransform.bbox &&
+                       window.__svgCurrentTransform.state &&
+                       isFinite(window.__svgCurrentTransform.scaleToFitInRef) &&
+                       isFinite(window.__svgCurrentTransform.viewportScale);
+      
+      if (useCache) {
+        ref = window.__svgCurrentTransform.ref;
+        vb = window.__svgCurrentTransform.bbox;
+        st = window.__svgCurrentTransform.state;
+        scaleToFitInRef = window.__svgCurrentTransform.scaleToFitInRef;
+        viewportScale = window.__svgCurrentTransform.viewportScale;
+        viewportTx = window.__svgCurrentTransform.viewportTx;
+        viewportTy = window.__svgCurrentTransform.viewportTy;
+      } else {
+        // Fallback: recalculate (stale, but better than nothing)
+        ref = (typeof getReferenceFrame === 'function') ? getReferenceFrame() : {
+          size: Math.min(window.innerWidth || 0, window.innerHeight || 0),
+          centerX: (window.innerWidth || 0) / 2,
+          centerY: (window.innerHeight || 0) / 2
+        };
+        vb = (typeof bbox !== 'undefined' && bbox) ? bbox : (svgEl && svgEl.getBBox ? svgEl.getBBox() : bb);
+        st = (typeof state !== 'undefined' && state) ? state : { tx: 0, ty: 0, scale: 1 };
+        if (!ref.size || ref.size <= 0 || !vb.width || vb.width <= 0) {
+          overlay.style.display = 'none';
+          return;
+        }
+        scaleToFitInRef = Math.min(ref.size / vb.width, ref.size / vb.height);
+        viewportScale = st.scale * scaleToFitInRef;
+        const offsetXpx = st.tx * ref.size;
+        const offsetYpx = st.ty * ref.size;
+        viewportTx = ref.centerX + offsetXpx - (vb.x + vb.width / 2) * viewportScale;
+        viewportTy = ref.centerY + offsetYpx - (vb.y + vb.height / 2) * viewportScale;
+      }
 
       const mapPoint = (x, y) => ({
         x: viewportTx + x * viewportScale,
         y: viewportTy + y * viewportScale
       });
+      
       // Apply element's internal SVG transform (if any) before mapping to CSS pixels
       // getCTM() gives the matrix from the element's local coordinate space to the SVG viewport (pre-CSS)
-      const ctm = (typeof el.getCTM === 'function') ? el.getCTM() : null;
-      const mapLocal = (x, y) => {
-        if (ctm) {
-          const p = new DOMPoint(x, y).matrixTransform(ctm);
-          return mapPoint(p.x, p.y);
+      let ctm = null;
+      try {
+        if (typeof el.getCTM === 'function') {
+          ctm = el.getCTM();
+          // Validate CTM has sensible values
+          if (ctm && (!isFinite(ctm.a) || !isFinite(ctm.b) || !isFinite(ctm.c) || !isFinite(ctm.d) || !isFinite(ctm.e) || !isFinite(ctm.f))) {
+            ctm = null; // discard invalid CTM
+          }
         }
-        return mapPoint(x, y);
+      } catch(e) {
+        ctm = null; // getCTM() failed, continue without it
+      }
+      
+      // Map SVG coordinates through CTM to viewport coordinates
+      const mapSvgToViewport = (svgX, svgY) => {
+        if (ctm) {
+          try {
+            const p = new DOMPoint(svgX, svgY).matrixTransform(ctm);
+            // Validate transformed point
+            if (isFinite(p.x) && isFinite(p.y)) {
+              return { x: p.x, y: p.y };
+            }
+          } catch(e) {
+            // matrixTransform failed, fall back to direct mapping
+          }
+        }
+        return { x: svgX, y: svgY };
+      };
+      
+      // Then map viewport coordinates to CSS screen coordinates
+      const mapViewportToScreen = (vportX, vportY) => {
+        return mapPoint(vportX, vportY);
+      };
+      
+      // Combined mapping: SVG → viewport → screen
+      const mapLocal = (svgX, svgY) => {
+        const vportCoords = mapSvgToViewport(svgX, svgY);
+        return mapViewportToScreen(vportCoords.x, vportCoords.y);
       };
 
       let width, height, rotation, tx, ty;
@@ -2490,7 +2632,11 @@ document.addEventListener('keydown', function(e) {
 
       // Fallback: use bbox corners mapped through the viewer transform
       if (tx == null || ty == null) {
-        if (!bb.width || !bb.height) { overlay.style.display = 'none'; return; }
+        // Validate bbox dimensions
+        if (!bb || !isFinite(bb.width) || !isFinite(bb.height) || bb.width <= 0 || bb.height <= 0) { 
+          overlay.style.display = 'none'; 
+          return; 
+        }
         const pts = [
           mapLocal(bb.x, bb.y),
           mapLocal(bb.x + bb.width, bb.y),
@@ -2512,9 +2658,16 @@ document.addEventListener('keydown', function(e) {
       }
 
       // Apply unambiguous translate+rotate, with width/height defining scale
-      overlay.style.transform = `translate(${tx}px, ${ty}px) rotate(${rotation}deg)`;
-      overlay.style.width = Math.max(0.001, width) + 'px';
-      overlay.style.height = Math.max(0.001, height) + 'px';
+      // Clamp width/height to prevent NaN or infinite sizes from crashing
+      const finalWidth = Math.max(0.001, Math.min(1e6, isFinite(width) ? width : 1));
+      const finalHeight = Math.max(0.001, Math.min(1e6, isFinite(height) ? height : 1));
+      const finalRotation = isFinite(rotation) ? rotation : 0;
+      const finalTx = isFinite(tx) ? tx : 0;
+      const finalTy = isFinite(ty) ? ty : 0;
+      
+      overlay.style.transform = `translate(${finalTx}px, ${finalTy}px) rotate(${finalRotation}deg)`;
+      overlay.style.width = finalWidth + 'px';
+      overlay.style.height = finalHeight + 'px';
       
       // mirror visibility/opacity/transition with smooth transitions
       const cs = window.getComputedStyle(el);

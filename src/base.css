@@ -72,7 +72,7 @@ section img { max-width: 100%; }
 /* Caption overlay for active inflection links */
 .inflect-caption {
     position: fixed;
-    right: 3vw;
+    right: 3vh;
     top: 8px;
     max-width: 87vw;
     background: rgba(0, 0, 0, 0.7);

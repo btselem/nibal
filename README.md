@@ -650,7 +650,7 @@ css: src/theme.css
 
 
 {.meta}
-[](http://svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "תקיפה ישראלית במרכז העיר עזה, 22 במרץ 2025. (סאהר אל־ע'ורה / ZUMA Press Wire)")
+[](svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "תקיפה ישראלית במרכז העיר עזה, 22 במרץ 2025. (סאהר אל־ע'ורה / ZUMA Press Wire)")
 [](bg:blank)
 אבל אז ישראל הפרה את הפסקת האש, והמתקפה על הרצועה התחדשה ביתר שאת. 
 

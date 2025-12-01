@@ -650,7 +650,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](http://svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "هجوم إسرائيلي على وسط مدينة غزة، 22 آذار 2025 (ساهر الغرّة/ ZUMA Press Wire)")
+[](svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "هجوم إسرائيلي على وسط مدينة غزة، 22 آذار 2025 (ساهر الغرّة/ ZUMA Press Wire)")
 [](bg:blank)
 ولكن عندها تجددت الحرب بضراوة أشدّ. تحت ضغط القصف والحصار، عادت علاقة نِبال وأحمد إلى التأزم من جديد.
 
