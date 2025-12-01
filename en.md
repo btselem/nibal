@@ -32,7 +32,7 @@ css: src/theme.css, src/ltr.css
 {.meta}
 [](svg/#intro-pre.svg/-0.02,1.21,1.52/+nibal2023,~displacement)
 [](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he)
-For two years of genocidal assault on the Gaza Strip, Israel has repeatedly forced the overwhelming majority of its residents to flee their homes again and again.
+For two years of genocidal assault on Gaza, Israel has repeatedly forced the overwhelming majority of its residents to flee their homes again and again.
 
 
 {.meta}
@@ -654,7 +654,7 @@ Despite her parents’ concerns, she went back to their apartment with Rita and 
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-1.26,-1.49,3.09/+attack_march_25.jpg)
+[](svg/#ceasefire_hope.svg/-1.07,-1.44,3.09/+attack_march_25.jpg)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+labels_en "!!! In red: Areas ordered to evacuate in the week after Israel violated the ceasefire in March 2025. In the photo: Israeli airstrike in central Gaza City, 22 March 2025 (Saher Alghorra/ZUMA Press Wire)")
 But then the war resumed. 
 
@@ -711,7 +711,7 @@ In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, ki
 
 {.meta}
 [](svg/#back_home.svg/-0.94,-0.44,3.87/+@vimeo-1129860275 "‘Alaa’s home after the bombing that killed her three children")
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=alaa-home),+pois.csv#3(poi,id=home),~labels_he,+labels_en)
+[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois(label-main,id=alaa-home),~labels_he,+labels_en)
 The devastating news came when the tension between Nibal and Ahmad was at its peak.
 
 
@@ -860,13 +860,13 @@ Israel continued to bomb the Gaza Strip in the weeks that followed.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins3.jpg)
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg)
 [](bg:blank)
 Despite the ceasefire, Nibal and her family are still in constant danger.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins1.jpg)
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins1.jpg)
 [](bg:blank)
 
 
@@ -907,11 +907,13 @@ In recent months, Nibal has shared her story on social and mainstream media. She
 </a>
 
 
-{.meta thumb closing}
+{.meta}
 [](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **Nibal and Rita’s ordeal is not over.**  
 
+
+{.meta thumb closing}
 B’Tselem will follow their story and share any developments in our newsletter:
 
 <div id="mc_embed_shell">

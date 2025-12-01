@@ -31,7 +31,7 @@ css: src/theme.css
 {.meta}
 [](svg/#intro-pre.svg/-0.02,1.21,1.52/+nibal2023,~displacement)
 [](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he)
-במשך שנתיים של מתקפה ג׳נוסיידלית על רצועת עזה, ישראל כפתה על הרוב המוחלט של תושבי הרצועה לעקור שוב ושוב ממקומם.
+במשך שנתיים של מתקפה ג׳נוסיידלית על רצועת עזה, ישראל כפתה על רובם המוחלט של תושבי הרצועה לעקור שוב ושוב ממקומם.
 
 
 {.meta}
@@ -650,7 +650,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-1.26,-1.49,3.09/+attack_march_25.jpg)
+[](svg/#ceasefire_hope.svg/-1.07,-1.44,3.09/+attack_march_25.jpg)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines "באדום: צווי הפינוי שהפיץ הצבא לתושבי עזה בשבוע שלאחר הפרת הפסקת האש במרץ 2025. בתמונה: תקיפה ישראלית במרכז העיר עזה, 22 במרץ 2025. (סאהר אל־ע'ורה / ZUMA Press Wire)")
 אבל אז ישראל הפרה את הפסקת האש, והמתקפה על הרצועה התחדשה ביתר שאת. 
 
@@ -863,13 +863,13 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins3.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
 [](bg:blank)
 גם עם שוך ההפצצות, ניבאל, ריתא ובני משפחתן עדיין חשופים לסכנת חיים יומיומית. 
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins1.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins1.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
 [](bg:blank)
 
 
@@ -913,11 +913,13 @@ css: src/theme.css
 
 
 
-{.meta thumb closing}
+{.meta}
 [](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **המסע של ניבאל וריתא טרם נגמר.**  
 
+
+{.meta thumb closing}
 בצלם ימשיך לשמור על קשר עם ניבאל. אם יחול שינוי במצבה — נעדכן עליו בניוזלטר שלנו:
 
 <div id="mc_embed_shell">

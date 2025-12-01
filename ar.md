@@ -650,7 +650,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-1.26,-1.49,3.09/+attack_march_25.jpg)
+[](svg/#ceasefire_hope.svg/-1.07,-1.44,3.09/+attack_march_25.jpg)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+IDF_zone_21_25_03_25(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar "بالأحمر: أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان قطاع غزة خلال الأسبوع الذي تلا انتهاك وقف إطلاق النار في آذار 2025. في الصورة: هجوم إسرائيلي على وسط مدينة غزة، 22 آذار 2025 (ساهر الغرّة/ ZUMA Press Wire)")
 ولكن عندها تجددت الحرب بضراوة أشدّ. تحت ضغط القصف والحصار، عادت علاقة نِبال وأحمد إلى التأزم من جديد.
 
@@ -704,7 +704,7 @@ css: src/theme.css, src/ar.css
 
 {.meta}
 [](svg/#back_home.svg/-0.94,-0.44,3.87/+@vimeo-1129860275 "توثيق منزل شقيقة نبال بعد القصف، إلى جانب صور أولادها الذين قُتلوا")
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=alaa-home),+pois.csv#3(poi,id=home),~labels_he)
+[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois-ar(label-main-ar,id=alaa-home),~labels_he)
 نتيجة للقصف، قُتل أطفال آلاء الثلاثة: وسيم (10 سنوات) ومهند (8 سنوات) وخولة (5 سنوات).
 
 تلقت نِبال الأخبار السيئة عن أولاد أختها في الوقت الذي وصل فيه التوتر بينها وبين أحمد إلى ذروته.
@@ -852,13 +852,13 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins3.jpg)
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg)
 [](bg:blank)
 في الأسابيع التي تلت ذلك، واصلت إسرائيل هجماتها على القطاع بدرجات متفاوتة من القوة والشدّة.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.29,-7.02,15.43/+nibal_next_to_ruins3.jpg)
+[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg)
 [](bg:blank)
 
 
@@ -899,11 +899,13 @@ css: src/theme.css, src/ar.css
 </a>
 
 
-{.meta thumb closing no-snap}
+{.meta}
 [](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **رحلة نِبال وريتا لم تنته بعد.** 
 
+
+{.meta thumb closing}
 تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
 
 <div id="mc_embed_shell">
