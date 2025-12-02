@@ -66,7 +66,7 @@ People also fled of their own accord, escaping the frequent airstrikes that rain
 
 
 {.meta}
-[](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "In the photo: residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
+[](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "In the photo: residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters/Mahmoud Issa)")
 [](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+unosat-damage-231015)
 Throughout the offensive, Israel has prevented these Internally Displaced Persons (IDPs) from accessing safe shelter with food, water and basic services.
 
@@ -316,7 +316,7 @@ But seeing him also shocked me. He had lost so much weight, and it looked like h
 
 
 {.meta} 
-[](svg/#south.svg/-2.43,-3.55,12.19/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (Majdi Fathi/NurPhoto)")
+[](svg/#south.svg/-2.43,-3.55,12.19/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (NurPhoto/Majdi Fathi)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Nibal and Rita met Ahmad after he had been held in an Israeli detention facility for months, without trial. 
 
@@ -666,7 +666,7 @@ Despite her parents’ concerns, she went back to their apartment with Rita and 
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "Israeli airstrike in central Gaza City, 22 March 2025 (Saher Alghorra/ZUMA Press Wire)")
+[](svg/#ceasefire_hope.svg/-2.23,-2.6,6.44/+attack_march_25.jpg "Israeli airstrike in central Gaza City, 22 March 2025 (ZUMA Press Wire/Saher Alghorra)")
 [](bg:blank)
 But then the war resumed. 
 
@@ -895,7 +895,7 @@ She is fighting to imagine a better future for herself and for Rita.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.7,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters / Mahmoud Issa)")
+[](svg/#permanent_impermanence.svg/0.7,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters/Mahmoud Issa)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
 Nibal’s story is just one of 2 million stories in Gaza – stories of people suffering loss, hunger and ongoing displacement, forced by Israel to live in unbearable conditions, abandoned by the international community and left with no real hope for a better future.
 
