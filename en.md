@@ -100,14 +100,7 @@ My name is Nibal al-Hisi. I’m 25. When the war began in October 2023, I was li
 [](svg/#intro-pre.svg/-0.67,0.25,2.4/,+nibal2023)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
-I’m the youngest of nine brothers and three sisters.
-
-
-{.testimony typewriter}
-[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "From Nibal’s TikTok account")
-[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
-So my family always spoiled me.
+I’m the youngest of nine brothers and three sisters. So my family always spoiled me.
 
 
 {.testimony typewriter}
