@@ -167,7 +167,7 @@ On 7 October 2023, Hamas and other armed Palestinian groups carried out the dead
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37022,34.37989,9.79,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.38518,34.39275,9.64,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
 Entering from Gaza, the attackers killed 1,220 people, including women, elderly people and children, and left tens of thousands injured. 
 They carried 252 people, some living and others dead, back to Gaza.
 
@@ -180,20 +180,20 @@ That same day, Israel launched a massive wave of strikes across Gaza.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
+[](map/#31.51976,34.47657,10.89,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home) "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 Nibal was at home in Jabalya with her newborn. 
 Ahmad was at work in Israel.
 
 
 {.meta} 
-[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
+[](svg/#oct7.svg/0.67,0.85,2.51/+detainies-2,+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 A few days later, Israel revoked tens of thousands of permits from all workers from Gaza. Many were inside Israel and could not go home.
 Ahmad and thousands of others instantly became “illegal aliens” in Israel.
 
 
 {.meta} 
-[](svg/#oct7.svg/0.67,0.68,2.51/+detainies-1,+detainies-2 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
+[](svg/#oct7.svg/0.79,0.96,2.51/+detainies-2 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
 He and thousands of others were arrested in Israel within days.
 
@@ -304,7 +304,7 @@ I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
-[](fg:blank)
+[](svg/#south.svg/-7.16,-9.58,34.47/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
@@ -433,53 +433,53 @@ But then, everything changed.
 
 {.meta no-h}
 ### Oct 24
-[](svg/#warehouse_bureij2.svg/-14.13,6.94,49.62/+nibal_xray)
+[](http://svg/#warehouse_bureij2.svg/-16.71,-1.35,58.58/+nibal_xray)
 [](bg:blank)
 That morning, Israel attacked al-Bureij. 
 Nibal remembers hearing relentless shelling.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-22.36,12.45,88.4/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-14.53,2.75,58.58/+nibal_xray)
 [](bg:blank)
 Ahmad went out to see where the shells were landing, and Nibal stayed inside with Rita. 
 She talked to her family on the phone to try and stay calm. 
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-9.29,5.24,31.47/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-17.15,3.61,61.92/+nibal_xray)
 [](bg:blank)
 While she was on the phone, a shell hit the room. 
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-14.33,5.34,54.39/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-4.73,0.63,16.15/+nibal_xray)
 [](bg:blank)
 Badly injured, Nibal managed to call for help among the ruins and was taken to the hospital. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.54,1.18,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
 
 I woke up in the hospital and found my hands gone.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-2.54,1.18,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
 The shelling cut Nibal’s arms off at the elbow and badly burned her. She was treated in harsh conditions, in a hospital overwhelmed with injuries.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.54,1.18,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-1.09,0.35,3.64/+nibal_xray,+nibal_after_amputation)
 [](bg:blank)
 
 I was in shock. It felt like they were still there, or were going to grow back. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.04,1.3,10.73/+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.04,0.09,10.04/+nibal_xray,+nibal_after_amputation,+rita_tent1)
 [](bg:blank)
 I asked about Rita, and they told me she was fine. That’s what kept me going, along with Ahmad by my side. 
 That and having Ahmad with me.
@@ -531,27 +531,27 @@ Within months, the area was crammed with tents sheltering over 1 million IDPs fr
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
+[](svg/#warehouse_bureij2.svg/0.86,-1.07,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
 [](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 IDP accounts from November 2024, when the family arrived, describe extreme overcrowding, acute shortages of food and water, and no shelter from the harsh winter.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
+[](svg/#warehouse_bureij2.svg/1.22,-0.49,3.65/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
 [](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 Nibal had to start begin her recovery in inhumane conditions. 
 Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many caused in Israeli attacks, are still struggling to survive in tents.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/0.78,0.99,3.44/+@vimeo-1129846713  "From Nibal’s TikTok account")
+[](svg/#warehouse_bureij2.svg/0.84,0.59,3.44/+@vimeo-1129846713  "From Nibal’s TikTok account")
 [](bg:blank)
 
 Living in a tent again after the amputation was extremely hard. I needed help to use the toilets and was so embarrassed to ask every time. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.21,0.9,6.12/+rita_tent1 "Rita in the IDP camp in al-Mawasi")
+[](svg/#warehouse_bureij2.svg/-0.77,0.04,4.1/+rita_tent1 "Rita in the IDP camp in al-Mawasi")
 [](bg:blank)
 
 An intelligent, sensitive girl from a tent near us took pity on me and came every day to help me and care for Rita.
@@ -559,20 +559,20 @@ An intelligent, sensitive girl from a tent near us took pity on me and came ever
 
 {.testimony typewriter}
 [](fg:blank)
-[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 
 I struggled to accept my new body.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 [](bg:blank)
 
 I tried to stay well-groomed, to get dressed and put on makeup with help, and leave the tent.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-1.01,0.41,3.52/+nibal_after_amputation)
 [](bg:blank)
 
 But I couldn’t look in the mirror.
