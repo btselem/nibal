@@ -1184,6 +1184,14 @@
 
                     // Expose small helper so observers/click handlers can update caption
                     window.__setInflectCaptionFromLink = setCaptionFromLink;
+                    // Expose a clearing helper to explicitly empty caption on link changes
+                    window.__clearInflectCaption = function(){
+                        try {
+                            bgCaption = '';
+                            fgCaption = '';
+                            updateCombinedCaption();
+                        } catch(e) { /* swallow */ }
+                    };
                 } catch(e) { /* swallow */ }
             })();
 
@@ -1210,6 +1218,8 @@
         function setIframeIfPathChanged(newHref) {
             // Check if we're in dual-iframe mode
             const isDualMode = document.body.classList.contains('dual-iframe');
+            // On any link change, proactively clear the caption to avoid stale text
+            try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
             
             // Handle special clear patterns in dual-iframe mode
             if (isDualMode) {
@@ -1222,16 +1232,19 @@
                         if (pattern === 'fg:blank' || pattern === 'foreground:blank') {
                             foregroundFrame.src = 'about:blank';
                             foregroundFrame.classList.add('inactive');
+                            try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
                         if (pattern === 'bg:blank' || pattern === 'background:blank') {
                             backgroundFrame.src = 'about:blank';
+                            try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
                         if (pattern === 'both:blank' || pattern === 'clear:all') {
                             backgroundFrame.src = 'about:blank';
                             foregroundFrame.src = 'about:blank';
                             foregroundFrame.classList.add('inactive');
+                            try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
                     }
@@ -1429,9 +1442,11 @@
                         if (isDualMode) {
                             try { 
                                 const full = new URL(rawHref, window.location.href).href; 
+                                try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                                 setIframeIfPathChanged(full); 
                             } catch(e){ 
                                 try {
+                                    try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                                     setIframeIfPathChanged(visibleLink.href);
                                 } catch(e2) {
                                     console.warn('Link observer failed to load:', rawHref, e2);
@@ -1440,16 +1455,21 @@
                         } else {
                             try { 
                                 const full = new URL(rawHref, window.location.href).href; 
+                                try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                                 setIframeNext(full); 
                             } catch(e){ 
                                 try {
+                                    try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                                     setIframeNext(visibleLink.href);
                                 } catch(e2) {
                                     console.warn('Link observer failed to load:', rawHref, e2);
                                 }
                             }
                         }
-                        try { if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(visibleLink); } catch(e){}
+                        try {
+                            // After clearing, set caption from the newly visible link
+                            if (window.__setInflectCaptionFromLink) window.__setInflectCaptionFromLink(visibleLink);
+                        } catch(e){}
                         // Start any typewriter animation for the section that contains this link
                         // after the iframe has been asked to load the path. Use a short delay
                         // to allow the iframe transition to start.
