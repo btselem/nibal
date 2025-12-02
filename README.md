@@ -165,7 +165,7 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37022,34.37989,9.79,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
+[](map/#31.38518,34.39275,9.64,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
 1,220 בני אדם נהרגו באותה מתקפה, ובהם נשים, זקנים וילדים.  
 עשרות אלפים נפצעו, ו-252 בני אדם חיים וגופות נחטפו לרצועת עזה.
 
@@ -178,20 +178,20 @@ css: src/theme.css
 
 {.meta} 
 [](fg:blank)
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home))
+[](map/#31.51976,34.47657,10.89,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home) "הערכת צפיפות בניינים שניזוקו ברצועת עזה לאחר השבוע הראשון למתקפה. מקור: UNOSAT")
 ניבאל הייתה אז בביתה בג׳באליא עם בתה ריתא, אז בת חודש בלבד. 
 אחמד, בעלה, היה באותה עת בעבודתו בבניין בתוך ישראל.
 
 
 {.meta} 
-[](svg/#oct7.svg/0.81,0.72,2.51/+detainies-1 "פלסטינים שנעצרו בידי הצבא לאחר ששוחררו לרפיח, 28 בדצמבר 2023. (רויטרס / בסאם מסעוד)")
+[](svg/#oct7.svg/0.67,0.85,2.51/+detainies-2,+detainies-1 "פלסטינים שנעצרו בידי הצבא לאחר ששוחררו לרפיח, 28 בדצמבר 2023. (רויטרס / בסאם מסעוד)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/~labels_he)
 בימים שאחרי כן, ישראל שללה את כלל היתרי העבודה של עשרות אלפי העובדים הפלסטינים מרצועת עזה, בשעה שחלקם שוהים בשטח ישראל ולא יכולים לשוב לביתם. 
 אלפי עובדים הפכו באחת ל״שוהים בלתי-חוקיים״. 
 
 
 {.meta} 
-[](svg/#oct7.svg/0.67,0.68,2.51/+detainies-1,+detainies-2 "פלסטינים שנעצרו בידי הצבא לאחר ששוחררו לרפיח, 28 בדצמבר 2023. (רויטרס / בסאם מסעוד)")
+[](svg/#oct7.svg/0.79,0.96,2.51/+detainies-2 "פלסטינים שנעצרו בידי הצבא לאחר ששוחררו לרפיח, 28 בדצמבר 2023. (רויטרס / בסאם מסעוד)")
 [](map/#31.43482,34.38239,9.64,-10.4,42.0/~labels_he)
 באותם ימים, ישראל עצרה אלפי עובדים פלסטינים בשטחה - בהם גם את אחמד, בעלה של ניבאל.
 
@@ -279,7 +279,7 @@ css: src/theme.css
 {.meta} 
 [](fg:blank)
 [](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-he(label-main,id=gaza-2403),+pois-he#2(label-main,id=nuseirat))
-משם המשיכה ניבאל ברגל, כשהיא נושאת את ריתא בת החצי שנה בידיה.
+מהעיר עזה המשיכה ניבאל ברגל, כשהיא נושאת את ריתא בת החצי שנה בידיה.
 
 
 {.meta}
@@ -301,7 +301,7 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](fg:blank)
+[](svg/#south.svg/-7.16,-9.58,34.47/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 אבל המפגש איתו היה גם מזעזע. הוא ירד המון במשקל, ונראה שהוא איבד את ניצוץ החיים שלו. 
 
@@ -434,50 +434,50 @@ css: src/theme.css
 
 {.meta no-h}
 ### Oct 24
-[](svg/#warehouse_bureij2.svg/-14.13,6.94,49.62/+nibal_xray)
+[](http://svg/#warehouse_bureij2.svg/-16.71,-1.35,58.58/+nibal_xray)
 [](bg:blank)
-באותו בוקר הפגיז הצבא את אל-בוריג׳. ניבאל תיארה רעש בלתי פוסק של הפגזות. 
+באותו בוקר הפגיז הצבא את אל-בוריג׳. ניבאל תיארה רעש בלתי פוסק של פיצוצים סביבה. 
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-22.36,12.45,88.4/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-14.53,2.75,58.58/+nibal_xray)
 [](bg:blank)
 בזמן שבעלה יצא לבדוק איפה נפלו הפגזים, היא וריתא נותרו לבדן במחסן הקטן. ניבאל התקשרה לבני משפחתה ושוחחה איתם בניסיון להפיג מעט מהפחד שאחז בה. 
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-9.29,5.24,31.47/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-17.15,3.61,61.92/+nibal_xray)
 [](bg:blank)
 בזמן השיחה שלהם, פגז פגע במחסן.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-14.33,5.34,54.39/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-4.73,0.63,16.15/+nibal_xray)
 [](bg:blank)
 ניבאל נפצעה קשה, אבל הצליחה להעזיק עזרה מתוך המחסן ההרוס ופונתה לבית החולים.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.54,1.18,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
 
 התעוררתי בבית החולים וראיתי שנכרתו לי הידיים. 
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-1.08,0.46,3.64/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
 כתוצאה מפגיעת הפגז, ידיה של ניבאל נקטעו מתחת למרפק והיא נכוותה קשות. בית החולים בו היא אושפזה היה שרוי בעומס אדיר של פצועים, והרופאים טיפלו בה בתנאים קשים.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.08,0.46,3.64/+nibal_xray,+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-1.09,0.35,3.64/+nibal_xray,+nibal_after_amputation)
 [](bg:blank)
 הייתי בהלם. הרגשתי כאילו הידיים שלי עדיין קיימות, או כאילו יום אחד הן יחזרו לצמוח.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.38,1.57,10.5/+nibal_xray,+nibal_after_amputation,+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.04,0.09,10.04/+nibal_xray,+nibal_after_amputation,+rita_tent1)
 [](bg:blank)
 שאלתי מה עם ריתא, וענו לי שהיא בריאה ושלמה. זה מה שהחזיק אותי. זה, וזה שאחמד היה לצדי.
 
@@ -528,48 +528,48 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/0.84,-0.74,3.83/+winter_triple_comp.jpg "חורף במחנה עקורים בח׳אן יונס, 31 בדצמבר 2024. (Activestills / דועאא אל-באז)")
+[](svg/#warehouse_bureij2.svg/0.86,-1.07,3.83/+winter_triple_comp.jpg "חורף במחנה עקורים בח׳אן יונס, 31 בדצמבר 2024. (Activestills / דועאא אל-באז)")
 [](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20251005)
 בנובמבר 2024, החודש בו ניבאל ומשפחתה הגיעו ל״אזור ההומניטרי״, עקורים רבים שחסו במתחם תיארו חיים בצפיפות אדירה, עם מחסור אקוטי במים ובמזון, כשהם חשופים לחלוטין לקור ולגשמים העזים.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/1.19,-0.09,3.58/+wheelchaor_triple_comp.jpg "אכרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
+[](svg/#warehouse_bureij2.svg/1.22,-0.49,3.65/+wheelchaor_triple_comp.jpg "אכרם עדיל, ילד פלסטיני שאיבד את אחת מרגליו בתקיפה ישראלית, באוהל בעיר עזה, 13 בדצמבר 2024. (מחמוד עיסא / Anadolu)")
 [](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20251005)
 ניבאל נאלצה להתחיל את תהליך ההחלמה שלה בתנאים בלתי-אנושיים.
 עד היום, עשרות אלפי פצועים, נכים ובעלי מוגבלויות, חלקם הגדול כתוצאה מהמתקפה הישראלית, מתקשים  לשרוד את התנאים הקשים במחנות העקורים.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/0.78,0.99,3.44/+@vimeo-1129846713  "מתוך חשבון הטיקטוק של ניבאל")
+[](svg/#warehouse_bureij2.svg/0.84,0.59,3.44/+@vimeo-1129846713  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
 
 לחזור לחיות שוב באוהל אחרי הפציעה היה קשה מאוד. לא יכולתי להשתמש בשירותים באופן עצמאי, והביך אותי כל-כך לבקש בכל פעם עזרה. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-0.99,0.57,4.1/+rita_tent1 "ריתא במחנה העקורים באל-מוואסי")
+[](svg/#warehouse_bureij2.svg/-0.77,0.04,4.1/+rita_tent1 "ריתא במחנה העקורים באל-מוואסי")
 [](bg:blank)
 
 הבת של השכנים מהאוהל לידנו, נערה חכמה ורגישה, ריחמה עליי והגיעה בכל יום לעזור לי ולטפל בי ובריתא.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 [](bg:blank)
 
 התקשיתי לקבל את הגוף החדש שלי. 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.06,1.89,6.89/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 [](bg:blank)
 
 השתדלתי להישאר מטופחת, ועם עזרה גם להתלבש, להתאפר ולצאת מהאוהל.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.13,0.91,3.93/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-1.01,0.41,3.52/+nibal_after_amputation)
 [](bg:blank)
 אבל לא העזתי להסתכל במראה.
 
