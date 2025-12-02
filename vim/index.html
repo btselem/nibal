@@ -95,7 +95,7 @@
 <body>
   <div id="vimeo-crop-container">
     <div class="preloader"></div>
-    <iframe id="vimeo-embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-presentation allow-fullscreen" title="vimeo_embed"></iframe>
+    <iframe id="vimeo-embed" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" playsinline webkit-playsinline referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" title="vimeo_embed"></iframe>
   </div>
   <script>
     // Defer player.js loading - not needed for basic iframe embed
@@ -125,7 +125,8 @@
         'title=0',
         'byline=0',
         'portrait=0',
-        'api=1' // Enable Vimeo player API for event detection
+        'api=1', // Enable Vimeo player API for event detection
+        'playsinline=1' // Required for mobile inline video playback
       ];
       // Lower quality on mobile to reduce crashes
       // Don't add quality param - let Vimeo auto-negotiate for device
