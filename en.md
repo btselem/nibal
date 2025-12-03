@@ -722,18 +722,18 @@ In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, ki
 
 
 {.meta}
-[](svg/#back_home.svg/-1.16,-0.78,6.7/+@vimeo-1129860275 "‘Alaa’s home after the bombing that killed her three children")
+[](svg/#back_home.svg/-1.19,-1.04,4.53/+@vimeo-1129860275 "‘Alaa’s home after the bombing that killed her three children")
 [](bg:blank)
 
 
 {.meta}
-[](svg/#back_home.svg/0.89,1.01,3.06/+@vimeo-1129871187 "From Nibal’s TikTok account")
+[](svg/#back_home.svg/-1.06,-0.62,3.53/+@vimeo-1129871187 "From Nibal’s TikTok account")
 [](bg:blank)
 The devastating news came when the tension between Nibal and Ahmad was at its peak.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/0.89,1.01,3.06/+@vimeo-1129871187 "From Nibal’s TikTok account")
+[](svg/#back_home.svg/-1.06,-0.62,3.53/+@vimeo-1129871187 "From Nibal’s TikTok account")
 [](bg:blank)
 I felt he couldn’t take care of Rita and me anymore. The strain of looking after us and getting us food and water made him irritable, and sometimes I was even afraid of him. 
 One day, he demanded I go back to my parents.
@@ -746,7 +746,7 @@ A few months after returning to their apartment, Nibal moved back to her parents
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.09,-1.55,5.01/+jabalia_april_25.JPG "Bodies of people killed in an Israeli strike on a home in Jabalya, 18 April 2025 (ZUMA Press Wire/Saher Alghorra")
+[](svg/#back_home.svg/0.33,-1.52,5.01/+jabalia_april_25.JPG "Bodies of people killed in an Israeli strike on a home in Jabalya, 18 April 2025 (ZUMA Press Wire/Saher Alghorra")
 [](bg:blank)
 
 My family welcomed us again with love, but the house was full of grief. My sister who lost her children and I tried to comfort each other.
@@ -761,26 +761,26 @@ Even with all the support from my parents, I felt like a burden for them, too.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.65,-0.68,3.73/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 
 There were airstrikes in our area all the time. Many people were displaced again. But my extended family is huge, and we had nowhere to go without splitting up.
 
 
 {.meta}
-[](svg/#back_home.svg/-0.65,-0.68,3.73/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 In late August 2025, Israeli forces entered Jabalya and advanced toward the family’s neighborhood.
 
 
 {.meta}
-[](svg/#back_home.svg/-0.65,-0.68,3.73/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv(poi,id=alaa-home),~labels_he,+labels_en)
 A bomb hit her aunt’s house next door, killing Nibal’s cousin and injuring several relatives.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.09,-0.88,3.73/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
+[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=alaa-home),~labels_he,+labels_en)
 
 We heard a huge explosion and screams outside. People were running. They told us the Israeli army had ordered everyone to evacuate the area within 15 minutes. 
@@ -788,13 +788,13 @@ We ran outside terrified, almost empty-handed. I left behind our papers, clothes
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.09,-0.88,3.73/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
+[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 We walked the streets, terrified.
 
 
 {.meta}
-[](svg/#back_home.svg/1.08,0.72,4.82/+nibal_ruined_home1.jpg "The area of Nibal’s family home after the bombing")
+[](svg/#back_home.svg/1.03,0.65,4.6/+nibal_ruined_home1.jpg "The area of Nibal’s family home after the bombing")
 [](bg:blank)
 Later, Nibal learned that the building she had lived in most of her life with her extended family had been completely destroyed.
 
