@@ -118,7 +118,7 @@ In my final year, I met Ahmad. I felt that he really got me.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 I married him even though my parents objected. I knew we wouldn’t live in luxury, but he was my precious treasure.
 
@@ -131,14 +131,14 @@ We got married in September 2022 and moved into our own apartment in his family�
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 We were unemployed and survived with our families’ help.
 
 
 {.testimony typewriter}
-[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 We led a happy life, surrounded by the love and warmth of family.
@@ -151,7 +151,7 @@ Baby Rita was born in September 2023.
 
 
 {.meta}
-[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053 "From Nibal’s TikTok account")
+[](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 Five days later, Ahmad was issued a work permit and started a job as a construction laborer in Israel.
 
@@ -309,14 +309,14 @@ I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-7.16,-9.58,34.47/+prisoners_kid)
+[](svg/#south.svg/-5.58,-7.46,26.89/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
 
 
 {.meta} 
-[](svg/#south.svg/-2.43,-3.55,12.19/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (NurPhoto/Majdi Fathi)")
+[](svg/#south.svg/-2.47,-3.66,12.49/+prisoners_kid "Palestinians released from Israeli prisons arrive outside the Nasser hospital in Khan Yunis, 13 Oct. 2025 (NurPhoto/Majdi Fathi)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 Nibal and Rita met Ahmad after he had been held in an Israeli detention facility for months, without trial. 
 
@@ -484,7 +484,7 @@ I was in shock. It felt like they were still there, or were going to grow back.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.04,0.09,10.04/+nibal_xray,+nibal_after_amputation,+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.57,0.24,12.54/+nibal_xray,+nibal_after_amputation,+rita_tent1)
 [](bg:blank)
 I asked about Rita, and they told me she was fine. That’s what kept me going, along with Ahmad by my side. 
 That and having Ahmad with me.
@@ -577,7 +577,7 @@ I tried to stay well-groomed, to get dressed and put on makeup with help, and le
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-1.01,0.41,3.52/+nibal_after_amputation)
+[](svg/#warehouse_bureij2.svg/-1.09,0.43,3.58/+nibal_after_amputation)
 [](bg:blank)
 
 But I couldn’t look in the mirror.
@@ -590,21 +590,21 @@ It felt like even Rita barely recognized me.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/-0.58,-1.18,3.14/+@vimeo-1132490042,+vimeo-1137390641,+vimeo-1131630900 "From Nibal’s Instagram account")
+[](svg/#warehouse_bureij3.svg/-0.41,-1.11,2.88/+@vimeo-1132490042,+vimeo-1137390641,+vimeo-1131630900 "From Nibal’s Instagram account")
 [](bg:blank)
 
 I worried that she was changing, losing her joy and vitality.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/0.09,-0.74,3.14/+@vimeo-1137390641,+vimeo-1131630900 "Video from the internet, used under Section 27a")
+[](svg/#warehouse_bureij3.svg/0.25,-0.73,3.14/+@vimeo-1137390641,+vimeo-1131630900 "Video from the internet, used under Section 27a")
 [](bg:blank)
 
 But Ahmad was there for me. He said: “I’ll be your hands. All that matters is that you and Rita are okay.” 
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/0.84,-0.2,3.14/+@vimeo-1131630900  "From Nibal’s TikTok account")
+[](svg/#warehouse_bureij3.svg/0.93,-0.16,3.14/+@vimeo-1131630900  "From Nibal’s TikTok account")
 [](bg:blank)
 
 I dreamed of returning north to my family, to the days when we were all together. I missed them terribly, and longed for a ceasefire so I could go back to them and feel safe again.
@@ -645,21 +645,21 @@ My family welcomed me with hugging, singing and tears. My  brothers and sisters 
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/0.05,-0.56,2.32/+nibal_rita_happy.jpg)
+[](svg/#ceasefire_hope.svg/0.08,-0.47,2.32/+nibal_rita_happy.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 
 My sisters never left my side. They helped me with everything: showering, dressing, eating, caring for Rita.
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
+[](svg/#ceasefire_hope.svg/0.69,-0.57,2.32/+nibal_rita_home.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 
 They changed her diapers, held her and played with her. Thanks to them, I felt my life was slowly getting back on track. 
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
+[](svg/#ceasefire_hope.svg/0.69,-0.57,2.32/+nibal_rita_home.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 After about a month of recovery with her parents, Ahmad asked Nibal to join him.
 Despite her parents’ concerns, she went back to their apartment with Rita and the couple hired help.
@@ -722,7 +722,7 @@ In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, ki
 
 
 {.meta}
-[](svg/#back_home.svg/-1.19,-1.04,4.53/+@vimeo-1129860275 "‘Alaa’s home after the bombing that killed her three children")
+[](svg/#back_home.svg/-1.22,-1.03,4.53/+@vimeo-1129860275 "‘Alaa’s home after the bombing that killed her three children")
 [](bg:blank)
 
 
@@ -761,26 +761,26 @@ Even with all the support from my parents, I felt like a burden for them, too.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312 "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 
 There were airstrikes in our area all the time. Many people were displaced again. But my extended family is huge, and we had nowhere to go without splitting up.
 
 
 {.meta}
-[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312 "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 In late August 2025, Israeli forces entered Jabalya and advanced toward the family’s neighborhood.
 
 
 {.meta}
-[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312,+nibal_ruined_home1.jpg "An airstrike in the family’s neighborhood, August 2025")
+[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312 "An airstrike in the family’s neighborhood, August 2025")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv(poi,id=alaa-home),~labels_he,+labels_en)
 A bomb hit her aunt’s house next door, killing Nibal’s cousin and injuring several relatives.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
+[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312 "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=alaa-home),~labels_he,+labels_en)
 
 We heard a huge explosion and screams outside. People were running. They told us the Israeli army had ordered everyone to evacuate the area within 15 minutes. 
@@ -788,7 +788,7 @@ We ran outside terrified, almost empty-handed. I left behind our papers, clothes
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312,+nibal_ruined_home1.jpg "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
+[](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312 "Residents displaced from a-Nazlah neighborhood in Jabalya on the day of the bombing")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 We walked the streets, terrified.
 
@@ -806,7 +806,7 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.66,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
+[](svg/#permanent_impermanence.svg/-0.7,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/~labels_he,+labels_en)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
 They sheltered in an abandoned restaurant belonging to friends, and later in a cramped apartment in Gaza City.
@@ -820,7 +820,7 @@ During those weeks, Israel launched another ground invasion into Gaza City.
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.64,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~@vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
+[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~@vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
@@ -839,7 +839,7 @@ The family fled south again, this time to a tent camp in Deir al-Balah.
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/0.41,-0.91,4.05/+@vimeo-1129867912,@vimeo-1136076786 "From Nibal’s TikTok account. She wrote: ״Amid the rubble, people depart carrying what remains of their lives, as if hauling the remnants of a homeland on a truck״")
+[](svg/#permanent_impermanence.svg/0.23,-0.89,4.05/+@vimeo-1129867912 "From Nibal’s TikTok account. She wrote: ״Amid the rubble, people depart carrying what remains of their lives, as if hauling the remnants of a homeland on a truck״")
 [](bg:blank)
 
 I’m exhausted from being displaced over and over. I’m afraid Rita and I won’t be able to adjust to a tent again. 
@@ -847,14 +847,14 @@ The Israeli army keeps dropping leaflets ordering us to evacuate. We are living 
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "Nibal’s family home, before Oct. 2023")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal.png,~vimeo-1129867912 "Nibal’s family home, before Oct. 2023")
 [](bg:blank)
 
 Our lives have been destroyed.
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "Nibal’s family home, Oct. 2025")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png "Nibal’s family home, Oct. 2025")
 [](bg:blank)
 
 Now it feels like a slow death. A life of humiliation, with no dignity, home or any stability.
@@ -864,7 +864,7 @@ Now it feels like a slow death. A life of humiliation, with no dignity, home or 
 [](svg/#permanent_impermanence.svg/0.8,-0.49,3.32/+@vimeo-1132487425 "Nibal and her father in a tent in Deir al-Balah")
 [](map/#31.41150,34.38598,9.96,38.4,0.0/+pois.csv(poi,id=deir-al-balah),~labels_he,+labels_en)
 
-Every part of my life is now filled with suffering.  The heat in the tent is unbearable. I sweat but can’t shower alone. I suffer from insect bites because I can’t even scratch myself. 
+Every part of my life is now filled with suffering. The heat in the tent is unbearable. I sweat but can’t shower alone. I suffer from insect bites because I can’t even scratch myself. 
 I look around and see my brothers’ wives caring for their families, and I’m ashamed to ask them for help.
 
 
@@ -888,13 +888,13 @@ Despite the ceasefire, Nibal and her family are still in constant danger.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/2.02,-1.82,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
+[](svg/#permanent_impermanence.svg/1.94,-1.81,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
 [](bg:blank)
 Nibal is struggling to survive again in a tent, mourning the loss of her relatives, her home and her hands.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/2.02,-1.82,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
+[](svg/#permanent_impermanence.svg/1.94,-1.81,5.68/+@vimeo-1139274686 "From Nibal’s Instagram account")
 [](bg:blank)
 She is fighting to imagine a better future for herself and for Rita.
 
