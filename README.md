@@ -938,7 +938,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-1.29,-1.59,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **המסע של ניבאל וריתא טרם נגמר.**  
 
