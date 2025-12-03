@@ -363,13 +363,13 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
+[](svg/#south.svg/-0.42,-1.15,6.03/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 كان ذلك عذابًا متواصلًا، من أصعب الفترات في حياتي على الأرجح.
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
+[](svg/#south.svg/-0.42,-1.15,6.03/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 لم أخبر عائلتي عن الصعوبات، لأنها عارضت في البداية نزوحي إلى الجنوب. 
 كنت أخجل من إخبارهم بظروف حياتي.
@@ -755,7 +755,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-1.03,-1.4,3.73/+nibal_home_smile3.heic)
+[](svg/#back_home.svg/0.94,-0.57,3.11/+nibal_home_smile3.heic)
 [](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
 
 كنت محبطة للغاية لأنني لم أستطع فعل أي شيء بنفسي ووجدتُ صعوبة في الاعتناء بريتا. 
@@ -797,7 +797,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#back_home.svg/0.68,-1.28,4.6/+nibal_ruined_home1.jpg "منطقة منزل نبال بعد القصف")
+[](svg/#back_home.svg/1.08,0.72,4.82/+nibal_ruined_home1.jpg "منطقة منزل نبال بعد القصف")
 [](bg:blank)
 في وقت لاحق، علمت نِبال أن المبنى الذي عاشت فيه معظم حياتها، بجانب عائلتها الموسعة، قد دُمر بالكامل جرّاء القصف العنيف على جباليا.
 
@@ -849,13 +849,13 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "منطقة منزل نبال قبل تشرين الأول 2023")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "منطقة منزل نبال قبل تشرين الأول 2023")
 [](bg:blank)
 تدمرت حياتنا وأصبحت موتًا مستمرًا. 
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "منطقة منزل نبال, تشرين الأول 2025")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "منطقة منزل نبال, تشرين الأول 2025")
 [](bg:blank)
 حياة ذل وإهانة، بلا بيت، بلا ذرة استقرار.
 
@@ -875,13 +875,13 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg)
+[](svg/#permanent_impermanence.svg/2.16,-2.2,5.41/+nibal_next_to_ruins3.jpg)
 [](bg:blank)
 في الأسابيع التي تلت ذلك، واصلت إسرائيل هجماتها على القطاع بدرجات متفاوتة من القوة والشدّة.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins1.jpg)
+[](svg/#permanent_impermanence.svg/2.16,-2.2,5.41/+nibal_next_to_ruins1.jpg)
 [](bg:blank)
 
 
@@ -898,7 +898,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.7,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
+[](svg/#permanent_impermanence.svg/0.56,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
 قصة نبال هي واحدة فقط من قصص مليونيّ إنسان من سكان قطاع غزة الذين عاشوا عذابات الفقدان، الجوع والتهجير المتواصلة ولا يزالون يعيشون في الظروف الرهيبة التي فرضتها عليهم إسرائيل، وسط تجاهل المجتمع الدولي ودون أي أمل حقيقي في مستقبل أفضل. 
 
@@ -923,7 +923,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](svg/#permanent_impermanence.svg/-1.29,-1.59,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **رحلة نِبال وريتا لم تنته بعد.** 
 
