@@ -2667,21 +2667,70 @@ map.on('load', () => {
       explicitState[lname] = sign;
     });
     
+    // Helper: Fade wayback layer in/out with opacity animation
+    function fadeWaybackLayer(layerId, targetOpacity, duration = 500) {
+      if (!map.getLayer(layerId)) return;
+      
+      const currentOpacity = map.getPaintProperty(layerId, 'raster-opacity') || 0;
+      const startTime = performance.now();
+      
+      function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease-in-out
+        const eased = progress < 0.5 
+          ? 2 * progress * progress 
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+        const opacity = currentOpacity + (targetOpacity - currentOpacity) * eased;
+        
+        if (map.getLayer(layerId)) {
+          map.setPaintProperty(layerId, 'raster-opacity', opacity);
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          // After fade out completes, hide the layer
+          if (targetOpacity === 0 && map.getLayer(layerId)) {
+            map.setLayoutProperty(layerId, 'visibility', 'none');
+          }
+        }
+      }
+      
+      // If fading in, make visible first
+      if (targetOpacity > 0 && map.getLayoutProperty(layerId, 'visibility') !== 'visible') {
+        map.setLayoutProperty(layerId, 'visibility', 'visible');
+      }
+      
+      requestAnimationFrame(animate);
+    }
+    
     // Apply visibility to all layers based on hash
     allStyleLayers.forEach(layer => {
       const id = layer.id;
       const explicit = explicitState[id];
       const defaultVis = styleDefaultVisibility[id] || 'visible';
+      const isWaybackLayer = /^wayback:\d{8}$/.test(id);
       
       if (explicit === '+') {
         // Explicitly shown in hash
         if (map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'visible') {
-          map.setLayoutProperty(id, 'visibility', 'visible');
+          if (isWaybackLayer) {
+            fadeWaybackLayer(id, 1, 500);
+          } else {
+            map.setLayoutProperty(id, 'visibility', 'visible');
+          }
         }
       } else if (explicit === '~') {
         // Explicitly hidden in hash
         if (map.getLayer(id) && map.getLayoutProperty(id, 'visibility') !== 'none') {
-          map.setLayoutProperty(id, 'visibility', 'none');
+          if (isWaybackLayer) {
+            fadeWaybackLayer(id, 0, 500);
+          } else {
+            map.setLayoutProperty(id, 'visibility', 'none');
+          }
         }
       }
       // If not mentioned in hash, keep style default (don't change)
