@@ -354,13 +354,13 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg)
+[](svg/#south.svg/-0.42,-1.15,6.03/+rita_tent2.jpg)
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he "ריתא במחנה העקורים ברפיח")
 זה היה עינוי מתמשך, ככל הנראה מהתקופות הקשות בחיי.
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.53,-2.08,8.19/+rita_tent2.jpg)
+[](svg/#south.svg/-0.42,-1.15,6.03/+rita_tent2.jpg)
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he "ריתא במחנה העקורים ברפיח")
 לא סיפרתי על הקשיים להורים שלי, שהתנגדו מלכתחילה שאעקור דרומה. 
 התביישתי לספר להם איך אני חיה.
@@ -755,7 +755,7 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-1.03,-1.4,3.73/+nibal_home_smile3.heic)
+[](svg/#back_home.svg/0.94,-0.57,3.11/+nibal_home_smile3.heic)
 [](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
 
 הייתי מתוסכלת מאוד כי לא יכולתי לעשות כלום בעצמי והתקשיתי לטפל בריתא. 
@@ -799,7 +799,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#back_home.svg/0.68,-1.28,4.6/+nibal_ruined_home1.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
+[](svg/#back_home.svg/1.08,0.72,4.82/+nibal_ruined_home1.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
 [](bg:blank)
 בהמשך, נודע לניבאל כי הבניין בו גרה רוב חייה לצד משפחתה המורחבת נהרס כליל בהפצצות הכבדות על ג׳אבליא.
 
@@ -852,13 +852,13 @@ css: src/theme.css
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "ביתה של ניבאל בג׳אבליא טרם תחילת המתקפה הישראלית")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "ביתה של ניבאל בג׳אבליא טרם תחילת המתקפה הישראלית")
 [](bg:blank)
 החיים שלנו נהרסו.
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-3.38,-1.8,7.71/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "ביתה של ניבאל בג׳אבליא, אוקטובר 2025")
+[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png,~vimeo-1129867912,~vimeo-1136076786 "ביתה של ניבאל בג׳אבליא, אוקטובר 2025")
 [](bg:blank)
 
 הם הפכו למוות מתמשך. חיי השפלה ועלבון, בלי בית, בלי טיפת יציבות.
@@ -881,13 +881,13 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins3.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
+[](svg/#permanent_impermanence.svg/2.16,-2.2,5.41/+nibal_next_to_ruins3.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
 [](bg:blank)
 גם עם שוך ההפצצות, ניבאל, ריתא ובני משפחתן עדיין חשופים לסכנת חיים יומיומית. 
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/7.3,-7.02,15.43/+nibal_next_to_ruins1.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
+[](svg/#permanent_impermanence.svg/2.16,-2.2,5.41/+nibal_next_to_ruins1.jpg "ניבאל על רקע הריסות ביתה בג׳אבליא")
 [](bg:blank)
 
 
@@ -904,7 +904,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.7,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "תושבי העיר עזה נמלטים לאחר שהצבא הורה להם להתפנות דרומה, 15 בספטמבר 2025. (רויטרס / מחמוד עיסא)")
+[](svg/#permanent_impermanence.svg/0.56,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "תושבי העיר עזה נמלטים לאחר שהצבא הורה להם להתפנות דרומה, 15 בספטמבר 2025. (רויטרס / מחמוד עיסא)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
 
 סיפורה של ניבאל הוא רק אחד מבין שני מיליון סיפוריהם של תושבי עזה, המנסים מזה שנתיים לשרוד את הג'נוסייד שמבצעת ישראל ברצועה. הם חוו אובדן, רעב ועקירה מתמשכים, ומוסיפים לחיות בתנאים האיומים שכפתה עליהם ישראל, כשהם מופקרים על-ידי הקהילה הבינלאומית, בלי תקווה אמיתית לעתיד טוב יותר. 
@@ -932,7 +932,7 @@ css: src/theme.css
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-1.03,-1.53,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](svg/#permanent_impermanence.svg/-1.29,-1.59,5.21/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 **המסע של ניבאל וריתא טרם נגמר.**  
 
