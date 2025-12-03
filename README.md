@@ -717,15 +717,19 @@ css: src/theme.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-he(label-main,id=alaa-home),+pois-he#2(label-main,id=couple-home),+pois-he#3(label-main,id=home),~labels_he)
+[](map/#31.52942,34.47911,18.34,38.4,0.0/+pois-he(label-main,id=alaa-home),+pois-he#2(label-main,id=couple-home),+pois-he#3(label-main,id=home),~labels_he)
 באפריל 2025 הפציץ הצבא הישראלי את הבית הסמוך לבית הזוג, בו חיה משפחתה של אלאא, אחותה של ניבאל.  
+
+כתוצאה מההפצצה נהרגו שלושת ילדיה של אלאא: וסים, בן 10, מוהנד, בן 8, וח'וולה, בת 5.
+
+{.meta}
+[](svg/#back_home.svg/-1.16,-0.78,6.7/+@vimeo-1129860275 "תיעוד של ביתה של אלאא לאחר ההפצצה, לצד תמונות של ילדיה שנהרגו")
+[](bg:blank)
 
 
 {.meta}
-[](svg/#back_home.svg/-0.94,-0.44,3.87/+@vimeo-1129860275 "תיעוד של ביתה של אלאא לאחר ההפצצה, לצד תמונות של ילדיה שנהרגו")
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois-he(label-main,id=alaa-home),~labels_he)
-כתוצאה מההפצצה נהרגו שלושת ילדיה של אלאא: וסים, בן 10, מוהנד, בן 8, וח'וולה, בת 5.
-
+[](svg/#back_home.svg/0.89,1.01,3.06/+@vimeo-1129871187 "מתוך חשבון הטיקטוק של ניבאל")
+[](bg:blank)
 ניבאל קיבלה את הבשורה המרה על המוות של אחיינים שלה בשעה שהקשיים בינה לבין לאחמד הגיעו לשיאם.
 
 
@@ -738,7 +742,7 @@ css: src/theme.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois-he(label-main,id=couple-home),+pois-he#2(label-main,id=home),~labels_he)
+[](map/#31.52942,34.47911,18.34,38.4,0.0/+pois-he(label-main,id=couple-home),+pois-he#2(label-main,id=home),~labels_he)
 בתחילת יוני 2025, ניבאל החליטה לחזור עם ריתא לבית הוריה הסמוך.
  
 
