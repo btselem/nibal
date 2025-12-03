@@ -322,14 +322,14 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-5.58,-7.46,26.89/+prisoners_kid)
+[](svg/#south.svg/-0.9,-1.71,7.98/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 لكن اللقاء به كان صادمًا أيضًا. لقد فقد الكثير من وزنه وبدا وكأنه فقد بريق الحياة.
 
 
 {.meta} 
-[](svg/#south.svg/-2.47,-3.66,12.49/+prisoners_kid "فلسطينيون تم الإفراج عنهم من سجون إسرائيلية أمام مستشفى ناصر في خان يونس، 13 تشرين الأول 2025 (مجدي فتحي / NurPhoto)")
+[](svg/#south.svg/-0.29,-1.02,3.82/+prisoners_kid "فلسطينيون تم الإفراج عنهم من سجون إسرائيلية أمام مستشفى ناصر في خان يونس، 13 تشرين الأول 2025 (مجدي فتحي / NurPhoto)")
 [](map/#31.27110,34.25408,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 التقت نِبال وريتا بأحمد بعد احتجازه في أحد مرافق الاعتقال الإسرائيلية دون محاكمة لعدة أشهر.
 
@@ -426,7 +426,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg "مخيم الشاطئ للاجئين في مدينة غزة، في تموز 2025 (رويترز: محمود عيسى)")
+[](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg)
 [](bg:blank)
 
 كلما سنحت لي الفرصة، كنت أتفقد هاتفي لمعرفة وضع العائلة في جباليا.
@@ -496,7 +496,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.57,0.24,12.54/+nibal_xray,+nibal_after_amputation,+rita_tent1)
+[](svg/#warehouse_bureij2.svg/-2.6,0.24,12.54/+rita_tent1,+nibal_xray)
 [](bg:blank)
 سألت عن ريتا فأخبروني أنها سليمة وبصحة جيدة. هذا ما أبقاني صامدة. كان أحمد إلى جانبي.
 
@@ -847,7 +847,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/0.23,-0.89,4.05/+@vimeo-1129867912 "من حساب نبال على تيك توك. في النص الذي أرفقته بشريط الفيديو، كتبت: ״بين الخراب، أشخاص يحملون من تبقّى من حياتهم، كأنهم يجرّون بقايا وطن على شاحنة״")
+[](svg/#permanent_impermanence.svg/0.2,-0.85,3.14/+@vimeo-1129867912 "من حساب نبال على تيك توك. في النص الذي أرفقته بشريط الفيديو، كتبت: ״بين الخراب، أشخاص يحملون من تبقّى من حياتهم، كأنهم يجرّون بقايا وطن على شاحنة״")
 [](bg:blank)
 أنا منهكة من النزوح المتكرر وأخشى ألا نتمكن، أنا وريتا، من التأقلم مرة أخرى مع الحياة في الخيمة.
 الجيش الإسرائيلي يوزع باستمرار منشورات تأمرنا بالإخلاء ونحن نعيش في عجز وخوف.
@@ -985,6 +985,9 @@ css: src/theme.css, src/ar.css
 
 
 {.meta closing}
+[](fg:blank)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
+
 ## صور وفيديو
 - من نبال الهسي مشكورة
 - REUTERS
