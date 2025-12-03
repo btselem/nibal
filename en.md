@@ -597,7 +597,7 @@ I worried that she was changing, losing her joy and vitality.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij3.svg/0.09,-0.74,3.14/+@vimeo-1137390641,+vimeo-1131630900)
+[](svg/#warehouse_bureij3.svg/0.09,-0.74,3.14/+@vimeo-1137390641,+vimeo-1131630900 "Video from the internet, used under Section 27a")
 [](bg:blank)
 
 But Ahmad was there for me. He said: “I’ll be your hands. All that matters is that you and Rita are okay.” 
@@ -672,19 +672,19 @@ But then the war resumed.
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.25,0.55,2.15/+@vimeo-1141082583)
+[](svg/#ceasefire_hope.svg/-0.25,0.55,2.15/+@vimeo-1141082583 "Video from the internet, used under Section 27a")
 [](bg:blank)
 Living under the pressure of the Israeli blockade and airstrikes, tensions in the marriage resurfaced.
 
 
 {.meta}
-[](svg/#ceasefire_hope.svg/-0.54,0.55,2.15/+vimeo-1141082583,+@vimeo-1141231313)
+[](svg/#ceasefire_hope.svg/-0.54,0.55,2.15/+vimeo-1141082583,+@vimeo-1141231313 "Video from the internet, used under Section 27a")
 [](bg:blank)
 Ahmad was struggling with the consequences of his time in Israeli detention.
 
 
 {.testimony typewriter}
-[](svg/#ceasefire_hope.svg/-0.54,0.55,2.15/+vimeo-1141082583,+@vimeo-1141231313)
+[](svg/#ceasefire_hope.svg/-0.54,0.55,2.15/+vimeo-1141082583,+@vimeo-1141231313 "Video from the internet, used under Section 27a")
 [](bg:blank)
 After he was released from Israel, he seemed troubled and anxious. Something had changed. 
 In a way, it felt like he’d lost a part of himself there.
