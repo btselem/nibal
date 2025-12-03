@@ -72,7 +72,7 @@ People also fled of their own accord, escaping the frequent airstrikes that rain
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/+displacement "In the photo: residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters/Mahmoud Issa)")
-[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+unosat-damage-231015)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+UNOSAT_gaza_25-10-11(poly-scale))
 Throughout the offensive, Israel has prevented these Internally Displaced Persons (IDPs) from accessing safe shelter with food, water and basic services.
 
 
@@ -184,27 +184,27 @@ They carried 252 people, some living and others dead, back to Gaza.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+labels_en,+unosat-damage-231015 "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+labels_en,+UNOSAT_gaza_25-10-11(poly-scale) "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 That same day, Israel launched a massive wave of strikes across Gaza. 
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.51976,34.47657,10.89,-10.4,42.0/+unosat-damage-231015,~labels_he,+pois.csv(poi,id=home) "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.51976,34.47657,10.89,-10.4,42.0/+UNOSAT_gaza_25-10-11(poly-scale),~labels_he,+pois.csv(poi,id=home) "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 Nibal was at home in Jabalya with her newborn. 
 Ahmad was at work in Israel.
 
 
 {.meta} 
 [](svg/#oct7.svg/0.67,0.85,2.51/+detainies-2,+detainies-1 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+UNOSAT_gaza_25-10-11(poly-scale),~labels_he)
 A few days later, Israel revoked tens of thousands of permits from all workers from Gaza. Many were inside Israel and could not go home.
 Ahmad and thousands of others instantly became “illegal aliens” in Israel.
 
 
 {.meta} 
 [](svg/#oct7.svg/0.79,0.96,2.51/+detainies-2 "Palestinians in Rafah released from Israeli detention, 28 Dec. 2023 (Reuters/Bassam Masoud)")
-[](map/#31.43482,34.38239,9.64,-10.4,42.0/+unosat-damage-231015,~labels_he)
+[](map/#31.43482,34.38239,9.64,-10.4,42.0/+UNOSAT_gaza_25-10-11(poly-scale),~labels_he)
 He and thousands of others were arrested in Israel within days.
 
 
@@ -229,25 +229,25 @@ The first mass orders, issued on 13 October, ordered about 1 million people in n
 
 {.meta} 
 [](svg/#oct7.svg/-0.32,-0.25,2.53/+@vimeo-1136099759 "Evacuating south along the the coastal road, 14 Oct. 2023 (Mohammed Zaanoun)")
-[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow,+unosat-damage-231015,~labels_he,+labels_en)
+[](map/#31.37390,34.16724,9.97,-10.4,42.0/+north,+arrow,+UNOSAT_gaza_25-10-11(poly-scale),~labels_he,+labels_en)
 Under heavy fire, hundreds of thousands had to decide where to run without knowing if they would ever return.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.52287,34.46534,12.90,-3.2,39.0/+unosat-damage-231015,+pois.csv(poi,id=home),~labels_he,+labels_en "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
+[](map/#31.52287,34.46534,12.90,-3.2,39.0/+UNOSAT_gaza_25-10-11(poly-scale),+pois.csv(poi,id=home),~labels_he,+labels_en "Assessed density of damage to buildings in the Gaza Strip a week into the offensive, 15 Oct. 2023 (UNOSAT)")
 Nibal was afraid to travel alone with her baby, and moved with Rita to her nearby parents’ home.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.53103,34.47759,13.51,38.4,0.0/+unosat-damage-231015,+pois(label-main,id=home),~labels_he,+labels_en)
+[](map/#31.53103,34.47759,13.51,38.4,0.0/+UNOSAT_gaza_25-10-11(poly-scale),+pois(label-main,id=home),~labels_he,+labels_en)
 We didn’t leave and go south despite the bombing, hunger and fear. I suffered a lot during that time. I missed Ahmad so much, and I couldn’t imagine going south alone with Rita without help from my husband and family.
 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.52965,34.48083,14.83,38.4,0.0/+unosat-damage-231015,+pois(label-main,id=home),~labels_he,+labels_en)
+[](map/#31.52965,34.48083,14.83,38.4,0.0/+UNOSAT_gaza_25-10-11(poly-scale),+pois(label-main,id=home),~labels_he,+labels_en)
 I was so scared something would happen to my baby.
 
 
@@ -766,8 +766,8 @@ Even with all the support from my parents, I felt like a burden for them, too.
 
 
 {.testimony typewriter}
-[](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312 "An airstrike in the family’s neighborhood, August 2025")
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
+[](fg:blank)
+[](map/#31.52943,34.47873,16.78,38.4,0.0/+UNOSAT_jabalia_25-07-08(poly-scale),+pois.csv(poi,id=home),~labels_he "!!!")
 
 There were airstrikes in our area all the time. Many people were displaced again. But my extended family is huge, and we had nowhere to go without splitting up.
 
