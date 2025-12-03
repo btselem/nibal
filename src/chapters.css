@@ -4,7 +4,7 @@
   left: 24px;
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 0px;
   z-index: 1200;
   pointer-events: auto;
   align-items: baseline;
@@ -30,7 +30,7 @@
 
 /* Longer gap before chapter headings for visual separation */
 .chapter-heading-item {
-  border-top: 1rem solid transparent;
+  border-top: 8px solid transparent;
 }
 
 .chapter-heading-item:first-child {
@@ -101,10 +101,11 @@
 .chapter-item.timestamp .chapter-label {
   background-color: transparent;
   color: #FA5F5F;
+  padding: 0;
 }
 
 .chapter-item.timestamp .chapter-label::before {
-  border-right: 6px solid #FA5F5F;
+  display: none;
 }
 
 /* Timestamp items (sections with H3/H4) show labels by default */
@@ -162,7 +163,7 @@
     display: flex;
     flex-direction: column;
     padding: 0; /* Proportional padding */
-    gap: .5px; /* Default 1px gap between all items */
+    gap: 0px; /* Default 0px gap between all items */
     /* Prevent the page from scrolling while swiping the rail */
     touch-action: none;
     -webkit-user-select: none;
