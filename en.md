@@ -492,7 +492,7 @@ That and having Ahmad with me.
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.40988,34.36287,10.17,-0.8,0.0/+pois(label-main,id=al-zawaida),+pois#2(label-main,id=home))
+[](map/#31.40988,34.36287,10.17,-0.8,0.0/+pois(label-main,id=al-zawaida),+pois#2(label-main,id=home),~labels_he)
 My parents were frantic with worry. They were afraid I wouldn’t make it and kept checking in with Ahmad. 
 When I felt a bit better, in the hospital, I finally managed to call my mother. I wanted her to hear that I was okay. She couldn’t believe I was alive and couldn't stop crying.
 
@@ -505,25 +505,25 @@ Nibal was discharged from the hospital after 40 days. The family had to flee aga
 
 {.meta}
 [](fg:blank)
-[](map/#31.36106,34.26832,13.74,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot),+pois(label-main,id=al-mawasi))
+[](map/#31.36106,34.26832,13.74,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot),+pois(label-main,id=al-mawasi),~labels_he)
 They went to the “humanitarian zone” in al-Mawasi and got a tent.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37125,34.28097,14.97,40.0,1.2/+wayback:20231101 "Satellite image of the designated “humanitarian zone” in al-Mawasi, Khan Yunis, May 2023 (ESRI Wayback)")
+[](map/#31.37125,34.28097,14.97,40.0,1.2/+wayback:20231101,~labels_he "Satellite image of the designated “humanitarian zone” in al-Mawasi, Khan Yunis, May 2023 (ESRI Wayback)")
 From the start of the offensive, Israel designated a “humanitarian zone” near the southern town of al-Mawasi.
 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101 "Satellite image of the area designated after Oct. 2023 a “humanitarian zone” in al-Mawasi, Khan Yunis, May 2023 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,~labels_he "Satellite image of the area designated after Oct. 2023 a “humanitarian zone” in al-Mawasi, Khan Yunis, May 2023 (ESRI Wayback)")
 The sandy area was largely off the electricity, water and sewage grids.
 
 
 {.meta thumb} 
 [](fg:blank)
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 
 Within months, the area was crammed with tents sheltering over 1 million IDPs from throughout the Strip.
 
@@ -537,19 +537,19 @@ Within months, the area was crammed with tents sheltering over 1 million IDPs fr
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/0.86,-1.07,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 IDP accounts from November 2024, when the family arrived, describe extreme overcrowding, acute shortages of food and water, and no shelter from the harsh winter.
 
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/1.22,-0.49,3.65/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005 "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
 Nibal had to start begin her recovery in inhumane conditions. 
 Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many caused in Israeli attacks, are still struggling to survive in tents.
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/0.84,0.59,3.44/+@vimeo-1129846713  "From Nibal’s TikTok account")
+[](svg/#warehouse_bureij2.svg/0.84,0.59,3.44/+@vimeo-1129846713 "From Nibal’s TikTok account")
 [](bg:blank)
 
 Living in a tent again after the amputation was extremely hard. I needed help to use the toilets and was so embarrassed to ask every time. 
@@ -563,8 +563,8 @@ An intelligent, sensitive girl from a tent near us took pity on me and came ever
 
 
 {.testimony typewriter}
-[](fg:blank)
 [](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
+[](bg:blank)
 
 I struggled to accept my new body.
 
@@ -639,28 +639,28 @@ Nibal’s relatives picked them up at the Netzarim checkpoint. They took Ahmad t
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+@vimeo-1129854927 "From Nibal’s TikTok account")
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+al-mawasi-jabalia(by-car),+pois(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+al-mawasi-jabalia(by-car),+pois(label-main,id=home),~labels_he)
 
 My family welcomed me with hugging, singing and tears. My  brothers and sisters came over every evening.
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.05,-0.56,2.32/+nibal_rita_happy.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 
 My sisters never left my side. They helped me with everything: showering, dressing, eating, caring for Rita.
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 
 They changed her diapers, held her and played with her. Thanks to them, I felt my life was slowly getting back on track. 
 
 
 {.meta}
 [](svg/#ceasefire_hope.svg/0.69,-0.67,2.32/+nibal_rita_home.jpg)
-[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home))
+[](map/#31.53564,34.47997,11.77,0.0,39.0/+pois(label-main,id=home),~labels_he)
 After about a month of recovery with her parents, Ahmad asked Nibal to join him.
 Despite her parents’ concerns, she went back to their apartment with Rita and the couple hired help.
 
@@ -716,7 +716,7 @@ I tried to focus on Rita. She was the most important thing. I did everything I c
 
 {.meta}
 [](fg:blank)
-[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),+pois#3(label-main,id=home))
+[](map/#31.52946,34.47918,17.18,38.4,0.0/+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),+pois#3(label-main,id=home),~labels_he)
 
 In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, killing all three of her children: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
 
@@ -749,7 +749,7 @@ My family welcomed us again with love, but the house was full of grief. My siste
 
 {.testimony typewriter}
 [](svg/#back_home.svg/-1.03,-1.4,3.73/+nibal_home_smile3.heic)
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home))
+[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),+pois(label-main,id=home),~labels_he)
 
 I was frustrated because I couldn’t do anything on my own, and I struggled to care for Rita. 
 Even with all the support from my parents, I felt like a burden for them, too. 
