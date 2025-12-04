@@ -689,3 +689,73 @@ input#mce-EMAIL{
         margin-bottom: 0;
     }
 }
+
+/* Social Share Buttons */
+.share-section {
+    text-align: center;
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.share-section p {
+    border: none !important;
+    padding: 0 !important;
+    background: none !important;
+    margin: 0 0 1.5em 0 !important;
+    font-size: 1.1em;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #000;
+    border: 2px solid #FA5F5F;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.share-btn:hover {
+    background-color: #FA5F5F;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(250, 95, 95, 0.4);
+}
+
+.share-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: #FA5F5F;
+    transition: fill 0.3s ease;
+}
+
+.share-btn:hover svg {
+    fill: #000;
+}
+
+@media (max-width: 768px) {
+    .share-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .share-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+}
