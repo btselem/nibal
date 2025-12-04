@@ -4,7 +4,7 @@ body-class: snap fs-video-mobile editor
 css: src/theme.css
 ---
 
-# _עקירתה של_ ניבאל אל-היסי
+# _מסע העקירה של_ ניבאל אל-היסי
 [](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/-0.01,0.45,1.52/+nibal2023,+displacement)
 
