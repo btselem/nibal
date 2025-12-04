@@ -1029,6 +1029,9 @@
                             } else {
                                 document.body.classList.remove('dual-iframe');
                             }
+                            // Also set a global flag so parent page can check
+                            window.__dualIframeMode = dualIframeMode;
+
                         } catch (e) {
                             console.warn('Failed to toggle dual-iframe mode', e);
                         }
@@ -1089,14 +1092,6 @@
                             const parts = [bgCaption, fgCaption].filter(c => c.trim().length > 0);
                             const combined = parts.join(' • ');
                             
-                            console.log('[updateCombinedCaption]', { 
-                                bgCaption, 
-                                fgCaption, 
-                                combined, 
-                                willDisplay: !!combined,
-                                timestamp: Date.now()
-                            });
-                            
                             if (!combined) {
                                 el.style.display = 'none';
                                 el.textContent = '';
@@ -1126,14 +1121,6 @@
                             const activeLinks = Array.from(document.querySelectorAll('a.active[href]'));
                             const inflectableLinks = activeLinks.filter(link => 
                                 !link.classList.contains('dontinflect') && link.getAttribute('href')
-                            );
-                            
-                            console.log('[updateInflectCaption] Found active links:', inflectableLinks.length, 
-                                inflectableLinks.map(l => ({
-                                    href: l.getAttribute('href'),
-                                    title: l.getAttribute('title'),
-                                    text: l.textContent.substring(0, 20)
-                                }))
                             );
                             
                             if (isDualMode) {
@@ -1241,7 +1228,7 @@
                             // Update the combined caption display
                             updateCombinedCaption();
                         } catch(e) { 
-                            console.error('[CAPTION] Error:', e);
+                            /* swallow */
                         }
                     }
 
@@ -1272,7 +1259,7 @@
         // Fade in new content only on path change
         function setIframeIfPathChanged(newHref) {
             // Check if we're in dual-iframe mode
-            const isDualMode = document.body.classList.contains('dual-iframe');
+            const isDualMode = window.__dualIframeMode === true;
             
             // Handle special clear patterns in dual-iframe mode
             if (isDualMode) {
@@ -1285,11 +1272,13 @@
                         if (pattern === 'fg:blank' || pattern === 'foreground:blank') {
                             foregroundFrame.src = 'about:blank';
                             foregroundFrame.classList.add('inactive');
+                            lastForegroundPath = ''; // Reset so next link will load
                             try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
                         if (pattern === 'bg:blank' || pattern === 'background:blank') {
                             backgroundFrame.src = 'about:blank';
+                            lastBackgroundPath = ''; // Reset so next link will load
                             try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
@@ -1297,6 +1286,8 @@
                             backgroundFrame.src = 'about:blank';
                             foregroundFrame.src = 'about:blank';
                             foregroundFrame.classList.add('inactive');
+                            lastForegroundPath = ''; // Reset so next link will load
+                            lastBackgroundPath = ''; // Reset so next link will load
                             try { if (window.__clearInflectCaption) window.__clearInflectCaption(); } catch(e){}
                             return;
                         }
@@ -1304,7 +1295,13 @@
                 }
             }
             
-            const parsedURL = new URL(newHref, window.location.origin);
+            let parsedURL;
+            try {
+                parsedURL = new URL(newHref, window.location.origin);
+            } catch(e) {
+                console.warn('[setIframeIfPathChanged] Failed to parse URL:', newHref, e.message);
+                return;
+            }
             const originalHash = parsedURL.hash || '';
             // compute path-only URL for comparison
             const pathOnly = new URL(parsedURL.href);
@@ -1328,7 +1325,6 @@
                 // Dual iframe mode: route based on URL pattern
                 // map/ → background-frame, everything else (cmp/, img/, vim/, etc.) → foreground-frame
                 const isMapLink = newPath.includes('/map/') || newPath.includes('/map#') || newPath.match(/\/map$/);
-                
                 if (isMapLink) {
                     // Route to background frame
                     if (newPath !== lastBackgroundPath) {
@@ -1493,7 +1489,7 @@
                         if (!rawHref) return; // Safety check
                         
                         // In dual-iframe mode, call setIframeIfPathChanged directly to avoid timeout issues
-                        const isDualMode = document.body.classList.contains('dual-iframe');
+                        const isDualMode = window.__dualIframeMode === true;
                         if (isDualMode) {
                             try { 
                                 const full = new URL(rawHref, window.location.href).href; 
@@ -1559,7 +1555,9 @@
             entries.forEach(en => {
                 if (en.isIntersecting) {
                     const sec = en.target;
-                    console.log('[Section entering]', sec.textContent.substring(0, 50));
+                    const sectionText = sec.textContent.substring(0, 50).replace(/\s+/g, ' ');
+                    console.log('[Section entering]', sectionText);
+                    console.log('[Section entering] Has typewriter?', sec.querySelector('.typewriter') !== null, 'typewriter started?', sec.querySelector('.typewriter[data-_tw_started]') !== null);
                     
                     // Mark this section as having inflection in progress
                     const inflectionId = 'inflection-' + (sec.id || Date.now());
@@ -1645,12 +1643,27 @@
                             } catch (e) { /* swallow */ }
                         }
 
-                        // If a recent user gesture occurred and no programmatic
-                        // scroll suppression is active, perform the same centering
-                        // calculation used by navbar buttons.
-                        if (recentUser && !programmaticScrollActive && !duringProgrammaticScroll) {
+                        // Load all inflection links in the entering section (dual-iframe mode)
+                        const isDualMode = window.__dualIframeMode === true;
+
+                        if (isDualMode) {
+                            console.log('[Section observer] ENTERING DUAL-IFRAME MODE');
+                            console.log('[Section observer] Section ID:', sec.id, 'classes:', sec.className);
+                            console.log('[Section observer] Section HTML structure:', sec.innerHTML.substring(0, 500));
+                            
                             // Find all inflection links in this section
                             const allLinks = Array.from(sec.querySelectorAll('a:not(.dontinflect)'));
+                            if (allLinks.length === 0) {
+                                console.error('[Section observer] ⚠️ ZERO LINKS FOUND in section');
+                                console.error('[Section observer]   Section text:', sec.textContent.substring(0, 100));
+                                console.error('[Section observer]   Section HTML:', sec.innerHTML.substring(0, 300));
+                                console.error('[Section observer]   All anchors (including .dontinflect):', sec.querySelectorAll('a').length);
+                            } else {
+                                console.log('[Section observer] ✓ Found', allLinks.length, 'links in section');
+                            }
+                            allLinks.forEach((link, idx) => {
+                                console.log('[Section observer]   Link', idx, '- href:', link.getAttribute('href'), 'classes:', link.className, 'parent:', link.parentElement?.tagName);
+                            });
                             
                             let loadedCount = 0;
                             const totalLinks = allLinks.length;
@@ -1669,16 +1682,17 @@
                             allLinks.forEach((link, index) => {
                                 // Mark link as active since it's in the visible section
                                 link.classList.add('active');
-                                console.log('[Section entering] Marking link as active:', link.getAttribute('href'), 'title:', link.getAttribute('title'));
+                                console.log('[Section inflect', index + '] Marking active + loading:', link.getAttribute('href'), 'title:', link.getAttribute('title'));
                                 
                                 const linkHref = link.getAttribute('href');
                                 if (linkHref) {
                                     const delay = index * 30; // 30ms stagger for smoother loading
                                     setTimeout(() => {
                                         try { 
-                                            const full = new URL(linkHref, window.location.href).href; 
+                                            const full = new URL(linkHref, window.location.href).href;
                                             setIframeIfPathChanged(full); 
                                         } catch(e){ 
+                                            console.warn('[Section inflect] URL() failed:', e.message);
                                             try {
                                                 setIframeIfPathChanged(link.href);
                                             } catch(e2) {
@@ -1688,6 +1702,7 @@
                                             loadedCount++;
                                             // Complete when all links processed
                                             if (loadedCount >= totalLinks) {
+                                                console.log('[Section inflect] All', totalLinks, 'links loaded, completing inflection');
                                                 // Small delay to ensure iframes start loading
                                                 setTimeout(completeInflection, 50);
                                             }
@@ -1707,6 +1722,7 @@
                             // Guaranteed completion after reasonable timeout
                             setTimeout(completeInflection, Math.max(200, totalLinks * 50));
                         } else {
+                            console.log('[Section observer] SINGLE-IFRAME MODE (not dual)');
                             // Single iframe mode: only load first link
                             try { 
                                 const full = new URL(raw, window.location.href).href; 
@@ -1735,18 +1751,19 @@
                 } else {
                     // Section is leaving view - remove active class from all its links
                     const sec = en.target;
-                    console.log('[Section leaving]', sec.textContent.substring(0, 50));
+                    const sectionText = sec.textContent.substring(0, 50).replace(/\s+/g, ' ');
+                    console.log('[Section leaving]', sectionText);
                     try {
                         const allLinks = Array.from(sec.querySelectorAll('a:not(.dontinflect)'));
-                        console.log('[Section leaving] Removing active from', allLinks.length, 'links');
+                        if (allLinks.length > 0) {
+                            console.log('[Section leaving] Removing active from', allLinks.length, 'links');
+                        }
                         allLinks.forEach(link => link.classList.remove('active'));
                         // Mark that caption needs update after all sections processed
                         captionNeedsUpdate = true;
                     } catch(e) { /* swallow */ }
                 }
             });
-            
-            console.log('[Section observer] Batch complete, captionNeedsUpdate:', captionNeedsUpdate);
             
             // Update caption ONCE after all section entries have been processed
             // Use setTimeout to ensure all active class changes have been applied  

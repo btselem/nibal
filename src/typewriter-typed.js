@@ -34,8 +34,19 @@
     
     function startTypingForElement(el, opts) {
       try {
-        if (!el || el.dataset._tw_started) return;
-        el.dataset._tw_started = '1';
+        // CRITICAL: Check if this exact element has already been processed
+        // Use a unique marker to prevent re-processing the same element
+        if (!el || el.dataset._tw_started === '1') {
+          return; // Already processed, skip
+        }
+        el.dataset._tw_started = '1'; // Mark BEFORE any processing to prevent race conditions
+        
+        // DIAGNOSTIC: Log link state BEFORE typewriter processes the section
+        const linksBeforeProcessing = Array.from(el.querySelectorAll('a:not(.dontinflect)'));
+        console.log('[Typewriter PRE] Section about to be processed has', linksBeforeProcessing.length, 'inflection links');
+        linksBeforeProcessing.forEach((link, idx) => {
+          console.log('[Typewriter PRE]   Link', idx, '- href:', link.getAttribute('href'), 'parent:', link.parentElement?.tagName);
+        });
         
         // CRITICAL: Measure and lock the section height BEFORE any modifications
         // This ensures snap calculations remain consistent throughout the typing animation
@@ -46,25 +57,131 @@
         }
         
         // Get all paragraph children that have text content (not empty link paragraphs)
-        const paragraphs = Array.from(el.querySelectorAll('p')).filter(p => {
+        let paragraphs = Array.from(el.querySelectorAll('p')).filter(p => {
           const text = p.textContent || '';
           return text.trim().length > 0;
         });
         
+        // CRITICAL: If no <p> tags found but section has direct text nodes,
+        // wrap them in a <p> tag so typewriter can process them
+        if (paragraphs.length === 0) {
+          const hasDirectTextContent = Array.from(el.childNodes).some(node => {
+            return (node.nodeType === 3 && node.textContent.trim().length > 0) || // Text node
+                   (node.nodeType === 1 && node.tagName !== 'A' && node.tagName !== 'SECTION' && node.textContent.trim().length > 0);
+          });
+          
+          if (hasDirectTextContent) {
+            console.log('[Typewriter] Wrapping direct text content in <p> tag');
+            
+            // Collect direct text nodes and non-anchor elements
+            const textFragments = [];
+            const nodesToRemove = [];
+            
+            for (let node of el.childNodes) {
+              if (node.nodeType === 3 && node.textContent.trim().length > 0) {
+                // Text node with content
+                textFragments.push(node.textContent);
+                nodesToRemove.push(node);
+              } else if (node.nodeType === 1 && node.tagName !== 'A' && node.tagName !== 'SECTION') {
+                // Element that's not an anchor or section
+                textFragments.push(node.outerHTML);
+                nodesToRemove.push(node);
+              }
+            }
+            
+            // Create new paragraph with the text
+            if (textFragments.length > 0) {
+              const newP = document.createElement('p');
+              newP.innerHTML = textFragments.join('');
+              
+              // Find where to insert it (after all anchors)
+              const anchors = el.querySelectorAll('a');
+              const lastAnchor = anchors[anchors.length - 1];
+              if (lastAnchor) {
+                lastAnchor.parentNode.insertBefore(newP, lastAnchor.nextSibling);
+              } else {
+                el.appendChild(newP);
+              }
+              
+              // Remove the original direct text nodes
+              nodesToRemove.forEach(node => {
+                try { node.parentNode.removeChild(node); } catch(e) {}
+              });
+              
+              paragraphs = [newP];
+            }
+          }
+        }
+        
         if (paragraphs.length === 0) return;
         
+        // CRITICAL: Extract ALL inflection links from the SECTION (not just current paragraph)
+        // This handles cases where links are in one <p> and text is in another <p>
+        const allLinksInSection = Array.from(el.querySelectorAll('a'));
+        if (allLinksInSection.length > 0) {
+          console.log('[Typewriter] Section has', allLinksInSection.length, 'total links');
+        }
+        
+        // CRITICAL: Collect original links from paragraphs BEFORE any modification
+        // Count unique links (by href) to avoid processing duplicates
+        const seenHrefs = new Set();
+        const allSectionLinks = Array.from(el.querySelectorAll('a')).filter(link => {
+          const href = link.getAttribute('href');
+          if (!href || seenHrefs.has(href)) return false;
+          seenHrefs.add(href);
+          return true;
+        });
+        
+        if (allSectionLinks.length > 0) {
+          console.log('[Typewriter] Section has', allSectionLinks.length, 'unique links (before processing)');
+        }
+        
+        let sectionLinksUsed = false; // Track if section links have been claimed by a paragraph
+        
         // Measure and prepare all paragraphs first
-        const paragraphData = paragraphs.map(p => {
+        const paragraphData = paragraphs.map((p, pIdx) => {
           const text = p.textContent || '';
           const originalHeight = p.getBoundingClientRect().height;
+          
+          // Extract links directly in this paragraph
+          const linksInParagraph = Array.from(p.querySelectorAll('a'));
+          
+          // Determine which links to preserve for this paragraph
+          let linksToPreserve = [];
+          let shouldCloneLinks = true; // Whether to clone or move links
+          
+          if (linksInParagraph.length > 0) {
+            // Paragraph has its own links - keep them (they're already here, no clone needed)
+            console.log('[Typewriter §' + pIdx + '] Paragraph has', linksInParagraph.length, 'direct links → keeping them');
+            linksToPreserve = linksInParagraph;
+            shouldCloneLinks = false; // Don't clone - links already in this paragraph
+          } else if (text.trim().length > 0 && !sectionLinksUsed && allSectionLinks.length > 0) {
+            // Paragraph has text but no links, and section links haven't been claimed yet
+            // MOVE section links here (don't clone - prevents duplication)
+            console.log('[Typewriter §' + pIdx + '] Paragraph has text but NO links → MOVING', allSectionLinks.length, 'section links here');
+            linksToPreserve = allSectionLinks;
+            sectionLinksUsed = true; // Mark section links as claimed
+            shouldCloneLinks = false; // MOVE links, don't clone them
+          } else if (linksInParagraph.length === 0 && text.trim().length === 0) {
+            // Empty paragraph (blank line) - don't preserve any links
+            console.log('[Typewriter §' + pIdx + '] Empty paragraph (blank line) → no links');
+          }
+          
+          // Clone only if needed (shouldn't ever be needed now)
+          const preservedLinks = shouldCloneLinks ? linksToPreserve.map(a => a.cloneNode(true)) : linksToPreserve;
           
           // Lock the paragraph height
           if (originalHeight > 0) {
             p.style.height = Math.ceil(originalHeight) + 'px';
           }
           
-          // Clear the paragraph text
+          // Clear the paragraph text but preserve inflection links by re-inserting them
           p.textContent = '';
+          
+          // Re-insert the preserved links first (they'll be invisible until after typing completes)
+          preservedLinks.forEach(link => p.appendChild(link));
+          
+          console.log('[Typewriter §' + pIdx + '] Re-inserted', preservedLinks.length, 'links → paragraph now has', p.querySelectorAll('a').length, 'links');
           
           // Create a span to hold the typed text
           const typingTarget = document.createElement('span');
@@ -89,6 +206,7 @@
           if (currentIndex >= paragraphData.length) return;
           
           const { typingTarget, processedText, adjustedSpeed, text } = paragraphData[currentIndex];
+          const paragraphIndex = currentIndex;
           currentIndex++;
           
           try {
@@ -121,7 +239,8 @@
             
             instances.set(el, typed);
           } catch (e) {
-            console.error('Typewriter error:', e);
+            console.error('[Typewriter] Error creating Typed instance for paragraph', paragraphIndex, ':', e.message || e);
+            console.error('[Typewriter] Error details:', e);
             typingTarget.textContent = text;
             // Continue to next paragraph even if this one fails
             typeNextParagraph();
@@ -130,6 +249,18 @@
         
         // Start typing the first paragraph
         typeNextParagraph();
+        
+        // DIAGNOSTIC: Log link state AFTER typewriter has set up the section
+        setTimeout(() => {
+          const linksAfterProcessing = Array.from(el.querySelectorAll('a:not(.dontinflect)'));
+          console.log('[Typewriter POST] Section after setup has', linksAfterProcessing.length, 'inflection links');
+          linksAfterProcessing.forEach((link, idx) => {
+            console.log('[Typewriter POST]   Link', idx, '- href:', link.getAttribute('href'), 'parent:', link.parentElement?.tagName, 'active:', link.classList.contains('active'));
+          });
+          
+          // Dispatch event to signal typewriter is ready and links are preserved
+          el.dispatchEvent(new CustomEvent('typewriter-ready', { bubbles: true }));
+        }, 100);
       } catch(err) {
         console.error('[typewriter] startTypingForElement failed:', err);
       }
