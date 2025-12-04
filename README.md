@@ -168,9 +168,7 @@ css: src/theme.css
 
 
 {.meta no-h}
-### Oct 23
-
-{.meta} 
+#### Oct 23
 [](fg:blank)
 [](map/#31.38518,34.39275,9.64,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
 ב-7 באוקטובר 2023 ביצעו ארגון חמאס ופלגים חמושים פלסטינים נוספים מרצועת עזה את המתקפה הקטלנית ביותר שתועדה אי פעם נגד אזרחים ישראלים.
@@ -272,7 +270,8 @@ css: src/theme.css
 ## המסע דרומה  
 
 
-{.meta} 
+{.meta no-h}
+### עקירה ראשונה
 [](fg:blank)
 [](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-he(label-main,id=home),+pois-he#2(label-main,id=gaza-2403))
 את תחילת הדרך עשתה ניבאל עם אביה, שהסיע אותה ואת ריתא מביתם בג'אבליא לפאתי העיר עזה.
@@ -387,7 +386,8 @@ css: src/theme.css
 במקביל להפצת צווי הפינוי, ישראל הגבירה את תקיפותיה ברפיח.
 
 
-{.meta} 
+{.meta no-h}
+### עקירה שניה
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah),+pois-he#2(label-main,id=bureij))
 
@@ -441,7 +441,7 @@ css: src/theme.css
 
 
 {.meta no-h}
-### Oct 24
+#### Oct 24
 [](svg/#warehouse_bureij2.svg/-16.71,-1.35,58.58/+nibal_xray)
 [](bg:blank)
 באותו בוקר הפגיז הצבא את אל-בוריג׳. ניבאל תיארה רעש בלתי פוסק של פיצוצים סביבה. 
@@ -497,7 +497,8 @@ css: src/theme.css
 כשמצבי השתפר קצת במהלך האשפוז, הצלחתי סוף סוף להתקשר בעצמי לאמא שלי. רציתי שהיא תשמע שאני בסדר. היא לא האמינה שאני עדיין חיה ולא הפסיקה לבכות.
 
 
-{.meta}
+{.meta no-h}
+### עקירה שלישית
 [](fg:blank)
 [](map/#31.41688,34.35054,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow,+idf-poly-outlines,+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=al-mawasi))
 ניבאל השתחררה מבית החולים לאחר 40 יום. מיד לאחר מכן, היא, אחמד וריתא נאלצו לעקור שוב.
@@ -616,7 +617,8 @@ css: src/theme.css
 ## הפסקת האש: ינואר 2025 
 
 
-{.meta}
+{.meta no-h}
+### עקירה רביעית
 [](svg/#ceasefire_hope.svg/-0.15,0.3,2.65/+@vimeo-1136076448 "עקורים חוזרים לצפון על כביש אל-רשיד, 21 בינואר 2025. (Activestills / יוסף זענון)")
 [](bg:blank)
 אחרי כחודשיים של חיים באוהל באל-מוואסי, בינואר 2025 התבשרו תושבי הרצועה, וניבאל ביניהם, על כניסתה לתוקף של הפסקת האש השנייה בין ישראל לחמאס. 
@@ -812,7 +814,8 @@ css: src/theme.css
 ## ארעיות קבועה 
 
 
-{.meta}
+{.meta no-h}
+### עקירה חמישית
 [](svg/#permanent_impermanence.svg/-0.7,1.26,3.27/+nibal_ruined_home2.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509))
 
@@ -840,7 +843,8 @@ css: src/theme.css
 </a>
 
 
-{.meta}
+{.meta no-h}
+### עקירה שישית
 [](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,+pois-he(label-main,id=deir-al-balah))
 המשפחה נעקרה שוב, הפעם דרומה, למתחם אוהלים בדיר אל-בלח. 
@@ -877,7 +881,7 @@ css: src/theme.css
 {.meta no-h}
 [](fg:blank)
 [](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-he(label-main,id=deir-al-balah) "באדום: השטח שנותר בשליטת ישראל לפי השלב הראשון בהסכם הפסקת האש ")
-### Oct 25
+#### Oct 25
 ב-10 לאוקטובר 2025 נכנסה לתוקף הפסקת האש בין ישראל לחמאס. 
 בשבועות שלאחר מכן ישראל המשיכה את תקיפותיה ברצועה.
 
@@ -974,7 +978,7 @@ css: src/theme.css
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
 <div id="mc_embed_signup">
     <form action="https://btselem.us5.list-manage.com/subscribe/post?u=920751e31402107695c00c26f&amp;id=19d0d9bede&amp;f_id=00cfe2e4f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll"><h3>הרשמה לניוזלטר</h3>
+        <div id="mc_embed_signup_scroll"><h4>הרשמה לניוזלטר</h4>
             <div class="indicates-required"><span class="asterisk">*</span>שדות חובה</div>
             <div class="mc-field-group"><label for="mce-EMAIL">כתובת אימייל:<span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">שם פרטי:</label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">שם משפחה:</label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value=""></div>
 <div hidden=""><input type="hidden" name="tags" value="20413,4403872"></div>

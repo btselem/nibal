@@ -95,6 +95,7 @@
 .chapter-item:hover .chapter-label {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
+  z-index: 10;
 }
 
 /* Timestamp items (sections with H3/H4) show labels by default */
@@ -108,7 +109,8 @@
 }
 
 /* Timestamp items (sections with H3/H4) show labels by default */
-.sec-subheader .chapter-item.timestamp .chapter-label {
+.sec-subheader .chapter-item.timestamp .chapter-label,
+#chapter-nav:hover .chapter-item.timestamp .chapter-label {
   opacity: 1;
   transform: translateY(-50%) translateX(0);
 }
@@ -125,10 +127,6 @@
     font-size: .75em;
   }
 
-  /* When any nav item is hovered, hide all timestamp labels */
-  #chapter-nav:hover .chapter-item.timestamp .chapter-label {
-    opacity: 0;
-  }
 
   /* But show the timestamp label if its own item is hovered, at full size */
   #chapter-nav .chapter-item.timestamp:hover .chapter-label {
@@ -235,9 +233,10 @@
 
   .chapter-item.timestamp .chapter-label {
     opacity: 0;
+    z-index: -1;
   }
 
-  body.sec-subheader .chapter-item.timestamp .chapter-label {
+  body.sec-subheader .chapter-item.timestamp .chapter-label{
     opacity: 1;
   }
 }

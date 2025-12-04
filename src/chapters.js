@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let sectionTitle = chapterTitle;
         let hasTimestampHeading = false;
         try {
-          const hh = child.querySelector && child.querySelector('h3, h4');
+          const hh = child.querySelector && child.querySelector('h3');
           if (hh) {
             hasTimestampHeading = true;
             const t = (hh.textContent || '').trim();

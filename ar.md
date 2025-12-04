@@ -1012,7 +1012,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
     <div id="mc_embed_signup">
          <form action="https://btselem.us5.list-manage.com/subscribe/post?u=920751e31402107695c00c26f&amp;id=19d0d9bede&amp;f_id=00cee2e4f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
             <div id="mc_embed_signup_scroll">
-                <32>Subscribe</h3>
+                <h4>Subscribe</h4>
                 <div class="indicates-required"><span class="asterisk">*</span>Mandatory fields</div>
                 <div class="mc-field-group"><label for="mce-EMAIL">Email:<span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">First name:</label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-LNAME">Last name:</label><input type="text" name="LNAME" class=" text" id="mce-LNAME" value="">
             </div>

@@ -123,6 +123,10 @@ section.subheader {
     justify-content: center;
 }
 
+section.subheader h2 {
+    z-index: 1000;
+}
+
 section.meta p {
     background: #000;
     font-size: 1em;
@@ -495,15 +499,13 @@ iframe {
 }
 
 /* Hide timestamp labels in the opening section */
-#chapter-nav.ch01 .chapter-item.timestamp .chapter-label{
-    opacity: 0;
-}
 
 #chapter-nav.ch01 .chapter-item.timestamp:hover .chapter-label{
     opacity: 1;
 }
 
-.no-h h3 {
+.no-h h3,
+.no-h h4 {
     visibility: hidden;
     display: none;
 }
