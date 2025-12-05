@@ -104,16 +104,9 @@ css: src/theme.css
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
-[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base "מתוך חשבון הטיקטוק של ניבאל")
-
-בגלל שאני הקטנה, ההורים והאחים שלי תמיד פינקו אותי.
-
-
-{.testimony typewriter}
-[](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
-אחרי התיכון, המשכתי ללימודי אנגלית ותרגום באוניברסיטת אל-אזהר בעיר עזה.
+אחרי התיכון, התחלתי לימודי אנגלית ותרגום באוניברסיטת אל-אזהר בעיר עזה.
 
 
 {.testimony typewriter}
@@ -134,12 +127,6 @@ css: src/theme.css
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 בספטמבר 2022 עברנו לגור בדירה משלנו בבניין של המשפחה של אחמד, בג׳אבליא, לא רחוק מהבית של ההורים שלי.  
-
-
-{.testimony typewriter}
-[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585)
-[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-היינו מובטלים ומצבנו הכלכלי לא היה פשוט, אבל שרדנו בעזרת התמיכה של המשפחות שלנו.
 
 
 {.testimony typewriter}
@@ -170,7 +157,7 @@ css: src/theme.css
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.38518,34.39275,9.64,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
+[](map/#31.38936,34.38357,10.27,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
 ב-7 באוקטובר 2023 ביצעו ארגון חמאס ופלגים חמושים פלסטינים נוספים מרצועת עזה את המתקפה הקטלנית ביותר שתועדה אי פעם נגד אזרחים ישראלים.
 
 1,220 בני אדם נהרגו, עשרות אלפים נפצעו, ו-252 בני אדם חיים וגופות נחטפו לרצועת עזה.
@@ -236,7 +223,7 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
 [](map/#31.52287,34.46534,12.90,-3.2,39.0/+UNOSAT_gaza_23-10-15(poly-scale),+pois-he(label-main,id=home))
-נשארנו בג׳אבליא למרות ההפצצות, הרעב והפחד. סבלתי מאוד בתקופה הזאת. אחמד חסר לי מאוד ולא יכולתי לדמיין את העקירה לבד עם ריתא, בלעדיו ובלי התמיכה של המשפחה שלי.
+נשארנו בג׳אבליא למרות ההפצצות, הרעב והפחד. סבלתי מאוד בתקופה הזאת. אחמד חסר לי ולא יכולתי לדמיין את העקירה לבד עם ריתא, בלעדיו ובלי המשפחה שלי.
 
 
 {.testimony typewriter}
@@ -249,12 +236,6 @@ css: src/theme.css
 [](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "תושבים בוחנים אתר תקיפה ישראלית על בית בג׳באליא, 3 בינואר 2024. (REUTERS / עימאד גבון)")
 [](bg:blank)
 תוך חודשים ספורים, המתקפה הישראלית שינתה לבלי היכר את פני צפון הרצועה.
-
-
-{.meta} 
-[](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "תושבים בוחנים אתר תקיפה ישראלית על בית בג׳באליא, 3 בינואר 2024. (REUTERS / עימאד גבון)")
-[](bg:blank)
-התושבים שעוד נותרו בג׳אבליא תועדו מסתובבים בין ההריסות, כשהם מנסים לאסוף את מה שנותר מרכושם.
 
 
 {.meta} 
@@ -293,17 +274,13 @@ css: src/theme.css
 [](fg:blank)
 [](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-he(label-main,id=nuseirat),+pois-he#2(label-main,id=rafah))
 באזור א-נוסייראת השתיים התאחדו עם אחמד, אותו לא ראו מזה כחצי שנה.
-
-
-{.meta}
-[](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-he(label-main,id=rafah),~labels_he) 
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
+
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-he(label-main,id=rafah),~labels_he) 
 התרגשתי מאוד לראות את אחמד. הוא חיבק ונישק את ריתא בלי הפסקה. 
 
 
@@ -358,13 +335,7 @@ css: src/theme.css
 [](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg)
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he "ריתא במחנה העקורים ברפיח")
 זה היה עינוי מתמשך, ככל הנראה מהתקופות הקשות בחיי.
-
-
-{.testimony typewriter}
-[](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg)
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he "ריתא במחנה העקורים ברפיח")
-לא סיפרתי על הקשיים להורים שלי, שהתנגדו מלכתחילה שאעקור דרומה. 
-התביישתי לספר להם איך אני חיה.
+התביישתי לספר להורים שלי איך אני חיה.
 
 
 {.meta thumb} 
@@ -383,7 +354,7 @@ css: src/theme.css
 {.meta} 
 [](svg/#south.svg/0,-3.69,8.67/+rafah_bomb_comp.jpg "תושב רפיח צופה בעשן מיתמר בזמן שכוחות ישראליים מנהלים מתקפה אווירית וקרקעית במזרח העיר, 7 במאי 2024. (REUTERS / חאתם חאלד)")
 [](bg:blank)
-במקביל להפצת צווי הפינוי, ישראל הגבירה את תקיפותיה ברפיח.
+במקביל להפצת צווי הפינוי, ישראל הגבירה את תקיפותיה בעיר.
 
 
 {.meta no-h}
@@ -475,7 +446,7 @@ css: src/theme.css
 {.meta}
 [](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
-כתוצאה מפגיעת הפגז, ידיה של ניבאל נקטעו מתחת למרפק והיא נכוותה קשות. בית החולים בו היא אושפזה היה שרוי בעומס אדיר של פצועים, והרופאים טיפלו בה בתנאים קשים.
+כתוצאה מפגיעת הפגז, ידיה של ניבאל נקטעו מתחת למרפק והיא נכוותה קשות. 
 
 
 {.testimony typewriter}
@@ -554,13 +525,6 @@ css: src/theme.css
 [](bg:blank)
 
 לחזור לחיות שוב באוהל אחרי הפציעה היה קשה מאוד. לא יכולתי להשתמש בשירותים באופן עצמאי, והביך אותי כל-כך לבקש בכל פעם עזרה. 
-
-
-{.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-0.77,0.04,4.1/+rita_tent1 "ריתא במחנה העקורים באל-מוואסי")
-[](bg:blank)
-
-הבת של השכנים מהאוהל לידנו, נערה חכמה ורגישה, ריחמה עליי והגיעה בכל יום לעזור לי ולטפל בי ובריתא.
 
 
 {.testimony typewriter}
