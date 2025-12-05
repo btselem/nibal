@@ -1339,12 +1339,8 @@
                         // Hash-only change - update src immediately
                         backgroundFrame.src = newHref;
                     }
-                    // Make foreground inactive if no content
-                    if (!lastForegroundPath) {
-                        foregroundFrame.classList.add('inactive');
-                    }
                 } else {
-                    // Route to foreground frame (default for cmp/, img/, vim/, etc.)
+                    // Route to foreground frame (default for cmp/, img/, vim/, svg/, etc.)
                     
                     // MOBILE VIDEO OPTIMIZATION: If fs-video-mobile body class is present,
                     // on mobile devices, detect SVG links with @vimeo- flags and redirect
@@ -1367,6 +1363,7 @@
                         console.warn('[mobile-video] Redirect failed:', e.message);
                     }
                     
+                    // Update foreground iframe
                     if (newPath !== lastForegroundPath) {
                         if (firstForegroundFrame) {
                             firstForegroundFrame = false;
@@ -1378,7 +1375,7 @@
                     } else {
                         foregroundFrame.src = finalHref;
                     }
-                    // Ensure foreground is active
+                    // Ensure foreground is active and update tracking immediately
                     foregroundFrame.classList.remove('inactive');
                 }
             }

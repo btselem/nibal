@@ -45,16 +45,31 @@
           el.style.minHeight = Math.ceil(sectionHeight) + 'px';
         }
         
-        // Get all paragraph children that have text content (not empty link paragraphs)
-        const paragraphs = Array.from(el.querySelectorAll('p')).filter(p => {
-          const text = p.textContent || '';
-          return text.trim().length > 0;
+        // Get all paragraph children
+        // CRITICAL: Separate inflectable link paragraphs from content paragraphs
+        const allParagraphs = Array.from(el.querySelectorAll('p'));
+        
+        // Filter to only paragraphs with visible text content
+        const paragraphs = allParagraphs.filter(p => {
+          // Check if paragraph ONLY contains inflectable links (no visible text)
+          const hasInflectableLinks = p.querySelector('a:not(.dontinflect)');
+          const text = (p.textContent || '').trim();
+          
+          if (hasInflectableLinks && text.length === 0) {
+            // This paragraph only contains invisible inflection links - preserve completely
+            return false;
+          }
+          
+          // This paragraph has visible content - include it for typewriter
+          return text.length > 0;
         });
         
         if (paragraphs.length === 0) return;
         
         // Measure and prepare all paragraphs first
         const paragraphData = paragraphs.map(p => {
+          // Capture the full HTML including any child elements (links, spans, etc.)
+          const originalHTML = p.innerHTML;
           const text = p.textContent || '';
           const originalHeight = p.getBoundingClientRect().height;
           
@@ -63,8 +78,14 @@
             p.style.height = Math.ceil(originalHeight) + 'px';
           }
           
-          // Clear the paragraph text
-          p.textContent = '';
+          // Separate inflectable links from text content
+          const inflectableLinks = Array.from(p.querySelectorAll('a:not(.dontinflect)'));
+          
+          // Clear paragraph content
+          p.innerHTML = '';
+          
+          // Re-add inflectable links first (they need to be in DOM for observer)
+          inflectableLinks.forEach(link => p.appendChild(link));
           
           // Create a span to hold the typed text
           const typingTarget = document.createElement('span');
