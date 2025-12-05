@@ -105,7 +105,7 @@ My name is Nibal al-Hisi. I’m 25. When the war began in October 2023, I was li
 [](svg/#intro-pre.svg/-0.67,0.25,2.4/,+nibal2023)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
-I’m the youngest of nine brothers and three sisters. So my family always spoiled me.
+I’m the youngest of nine brothers and three sisters.
 
 
 {.testimony typewriter}
@@ -133,13 +133,6 @@ I married him even though my parents objected. I knew we wouldn’t live in luxu
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
 
 We got married in September 2022 and moved into our own apartment in his family’s building, not far from my parents.
-
-
-{.testimony typewriter}
-[](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585)
-[](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
-We were unemployed and survived with our families’ help.
 
 
 {.testimony typewriter}
@@ -177,7 +170,7 @@ On 7 October 2023, Hamas and other armed Palestinian groups carried out the dead
 
 {.meta} 
 [](fg:blank)
-[](map/#31.38518,34.39275,9.64,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
+[](map/#31.38936,34.38357,10.27,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
 Entering from Gaza, the attackers killed 1,220 people, including women, elderly people and children, and left tens of thousands injured. 
 They carried 252 people, some living and others dead, back to Gaza.
 
@@ -258,12 +251,6 @@ Several months of heavy bombardment left northern Gaza unrecognizable.
 
 
 {.meta} 
-[](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
-[](bg:blank)
-Residents who stayed in Jabalya were documented trying to salvage what was left of their belongings from the rubble.
-
-
-{.meta} 
 [](fg:blank)
 [](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=home),~labels_he,+labels_en)
 Ahmad was released from Israeli detention in February 2024 and he went to Khan Yunis in southern Gaza. 
@@ -298,18 +285,12 @@ From Gaza City, Nibal continued south on foot, carrying her baby in her hands.
 [](fg:blank)
 [](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois(label-main,id=nuseirat),+pois#2(label-main,id=rafah),~labels_he)
 In the area of a-Nuseirat, the two reunited with Ahmad. 
-
-
-{.meta}
-[](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he) 
 The young family went together to a tent Ahmad had set up in Rafah. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26878,34.25305,15.23,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
-
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois(label-main,id=rafah),~labels_he) 
 I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
@@ -360,13 +341,7 @@ Living crammed together without enough food and water, with no privacy and poor 
 [](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 It was constant torment, probably the hardest time in my life.
-
-
-{.testimony typewriter}
-[](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
-[](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
-I didn’t tell my parents how hard it was, because they didn’t want me to go south.
-I was ashamed to tell them how I was living.  
+I was ashamed to tell my parents how I was living.  
 
 
 {.meta thumb} 
@@ -478,7 +453,7 @@ I woke up in the hospital and found my hands gone.
 {.meta}
 [](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
 [](bg:blank)
-The shelling cut Nibal’s arms off at the elbow and badly burned her. She was treated in harsh conditions, in a hospital overwhelmed with injuries.
+The shelling cut Nibal’s arms off at the elbow and badly burned her. 
 
 
 {.testimony typewriter}
@@ -558,13 +533,6 @@ Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many 
 [](bg:blank)
 
 Living in a tent again after the amputation was extremely hard. I needed help to use the toilets and was so embarrassed to ask every time. 
-
-
-{.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-0.77,0.04,4.1/+rita_tent1 "Rita in the IDP camp in al-Mawasi")
-[](bg:blank)
-
-An intelligent, sensitive girl from a tent near us took pity on me and came every day to help me and care for Rita.
 
 
 {.testimony typewriter}
