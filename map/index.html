@@ -617,8 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const errorEl = document.getElementById('add-layer-error');
   
   if (!confirmBtn) {
-    console.warn('[ADD LAYER] UI elements not found');
-    return;
+        return;
   }
   
   let currentTab = 'geodata';
@@ -811,8 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Try both svg/ and map/
         linkToCopy = pickRelFromPath(path, 'svg') || pickRelFromPath(path, 'map');
       } catch(e) {
-        console.warn('Failed to parse URL:', e);
-      }
+              }
       
       // Fallback to simple extraction if URL parsing failed
       if (!linkToCopy) {
@@ -840,8 +838,7 @@ document.addEventListener('DOMContentLoaded', function() {
             copyBtn.classList.remove('copied');
           }, 2000);
         }).catch(function(err) {
-          console.error('Failed to copy:', err);
-          alert('Failed to copy link. Please copy manually: ' + linkToCopy);
+                    alert('Failed to copy link. Please copy manually: ' + linkToCopy);
         });
       } else {
         // Fallback for non-HTTPS or older browsers
@@ -971,8 +968,7 @@ function splitLayerTokens(str) {
     try {
       decoded = decodeURIComponent(token);
     } catch (e) {
-      console.warn('[HASH] Failed to decode token:', token, e);
-    }
+          }
     // Remove dangerous characters but keep square brackets for filter syntax [name=value]
     decoded = decoded.replace(/[<>"'`]/g, '');
     // Trim whitespace
@@ -1118,8 +1114,7 @@ function parseHash() {
       // Updated regex to allow extensions (.geojson, .json, .csv) in baseName before counter/parens
       const match = safeToken.match(/^([+~])([^()]+?)(?:#(\d+))?(?:\(([^)]*)\))?(?::follow(\+(\d*))?)?$/);
       if (!match) {
-        console.warn('[HASH] Failed to parse layer token:', token);
-        return;
+                return;
       }
       const [, sign, baseName, counterStr, parenContent, plusSign, offset] = match;
       // Reconstruct full layer name with counter if present
@@ -1333,8 +1328,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     }
     const res = Papa.parse(csvText, { header: true, dynamicTyping: true, skipEmptyLines: true });
     if (res.errors && res.errors.length) {
-      console.warn('CSV parse warnings:', res.errors);
-    }
+          }
     const rows = res.data || [];
     if (!rows.length) return { type: 'FeatureCollection', features: [] };
     // Find lat/lon columns (case-insensitive)
@@ -1478,8 +1472,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
       try {
         map.addLayer(layerDef);
       } catch (ex2) {
-        console.error('[LAYER ORDER] Failed to add layer at all:', ex2);
-        throw ex2;
+                throw ex2;
       }
     }
     
@@ -1535,8 +1528,7 @@ async function loadAndAddOrReplaceGeoJSON(geojsonFile, toLayer) {
     }
     createLayerControls(map, allStyleLayers.filter(l => map.getLayer(l.id) && map.getLayoutProperty(l.id, 'visibility') === 'visible').map(l => l.id));
   } catch (err) {
-    console.error('Error loading data:', err);
-  }
+      }
 }
 
 // Helper: Load Sentinel-2 imagery layer by date
@@ -1662,40 +1654,34 @@ async function loadWaybackLayer(dateStr, toLayer) {
       // If we have hash order info, use it to determine correct position
       const waybackLayersInHashOrder = (toLayer && toLayer.waybackLayersInHashOrder) || [];
       
-      console.log(`[Wayback] Adding layer ${layerId}, hash order:`, waybackLayersInHashOrder);
-      
+            
       if (waybackLayersInHashOrder.length > 0) {
         // Find the position of this layer in the hash order
         const thisLayerHashIndex = waybackLayersInHashOrder.indexOf(layerId);
         
-        console.log(`[Wayback] Layer ${layerId} is at hash index ${thisLayerHashIndex}`);
-        
+                
         if (thisLayerHashIndex >= 0) {
           // Find the next wayback layer in hash order that already exists in the map
           for (let i = thisLayerHashIndex + 1; i < waybackLayersInHashOrder.length; i++) {
             const nextLayerId = waybackLayersInHashOrder[i];
             if (map.getLayer(nextLayerId)) {
               beforeId = nextLayerId;
-              console.log(`[Wayback] Found next layer ${nextLayerId} at hash index ${i}, will insert before it`);
-              break;
+                            break;
             }
           }
           
           // If no next wayback layer found, check if there are previous wayback layers
           // If so, position after the last one (find first non-wayback layer after all waybacks)
           if (!beforeId && thisLayerHashIndex > 0) {
-            console.log(`[Wayback] No next layer found, looking for previous layers...`);
-            // Look for previous wayback layers in hash order
+                        // Look for previous wayback layers in hash order
             for (let i = thisLayerHashIndex - 1; i >= 0; i--) {
               const prevLayerId = waybackLayersInHashOrder[i];
               if (map.getLayer(prevLayerId)) {
                 // Found a previous wayback layer - insert right after it
                 const prevLayerIndex = allLayers.findIndex(l => l.id === prevLayerId);
-                console.log(`[Wayback] Found previous layer ${prevLayerId} at map index ${prevLayerIndex}`);
-                if (prevLayerIndex >= 0 && prevLayerIndex < allLayers.length - 1) {
+                                if (prevLayerIndex >= 0 && prevLayerIndex < allLayers.length - 1) {
                   beforeId = allLayers[prevLayerIndex + 1].id;
-                  console.log(`[Wayback] Will insert after ${prevLayerId}, before ${beforeId}`);
-                }
+                                  }
                 break;
               }
             }
@@ -1706,8 +1692,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
             const sourceIndex = allLayers.findIndex(l => l.id === sourceHint);
             if (sourceIndex >= 0 && sourceIndex < allLayers.length - 1) {
               beforeId = allLayers[sourceIndex + 1].id;
-              console.log(`[Wayback] Using sourceHint ${sourceHint}, beforeId = ${beforeId}`);
-            }
+                          }
           }
         }
       } else {
@@ -1727,8 +1712,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
         }
       }
       
-      console.log(`[Wayback] Final decision: adding ${layerId} ${beforeId ? `before ${beforeId}` : 'at top'}`);
-      
+            
       if (beforeId) {
         map.addLayer(layerDef, beforeId);
       } else {
@@ -1736,8 +1720,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
       }
     } catch (ex) {
       // Failed to add layer with positioning, fallback
-      console.error('[Wayback] Error adding layer:', ex);
-      map.addLayer(layerDef);
+            map.addLayer(layerDef);
     }
     
     // Mark as external layer
@@ -1839,13 +1822,7 @@ async function loadWaybackLayer(dateStr, toLayer) {
     createLayerControls(map, allStyleLayers.filter(l => map.getLayer(l.id) && map.getLayoutProperty(l.id, 'visibility') === 'visible').map(l => l.id));
     
   } catch (err) {
-    console.error('[WAYBACK] ❌ Error loading Wayback layer:', err);
-    console.error('[WAYBACK] This may indicate:');
-    console.error('[WAYBACK]   - Invalid date format or date out of range');
-    console.error('[WAYBACK]   - Network connectivity issues');
-    console.error('[WAYBACK]   - ESRI Wayback service temporary unavailability');
-    console.error('[WAYBACK] Valid date range: February 2014 to present');
-  }
+                          }
 }
 
 // Update hash from map state
@@ -2060,8 +2037,7 @@ function createLayerControls(map, visibleLayers) {
     cb.addEventListener('change', function() {
       const layerId = this.getAttribute('data-layer');
       if (!map.getLayer(layerId)) {
-        console.warn(`Layer '${layerId}' not found in style.`);
-        return;
+                return;
       }
       // Parse current hash for explicit toggles
       const hash = window.location.hash.replace('#', '');
@@ -2523,8 +2499,7 @@ function populateFilterPropsDropdown(layerId, selectEl) {
       selectEl.appendChild(opt);
     });
   } catch(e) {
-    console.warn('[FILTER PROPS] Failed to populate for', layerId, e);
-  }
+      }
 }
 
 const { camera, layers } = parseHash();
@@ -2568,8 +2543,7 @@ if (window.innerWidth <= 1000) {
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
       }
-      console.log(`[map] Forced resize on mobile: ${window.innerWidth}x${window.innerHeight} @ ${window.devicePixelRatio}x`);
-    }
+          }
   };
   
   // Aggressive: resize multiple times as page loads
@@ -2583,8 +2557,7 @@ map.on('load', () => {
   // Immediately resize map on load (critical for portrait mode on mobile)
   if (window.innerWidth <= 1000) {
     map.resize();
-    console.log('[map] Resized on load event');
-  }
+      }
   
   // After all layers are loaded, if :follow is present in the hash, trigger follow logic directly (no hashchange event)
   const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit, showTicker: showTickerInit, followHidden: followHiddenInit, showMapUI, isStatic } = parseHash();
@@ -2770,8 +2743,7 @@ map.on('load', () => {
       });
     }
   } catch (e) {
-    console.warn('[INIT] Failed to apply parsed camera on load', e);
-  }
+      }
   // Load any dynamic layers requested in the hash
   const { dynamicGeojsonToLoad, layers: layersOn } = parseHash();
   if (dynamicGeojsonToLoad && dynamicGeojsonToLoad.length) {
@@ -3315,20 +3287,17 @@ window.addEventListener('hashchange', () => {
       .filter(entry => entry && entry.isWayback)
       .map(entry => `wayback:${entry.waybackDate}`);
     
-    console.log('[Hash] Wayback layers in hash order:', waybackLayersInHashOrder);
-    
+        
     // If multiple wayback layers exist, remove all existing ones first to ensure clean repositioning
     if (waybackLayersInHashOrder.length > 1) {
-      console.log('[Hash] Multiple wayback layers detected, removing existing ones first');
-      waybackLayersInHashOrder.forEach(layerId => {
+            waybackLayersInHashOrder.forEach(layerId => {
         if (map.getLayer(layerId)) {
           // Store visibility state before removal
           const wasVisible = map.getLayoutProperty(layerId, 'visibility') === 'visible';
           if (!layerId.startsWith('_wayback_state_')) {
             window['_wayback_state_' + layerId] = wasVisible;
           }
-          console.log('[Hash] Removing existing layer:', layerId);
-          map.removeLayer(layerId);
+                    map.removeLayer(layerId);
         }
         if (map.getSource(layerId)) {
           map.removeSource(layerId);
@@ -3364,8 +3333,7 @@ window.addEventListener('hashchange', () => {
       if (isWayback && waybackDate) {
         // ESRI Wayback layer - always load if multiple wayback layers in hash
         if (!layerExists || waybackLayersInHashOrder.length > 1) {
-          console.log('[Hash] Loading wayback layer:', waybackDate, 'passing hash order:', waybackLayersInHashOrder);
-          loadWaybackLayer(waybackDate, { visibility, sourceHint, filter, waybackLayersInHashOrder });
+                    loadWaybackLayer(waybackDate, { visibility, sourceHint, filter, waybackLayersInHashOrder });
         } else if (sourceHint) {
           loadWaybackLayer(waybackDate, { visibility, sourceHint, filter, waybackLayersInHashOrder });
         }
@@ -3479,8 +3447,7 @@ const resizeObserver = new ResizeObserver(() => {
   if (window.map && window.map.resize) {
     setTimeout(() => {
       window.map.resize();
-      console.log('[map] Resized due to container change');
-    }, 100);
+          }, 100);
   }
 });
 
@@ -3492,12 +3459,10 @@ if (mapContainer) {
 
 // Handle orientation change for iOS Safari
 window.addEventListener('orientationchange', () => {
-  console.log('[map] Orientation changed, resizing map');
-  setTimeout(() => {
+    setTimeout(() => {
     if (window.map && window.map.resize) {
       window.map.resize();
-      console.log('[map] Map resized after orientation change');
-    }
+          }
   }, 200);
 });
 

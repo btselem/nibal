@@ -572,19 +572,16 @@ function buildLayerList(){
   async function getVimeoThumbnail(videoId) {
     try {
       if (!videoId || !/^\d+$/.test(String(videoId))) {
-        console.warn('[vimeo] Invalid video ID:', videoId);
-        return null;
+                return null;
       }
       const response = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`);
       if (!response.ok) {
-        console.warn('[vimeo] API response not OK:', response.status);
-        return null;
+                return null;
       }
       const data = await response.json();
       return data.thumbnail_url || null;
     } catch(e) {
-      console.warn('[vimeo] Thumbnail fetch failed:', e.message);
-      return null;
+            return null;
     }
   }
 
@@ -2113,8 +2110,7 @@ window.addEventListener('hashchange', ()=>{
         });
       }
     } catch(e) {
-      console.warn('[svg] Error clearing overlays before SVG load:', e);
-    }
+          }
     
     // Load new SVG
     loadSVG(currentUrl).then(()=>{
@@ -2128,8 +2124,7 @@ window.addEventListener('hashchange', ()=>{
           if (typeof mergedParams.s === 'number') state.scale = mergedParams.s;
           render();
         } catch(e) {
-          console.warn('[svg] Error applying params after load:', e);
-        }
+                  }
       }
       
       // After SVG loads, apply visibility from parsed hash
@@ -2137,8 +2132,7 @@ window.addEventListener('hashchange', ()=>{
         try {
           applyVisibilityFromVis(parsed.vis, { animate: false, skipOverlayUpdate: false });
         } catch(e) {
-          console.warn('[svg] Error applying visibility after load:', e);
-        }
+                  }
       }
       
       // Explicitly re-attach all video overlays with correct visibility state
@@ -2146,8 +2140,7 @@ window.addEventListener('hashchange', ()=>{
         try {
           autoAttachVideoOverlays(parsed.vis);
         } catch(e) {
-          console.warn('[svg] Error attaching video overlays:', e);
-        }
+                  }
       }
       
       // Final overlay update to ensure all positioning is correct
@@ -2155,12 +2148,10 @@ window.addEventListener('hashchange', ()=>{
         try {
           window.overlayManager.update();
         } catch(e) {
-          console.warn('[svg] Error updating overlays:', e);
-        }
+                  }
       }
     }).catch(e => {
-      console.warn('[svg] Error loading SVG:', e);
-    });
+          });
     try { window.__lastAppliedHash = { url: parsed.url || '', params: parsed.params || null, vis: parsed.vis || null }; } catch(e){}
     return;
   }
@@ -2188,8 +2179,7 @@ function autoAttachVideoOverlays(overrideVis){
   try {
     if (!window.overlayManager || !layerKeyMap) return;
     if (typeof window.overlayManager.attachIframe !== 'function') {
-      console.warn('[overlay] overlayManager.attachIframe not available');
-      return;
+            return;
     }
   
     let videos = [];
@@ -2224,8 +2214,7 @@ function autoAttachVideoOverlays(overrideVis){
           }
         }
       } catch(e) {
-        console.warn('[overlay] Error removing overlays:', e.message);
-      }
+              }
     }
   
     // Second pass: for each layer in the map, attach video overlays if needed
@@ -2245,8 +2234,7 @@ function autoAttachVideoOverlays(overrideVis){
       const cs = window.getComputedStyle(el);
       isDisplayed = cs.display !== 'none' && cs.visibility !== 'hidden';
     } catch(e) {
-      console.warn('[overlay] getComputedStyle failed for', key, ':', e.message);
-      // Assume displayed if we can't get computed style
+            // Assume displayed if we can't get computed style
       isDisplayed = true;
     }
     
@@ -2296,8 +2284,7 @@ function autoAttachVideoOverlays(overrideVis){
         }
       }
       } catch(e) {
-        console.warn('[overlay] Error processing layer', key, ':', e.message);
-      }
+              }
     }
   
     // Update overlays after attaching/removing
@@ -2305,8 +2292,7 @@ function autoAttachVideoOverlays(overrideVis){
       window.overlayManager.update();
     }
   } catch(e) {
-    console.error('[overlay] autoAttachVideoOverlays failed:', e);
-  }
+      }
 }
 
 // Update reference frame and SVG transform on window resize
@@ -2735,7 +2721,7 @@ document.addEventListener('keydown', function(e) {
       }
       
       const target = getTargetForKey(key);
-      if (!target) { console.warn('[overlay] target not found for key', key); return null; }
+      if (!target) {  return null; }
       const el = (typeof element === 'function') ? element() : element;
       if (!el) return null;
       // Determine mode: use SVG foreignObject for correct z-ordering
@@ -2789,8 +2775,7 @@ document.addEventListener('keydown', function(e) {
               iframeEl.src = iframeSrc;
             }
           } catch(e) {
-            console.warn('[overlay] setIframeSrcIfVisible failed:', e.message);
-          }
+                      }
         }
         if ('IntersectionObserver' in window && iframeSrc) {
           try {
@@ -2802,15 +2787,13 @@ document.addEventListener('keydown', function(e) {
                   }
                 });
               } catch(e) {
-                console.warn('[overlay] IntersectionObserver callback failed:', e.message);
-              }
+                              }
             }, { threshold: 0.01 });
             observer.observe(fo);
             // Store observer for cleanup
             fo.__iframeObserver = observer;
           } catch(e) {
-            console.warn('[overlay] IntersectionObserver setup failed, using fallback:', e.message);
-            // Fallback: set src if visible now
+                        // Fallback: set src if visible now
             setTimeout(setIframeSrcIfVisible, 100);
             window.addEventListener('scroll', setIframeSrcIfVisible, { passive: true });
             window.addEventListener('resize', setIframeSrcIfVisible, { passive: true });

@@ -106,8 +106,7 @@
                             }
                         }
                     } catch(err) {
-                        console.warn('[ROOT] Cannot access background-frame:', err);
-                    }
+                                            }
                 }
                 
                 // Toggle SVG/other content in foreground-frame
@@ -126,8 +125,7 @@
                             foregroundFrame.classList.remove('editing-mode');
                         }
                     } catch(err) {
-                        console.warn('[ROOT] Cannot access foreground-frame:', err);
-                    }
+                                            }
                 }
                 
                 // Update body classes based on what was toggled
@@ -184,8 +182,7 @@
                         }
                     }
                 } catch(err) {
-                    console.warn('[ROOT] Cannot access iframe:', err);
-                }
+                                    }
             }
         }
         
@@ -263,8 +260,7 @@
                             backgroundFrame.classList.remove('editing-mode');
                         }
                     } catch(err) {
-                        console.warn('[ROOT] Cannot access background-frame:', err);
-                    }
+                                            }
                 }
                 
                 try {
@@ -303,8 +299,7 @@
                     }
                     syncEditModeBodyClasses();
                 } catch(err) {
-                    console.warn('[ROOT] Cannot access foreground-frame:', err);
-                }
+                                    }
             } else {
                 // Single iframe mode: only act when current content is SVG
                 const iframe = document.getElementById('if');
@@ -328,8 +323,7 @@
                     }
                     syncEditModeBodyClasses();
                 } catch(err) {
-                    console.warn('[ROOT] Cannot access iframe (svg):', err);
-                }
+                                    }
             }
         }
 
@@ -384,8 +378,7 @@
                         syncEditModeBodyClasses();
                     }
                 } catch(err) {
-                    console.warn('[ROOT] Cannot access background-frame:', err);
-                }
+                                    }
             } else {
                 // Single iframe mode: only act when current content is a map
                 const iframe = document.getElementById('if');
@@ -406,8 +399,7 @@
                         syncEditModeBodyClasses();
                     }
                 } catch(err) {
-                    console.warn('[ROOT] Cannot access iframe (map):', err);
-                }
+                                    }
             }
         }
 
@@ -434,7 +426,7 @@
             } else if (e.code === 'KeyC') {
                 // Copy relative URL of the active layer (svg/ or map/)
                 e.preventDefault();
-                try { copyActiveLayerUrl(); } catch(err) { console.warn('Copy URL failed:', err); }
+                try { copyActiveLayerUrl(); } catch(err) {  }
             }
         });
 
@@ -522,8 +514,7 @@
                 document.body.removeChild(ta);
                 return !!ok;
             } catch (e) {
-                console.warn('Clipboard copy failed:', e);
-                return false;
+                                return false;
             }
         }
 
@@ -535,8 +526,7 @@
                 const expectedType = (role === 'background') ? 'map' : 'svg';
                 const rel = extractRelativeLayerUrl(frame, expectedType);
                 if (!rel) {
-                    console.warn('[ROOT] No', expectedType, 'URL found to copy for active layer');
-                    return false;
+                                        return false;
                 }
                 return copyTextToClipboard(rel);
             } else {
@@ -544,8 +534,7 @@
                 const type = (function(){ try { return getIframeType(); } catch(e){ return null; } })();
                 const rel = extractRelativeLayerUrl(iframe, type);
                 if (!rel) {
-                    console.warn('[ROOT] No map/svg URL found to copy');
-                    return false;
+                                        return false;
                 }
                 return copyTextToClipboard(rel);
             }
@@ -555,12 +544,12 @@
         window.addEventListener('message', function(e) {
             if (e.data && e.data.type === 'toggle-foreground-edit') {
                 // Relay F key from iframe to parent toggle
-                try { toggleForegroundEditMode(); } catch(err) { console.warn('Toggle foreground failed:', err); }
+                try { toggleForegroundEditMode(); } catch(err) {  }
                 return;
             }
             if (e.data && e.data.type === 'toggle-background-edit') {
                 // Relay B key from iframe to parent toggle
-                try { toggleBackgroundEditMode(); } catch(err) { console.warn('Toggle background failed:', err); }
+                try { toggleBackgroundEditMode(); } catch(err) {  }
                 return;
             }
             if (e.data && (e.data.type === 'fg-edit-mode' || e.data.type === 'bg-edit-mode')) {
@@ -846,8 +835,7 @@
             }
 
             if (!text) {
-                console.error('renderMarkdown: failed to fetch any candidate path. Tried:', candidatePaths);
-                throw new Error('Could not fetch markdown for: ' + file + ' (checked ' + candidatePaths.join(', ') + ')');
+                                throw new Error('Could not fetch markdown for: ' + file + ' (checked ' + candidatePaths.join(', ') + ')');
             }
 
             // --- Per-page front-matter and CSS marker parsing ---
@@ -892,7 +880,7 @@
                 document.querySelectorAll('link[data-page-css]').forEach(link => link.remove());
                 if (!cssPath) return;
                 cssPath.split(',').map(s => s.trim()).forEach(path => {
-                    if (!isSafeCssPath(path)) { console.warn('Rejected unsafe page css path:', path); return; }
+                    if (!isSafeCssPath(path)) {  return; }
                     const link = document.createElement('link');
                     link.rel = 'stylesheet';
                     link.href = path;
@@ -1019,7 +1007,7 @@
                         } catch(e){}
 
                         // apply per-page css after rendering
-                            try { applyPageCss(pageCssPath); } catch (e) { console.warn('Failed to apply page CSS', e); }
+                            try { applyPageCss(pageCssPath); } catch (e) {  }
 
                         // If the markdown included a leading body-class marker, apply it to <body>
                         // Remove any previously applied classes from earlier renders (kept in data-body-classes)
@@ -1031,8 +1019,7 @@
                                 document.body.setAttribute('data-body-classes', pageBodyClasses);
                             }
                         } catch (e) {
-                            console.warn('Failed to apply body classes from markdown marker', e);
-                        }
+                                                    }
 
                         // Apply dual-iframe mode if specified in frontmatter
                         try {
@@ -1045,8 +1032,7 @@
                             window.__dualIframeMode = dualIframeMode;
 
                         } catch (e) {
-                            console.warn('Failed to toggle dual-iframe mode', e);
-                        }
+                                                    }
 
             // Convert plain images or image links that reference /img/ into
             // explicit links the parent page can observe. This function used
@@ -1263,8 +1249,7 @@
                 }
             }catch(e){}
         } catch (error) {
-            console.error('Error fetching or rendering the markdown file:', error);
-        } finally {
+                    } finally {
             // Always reset the running flag so subsequent renders can proceed
             try { window.__renderMarkdownRunning = false; } catch(e){}
         }
@@ -1314,8 +1299,7 @@
             try {
                 parsedURL = new URL(newHref, window.location.origin);
             } catch(e) {
-                console.warn('[setIframeIfPathChanged] Failed to parse URL:', newHref, e.message);
-                return;
+                                return;
             }
             const originalHash = parsedURL.hash || '';
             // compute path-only URL for comparison
@@ -1375,8 +1359,7 @@
                             }
                         }
                     } catch(e) {
-                        console.warn('[mobile-video] Redirect failed:', e.message);
-                    }
+                                            }
                     
                     // Update foreground iframe
                     if (newPath !== lastForegroundPath) {
@@ -1511,8 +1494,7 @@
                                 try {
                                     setIframeIfPathChanged(visibleLink.href);
                                 } catch(e2) {
-                                    console.warn('Link observer failed to load:', rawHref, e2);
-                                }
+                                                                    }
                             }
                         } else {
                             try { 
@@ -1522,8 +1504,7 @@
                                 try {
                                     setIframeNext(visibleLink.href);
                                 } catch(e2) {
-                                    console.warn('Link observer failed to load:', rawHref, e2);
-                                }
+                                                                    }
                             }
                         }
                         // Mark that caption needs update after all entries processed
@@ -1569,9 +1550,7 @@
                 if (en.isIntersecting) {
                     const sec = en.target;
                     const sectionText = sec.textContent.substring(0, 50).replace(/\s+/g, ' ');
-                    console.log('[Section entering]', sectionText);
-                    console.log('[Section entering] Has typewriter?', sec.querySelector('.typewriter') !== null, 'typewriter started?', sec.querySelector('.typewriter[data-_tw_started]') !== null);
-                    
+                                                            
                     // Mark this section as having inflection in progress
                     const inflectionId = 'inflection-' + (sec.id || Date.now());
                     window.__activeInflectionId = inflectionId;
@@ -1660,23 +1639,14 @@
                         const isDualMode = window.__dualIframeMode === true;
 
                         if (isDualMode) {
-                            console.log('[Section observer] ENTERING DUAL-IFRAME MODE');
-                            console.log('[Section observer] Section ID:', sec.id, 'classes:', sec.className);
-                            console.log('[Section observer] Section HTML structure:', sec.innerHTML.substring(0, 500));
-                            
+                                                                                                                
                             // Find all inflection links in this section
                             const allLinks = Array.from(sec.querySelectorAll('a:not(.dontinflect)'));
                             if (allLinks.length === 0) {
-                                console.error('[Section observer] ⚠️ ZERO LINKS FOUND in section');
-                                console.error('[Section observer]   Section text:', sec.textContent.substring(0, 100));
-                                console.error('[Section observer]   Section HTML:', sec.innerHTML.substring(0, 300));
-                                console.error('[Section observer]   All anchors (including .dontinflect):', sec.querySelectorAll('a').length);
-                            } else {
-                                console.log('[Section observer] ✓ Found', allLinks.length, 'links in section');
-                            }
+                                                                                                                                                            } else {
+                                                            }
                             allLinks.forEach((link, idx) => {
-                                console.log('[Section observer]   Link', idx, '- href:', link.getAttribute('href'), 'classes:', link.className, 'parent:', link.parentElement?.tagName);
-                            });
+                                                            });
                             
                             let loadedCount = 0;
                             const totalLinks = allLinks.length;
@@ -1695,8 +1665,7 @@
                             allLinks.forEach((link, index) => {
                                 // Mark link as active since it's in the visible section
                                 link.classList.add('active');
-                                console.log('[Section inflect', index + '] Marking active + loading:', link.getAttribute('href'), 'title:', link.getAttribute('title'));
-                                
+                                                                
                                 const linkHref = link.getAttribute('href');
                                 if (linkHref) {
                                     const delay = index * 30; // 30ms stagger for smoother loading
@@ -1705,18 +1674,15 @@
                                             const full = new URL(linkHref, window.location.href).href;
                                             setIframeIfPathChanged(full); 
                                         } catch(e){ 
-                                            console.warn('[Section inflect] URL() failed:', e.message);
-                                            try {
+                                                                                        try {
                                                 setIframeIfPathChanged(link.href);
                                             } catch(e2) {
-                                                console.warn('Failed to load inflection:', linkHref);
-                                            }
+                                                                                            }
                                         } finally {
                                             loadedCount++;
                                             // Complete when all links processed
                                             if (loadedCount >= totalLinks) {
-                                                console.log('[Section inflect] All', totalLinks, 'links loaded, completing inflection');
-                                                // Small delay to ensure iframes start loading
+                                                                                                // Small delay to ensure iframes start loading
                                                 setTimeout(completeInflection, 50);
                                             }
                                         }
@@ -1735,8 +1701,7 @@
                             // Guaranteed completion after reasonable timeout
                             setTimeout(completeInflection, Math.max(200, totalLinks * 50));
                         } else {
-                            console.log('[Section observer] SINGLE-IFRAME MODE (not dual)');
-                            // Single iframe mode: only load first link
+                                                        // Single iframe mode: only load first link
                             try { 
                                 const full = new URL(raw, window.location.href).href; 
                                 setIframeNext(full); 
@@ -1744,8 +1709,7 @@
                                 try {
                                     setIframeNext(a.href);
                                 } catch(e2) {
-                                    console.warn('Failed to load inflection:', raw);
-                                }
+                                                                    }
                             }
                             try { if (window.__updateInflectCaption) window.__updateInflectCaption(); } catch(e){}
                             
@@ -1765,12 +1729,10 @@
                     // Section is leaving view - remove active class from all its links
                     const sec = en.target;
                     const sectionText = sec.textContent.substring(0, 50).replace(/\s+/g, ' ');
-                    console.log('[Section leaving]', sectionText);
-                    try {
+                                        try {
                         const allLinks = Array.from(sec.querySelectorAll('a:not(.dontinflect)'));
                         if (allLinks.length > 0) {
-                            console.log('[Section leaving] Removing active from', allLinks.length, 'links');
-                        }
+                                                    }
                         allLinks.forEach(link => link.classList.remove('active'));
                         // Mark that caption needs update after all sections processed
                         captionNeedsUpdate = true;
@@ -2175,12 +2137,10 @@
                         sectionObserver.observe(s);
                     }
                 } catch(e){
-                    console.warn('[initializeObservers] Error observing section', index, e);
-                }
+                                    }
             });
         } catch(e){
-            console.error('[initializeObservers] Error registering section observer:', e);
-        }
+                    }
 
     }
 

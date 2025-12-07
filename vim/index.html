@@ -198,8 +198,7 @@
           if (isVisible || !hasLoadedOnce) {
             // Prevent redundant reloads
             if (iframe.src !== src) {
-              console.log('[vimeo] Loading video ' + id);
-              
+                            
               // Reset player state
               playerReady = false;
               iframe.classList.remove('playing');
@@ -214,45 +213,38 @@
               // Simple fallback: show video after brief load time
               // Don't rely on postMessage events which may not work on older devices
               setTimeout(function() {
-                console.log('[vimeo] Timer fired - checking if ready');
-                
+                                
                 // Only proceed if not already marked ready by events
                 if (!playerReady) {
-                  console.log('[vimeo] Not ready yet - hiding preloader and showing video');
-                  var iframe = document.getElementById('vimeo-embed');
+                                    var iframe = document.getElementById('vimeo-embed');
                   var preloader = document.querySelector('.preloader');
                   var playButton = document.getElementById('play-button');
                   
                   if (iframe) {
-                    console.log('[vimeo] Setting iframe to playing, opacity 1');
-                    iframe.classList.add('playing');
+                                        iframe.classList.add('playing');
                     iframe.style.opacity = '1';
                   }
                   if (preloader) {
-                    console.log('[vimeo] Hiding preloader');
-                    preloader.classList.add('hidden');
+                                        preloader.classList.add('hidden');
                     preloader.style.display = 'none'; // Force hide immediately
                   }
                   
                   // Check if video is actually playing after a short delay
                   setTimeout(function() {
                     if (!playerReady) {
-                      console.log('[vimeo] Video still not playing - showing play button');
-                      if (playButton) playButton.classList.add('visible');
+                                            if (playButton) playButton.classList.add('visible');
                     }
                   }, 1000); // Give autoplay 1 more second to kick in
                   
                   playerReady = true;
                 } else {
-                  console.log('[vimeo] Already ready via event');
-                }
+                                  }
               }, 2000); // 2 second load delay - enough for iframe to initialize
             }
           }
         }, 50);
       } catch(e) {
-        console.error('[vimeo] Update failed:', e);
-      }
+              }
     }
     
     // Lazy load with IntersectionObserver for visibility changes
@@ -281,16 +273,14 @@
           var iframe = document.getElementById('vimeo-embed');
           var preloader = document.querySelector('.preloader');
           var playButton = document.getElementById('play-button');
-          console.log('[vimeo] Event received: ' + data.event);
-          if (iframe && !playerReady) {
+                    if (iframe && !playerReady) {
             iframe.classList.add('playing');
             // Force visibility as absolute fallback
             iframe.style.opacity = '1';
             if (preloader) preloader.classList.add('hidden');
             if (playButton) playButton.classList.remove('visible'); // Hide play button when video starts
             playerReady = true;
-            console.log('[vimeo] Video ready via ' + data.event);
-          }
+                      }
         }
       } catch(e) {
         // Silently ignore non-Vimeo messages
@@ -302,14 +292,12 @@
       var iframe = document.getElementById('vimeo-embed');
       var playButton = document.getElementById('play-button');
       
-      console.log('[vimeo] Play button clicked - attempting to play');
-      
+            
       // Try to send play command to Vimeo iframe
       try {
         iframe.contentWindow.postMessage('{"method":"play"}', 'https://player.vimeo.com');
       } catch(e) {
-        console.log('[vimeo] Could not send play command:', e);
-      }
+              }
       
       // Hide play button immediately on click
       if (playButton) {
