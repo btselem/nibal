@@ -136,19 +136,32 @@ section > a.thumb{
     display: block;
     background-color: #000;
     background-image: image-set(
-        url(assets/report_thumb.png) 1x,
-        url(assets/report_thumb@2x.png) 2x
+        url(assets/thumb_report_he.png) 1x,
+        url(assets/thumb_report_he@2x.png) 2x
     );
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: right 8px bottom 0;
     border-right: #FA5F5F 8px solid;
-    padding: 48px 220px 8px 0;
+    padding: 16px 200px 8px 32px;
     color:#FA5F5F;
-    min-height: 80px;
+    min-height: 96px;
     cursor: pointer;
     text-shadow: none;
     text-decoration: none;
     font-family: 'David Libre', 'Fedra Serif', serif;
+    position: relative;
+}
+
+a.thumb::after {
+    content: "";
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    background-image: url(assets/external-link.svg);
+    background-size: contain;
+    margin-top: -15px;
 }
 
 section:first-child > a.thumb{
@@ -157,20 +170,18 @@ section:first-child > a.thumb{
     display: block;
     position: absolute;
     bottom: 10vh;
-    padding-left: 16px;
     transform: translateX(-50%) translateY(0);
     left: 50%;
 }
 
 section > a.thumb:hover{
     background-color: #FA5F5F;
-    background-image: image-set(
-        url(assets/report_thumb-hover.png) 1x,
-        url(assets/report_thumb-hover@2x.png) 2x
-    );
     background-repeat: no-repeat;
-    background-position: right bottom;
     color: #000;
+}
+
+section > a.thumb:hover:after {
+    background-image: url(assets/external-link_hover.svg) !important;
 }
 
 section > a.thumb strong{
@@ -185,8 +196,8 @@ section.gofundme p{
 section.gofundme > a.thumb{
     background-color: #000;
     background-image: image-set(
-        url(assets/gofundme_thumb.png) 1x,
-        url(assets/gofundme_thumb@2x.png) 2x
+        url(assets/thumb_gfm.png) 1x,
+        url(assets/thumb_gfm@2x.png) 2x
     );
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -194,14 +205,12 @@ section.gofundme > a.thumb{
     color:#02A85C;
 }
 
+section.gofundme > a.thumb::after{
+    background-image: url(assets/external-link_gfm.svg);
+}
+
 section.gofundme > a.thumb:hover{
     background-color: #02A85C;
-    background-image: image-set(
-        url(assets/gofundme_thumb-hover.png) 1x,
-        url(assets/gofundme_thumb-hover@2x.png) 2x
-    );
-    background-repeat: no-repeat;
-    background-position: right bottom;
     color: #000;
 }
 
@@ -239,10 +248,15 @@ section.closing h3 {
 }
 
 section.closing > a.thumb{
-    padding: 130px 16px 0;
-    background-position: top right;
+    padding: 130px 16px 8px;
+    background-position: top 8px right 8px;
     min-height: auto;
     font-size: 1em;
+}
+
+section.closing > a.thumb::after{
+    top: 32px;
+    left: 16px
 }
 
 section.closing ul {
@@ -659,10 +673,9 @@ input#mce-EMAIL{
         /* margin-bottom: 80px !important; */
         transform: none !important;
         left: auto !important;
-        padding: 24px 140px 8px 8px;
-        background-position: bottom right;
+        padding: 16px 140px 16px 32px;
         min-height: 48px;
-        background-size: 160px;
+        background-size: 120px;
         font-size: 0.9em;
     }
 
@@ -675,7 +688,7 @@ input#mce-EMAIL{
     }
 
     section.closing > a.thumb{
-        padding-top: 88px;
+        padding: 96px 8px 8px;
         font-size: 1em;
     }
 

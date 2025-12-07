@@ -16,26 +16,28 @@
 }
 
 .ltr section > a.thumb{
+    padding: 16px 16px 16px 224px;
     border-right: none;
     border-left: #FA5F5F 8px solid;
-    padding: 32px 16px 4px 224px;
-    background-position: left bottom;
-    background-image: image-set(
-        url(assets/report_thumb_en.png) 1x,
-        url(assets/report_thumb_en@2x.png) 2x
-    );
+    background-position: left 8px bottom 0;
     line-height: 1.2em;
+}
+
+.ltr section:not(.gofundme)  > a.thumb {
+    background-image: image-set(
+        url(assets/thumb_report_en.png) 1x,
+        url(assets/thumb_report_en@2x.png) 2x
+    );
+}
+
+
+.ltr section > a.thumb::after{
+    right: 16px;
+    left: auto;
 }
 
 .ltr section:first-child > a.thumb{
     text-align: left;
-}
-
-.ltr section > a.thumb:hover{
-    background-image: image-set(
-        url(assets/report_thumb_en-hover.png) 1x,
-        url(assets/report_thumb_en-hover@2x.png) 2x
-    );
 }
 
 .ltr section.gofundme p{
@@ -46,17 +48,6 @@
 .ltr section.gofundme > a.thumb{
     border-right: none;
     border-left: #02A85C 8px solid;
-    background-image: image-set(
-        url(assets/gofundme_thumb_en.png) 1x,
-        url(assets/gofundme_thumb_en@2x.png) 2x
-    );
-}
-
-.ltr section.gofundme > a.thumb:hover{
-    background-image: image-set(
-        url(assets/gofundme_thumb_en-hover.png) 1x,
-        url(assets/gofundme_thumb_en-hover@2x.png) 2x
-    );
 }
 
 .ltr #mc_embed_signup {
@@ -73,7 +64,7 @@
 
 .ltr section.closing > a.thumb{
     padding: 130px 16px 8px;
-    background-position: top left;
+    background-position: 8px 8px;
 }
 
 .ltr section.closing ul {
@@ -88,11 +79,21 @@
     }
 
     .ltr section.closing > a.thumb{
-        padding: 88px 16px 16px;
-        background-position: top left;
+        padding: 96px 16px 8px;
+        background-position: 8px 8px;
+    }
+
+    .ltr section.closing > a.thumb::after{
+        top: 4px;
+        margin: 0;
     }
 
     .ltr section > a.thumb{
-        padding: 32px 8px 4px 144px;
+        padding: 16px 32px 16px 140px ;
+    }
+
+    .ltr section > a.thumb::after{
+        right: 4px;
+        left: auto;
     }
 }
