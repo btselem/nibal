@@ -202,13 +202,8 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 ### Oct 23
 
 [](fg:blank)
-[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas-ar#2(bubbles))
+[](map/#31.37217,34.39109,10.61,-10.4,42.0/~labels_he,+oct7-hamas-ar(label-focused))
 في 7 تشرين الأول 2023، نفذت حركة حماس وفصائل فلسطينية مسلحة أخرى من قطاع غزة الهجوم الأكثر دموية الذي وقع ضد مدنيين إسرائيليين، على الإطلاق.
-
-
-{.meta} 
-[](fg:blank)
-[](map/#31.38936,34.38357,10.27,-10.4,42.0/~labels_he,+oct7-hamas-ar(label-focused),+oct7-hamas-ar#2(bubbles))
 قُتل 1,220 شخصًا في ذلك الهجوم، بمن فيهم نساء ومسنون وأطفال. 
 أصيب آلاف واختُطف إلى قطاع غزة 252 شخصًا، أحياءً وجثثًا.
 
@@ -393,7 +388,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_ar "أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان رفح في أيار 2024")
+[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-ar(label-main-ar,id=rafah),~labels_he,+labels_ar "أوامر الإخلاء التي وزعها الجيش الإسرائيلي على سكان رفح في أيار 2024")
 في بداية أيار 2024، بعد أقل من شهرين من وصول نِبال وأحمد وريتا إلى المدينة، وزّع الجيش الإسرائيلي أوامر إخلاء جديدة تطالب سكان رفح والمهجّرين المتواجدين فيها بإخلاء المنطقة.
 
 <a href="https://www.btselem.org/arabic/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -726,7 +721,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 {.meta}
 [](fg:blank)
-[](map/#31.52947,34.47904,17.00,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-ar(label-main-ar,id=alaa-home),+pois-ar#2(label-main-ar,id=couple-home),+pois-ar#3(label-main-ar,id=home),~labels_he "!!! add caption")
+[](map/#31.52950,34.47907,17.40,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-ar(label-main-ar,id=alaa-home),+pois-ar#2(label-main-ar,id=couple-home),+pois-ar#3(label-main-ar,id=home),~labels_he "!!! add caption")
 في نيسان 2025، قصف الجيش الإسرائيلي منزل آلاء، شقيقة نِبال، في جباليا. 
 نتيجة للقصف، قُتل أطفال آلاء الثلاثة: وسيم (10 سنوات) ومهند (8 سنوات) وخولة (5 سنوات).
 
@@ -818,10 +813,10 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.7,1.26,3.27/+nibal_ruined_home2.jpg "منطقة منزل نبال بعد القصف")
-[](map/#31.52947,34.47929,18.15,38.4,0.0/~labels_he,+labels_ar)
+[](fg:blank)
+[](map/#31.52993,34.49211,12.14,38.4,0.0/+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
-استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة في مدينة غزة.
+استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة.
 
 
 {.meta} 
@@ -832,7 +827,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~@vimeo-1136076786 "أحد سكان مدينة غزة يحمل أمر إخلاء ألقته طائرة إسرائيلية، 9 أيلول 2025 (رويترز: داود أبو الكاس)")
+[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~vimeo-1136076786 "أحد سكان مدينة غزة يحمل أمر إخلاء ألقته طائرة إسرائيلية، 9 أيلول 2025 (رويترز: داود أبو الكاس)")
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_ar)
 أوامر الإخلاء التي أصدرها الجيش الإسرائيلي في أوائل أيلول 2025، بعد أسابيع قليلة من وصول عائلة نِبال إلى المدينة، تأمر حوالي 1,2 مليون شخص بالنزوح من مكان إقامتهم، مرة أخرى.
 
@@ -864,7 +859,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png "منطقة منزل نبال, تشرين الأول 2025")
+[](svg/#permanent_impermanence.svg/-0.93,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "منطقة منزل نبال, تشرين الأول 2025")
 [](bg:blank)
 حياة ذل وإهانة، بلا بيت، بلا ذرة استقرار.
 
@@ -907,7 +902,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.56,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
+[](svg/#permanent_impermanence.svg/0.6,-1.71,4.22/+refugees_end-comp.jpg "سكان مدينة غزة يهربون بعد أن أمرهم الجيش الإسرائيلي بالانتقال جنوبًا. 15 أيلول 2025 (رويترز: محمود عيسى)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
 قصة نبال هي واحدة فقط من قصص مليونيّ إنسان من سكان قطاع غزة الذين عاشوا عذابات الفقدان، الجوع والتهجير المتواصلة ولا يزالون يعيشون في الظروف الرهيبة التي فرضتها عليهم إسرائيل، وسط تجاهل المجتمع الدولي ودون أي أمل حقيقي في مستقبل أفضل. 
 
@@ -965,9 +960,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 {.meta thumb closing}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**رحلة نِبال وريتا لم تنته بعد.** 
-
-تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
+**رحلة نِبال وريتا لم تنته بعد.** تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">

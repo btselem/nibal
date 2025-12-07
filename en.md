@@ -162,16 +162,10 @@ Five days later, Ahmad was issued a work permit and started a job as a construct
 
 {.meta no-h}
 ### Oct 23
-
 [](fg:blank)
-[](map/#31.38461,34.38113,10.13,-10.4,42.0/~labels_he,+oct7-hamas-en#2(bubbles))
+[](map/#31.37217,34.39109,10.61,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
-
-
-{.meta} 
-[](fg:blank)
-[](map/#31.38936,34.38357,10.27,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused),+oct7-hamas-en#2(bubbles))
-Entering from Gaza, the attackers killed 1,220 people, including women, elderly people and children, and left tens of thousands injured. 
+Entering from Gaza, the attackers killed 1,220 people, and injured tens of thousands. 
 They carried 252 people, some living and others dead, back to Gaza.
 
 
@@ -346,7 +340,7 @@ I was ashamed to tell my parents how I was living.
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),~labels_he,+labels_en "Military evacuation orders for Rafah issued in early May 2024")
+[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),~labels_he,+labels_en "Military evacuation orders for Rafah issued in early May 2024")
 Less than two months after the family arrived in Rafah, Israel ordered the city evacuated in early May 2024.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -689,7 +683,7 @@ I tried to focus on Rita. She was the most important thing. I did everything I c
 
 {.meta}
 [](fg:blank)
-[](map/#31.52947,34.47904,17.00,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),+pois#3(label-main,id=home),~labels_he "!!! add caption")
+[](map/#31.52950,34.47907,17.40,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),+pois#3(label-main,id=home),~labels_he "!!! add caption")
 
 In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, killing all three of her children: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
 
@@ -779,10 +773,10 @@ Later, Nibal learned that the building she had lived in most of her life with he
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.7,1.26,3.27/+nibal_ruined_home2.jpg "The area of Nibal’s family home after the bombing")
-[](map/#31.52947,34.47929,18.15,38.4,0.0/~labels_he,+labels_en)
+[](fg:blank)
+[](map/#31.52993,34.49211,12.14,38.4,0.0/+pois(label-main,id=gaza-2509),+pois#2(label-main,id=home),~labels_he)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
-They sheltered in an abandoned restaurant belonging to friends, and later in a cramped apartment in Gaza City.
+They sheltered in an abandoned restaurant belonging to friends, and later in a cramped apartment.
 
 
 {.meta} 
@@ -793,7 +787,7 @@ During those weeks, Israel launched another ground invasion into Gaza City.
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~@vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
+[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
 [](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
@@ -827,7 +821,7 @@ Our lives have been destroyed.
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.66,-1.1,4.35/+home_nibal_RUINED.png,~home_nibal.png "Nibal’s family home, Oct. 2025")
+[](svg/#permanent_impermanence.svg/-0.93,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "Nibal’s family home, Oct. 2025")
 [](bg:blank)
 
 Now it feels like a slow death. A life of humiliation, with no dignity, home or any stability.
@@ -873,7 +867,7 @@ She is fighting to imagine a better future for herself and for Rita.
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/0.56,-0.99,2.7/+vimeo-1139274686,+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters/Mahmoud Issa)")
+[](svg/#permanent_impermanence.svg/0.6,-1.71,4.22/+refugees_end-comp.jpg "Residents flee Gaza City following military orders to go south, 15 Sept. 2025 (Reuters/Mahmoud Issa)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
 Nibal’s story is just one of 2 million stories in Gaza – stories of people suffering loss, hunger and ongoing displacement, forced by Israel to live in unbearable conditions, abandoned by the international community and left with no real hope for a better future.
 
@@ -931,9 +925,7 @@ In recent months, Nibal has shared her story on social and mainstream media. She
 {.meta}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**Nibal and Rita’s ordeal is not over.**  
-
-B’Tselem will follow their story and share any developments in our newsletter:
+**Nibal and Rita’s ordeal is not over.**  B’Tselem will follow their story and share any developments in our newsletter:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
