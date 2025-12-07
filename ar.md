@@ -814,9 +814,9 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 
 {.meta}
 [](fg:blank)
-[](map/#31.51870,34.48509,11.69,38.4,0.0/+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
+[](map/#31.52993,34.49211,12.14,38.4,0.0/+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
-استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة في مدينة غزة.
+استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة.
 
 
 {.meta} 
@@ -960,9 +960,7 @@ window.copyToClipboard = function(text, elementId, successMessage) {
 {.meta thumb closing}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**رحلة نِبال وريتا لم تنته بعد.** 
-
-تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
+**رحلة نِبال وريتا لم تنته بعد.** تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
