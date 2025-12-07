@@ -53,8 +53,23 @@
       const animateSections = animateMatch ? /true|yes/i.test(animateMatch[1]) : null;
       
       text = text.replace(fmRe, '');
+      
+      // Return both flat values (for backwards compat) and nested config
+      const config = {
+        css: cssPath,
+        bodyClass,
+        dualIframe,
+        extensions,
+        chapters,
+        snap,
+        editor,
+        animateSections
+      };
+      
       return { 
         text, 
+        config,
+        // Legacy flat structure for backwards compatibility
         css: cssPath, 
         bodyClass, 
         dualIframe,
@@ -72,8 +87,22 @@
     if (m) {
       const path = (m[1] || m[2] || '').trim().replace(/^['\"]|['\"]$/g, '');
       text = text.replace(markerRe, '');
+      
+      const config = {
+        css: path,
+        bodyClass: null,
+        dualIframe: false,
+        extensions: [],
+        chapters: null,
+        snap: null,
+        editor: null,
+        animateSections: null
+      };
+      
       return { 
-        text, 
+        text,
+        config,
+        // Legacy flat structure
         css: path, 
         bodyClass: null, 
         dualIframe: false,
@@ -85,8 +114,21 @@
       };
     }
 
+    const config = {
+      css: null,
+      bodyClass: null,
+      dualIframe: false,
+      extensions: [],
+      chapters: null,
+      snap: null,
+      editor: null,
+      animateSections: null
+    };
+
     return { 
-      text, 
+      text,
+      config,
+      // Legacy flat structure
       css: null, 
       bodyClass: null, 
       dualIframe: false,
