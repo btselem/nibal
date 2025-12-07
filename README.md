@@ -157,7 +157,7 @@ css: src/theme.css
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.36895,34.37740,10.61,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
+[](map/#31.37217,34.39109,10.61,-10.4,42.0/~labels_he,+oct7-hamas(label-focused),+oct7-hamas#2(bubbles))
 ב-7 באוקטובר 2023 ביצעו ארגון חמאס ופלגים חמושים פלסטינים נוספים מרצועת עזה את המתקפה הקטלנית ביותר שתועדה אי פעם נגד אזרחים ישראלים.
 
 1,220 בני אדם נהרגו, עשרות אלפים נפצעו, ו-252 בני אדם חיים וגופות נחטפו לרצועת עזה.
@@ -340,7 +340,7 @@ css: src/theme.css
 
 {.meta thumb} 
 [](svg/#south.svg/0.24,-1.2,2.76/+IDF_order_rafah)
-[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly) "בתמונה: צווי הפינוי שהפיץ הצבא לתושבי ושוהי רפיח ב-6 במאי 2024")
+[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah) "בתמונה: צווי הפינוי שהפיץ הצבא לתושבי ושוהי רפיח ב-6 במאי 2024")
 בתחילת מאי 2024, פחות מחודשיים לאחר הגעתם של ניבאל, אחמד וריתא לעיר, הפיץ הצבא הישראלי צווי פינוי חדשים שדרשו מתושבי רפיח ומהעקורים השוהים בה להתפנות.  
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -780,8 +780,8 @@ css: src/theme.css
 
 {.meta no-h}
 ### עקירה חמישית
-[](svg/#permanent_impermanence.svg/-0.7,1.26,3.27/+nibal_ruined_home2.jpg "אזור ביתה של ניבאל לאחר ההפצצה")
-[](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2509))
+[](fg:blank)
+[](map/#31.51870,34.48509,11.69,38.4,0.0/+pois-he(label-main,id=gaza-2509),+pois-he#2(label-main,id=home),~labels_he)
 
 ניבאל, ריתא וכ-50 מבני משפחתן המורחבת - הוריה של ניבאל, אחיה, בני זוגם וילדיהם - צעדו ברגל מג׳אבליא לעיר עזה בחיפוש אחר מקום בטוח. 
 הם התמקמו במסעדה נטושה של חברים, ואחר-כך עברו לדירה קטנה וצפופה בעיר עזה.
@@ -934,9 +934,7 @@ css: src/theme.css
 {.meta}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**המסע של ניבאל וריתא טרם נגמר.**  
-
-בצלם ימשיך לשמור על קשר עם ניבאל. אם יחול שינוי במצבה — נעדכן עליו בניוזלטר שלנו:
+**המסע של ניבאל וריתא טרם נגמר.**  בצלם ימשיך לשמור על קשר עם ניבאל. אם יחול שינוי במצבה — נעדכן עליו בניוזלטר שלנו:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
