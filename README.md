@@ -685,7 +685,7 @@ css: src/theme.css
 
 {.meta}
 [](fg:blank)
-[](map/#31.52950,34.47907,17.40,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-he(label-main,id=alaa-home),+pois-he#2(label-main,id=couple-home),~labels_he "הערכת צפיפות בניינים שניזוקו בג׳אבליא עד לתחילת אפריל 2025. מקור: UNOSAT")
+[](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-he(label-main,id=alaa-home),+pois-he#2(label-main,id=couple-home),~labels_he "הערכת צפיפות בניינים שניזוקו בג׳אבליא עד לתחילת אפריל 2025. מקור: UNOSAT")
 באפריל 2025 הפציץ הצבא הישראלי את הבית הסמוך לבית הזוג, בו חיה משפחתה של אלאא, אחותה של ניבאל.  
 
 כתוצאה מההפצצה נהרגו שלושת ילדיה של אלאא: וסים, בן 10, מוהנד, בן 8, וח'וולה, בת 5.
