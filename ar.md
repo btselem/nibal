@@ -158,7 +158,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-### Oct 23
+#### Oct 23
 
 [](fg:blank)
 [](map/#31.37217,34.39109,10.61,-10.4,42.0/~labels_he,+oct7-hamas-ar(label-focused))
@@ -261,7 +261,7 @@ css: src/theme.css, src/ar.css
 ## الرحلة جنوبًا 
 
 {.meta no-h}
-## النزوح الأول
+### النزوح الأول
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "من حساب نِبال على إنستغرام")
 [](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=gaza-2403),~labels_he,+labels_ar)
 تبدأ نِبال رحلتها مع والدها، الذي يقلّها هي وريتا من منزلهما في جباليا إلى مدينة غزة. 
@@ -367,7 +367,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-## النزوح الثاني
+### النزوح الثاني
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-ar(label-main-ar,id=rafah),+pois-ar#2(label-main-ar,id=bureij),~labels_he,+labels_ar)
 اضطرت نِبال وأحمد وريتا إلى الفرار من رفح، مع حوالي مليون شخص آخر من السكان، غالبيتهم العظمى من المهجرين الذين جاؤوا إلى المدينة مثلهم خلال الأشهر التي سبقت ذلك، بأوامر من الجيش.
@@ -419,7 +419,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-### Oct 24
+#### Oct 24
 [](svg/#warehouse_bureij2.svg/-16.71,-1.35,58.58/+nibal_xray)
 [](bg:blank)
 في ذلك الصباح، قصف الجيش الإسرائيلي البريج. تحدثت نِبال عن ضجيج قصف لا يتوقف.
@@ -475,7 +475,7 @@ css: src/theme.css, src/ar.css
 وعندما تحسّن وضعي قليلًا، تمكّنت أخيرًا من الاتصال بوالدتي بنفسي. أردتُ أن تسمع صوتي وتطمئن أنني على قيد الحياة. لم تصدّق أنني ما زلت حيّة وانفجرَت بالبكاء.
 
 {.meta no-h}
-## النزوح الثالث
+### النزوح الثالث
 [](fg:blank)
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois-ar(label-main-ar,id=al-zawaida),+pois-ar#2(label-main-ar,id=al-mawasi),~labels_he,+labels_ar)
 خرجت نِبال من المستشفى بعد 40 يومًا، وكان عليهم، هي وأحمد وريتا، أن يواجِهوا نزوحًا آخر.
@@ -588,7 +588,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-## النزوح الرابع
+### النزوح الرابع
 [](svg/#ceasefire_hope.svg/-0.15,0.3,2.65/+@vimeo-1136076448 "مهجّرون على شارع الرشيد في طريق عودتهم إلى الشمال، 21 كانون الثاني 2025 (Activestills: يوسف زعنون)")
 [](bg:blank)
 بعد حوالي شهرين من الحياة في خيمة في المواصي، في كانون الثاني 2025، يتلقى سكان القطاع، بمن فيهم نِبال، بشرى بدء سريان مفعول الاتفاق الثاني لوقف إطلاق النار بين إسرائيل وحماس.
@@ -776,7 +776,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-## النزوح الخامس
+### النزوح الخامس
 [](fg:blank)
 [](map/#31.52993,34.49211,12.14,38.4,0.0/+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
@@ -804,7 +804,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta no-h}
-## النزوح السادس
+### النزوح السادس
 [](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_ar,+pois-ar(label-main-ar,id=deir-al-balah))
 نزحت العائلة مرة أخرى، إلى الجنوب هذه المرة، إلى مجمع خيام في دير البلح.
@@ -839,7 +839,7 @@ css: src/theme.css, src/ar.css
 {.meta no-h}
 [](fg:blank)
 [](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar(label-main-ar,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
-### Oct 25
+#### Oct 25
 في 10 تشرين الأول 2025، دخل وقف إطلاق النار بين إسرائيل وحماس حيز التنفيذ.
 
 
