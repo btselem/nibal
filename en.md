@@ -61,7 +61,7 @@ In addition to evacuation orders, people were forced to flee the frequent airstr
 
 {.meta}
 [](svg/#intro-pre.svg/0.34,0.36,1.81/~all)
-[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+labels_en,+UNOSAT_gaza_25-10-11(poly-scale) "Assessment of building damage and impact severity in the Gaza Stripm two years into the offensive. Red: Low density; Orange: Medium density; Yellow: High density (UNOSAT)")
+[](map/#31.41661,34.37347,10.01,37.6,0.0/~labels_he,+labels_en,+UNOSAT_gaza_25-10-11(poly-scale) "Assessment of building damage and impact severity in the Gaza Strip two years into the offensive. Red: Low density; Orange: Medium density; Yellow: High density (UNOSAT)")
 These strikes caused death and destruction on an immense scale.
 
 
@@ -158,7 +158,7 @@ Five days later, Ahmad was issued a work permit and started a job as a construct
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.37217,34.39109,10.61,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused))
+[](map/#31.36736,34.39816,10.39,-10.4,42.0/~labels_he,+oct7-hamas-en(label-focused))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
 Entering from Gaza, the attackers killed 1,220 people, and injured tens of thousands. 
 They carried 252 people, some living and others dead, back to Gaza.
@@ -229,7 +229,7 @@ We didn’t leave and go south despite the bombing, hunger and fear. I suffered 
 
 {.testimony typewriter}
 [](svg/#oct7.svg/-1.6,1.15,3.54/+nibal_rita_hands-comp.jpg)
-[](map/#31.52965,34.48083,14.83,38.4,0.0/+UNOSAT_gaza_23-10-15(poly-scale),+pois(label-main,id=home),~labels_he,+labels_en)
+[](map/#31.52965,34.48083,14.83,38.4,0.0/+UNOSAT_gaza_23-10-15(poly-scale),~labels_he,+labels_en)
 I was so scared something would happen to my baby.
 
 
@@ -237,6 +237,12 @@ I was so scared something would happen to my baby.
 [](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
 [](bg:blank)
 Several months of heavy bombardment left northern Gaza unrecognizable.
+
+
+{.meta} 
+[](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
+[](bg:blank)
+Residents who stayed in Jabalya were documented trying to salvage what was left of their belongings from the rubble.
 
 
 {.meta} 
@@ -681,7 +687,7 @@ I tried to focus on Rita. She was the most important thing. I did everything I c
 
 {.meta}
 [](fg:blank)
-[](map/#31.52950,34.47907,17.40,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),~labels_he "Assessment of building damage and impact severity in Jabalya by early April 2025 (UNOSAT)")
+[](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),~labels_he "Assessment of building damage and impact severity in Jabalya by early April 2025 (UNOSAT)")
 
 In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, killing all three of her children: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
 
@@ -719,7 +725,7 @@ My family welcomed us again with love, but the house was full of grief. My siste
 
 {.testimony typewriter}
 [](svg/#back_home.svg/0.94,-0.57,3.11/+nibal_home_smile3.heic)
-[](map/#31.53028,34.47787,17.18,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
+[](map/#31.52943,34.47873,16.78,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
 
 I was frustrated because I couldn’t do anything on my own, and I struggled to care for Rita. It was hard to accept the breakup and I really missed Ahmad. 
 Even with all the support from my parents, I felt I was a burden for them, too.
@@ -734,7 +740,7 @@ There were airstrikes in our area all the time. Many people were displaced again
 
 {.meta}
 [](svg/#back_home.svg/-0.43,0.71,2.35/+@vimeo-1137391856,+vimeo-1137392312 "An airstrike in the family’s neighborhood, August 2025")
-[](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
+[](map/#31.52943,34.47873,16.78,38.4,0.0/+pois.csv(poi,id=home),~labels_he,+labels_en)
 In late August 2025, Israeli forces entered Jabalya and advanced toward the family’s neighborhood.
 
 
@@ -780,14 +786,14 @@ They sheltered in an abandoned restaurant belonging to friends, and later in a c
 
 {.meta} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
-[](map/#31.50774,34.46034,14.51,38.4,0.0/~labels_he,+labels_en)
+[](map/#31.50806,34.46098,14.51,38.4,0.0/~labels_he,+labels_en)
 
 During those weeks, Israel launched another ground invasion into Gaza City.
 
 
 {.meta thumb} 
 [](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
-[](map/#31.50774,34.46034,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
+[](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#destruction_of_gaza_city" target="blank" class="dontinflect thumb">
