@@ -809,11 +809,15 @@
             // Deduplicate candidatePaths while preserving order to avoid redundant fetches
             candidatePaths = candidatePaths.filter((v, i, a) => a.indexOf(v) === i);
 
-            // If we recently rendered successfully and the same candidate is in the
-            // candidate list, skip this run to avoid duplicate fetches/console noise.
+            // If we recently rendered successfully with the SAME hash, skip to reduce console noise (2s).
+            // But if the hash has changed, always re-render (even if within 2s window).
             try {
                 const now = Date.now();
-                if (window.__lastRenderSuccessAt && (now - window.__lastRenderSuccessAt) < 2000 && window.__lastRenderSuccessCandidate) {
+                const currentHash = window.location.hash.substring(1).replace(/:\d+$/, '') || 'README';
+                const lastHash = window.__lastRenderSuccessHash || null;
+                
+                if (window.__lastRenderSuccessAt && (now - window.__lastRenderSuccessAt) < 2000 && 
+                    window.__lastRenderSuccessCandidate && currentHash === lastHash) {
                     const last = window.__lastRenderSuccessCandidate;
                     if (candidatePaths.indexOf(last) !== -1) {
                         try { window.__renderMarkdownRunning = false; } catch(e){}
@@ -821,6 +825,7 @@
                     }
                 }
             } catch(e){}
+
             let response = null;
             let text = null;
             let successPath = null;
@@ -1004,7 +1009,11 @@
                         document.querySelector('main').innerHTML = html;
 
                         // Record successful render so immediate duplicate invocations can be skipped
-                        try { window.__lastRenderSuccessAt = Date.now(); window.__lastRenderSuccessCandidate = successPath || null; } catch(e){}
+                        try { 
+                            window.__lastRenderSuccessAt = Date.now(); 
+                            window.__lastRenderSuccessCandidate = successPath || null;
+                            window.__lastRenderSuccessHash = file;
+                        } catch(e){}
 
                         // apply per-page css after rendering
                             try { applyPageCss(pageCssPath); } catch (e) { console.warn('Failed to apply page CSS', e); }
@@ -1252,6 +1261,9 @@
             }catch(e){}
         } catch (error) {
             console.error('Error fetching or rendering the markdown file:', error);
+        } finally {
+            // Always reset the running flag so subsequent renders can proceed
+            try { window.__renderMarkdownRunning = false; } catch(e){}
         }
     }
 
@@ -2226,6 +2238,18 @@
         };
     })();
     window.scheduleRenderMarkdown(0);
+    
+    // Listen for hash changes and update markdown
+    window.addEventListener('hashchange', () => {
+        // Reset the render suppression timer and candidate when hash changes to ensure immediate re-render
+        try { 
+            window.__lastRenderSuccessAt = 0; 
+            window.__lastRenderSuccessCandidate = null;
+            window.__lastRenderSuccessHash = null;
+        } catch(e){}
+        window.scheduleRenderMarkdown(0);
+    });
+
         // Load Typed.js library from CDN
         (function(){
             const script = document.createElement('script');
