@@ -257,7 +257,8 @@ Nibal decided to go meet him, despite her parents’ strong objections.
 ## Braving the journey south  
 
 
-{.meta} 
+{.meta no-h}
+## First Displacement
 [](svg/#south.svg/-0.45,0.65,2.21/+@vimeo-1133751988 "From Nibal’s Instagram account")
 [](map/#31.50634,34.45154,12.96,0.0,39.0/+jabalia-gaza(by-car):follow+,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois(label-main,id=home),+pois#2(label-main,id=gaza-2403),~labels_he,+labels_en)
 Nibal’s father drove her and six-month-old Rita from Jabalya to Gaza City.
@@ -357,7 +358,8 @@ Less than two months after the family arrived in Rafah, Israel ordered the city 
 At the same time as ordering the evacuation, Israel intensified its strikes on the city. 
 
 
-{.meta} 
+{.meta no-h}
+## Second Displacement
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois(label-main,id=rafah),+pois#2(label-main,id=bureij),~labels_he,+labels_en)
 
@@ -471,7 +473,8 @@ My parents were frantic with worry. They were afraid I wouldn’t make it and ke
 When I felt a bit better, in the hospital, I finally managed to call my mother. I wanted her to hear that I was okay. She couldn’t believe I was alive and couldn't stop crying.
 
 
-{.meta}
+{.meta no-h}
+## Third Displacement
 [](fg:blank)
 [](map/#31.38437,34.30257,11.63,0.0,39.0/+al-zawaida-al-mawasi(2-by-foot):follow+,+al-zawaida,+al-mawasi,+idf-poly-outlines,+pois(label-main,id=al-zawaida),+pois#2(label-main,id=al-mawasi),~labels_he,+labels_en)
 Nibal was discharged from the hospital after 40 days. The family had to flee again.
@@ -584,7 +587,8 @@ But I was losing hope.
 ## Ceasefire: January 2025
 
 
-{.meta}
+{.meta no-h}
+## Fourth Displacement
 [](svg/#ceasefire_hope.svg/-0.15,0.3,2.65/+@vimeo-1136076448 "IDPs return north along a-Rashid Road, 21 Jan. 2025 (Activestills/Yousef Zaanoun)")
 [](bg:blank)
 Two months after the family reached the tent, a second ceasefire between Israel and Hamas took effect in January 2025.
@@ -772,7 +776,8 @@ Later, Nibal learned that the building she had lived in most of her life with he
 ## Permanently displaced 
 
 
-{.meta}
+{.meta no-h}
+## Fifth Displacement
 [](fg:blank)
 [](map/#31.52993,34.49211,12.14,38.4,0.0/+pois(label-main,id=gaza-2509),+pois#2(label-main,id=home),~labels_he)
 Nibal walked with Rita and about 50 people from her family to Gaza City, in search of safety.
@@ -799,7 +804,8 @@ In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ord
 </a>
 
 
-{.meta}
+{.meta no-h}
+## Sixth Displacement
 [](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+gaza-deir-al-balah(by-car):follow+,+IDF_zone_090925_NEW(idf-poly),+idf-poly-outlines,~labels_he,+labels_en,+pois(label-main,id=deir-al-balah)))
 The family fled south again, this time to a tent camp in Deir al-Balah.  
