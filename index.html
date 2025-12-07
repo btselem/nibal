@@ -85,19 +85,18 @@
                 const jsPath = basePath + name + '.js';
                 const cssPath = basePath + name + '.css';
                 
-                // Load CSS first (if exists) so styles are ready when JS initializes
-                // Use a simple fetch and check status to avoid console errors
-                try {
-                    const cssResp = await fetch(cssPath, { method: 'HEAD' }).catch(() => null);
-                    if (cssResp && cssResp.ok) {
+                // Only try to load CSS for extensions that have companion stylesheets
+                const extensionsWithCss = ['dual-iframe', 'section-animations'];
+                if (extensionsWithCss.includes(name)) {
+                    try {
                         const link = document.createElement('link');
                         link.rel = 'stylesheet';
                         link.href = cssPath;
                         link.setAttribute('data-extension', name);
                         document.head.appendChild(link);
+                    } catch (e) {
+                        // CSS load failed
                     }
-                } catch (e) {
-                    // CSS file doesn't exist, that's fine
                 }
                 
                 // Load JS module
