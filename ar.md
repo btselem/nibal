@@ -293,7 +293,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.9,-1.71,7.98/+prisoners_kid)
+[](svg/#south.svg/-0.9,-1.78,7.98/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 لكن اللقاء به كان صادمًا أيضًا. لقد فقد الكثير من وزنه وبدا وكأنه فقد بريق الحياة.
@@ -339,7 +339,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
+[](svg/#south.svg/-0.26,-1.31,6.94/+rita_tent2.jpg "ريتا في مخيم للمهجرين في رفح")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 كان ذلك عذابًا متواصلًا، من أصعب الفترات في حياتي على الأرجح.
 كنتُ أخجل من إخبار والديّ بظروف حياتي.
@@ -444,14 +444,14 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.09,0.11,7.1/+nibal_xray)
 [](bg:blank)
 
 استيقظت في المستشفى ورأيت أنهم قد بتروا كلتا يديّ.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.09,0.11,7.1/+nibal_xray)
 [](bg:blank)
 نتيجة للقصف، بُترت يدا نِبال من تحت المرفقين وأصيبت بحروق خطيرة. 
 
@@ -685,6 +685,11 @@ css: src/theme.css, src/ar.css
 [](fg:blank)
 [](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-ar(label-main-ar,id=alaa-home),+pois-ar#2(label-main-ar,id=couple-home),~labels_he "تقييم الأضرار وشدّة الإصابات في المباني في جباليا حتى بداية نيسان 2025. المصدر: UNOSAT")
 في نيسان 2025، قصف الجيش الإسرائيلي منزل آلاء، شقيقة نِبال، في جباليا. 
+
+
+{.meta}
+[](svg/#back_home.svg/-0.41,-0.44,4.24/+alaas_kids.jpg)
+[](bg:blank)
 نتيجة للقصف، قُتل أطفال آلاء الثلاثة: وسيم (10 سنوات) ومهند (8 سنوات) وخولة (5 سنوات).
 
 
@@ -791,7 +796,7 @@ css: src/theme.css, src/ar.css
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~vimeo-1136076786 "أحد سكان مدينة غزة يحمل أمر إخلاء ألقته طائرة إسرائيلية، 9 أيلول 2025 (رويترز: داود أبو الكاس)")
+[](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786)
 [](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_ar)
 أوامر الإخلاء التي أصدرها الجيش الإسرائيلي في أوائل أيلول 2025، بعد أسابيع قليلة من وصول عائلة نِبال إلى المدينة، تأمر حوالي 1,2 مليون شخص بالنزوح من مكان إقامتهم، مرة أخرى.
 
@@ -824,7 +829,7 @@ css: src/theme.css, src/ar.css
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.93,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "منطقة منزل نبال, تشرين الأول 2025")
+[](svg/#permanent_impermanence.svg/-0.86,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "منطقة منزل نبال, تشرين الأول 2025")
 [](bg:blank)
 حياة ذل وإهانة، بلا بيت، بلا ذرة استقرار.
 
@@ -925,7 +930,7 @@ css: src/theme.css, src/ar.css
 {.meta thumb closing}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**رحلة نِبال وريتا لم تنته بعد.** تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
+تحلم نِبال باللحظة التي ستتمكن فيها من البدء بالتعافي وبناء حياة جديدة لها ولريتا، تمامًا مثل مئات الآلاف من العائلات الأخرى في غزة:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
