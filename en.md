@@ -234,13 +234,13 @@ I was so scared something would happen to my baby.
 
 
 {.meta} 
-[](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
+[](svg/#oct7.svg/0,-0.49,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
 [](bg:blank)
 Several months of heavy bombardment left northern Gaza unrecognizable.
 
 
 {.meta} 
-[](svg/#oct7.svg/0,-0.47,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
+[](svg/#oct7.svg/0,-0.49,2/+ruined_jabalia "Searching among the ruins of a house bombed in Jabalya, 3 Jan. 2024 (Reuters/Emad Gabon)")
 [](bg:blank)
 Residents who stayed in Jabalya were documented trying to salvage what was left of their belongings from the rubble.
 
