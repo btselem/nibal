@@ -204,10 +204,10 @@
 
   // Public API
   window.FrontmatterExtension = {
-    extract: extractFrontMatter,
-    applyCss: applyPageCss,
+    extractFrontMatter: extractFrontMatter,
+    applyPageCss: applyPageCss,
     applyBodyClasses: applyBodyClasses,
-    applyDualIframe: applyDualIframeMode,
+    applyDualIframeMode: applyDualIframeMode,
     extractInlineBodyClass: extractInlineBodyClass,
     isSafeCssPath: isSafeCssPath
   };
