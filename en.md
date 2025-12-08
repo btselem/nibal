@@ -291,7 +291,7 @@ I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.9,-1.71,7.98/+prisoners_kid)
+[](svg/#south.svg/-0.9,-1.78,7.98/+prisoners_kid)
 [](map/#31.26859,34.25352,16.36,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he) 
 
 But seeing him also shocked me. He had lost so much weight, and it looked like he’d lost his spark. 
@@ -334,7 +334,7 @@ Living crammed together without enough food and water, with no privacy and poor 
 
 
 {.testimony typewriter}
-[](svg/#south.svg/-0.34,-0.98,5.32/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
+[](svg/#south.svg/-0.26,-1.31,6.94/+rita_tent2.jpg "Rita in the IDP camp in Rafah")
 [](map/#31.27517,34.20911,12.96,0.0,39.0/+pois.csv(poi,id=rafah),~labels_he)    
 It was constant torment, probably the hardest time in my life.
 I was ashamed to tell my parents how I was living.  
@@ -441,14 +441,14 @@ Nibal was badly injured but managed to call for help and was taken to the hospit
 
 
 {.testimony typewriter}
-[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.09,0.11,7.1/+nibal_xray)
 [](bg:blank)
 
 I woke up in the hospital and found my hands gone.
 
 
 {.meta}
-[](svg/#warehouse_bureij2.svg/-2.53,0.24,8.59/+nibal_xray)
+[](svg/#warehouse_bureij2.svg/-2.09,0.11,7.1/+nibal_xray)
 [](bg:blank)
 The shelling cut Nibal’s arms off at the elbow and badly burned her. 
 
@@ -689,7 +689,13 @@ I tried to focus on Rita. She was the most important thing. I did everything I c
 [](fg:blank)
 [](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois(label-main,id=alaa-home),+pois#2(label-main,id=couple-home),~labels_he "Assessment of building damage and impact severity in Jabalya by early April 2025 (UNOSAT)")
 
-In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya, killing all three of her children: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
+In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya.
+
+
+{.meta}
+[](svg/#back_home.svg/-0.41,-0.44,4.24/+alaas_kids.jpg)
+[](bg:blank)
+Three of ‘Alaa's children were killed: Wasim, 10, Muhannad, 8, and Khawlah, 5. 
 
 
 {.meta}
@@ -792,7 +798,7 @@ During those weeks, Israel launched another ground invasion into Gaza City.
 
 
 {.meta thumb} 
-[](svg/#permanent_impermanence.svg/0.53,0.69,2.43/+IDF_order_gaza_city-comp.jpg,~vimeo-1136076786 "A leaflet ordering evacuation dropped by an Israeli plane in Gaza City, 9 Sept. 2025 (Reuters/Dawoud Abu Alkas)")
+[](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786)
 [](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
@@ -827,7 +833,7 @@ Our lives have been destroyed.
 
 
 {.testimony typewriter}
-[](svg/#permanent_impermanence.svg/-0.93,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "Nibal’s family home, Oct. 2025")
+[](svg/#permanent_impermanence.svg/-0.86,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "Nibal’s ruined family home, Oct. 2025")
 [](bg:blank)
 
 Now it feels like a slow death. A life of humiliation, with no dignity, home or any stability.
@@ -931,7 +937,7 @@ Nibal has recently shared her story with various media outlets and online, hopin
 {.meta}
 [](svg/#permanent_impermanence.svg/-1.58,-1.98,6.47/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
-**Nibal and Rita’s ordeal is not over.**  B’Tselem will follow their story and share any developments in our newsletter:
+B’Tselem will follow their story and share any developments in our newsletter:
 
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
