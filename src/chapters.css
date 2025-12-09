@@ -168,6 +168,10 @@
     z-index: 100;
   }
 
+  body.sec-subheader #chapter-nav{
+    z-index: 1;
+  }
+
   /* Make each section button fill available height maximally */
   #chapter-nav .chapter-item {
     flex: 1 1 0;
