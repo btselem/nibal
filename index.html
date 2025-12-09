@@ -136,9 +136,8 @@
                 extensions.push('edit-mode');
             }
             
-            if (config.animateSections) {
-                extensions.push('section-animations');
-            }
+            // Note: section-animations is built into chapters.js
+            // Controlled by 'animate-sections' body class
             
             // Explicit extensions array in frontmatter
             if (config.extensions && Array.isArray(config.extensions)) {
