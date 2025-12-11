@@ -2,6 +2,10 @@
 dual-iframe: true
 body-class: snap ltr fs-video-mobile editor
 css: src/theme.css, src/ltr.css
+snap: true
+editor: true
+animate-sections: true
+extensions: [inflect-caption]
 ---
 
 

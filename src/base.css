@@ -42,6 +42,7 @@ main {
     padding: 4vh 2vw;
     padding: 4dvh 2vw; /* Dynamic viewport height for mobile browsers */
     overflow-y: auto;
+    overflow-x: hidden;
     z-index: 10;
 }
 
@@ -103,7 +104,7 @@ section img { max-width: 100%; }
 /* Caption overlay for active inflection links */
 .inflect-caption {
     position: fixed;
-    right: 3vw;
+    right: 2vw;
     top: 8px;
     max-width: 87vw;
     background: rgba(0, 0, 0, 0.7);
@@ -121,6 +122,11 @@ section img { max-width: 100%; }
 .inflect-caption.note-caption {
     background: #ffd200;
     color: #000;
+}
+
+body.content-top .inflect-caption {
+    top: auto;
+    bottom: 8px;
 }
 
 h1 { font-size: 2.4em; font-weight: 200; margin-bottom: 0; }

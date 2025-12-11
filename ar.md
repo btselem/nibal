@@ -2,6 +2,10 @@
 dual-iframe: true
 body-class: snap ar fs-video-mobile editor
 css: src/theme.css, src/ar.css
+snap: true
+editor: true
+animate-sections: true
+extensions: [inflect-caption]
 ---
 
 # _رحلة نزوح_ نِبال الهسي

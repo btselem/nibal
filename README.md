@@ -1,7 +1,10 @@
 ---
 dual-iframe: true
-body-class: snap fs-video-mobile editor
+body-class: snap fs-video-mobile editor animate-sections content-top
 css: src/theme.css
+snap: true
+editor: true
+extensions: [inflect-caption]
 ---
 
 # _מסע העקירה של_ ניבאל אל-היסי
@@ -91,28 +94,24 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.29,0.28,1/+nibal2023)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 שמי ניבאל. אני בת 25. עד לאוקטובר 2023, גרתי בעיירה ג׳אבליא עם בעלי אחמד ובתנו התינוקת ריתא.
 
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.67,0.25,2.4/,+nibal2023)
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 אני הצעירה מבין תשעה אחים ושלוש אחיות.  
 
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.39,-0.21,2.4/+@vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 אחרי התיכון, התחלתי לימודי אנגלית ותרגום באוניברסיטת אל-אזהר בעיר עזה.
 
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 בשנה האחרונה באוניברסיטה הכרתי את אחמד. הרגשתי שהוא דומה לי, שהוא מבין אותי.
 
 
@@ -125,7 +124,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#intro-pre.svg/0.26,-0.41,2.4/+vimeo-1137392053,+vimeo-1137391389,+@vimeo-1137393585 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 בספטמבר 2022 עברנו לגור בדירה משלנו בבניין של המשפחה של אחמד, בג׳אבליא, לא רחוק מהבית של ההורים שלי.  
 
 
@@ -138,7 +136,6 @@ css: src/theme.css
 {.meta}
 [](svg/#intro-pre.svg/1.14,-0.37,3.26/+@vimeo-1138452992,+vimeo-1137393585,+vimeo-1137391389,+vimeo-1137392053 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53332,34.48215,14.18,37.6,0.0/~labels_he,+Gaza_border_dash,+Gaza_border_base)
-
 שנה אחרי החתונה, בספטמבר 2023, נולדה לניבאל ולאחמד בתם, ריתא. 
 
 
@@ -367,7 +364,6 @@ css: src/theme.css
 ### עקירה שניה
 [](fg:blank)
 [](map/#31.35894,34.31925,10.36,0.0,39.0/+rafah-bureij(2-by-foot):follow+,+pois.csv(poi)[name=rafah],+pois.csv(poi)[name=bureij],+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he(label-main,id=rafah),+pois-he#2(label-main,id=bureij))
-
 ניבאל, אחמד וריתא נאלצו אז להימלט מרפיח יחד עם כמיליון איש נוספים, רובם המוחלט עקורים שרוכזו בהוראת הצבא הישראלי בעיר במהלך החודשים שלפני כן.
 
 
@@ -386,21 +382,18 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg "מחנה הפליטים א-שאטי בעיר עזה, 15 ביולי 2025 (REUTERS/מחמוד עיסא)")
 [](bg:blank)
-
 החיים במחסן היו קצת יותר יציבים מאשר החיים באוהל, אבל הרגשתי חצויה. מצד אחד שמחתי להיות עם אחמד וריתא, ומצד שני, המרחק מההורים, מהאחים ומהבית שלי בג׳אבליא גרם לי להרגיש בודדה ומנוכרת. התגעגעתי אליהם מאוד.
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/0.01,-0.53,2.31/+warehouse_new-compressed.jpg)
 [](bg:blank)
-
 דיברתי איתם בטלפון בכל הזדמנות שהייתה לי.
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij1.svg/0.27,0.35,2.26/+@vimeo-1130687838 "ריתא במחסן באל-בוריג׳, מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 גרנו במחסן בערך חמישה חודשים. חיינו בתנאים לא פשוטים, אבל הרגשתי שלאט לאט הצלחנו למצוא קצת נחת.
 
 
@@ -413,7 +406,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](fg:blank)
 [](bg:blank)
-
 אבל אז הכול השתנה.
 
 
@@ -445,7 +437,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/-2.09,0.11,7.1/+nibal_xray)
 [](bg:blank)
-
 התעוררתי בבית החולים וראיתי שנכרתו לי הידיים. 
 
 
@@ -529,21 +520,18 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/0.84,0.59,3.44/+@vimeo-1129846713  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 לחזור לחיות שוב באוהל אחרי הפציעה היה קשה מאוד. לא יכולתי להשתמש בשירותים באופן עצמאי, והביך אותי כל-כך לבקש בכל פעם עזרה. 
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 [](bg:blank)
-
 התקשיתי לקבל את הגוף החדש שלי. 
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij2.svg/-2,1.15,6.89/+nibal_after_amputation)
 [](bg:blank)
-
 השתדלתי להישאר מטופחת, ועם עזרה גם להתלבש, להתאפר ולצאת מהאוהל.
 
 
@@ -562,21 +550,18 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#warehouse_bureij3.svg/-0.41,-1.11,2.88/+@vimeo-1132490042,+vimeo-1137390641,+vimeo-1131630900 "מתוך חשבון האינסטגרם של ניבאל")
 [](bg:blank)
-
 פחדתי שהיא משתנה, שהיא מאבדת משמחת החיים ומהחיוניות שלה.
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij3.svg/0.25,-0.73,3.14/+@vimeo-1137390641,+vimeo-1131630900 "סרטון מהרשתות, שימוש לפי סעיף 27א'")
 [](bg:blank)
-
 אבל אחמד היה שם בשבילי. הוא אמר לי, ״אני אהיה הידיים שלך, העיקר שלך ולריתא יהיה טוב״.
 
 
 {.testimony typewriter}
 [](svg/#warehouse_bureij3.svg/0.93,-0.16,3.14/+@vimeo-1131630900  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 חלמתי שנחזור לצפון הרצועה, לחיק המשפחה שלי, לימים שבהם כולנו היינו ביחד. כל-כך התגעגעתי אליהם. ייחלתי לרגע שבו תהיה הפסקת אש ואוכל לחזור אליהם ולהרגיש בטוחה שוב. 
 אבל אחרי חודשים של מרחק, התחלתי לאבד תקווה שזה יקרה. 
 
@@ -603,7 +588,6 @@ css: src/theme.css
 {.meta}
 [](fg:blank)
 [](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois-he(label-main,id=jabalia),+pois-he#2(label-main,id=al-mawasi))
-
 גם ניבאל ואחמד יצאו צפונה עם ריתא בת השנה וארבעה חודשים. 
 במחסום נצרים, אספו אותם קרובי משפחה של ניבאל. הם לקחו את אחמד לדירתם של בני הזוג, ואת ניבאל וריתא לבית הוריה בג׳אבליא. 
 
@@ -618,14 +602,12 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.08,-0.47,2.32/+nibal_rita_happy.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-he(label-main,id=home))
-
 האחיות שלי היו לצידי כל הזמן ועזרו לי בהכל: להתקלח, להתלבש, לאכול ולטפל בריתא. 
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.69,-0.57,2.32/+nibal_rita_home.jpg)
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+pois-he(label-main,id=home))
-
 הן החליפו לה חיתולים, חיבקו אותה ושיחקו איתה. בזכותן הרגשתי שהחיים שלי מתחילים לחזור למסלול.
 
 
@@ -645,7 +627,6 @@ css: src/theme.css
 {.meta}
 [](svg/#ceasefire_hope.svg/-0.25,0.55,2.15/+@vimeo-1141082583 "סרטון מהרשתות, שימוש לפי סעיף 27א'")
 [](bg:blank)
-
 תחת ההפצצות והמצור, מערכת היחסים של ניבאל ואחמד נקלעה למשבר.
 
 
@@ -665,21 +646,18 @@ css: src/theme.css
 {.meta}
 [](svg/#ceasefire_hope.svg/0.8,0.36,2.15/+@vimeo-1137391158  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 ניבאל תיארה את הכאב הנפשי שחווה אז אחמד, שהחמיר תחת הקושי של שלושתם לשרוד בתנאי המצור ההדוק שהטילה שוב ישראל.  
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.8,0.36,2.15/+@vimeo-1137391158  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 בהתחלה הוא מאוד תמך בי. אבל עם הזמן ועם הקושי האישי שלו, הרגשתי שהוא נאלץ לטפל בי מתוך רחמים.
 
 
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/0.8,0.36,2.15/+@vimeo-1137391158  "מתוך חשבון הטיקטוק של ניבאל")
 [](bg:blank)
-
 בתוך כל הקשיים, ניסיתי להתמקד בריתא. היא הייתה הדבר החשוב ביותר בשבילי, ועשיתי מה שיכולתי כדי להתגבר על המתיחות ביני לבין אחמד ולטפל בה.
 
 
@@ -728,7 +706,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#back_home.svg/0.33,-1.52,5.01/+jabalia_april_25.JPG "תושבים בסמוך לגופות הרוגים באתר תקיפה ישראלית על בית בג'באליא, 18 באפריל 2025 (ZUMA Press Wire/סאהר אל־ע'ורה)")
 [](bg:blank)
-
 המשפחה שוב קיבלה את פנינו באהבה, אבל בבית שרר עצב כבד. אני ואחותי ניסינו לנחם אחת את השנייה.
 
 
@@ -743,7 +720,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](fg:blank)
 [](map/#31.52943,34.47873,16.78,38.4,0.0/+UNOSAT_jabalia_25-07-08(poly-scale),+pois.csv(poi,id=home),~labels_he "הערכת נזק וחומרת פגיעה במבנים בג׳אבליא עד לתחילת יולי 2025. מקור: UNOSAT")
-
 ההפצצות באזור שלנו נמשכו כל הזמן והרבה אנשים סביבנו נעקרו שוב. אבל המשפחה המורחבת שלי גדולה מאוד ולא היה לנו לאן ללכת בלי שנצטרך להתפצל.
 
 
@@ -764,7 +740,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312 "תושבים נעקרים משכונת א-נזלה בג׳אבליא ביום ההפצצה")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=alaa-home),~labels_he)
-
 שמענו פיצוץ עז, ואז המון צעקות מבחוץ. ראינו אנשים רצים. אמרו לנו שהצבא הישראלי ציווה לפנות את האזור תוך רבע שעה. 
 יצאנו מהבית מבוהלים בלי לקחת איתנו כמעט כלום. שכחתי בבית את התעודות שלנו, הבגדים שלנו, הכול. אבל הצלחנו להימלט בזמן.
 
@@ -772,7 +747,6 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#back_home.svg/0.03,0.51,2.35/+@vimeo-1137392312 "תושבים נעקרים משכונת א-נזלה בג׳אבליא ביום ההפצצה")
 [](map/#31.52947,34.47929,18.15,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
-
 הלכנו ברגל ברחובות, מפוחדים.
 
 
@@ -792,7 +766,6 @@ css: src/theme.css
 ### עקירה חמישית
 [](fg:blank)
 [](map/#31.52993,34.49211,12.14,38.4,0.0/+pois-he(label-main,id=gaza-2509),+pois-he#2(label-main,id=home),~labels_he)
-
 ניבאל, ריתא וכ-50 מבני משפחתן המורחבת - הוריה של ניבאל, אחיה, בני זוגם וילדיהם - צעדו ברגל מג׳אבליא בחיפוש אחר מקום בטוח. 
 הם התמקמו במסעדה נטושה של חברים, ואחר-כך עברו לדירה קטנה וצפופה בעיר עזה.
 
@@ -840,14 +813,12 @@ css: src/theme.css
 {.testimony typewriter}
 [](svg/#permanent_impermanence.svg/-0.86,-1.59,6.21/+home_nibal_RUINED.png,~home_nibal.png "הריסות ביתה של ניבאל בג׳אבליא, אוקטובר 2025")
 [](bg:blank)
-
 הם הפכו למוות מתמשך. חיי השפלה ועלבון, בלי בית, בלי טיפת יציבות.
 
 
 {.testimony typewriter}
 [](svg/#permanent_impermanence.svg/0.8,-0.49,3.32/+@vimeo-1132487425 "ניבאל ואביה באוהל בדיר אל-בלח")
 [](map/#31.41150,34.38598,9.96,38.4,0.0/+pois.csv(poi,id=deir-al-balah))
-
 כל דבר בחיים שלי כרוך בסבל עכשיו. החום באוהל נורא, ואני מזיעה אבל לא יכולה להתרחץ לבד. אני סובלת מאוד מעקיצות, כי אני לא יכולה אפילו להתגרד. 
 אני מביטה סביבי ורואה את נשות האחים שלי עסוקות עם המשפחות שלהן, ואני מתביישת לבקש עזרה.
 
@@ -886,7 +857,6 @@ css: src/theme.css
 {.meta}
 [](svg/#permanent_impermanence.svg/0.6,-1.71,4.22/+refugees_end-comp.jpg "תושבי העיר עזה נמלטים לאחר שהצבא הורה להם להתפנות דרומה, 15 בספטמבר 2025 (REUTERS/מחמוד עיסא)")
 [](map/#31.41306,34.39134,9.30,38.4,0.0/~labels_he)
-
 סיפורה של ניבאל הוא רק אחד מבין שני מיליון סיפוריהם של תושבי עזה, המנסים מזה שנתיים לשרוד את הג'נוסייד שמבצעת ישראל ברצועה. הם חוו אובדן, רעב ועקירה מתמשכים, ומוסיפים לחיות בתנאים האיומים שכפתה עליהם ישראל, כשהם מופקרים על-ידי הקהילה הבינלאומית, בלי תקווה אמיתית לעתיד טוב יותר. 
 
 

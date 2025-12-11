@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension System Test</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .pass { color: green; }
+        .fail { color: red; }
+        .test-result { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Extension System Test Status</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(test, passed, details) {
+            const div = document.createElement('div');
+            div.className = 'test-result ' + (passed ? 'pass' : 'fail');
+            div.innerHTML = `
+                <strong>${passed ? '✓' : '✗'} ${test}</strong><br>
+                ${details}
+            `;
+            results.appendChild(div);
+        }
+        
+        // Test 1: Load the main page in an iframe
+        const iframe = document.createElement('iframe');
+        iframe.src = '/';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        iframe.onload = function() {
+            setTimeout(() => {
+                try {
+                    const doc = iframe.contentDocument;
+                    const main = doc.querySelector('main');
+                    const sections = doc.querySelectorAll('section');
+                    
+                    addResult(
+                        'Main element exists',
+                        !!main,
+                        main ? `Found main element` : 'No main element'
+                    );
+                    
+                    addResult(
+                        'Main has content',
+                        main && main.innerHTML.length > 1000,
+                        main ? `Length: ${main.innerHTML.length} chars` : 'N/A'
+                    );
+                    
+                    addResult(
+                        'Sections rendered',
+                        sections.length > 0,
+                        `Found ${sections.length} sections`
+                    );
+                    
+                    if (sections.length > 0) {
+                        const firstSection = sections[0];
+                        addResult(
+                            'First section has content',
+                            firstSection.textContent.trim().length > 0,
+                            `ID: ${firstSection.id}, Text length: ${firstSection.textContent.length}`
+                        );
+                    }
+                    
+                    // Check for extensions
+                    const win = iframe.contentWindow;
+                    addResult(
+                        'FrontmatterExtension loaded',
+                        !!win.FrontmatterExtension,
+                        win.FrontmatterExtension ? 'Available' : 'Not found'
+                    );
+                    
+                    addResult(
+                        'EditModeExtension loaded',
+                        !!win.EditModeExtension,
+                        win.EditModeExtension ? 'Available' : 'Not found'
+                    );
+                    
+                } catch (e) {
+                    addResult('Error', false, e.message);
+                }
+            }, 3000); // Wait 3 seconds for render
+        };
+    </script>
+</body>
+</html>

@@ -117,7 +117,8 @@ section:first-child p{
     border: 0;
 }
 
-section.subheader {
+section.subheader,
+body.content-top section.subheader {
     text-align: center;
     max-width: 100%;
     justify-content: center;
@@ -166,7 +167,7 @@ a.thumb::after {
 
 section:first-child > a.thumb{
     text-align: right;
-    margin: 40px auto 0;
+    margin: 40px auto;
     display: block;
     position: absolute;
     bottom: 10vh;
@@ -262,10 +263,13 @@ section.closing > a.thumb::after{
 section.closing ul {
     margin-top: 0;
     background-color: #000;
-    list-style: decimal-leading-zero;
     padding: 1em 48px;
     border-right: #FA5F5F 8px solid;
     color: #FA5F5F;
+}
+
+section.closing.thumb ul {
+    list-style: decimal-leading-zero;
 }
 
 section.closing ul a {
@@ -434,14 +438,21 @@ section {
     flex-direction: column;
 }
 
+body.content-top section {
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
 section:first-of-type, section:last-of-type {
     display: flex;
     flex-direction: column;
 }
 
-section:first-of-type {
+section:first-of-type,
+body.content-top section:first-of-type {
     justify-content: center;
     text-align: center; 
+    max-width: 100%;
 }
  
 section:first-of-type {
@@ -472,7 +483,7 @@ iframe#if {
 #foreground-frame {
     top: 0;
     height: 100vh;
-    width: 100%;
+    width: 100% !important;
     position: fixed;
     background-color: transparent;
     border: 0;
@@ -634,7 +645,7 @@ input#mce-EMAIL{
         padding: 5vw 3vw 5vw 7vw; /* leaving room for the navbar */
         margin:  0 0;
         z-index: 10;
-        background: linear-gradient(0deg, rgba(51, 51, 51, 0) 30%, rgba(51, 51, 51, 0.00) 55%);
+        background: linear-gradient(0deg, rgba(34, 34, 34, 0) 30%, rgba(34, 34, 34, 0.00) 55%);
         overflow-x: hidden;
         /* -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px); */
@@ -643,15 +654,16 @@ input#mce-EMAIL{
     section {
         margin: 0; /* spacing handled within main */
         max-width: none;
-        height: 80dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
-        padding: 0 0 20dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        height: 100dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        padding: 0; /* Use dvh (dynamic viewport) for Safari mobile UI */
         justify-content: end;
         overflow: hidden; /* hide scrolling on main if content overflows */
         position: relative;
     }
 
     section:first-of-type {
-        justify-content: end;
+        justify-content: flex-end;
+        margin: 0;
     }
 
     section:first-of-type #logo img{
@@ -680,11 +692,11 @@ input#mce-EMAIL{
     }
 
     section:first-of-type > div#lang{
-        margin: 240px 0 160px;
+        margin: 40px 0 64px;
     }
 
     section:first-child > a.thumb{
-        margin-bottom: 80px;
+        position: relative;
     }
 
     section.closing > a.thumb{
@@ -703,10 +715,61 @@ input#mce-EMAIL{
     #mc_embed_signup {
         margin-bottom: 0;
     }
+
+    /* Body content-top mode adjustments */
+
+    body.content-top {
+        background-color: #222222;
+    }
+
+    body-content-top main {
+        background: linear-gradient(0deg, rgba(34, 34, 34, 0.00) 80%, #222 70%);
+    }   
+
+    body.content-top #background-frame, 
+    body.content-top #foreground-frame {
+        margin-top: 20dvh;
+        height: 80dvh;
+    }
+
+    body.content-top>div#iframe-container:after{
+        top: 0;
+        bottom: auto;
+        background: linear-gradient(0deg, #2220 0%, #222 30%);
+        margin: 0;
+        height: 30dvh;
+    }
+
+    body.content-top section {
+        /* justify-content: end; */
+        margin: 0;
+        padding-top: 24px;
+    }
+
+    body.content-top section:first-of-type {
+        justify-content: flex-start;
+    }
+
+    body.content-top .inflect-caption {
+        bottom: 8px;
+        top: auto;
+    }
+
+    /* body.content-top section {
+        justify-content: end;
+        margin: 0;
+        padding-bottom: 24px;
+    }
+
+    body.content-top .inflect-caption {
+        top: 8px;
+        bottom: auto;
+    } */
 }
 
 /* Social Share Buttons */
-.share-section {
+.share-section,
+body.content-top .share-section {
     text-align: center;
     margin: 2em auto;
     display: flex;
