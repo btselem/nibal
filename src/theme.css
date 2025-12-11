@@ -262,7 +262,6 @@ section.closing > a.thumb::after{
 
 section.closing ul {
     margin-top: 0;
-    background-color: #000;
     padding: 1em 48px;
     border-right: #FA5F5F 8px solid;
     color: #FA5F5F;
@@ -270,6 +269,7 @@ section.closing ul {
 
 section.closing.thumb ul {
     list-style: decimal-leading-zero;
+    background-color: #000;
 }
 
 section.closing ul a {
@@ -297,7 +297,7 @@ section:first-of-type h2 {
 }
 
 section:first-of-type>#scroll-indicator,
-section:first-of-type>#logo{
+section:first-of-type>.logo{
     position: fixed;
     left: 50%;
     top: 0;
@@ -308,9 +308,20 @@ section:first-of-type>#logo{
 }
 
 section:first-of-type.current>#scroll-indicator,
-section:first-of-type.current>#logo {
+section:first-of-type.current>.logo {
     top: 2vh;
     transform: translateX(-50%) translateY(0);
+}
+
+section.end .logo {
+    position: sticky;
+    top: 50%;
+    width: 100vw;
+    text-align: center;
+}
+
+section.end{
+    max-width: 100%;
 }
 
 section:first-of-type>#scroll-indicator{
@@ -666,7 +677,7 @@ input#mce-EMAIL{
         margin: 0;
     }
 
-    section:first-of-type #logo img{
+    section:first-of-type .logo img{
         width: 75%;
         height: 75%;
     }
@@ -722,9 +733,9 @@ input#mce-EMAIL{
         background-color: #222222;
     }
 
-    body-content-top main {
-        background: linear-gradient(0deg, rgba(34, 34, 34, 0.00) 80%, #222 70%);
-    }   
+    body main {
+        background: linear-gradient(0deg, rgba(34, 34, 33, 0.00) 80%, #222 70%),linear-gradient(0deg, #222 0%, rgba(34, 34, 34, 0.00) 15%);
+    }
 
     body.content-top #background-frame, 
     body.content-top #foreground-frame {
@@ -753,6 +764,10 @@ input#mce-EMAIL{
     body.content-top .inflect-caption {
         bottom: 8px;
         top: auto;
+    }
+
+    section.end .logo {
+        width: 90vw;
     }
 
     /* body.content-top section {

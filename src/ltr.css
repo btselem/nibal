@@ -16,7 +16,7 @@
 }
 
 .ltr section > a.thumb{
-    padding: 16px 16px 16px 224px;
+    padding: 16px 32px 16px 200px;
     border-right: none;
     border-left: #FA5F5F 8px solid;
     background-position: left 8px bottom 0;
@@ -32,7 +32,7 @@
 
 
 .ltr section > a.thumb::after{
-    right: 16px;
+    right: 8px;
     left: auto;
 }
 

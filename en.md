@@ -13,7 +13,7 @@ extensions: [inflect-caption]
 [](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/-0.01,0.45,1.52/+nibal2023,+displacement)
 
-<div id="logo">
+<div class="logo">
 <a href="https://btselem.org" title="בצלם" class="dontinflect" target="blank"><img src="img/bts_logo.svg" alt="בצלם" style="max-width:100px;height:auto;"></a>
 </div>
 
@@ -991,7 +991,7 @@ For the full report on forced displacement in Gaza:
 - <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#civilian_space_erasure" target="blank" class="dontinflect">Erasure of civilian space</a>
 
 
-{.meta thumb closing}
+{.meta closing}
 [](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
 
@@ -1009,3 +1009,11 @@ For the full report on forced displacement in Gaza:
 ## Product Design and Development
 - <a href="http://mushon.com" target="blank" class="dontinflect">Mushon Zer-Aviv</a>, Studio Shual
 - Built on top of  <a href="https://uclab.fh-potsdam.de/inflect/" target="blank" class="dontinflect">!nflect</a>
+
+
+{.meta end}
+[](fg:blank)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
+<div class="logo">
+  <a href="https://btselem.org" title="בצלם" class="dontinflect" target="blank"><img src="img/bts_logo.svg" alt="בצלם" style="max-width:100px;height:auto;"></a>
+</div>
