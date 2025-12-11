@@ -645,7 +645,7 @@ input#mce-EMAIL{
         padding: 5vw 3vw 5vw 7vw; /* leaving room for the navbar */
         margin:  0 0;
         z-index: 10;
-        background: linear-gradient(0deg, rgba(51, 51, 51, 0) 30%, rgba(51, 51, 51, 0.00) 55%);
+        background: linear-gradient(0deg, rgba(34, 34, 34, 0) 30%, rgba(34, 34, 34, 0.00) 55%);
         overflow-x: hidden;
         /* -webkit-backdrop-filter: blur(2px);
         backdrop-filter: blur(2px); */
@@ -722,6 +722,10 @@ input#mce-EMAIL{
         background-color: #222222;
     }
 
+    body-content-top main {
+        background: linear-gradient(0deg, rgba(34, 34, 34, 0.00) 80%, #222 70%);
+    }   
+
     body.content-top #background-frame, 
     body.content-top #foreground-frame {
         margin-top: 20dvh;
@@ -729,10 +733,11 @@ input#mce-EMAIL{
     }
 
     body.content-top>div#iframe-container:after{
-        top: 20dvh;
+        top: 0;
         bottom: auto;
-        background: linear-gradient(0deg, rgba(34, 34, 34, 0.00) 0%, #333 90%);
+        background: linear-gradient(0deg, #2220 0%, #222 30%);
         margin: 0;
+        height: 30dvh;
     }
 
     body.content-top section {
