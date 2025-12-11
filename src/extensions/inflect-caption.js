@@ -126,8 +126,29 @@
     // Expose update function globally
     window.__updateInflectCaption = updateInflectCaption;
 
-    // Update periodically (lightweight polling)
-    setInterval(updateInflectCaption, 500);
+    // Event-driven updates instead of polling
+    // Update when scrolling (debounced for performance)
+    let scrollTimeout;
+    document.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(updateInflectCaption, 100);
+    }, { passive: true });
+    
+    // Update on window messages (iframe communication)
+    window.addEventListener('message', (e) => {
+      if (e.data && (e.data.type === 'inflection-change' || e.data.type === 'active-link-change')) {
+        updateInflectCaption();
+      }
+    });
+    
+    // Update when body classes change (mode switches)
+    const bodyObserver = new MutationObserver(() => {
+      updateInflectCaption();
+    });
+    bodyObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    // Initial update
+    updateInflectCaption();
   }
 
   // Cleanup
