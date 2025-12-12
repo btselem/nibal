@@ -11,6 +11,10 @@
     border-left: 8px solid #FA5F5F;
 }
 
+.ltr section.testimony {
+    font-family: "Shadows Into Light Two", cursive;
+}
+
 .ltr #chapter-nav .chapter-item{
     direction: ltr;
 }
