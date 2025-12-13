@@ -460,7 +460,7 @@ extensions: [inflect-caption]
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.41459,34.38374,10.01,-0.8,0.0/+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=home))
+[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=home))
 ההורים שלי השתגעו מדאגה. הם חששו שלא אשרוד, וכל הזמן התעדכנו במצבי דרך אחמד. 
 כשמצבי השתפר קצת במהלך האשפוז, הצלחתי סוף סוף להתקשר בעצמי לאמא שלי. רציתי שהיא תשמע שאני בסדר. היא לא האמינה שאני עדיין חיה ולא הפסיקה לבכות.
 
@@ -699,7 +699,7 @@ extensions: [inflect-caption]
 
 {.meta}
 [](fg:blank)
-[](map/#31.52942,34.47911,18.34,38.4,0.0/+pois-he(label-main,id=couple-home),+pois-he#2(label-main,id=home),~labels_he)
+[](map/#31.52962,34.47878,18.34,38.4,0.0/+pois-he(label-main,id=couple-home),+pois-he#2(label-main,id=home),~labels_he)
 בתחילת יוני 2025, ניבאל החליטה לחזור עם ריתא לבית הוריה הסמוך.
  
 
@@ -765,7 +765,7 @@ extensions: [inflect-caption]
 {.meta no-h}
 ### עקירה חמישית
 [](fg:blank)
-[](map/#31.51737,34.47408,12.14,38.4,0.0/+home-gaza-city(2-by-foot),+pois-he(label-main,id=gaza-2509),+pois-he#2(label-main,id=home),~labels_he)
+[](map/#31.52064,34.46792,13.22,38.4,0.0/+home-gaza-city(2-by-foot),+pois-he(label-main,id=gaza-2509),+pois-he#2(label-main,id=home),~labels_he)
 ניבאל, ריתא וכ-50 מבני משפחתן המורחבת - הוריה של ניבאל, אחיה, בני זוגם וילדיהם - צעדו ברגל מג׳אבליא בחיפוש אחר מקום בטוח. 
 הם התמקמו במסעדה נטושה של חברים, ואחר-כך עברו לדירה קטנה וצפופה בעיר עזה.
 
