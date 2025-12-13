@@ -465,7 +465,7 @@ extensions: [inflect-caption]
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.41459,34.38374,10.01,-0.8,0.0/+pois-ar(label-main-ar,id=al-zawaida),+pois-ar#2(label-main-ar,id=home),~labels_he)
+[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois-ar(label-main-ar,id=al-zawaida),+pois-ar#2(label-main-ar,id=home),~labels_he)
 جُنَّ والداي من شدّة القلق. كانا يخشيان ألا أنجو، وكانا يتابعان حالتي باستمرار من خلال أحمد. 
 وعندما تحسّن وضعي قليلًا، تمكّنت أخيرًا من الاتصال بوالدتي بنفسي. أردتُ أن تسمع صوتي وتطمئن أنني على قيد الحياة. لم تصدّق أنني ما زلت حيّة وانفجرَت بالبكاء.
 
@@ -697,7 +697,7 @@ extensions: [inflect-caption]
 
 {.meta}
 [](fg:blank)
-[](map/#31.52942,34.47911,18.34,38.4,0.0/+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=couple-home),~labels_he)
+[](map/#31.52962,34.47878,18.34,38.4,0.0/+pois-ar(label-main-ar,id=home),+pois-ar#2(label-main-ar,id=couple-home),~labels_he)
 
 في بداية حزيران 2025، بعد بضعة أشهر من عودتها إلى شقتها وشقة أحمد، تركت نِبال منزلها وعادت مع ريتا إلى منزل والديها.
 
@@ -762,7 +762,7 @@ extensions: [inflect-caption]
 {.meta no-h}
 ### النزوح الخامس
 [](fg:blank)
-[](map/#31.51737,34.47408,12.14,38.4,0.0/+home-gaza-city(2-by-foot),+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
+[](map/#31.52064,34.46792,13.22,38.4,0.0/+home-gaza-city(2-by-foot),+pois-ar(label-main-ar,id=gaza-2509),+pois-ar#2(label-main-ar,id=home),~labels_he)
 نِبال، ريتا وحوالي 50 فردًا من عائلتهما الموسعة - والدا نِبال، أخواتها وإخوتها، أزواجهم وأطفالهم - ساروا على الأقدام من جباليا إلى مدينة غزة بحثًا عن مكان آمن.
 استقروا في مطعم مهجور تابع لأصدقاء، ثم في شقة مكتظة.
 
