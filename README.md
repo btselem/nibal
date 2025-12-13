@@ -959,7 +959,12 @@ extensions: [inflect-caption]
 [](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
 
-- עדותה של ניבאל נגבתה על-ידי תחקירנית בצלם אולפת אל-כורד.
+## עדותה של ניבאל נגבתה על-ידי תחקירנית בצלם אולפת אל-כורד.
+
+
+{.meta closing}
+[](fg:blank)
+[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
 
 ## צילומים ווידאו
 - באדיבות ניבאל אל-היסי
