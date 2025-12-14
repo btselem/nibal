@@ -243,7 +243,7 @@ extensions: [inflect-caption]
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-he(label-main,id=khan-yunis),+pois-he#2(label-main,id=home))
+[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois-he(label-main,id=khan-yunis),+pois-he#2(label-main,id=home))
 בפברואר 2024 שיחרר הצבא הישראלי את אחמד, והוא הגיע לח'אן יונס שבדרום הרצועה.  
 למרות התנגדותם הנחרצת של הוריה, ניבאל החליטה לצאת דרומה, בתקווה להתאחד עם בעלה.
 
@@ -595,7 +595,6 @@ extensions: [inflect-caption]
 {.testimony typewriter}
 [](svg/#ceasefire_hope.svg/-0.51,-0.49,1.93/+@vimeo-1129854927 "מתוך חשבון הטיקטוק של ניבאל")
 [](map/#31.53564,34.47997,11.77,0.0,39.0/+al-mawasi-jabalia(by-car),+pois-he(label-main,id=home))
-
 ההורים שלי קיבלו אותי בבית בחיבוקים, שירים ובכי. בלילות נפגשנו כל האחים בבית ההורים שלי.
 
 
@@ -712,7 +711,6 @@ extensions: [inflect-caption]
 {.testimony typewriter}
 [](svg/#back_home.svg/0.94,-0.57,3.11/+nibal_home_smile3.heic)
 [](map/#31.52943,34.47873,16.78,38.4,0.0/+pois.csv(poi,id=home),~labels_he)
-
 הייתי מתוסכלת כי לא יכולתי לעשות כלום בעצמי והתקשיתי לטפל בריתא. היה לי קשה לעכל את הפרידה מאחמד, והוא חסר לי מאוד. 
 למרות כל התמיכה שקיבלתי מההורים שלי, הרגשתי שהפכתי לנטל גם עליהם.
 
@@ -912,7 +910,7 @@ extensions: [inflect-caption]
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.95,-1.21,3.91/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 בצלם ימשיך לשמור על קשר עם ניבאל. אם יחול שינוי במצבה — נעדכן עליו בניוזלטר שלנו:
 
@@ -956,8 +954,8 @@ extensions: [inflect-caption]
 
 
 {.meta closing}
-[](fg:blank)
-[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
+[](svg/#permanent_impermanence.svg/-0.95,-1.21,3.91/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](bg:blank)
 
 ## עדותה של ניבאל נגבתה על-ידי תחקירנית בצלם אולפת אל-כורד.
 
