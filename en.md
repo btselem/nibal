@@ -245,7 +245,7 @@ Residents who stayed in Jabalya were documented trying to salvage what was left 
 
 {.meta} 
 [](fg:blank)
-[](map/#31.41524,34.36943,10.06,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=home),~labels_he,+labels_en)
+[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois.csv2(poi,id=khan-yunis),+arrow,+pois(label-main,id=khan-yunis),+pois#2(label-main,id=home),~labels_he,+labels_en)
 Ahmad was released from Israeli detention in February 2024 and he went to Khan Yunis in southern Gaza. 
 Nibal decided to go meet him, despite her parents’ strong objections.
 
@@ -908,7 +908,7 @@ Nibal has recently shared her story with various media outlets and online, hopin
 
 
 {.meta}
-[](svg/#permanent_impermanence.svg/-0.95,-1.21,3.91/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](fg:blank)
 [](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he)
 B’Tselem will follow their story and share any developments in our newsletter:
 
@@ -961,8 +961,8 @@ For the full report on forced displacement in Gaza:
 
 
 {.meta closing}
-[](fg:blank)
-[](map/#31.42216,34.36628,9.79,40.0,0.0/~labels_he,~Gaza_border_dash,~Gaza_border_base)
+[](svg/#permanent_impermanence.svg/-0.95,-1.21,3.91/+IMG-20250910-WA0107.jpg,+nibal_rita_nov_25.jpg)
+[](bg:blank)
 
 ## Nibal’s testimony was collected by B’Tselem field researcher Olfat al-Kurd.
 
