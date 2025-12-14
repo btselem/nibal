@@ -40,7 +40,7 @@
     left: auto;
 }
 
-.ltr section:first-child > a.thumb{
+.ltr section.title-section > a.thumb{
     text-align: left;
 }
 

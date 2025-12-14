@@ -100,7 +100,7 @@ section p{
     margin: 0;
 }
 
-section:first-child h1 em{
+section.title-section h1 em{
     font-size: 0.8em;
     /* margin-bottom: 0.5em; */
     display: block;
@@ -108,12 +108,12 @@ section:first-child h1 em{
     font-style: normal;
 }
 
-section:first-child h1{
+section.title-section h1{
     line-height: 0.75em;
     color: #fff;
 }
 
-section:first-child p{
+section.title-section p{
     border: 0;
 }
 
@@ -165,7 +165,7 @@ a.thumb::after {
     margin-top: -15px;
 }
 
-section:first-child > a.thumb{
+section.title-section > a.thumb{
     text-align: right;
     margin: 40px auto;
     display: block;
@@ -706,7 +706,7 @@ input#mce-EMAIL{
         margin: 40px 0 64px;
     }
 
-    section:first-child > a.thumb{
+    section.title-section > a.thumb{
         position: relative;
         margin-top: 224px;
     }
