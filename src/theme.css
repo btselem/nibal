@@ -290,14 +290,14 @@ section p code {
     text-decoration-color: #ff0095;
 }
 
-section:first-of-type h1,
-section:first-of-type h2 {
+section.title-section h1,
+section.title-section h2 {
     margin: 64px 0 0;
     font-weight: 700;
 }
 
-section:first-of-type>#scroll-indicator,
-section:first-of-type>.logo{
+section.title-section>#scroll-indicator,
+section.title-section>.logo{
     position: fixed;
     left: 50%;
     top: 0;
@@ -307,8 +307,8 @@ section:first-of-type>.logo{
     transition: all 0.4s ease;
 }
 
-section:first-of-type.current>#scroll-indicator,
-section:first-of-type.current>.logo {
+section.title-section.current>#scroll-indicator,
+section.title-section.current>.logo {
     top: 2vh;
     transform: translateX(-50%) translateY(0);
 }
@@ -324,14 +324,14 @@ section.end{
     max-width: 100%;
 }
 
-section:first-of-type>#scroll-indicator{
+section.title-section>#scroll-indicator{
     top: auto !important;
     bottom: 0;
     transform: translateX(-50%) translateY(100%);
     height: 5vh;
 }
 
-section:first-of-type.current>#scroll-indicator{
+section.title-section.current>#scroll-indicator{
     bottom: 2vh;
     transform: translateX(-50%) translateY(0);
 }
@@ -454,19 +454,19 @@ body.content-top section {
     margin-top: 8px;
 }
 
-section:first-of-type, section:last-of-type {
+section.title-section, section:last-of-type {
     display: flex;
     flex-direction: column;
 }
 
-section:first-of-type,
-body.content-top section:first-of-type {
+section.title-section,
+body.content-top section.title-section {
     justify-content: center;
     text-align: center; 
     max-width: 100%;
 }
  
-section:first-of-type {
+section.title-section {
     padding: 0 0 15vh;
     margin: 0 auto;
 }
@@ -672,12 +672,12 @@ input#mce-EMAIL{
         position: relative;
     }
 
-    section:first-of-type {
+    section.title-section {
         justify-content: flex-end;
         margin: 0;
     }
 
-    section:first-of-type .logo img{
+    section.title-section .logo img{
         width: 75%;
         height: 75%;
     }
@@ -702,7 +702,7 @@ input#mce-EMAIL{
         font-size: 0.9em;
     }
 
-    section:first-of-type > div#lang{
+    section.title-section > div#lang{
         margin: 40px 0 64px;
     }
 
@@ -758,7 +758,7 @@ input#mce-EMAIL{
         padding-top: 24px;
     }
 
-    body.content-top section:first-of-type {
+    body.content-top section.title-section {
         justify-content: flex-start;
     }
 
