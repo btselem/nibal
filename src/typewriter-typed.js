@@ -36,121 +36,190 @@
       try {
         if (!el || el.dataset._tw_started) return;
         el.dataset._tw_started = '1';
-        
-        // CRITICAL: Measure and lock the section height BEFORE any modifications
-        // This ensures snap calculations remain consistent throughout the typing animation
-        const sectionHeight = el.getBoundingClientRect().height;
-        if (sectionHeight > 0) {
-          el.style.height = Math.ceil(sectionHeight) + 'px';
-          el.style.minHeight = Math.ceil(sectionHeight) + 'px';
-        }
-        
-        // Get all paragraph children
-        // CRITICAL: Separate inflectable link paragraphs from content paragraphs
+
+        // Discover paragraphs early so we can extract fonts from them
         const allParagraphs = Array.from(el.querySelectorAll('p'));
-        
-        // Filter to only paragraphs with visible text content
         const paragraphs = allParagraphs.filter(p => {
-          // Check if paragraph ONLY contains inflectable links (no visible text)
           const hasInflectableLinks = p.querySelector('a:not(.dontinflect)');
           const text = (p.textContent || '').trim();
-          
-          if (hasInflectableLinks && text.length === 0) {
-            // This paragraph only contains invisible inflection links - preserve completely
-            return false;
-          }
-          
-          // This paragraph has visible content - include it for typewriter
+          if (hasInflectableLinks && text.length === 0) return false;
           return text.length > 0;
         });
-        
-        if (paragraphs.length === 0) return;
-        
-        // Measure and prepare all paragraphs first
-        const paragraphData = paragraphs.map(p => {
-          // Capture the full HTML including any child elements (links, spans, etc.)
-          const originalHTML = p.innerHTML;
-          const text = p.textContent || '';
-          const originalHeight = p.getBoundingClientRect().height;
-          
-          // Lock the paragraph height
-          if (originalHeight > 0) {
-            p.style.height = Math.ceil(originalHeight) + 'px';
+
+        // Wait for fonts used in this element to finish loading to get accurate measurements
+        const usedFamilies = new Set();
+        if (window.getComputedStyle) {
+          const cs = getComputedStyle(el);
+          if (cs.fontFamily) {
+            cs.fontFamily.split(',').forEach(f => usedFamilies.add(f.trim().replace(/^['"]|['"]$/g, '')));
           }
-          
-          // Separate inflectable links from text content
-          const inflectableLinks = Array.from(p.querySelectorAll('a:not(.dontinflect)'));
-          
-          // Clear paragraph content
-          p.innerHTML = '';
-          
-          // Re-add inflectable links first (they need to be in DOM for observer)
-          inflectableLinks.forEach(link => p.appendChild(link));
-          
-          // Create a span to hold the typed text
-          const typingTarget = document.createElement('span');
-          p.appendChild(typingTarget);
-          
-          const speed = (opts && opts.speed) || (p.dataset.twSpeed ? parseInt(p.dataset.twSpeed, 10) : 40);
-          const adjustedSpeed = Math.round(speed / 2);
-          
-          // Process text to add natural pauses at punctuation
-          let processedText = text;
-          processedText = processedText.replace(/([.!?])\s+/g, '$1^400 ');
-          processedText = processedText.replace(/,\s+/g, ',^200 ');
-          processedText = processedText.replace(/([;:])\s+/g, '$1^150 ');
-          
-          return { typingTarget, processedText, adjustedSpeed, text };
-        });
-        
-        // Chain the typing animations sequentially
-        let currentIndex = 0;
-        
-        function typeNextParagraph() {
-          if (currentIndex >= paragraphData.length) return;
-          
-          const { typingTarget, processedText, adjustedSpeed, text } = paragraphData[currentIndex];
-          currentIndex++;
-          
+          paragraphs.forEach(p => {
+            const cps = getComputedStyle(p);
+            if (cps.fontFamily) {
+              cps.fontFamily.split(',').forEach(f => usedFamilies.add(f.trim().replace(/^['"]|['"]$/g, '')));
+            }
+          });
+        }
+        const fontPromises = (document.fonts && usedFamilies.size)
+          ? Array.from(usedFamilies).map(f => document.fonts.load(`16px ${f}`))
+          : [];
+        const fontsReady = (document.fonts && document.fonts.ready)
+          ? Promise.all([document.fonts.ready, ...fontPromises]).catch(() => {})
+          : Promise.resolve();
+
+        const run = () => {
           try {
-            // Create Typed instance with natural, human-like typing settings
-            const typed = new Typed(typingTarget, {
-              strings: [processedText],
-              typeSpeed: adjustedSpeed,
-              startDelay: Math.random() * 100,
-              backSpeed: 0,
-              backDelay: 0,
-              loop: false,
-              showCursor: false,
-              cursorChar: '',
-              smartBackspace: true,
-              shuffle: false,
-              fadeOut: false,
-              fadeOutClass: '',
-              fadeOutDelay: 0,
-              attr: null,
-              bindInputFocusEvents: false,
-              contentType: 'html',
-              onComplete: function(self) {
-                // Start typing the next paragraph when this one completes
-                typeNextParagraph();
-                if (instances.has(el)) {
-                  instances.delete(el);
-                }
-              }
+            // Reset section inline styling FIRST to allow natural paragraph measurement
+            el.style.height = '';
+            el.style.minHeight = '';
+            
+            // Paragraphs already discovered at top of function; reuse the same array
+            if (paragraphs.length === 0) return;
+            
+            // MEASURE PARAGRAPHS: now without section constraints
+            const paragraphData = paragraphs.map((p, idx) => {
+              const text = p.textContent || '';
+              
+              // Measure the paragraph without section height constraints
+              const rect = p.getBoundingClientRect();
+              const measuredHeight = Math.ceil(rect.height || p.offsetHeight || p.clientHeight || 0);
+              const measuredWidth = Math.ceil(rect.width || p.offsetWidth || p.clientWidth || 0);
+
+              return {
+                element: p,
+                text,
+                measuredHeight,
+                measuredWidth
+              };
             });
             
-            instances.set(el, typed);
-          } catch (e) {
-            console.error('Typewriter error:', e);
-            typingTarget.textContent = text;
-            // Continue to next paragraph even if this one fails
+            // Apply height locking: measure each paragraph in isolation and lock its height
+            paragraphData.forEach((data, idx) => {
+              const p = data.element;
+              
+              // Measure paragraph in isolation to get true natural height without section constraints
+              const tempContainer = document.createElement('div');
+              tempContainer.style.cssText = 'position:fixed; top:-9999px; left:-9999px; width:' + data.measuredWidth + 'px; visibility:hidden; z-index:-9999;';
+              const clone = p.cloneNode(true);
+              clone.style.cssText = '';
+              
+              const cs = window.getComputedStyle(p);
+              const lineHeight = parseFloat(cs.lineHeight);
+              
+              tempContainer.appendChild(clone);
+              document.body.appendChild(tempContainer);
+              
+              const isolatedHeight = Math.ceil(clone.offsetHeight || clone.scrollHeight || clone.getBoundingClientRect().height || 0);
+              const heightWithFullLine = Math.ceil(isolatedHeight + lineHeight);
+              
+              tempContainer.remove();
+              
+              // Clear old inline sizing
+              p.style.height = '';
+              p.style.minHeight = '';
+              p.style.maxHeight = '';
+              p.style.width = '';
+              p.style.overflow = '';
+              p.style.boxSizing = '';
+              
+              // RE-MEASURE after clearing (to get true natural height)
+              const rect = p.getBoundingClientRect();
+              const naturalHeight = Math.ceil(rect.height || p.offsetHeight || p.clientHeight || 0);
+              
+              // Use ISOLATED height if it's significantly different (likely the true natural)
+              const finalHeight = isolatedHeight > 0 && isolatedHeight !== naturalHeight ? heightWithFullLine : naturalHeight;
+              
+              // NOW lock to the final height
+              if (finalHeight > 0) {
+                const hPx = finalHeight + 'px';
+                p.style.height = hPx;
+                p.style.minHeight = hPx;
+                p.style.maxHeight = hPx;
+              }
+              if (data.measuredWidth > 0) {
+                p.style.width = data.measuredWidth + 'px';
+              }
+              p.style.overflow = 'hidden';
+              p.style.boxSizing = 'border-box';
+
+              // Separate inflectable links from text content
+              const inflectableLinks = Array.from(p.querySelectorAll('a:not(.dontinflect)'));
+              
+              // Clear paragraph content
+              p.innerHTML = '';
+              
+              // Re-add inflectable links first (they need to be in DOM for observer)
+              inflectableLinks.forEach(link => p.appendChild(link));
+              
+              // Create a span to hold the typed text
+              const typingTarget = document.createElement('span');
+              p.appendChild(typingTarget);
+              
+              const speed = (opts && opts.speed) || (p.dataset.twSpeed ? parseInt(p.dataset.twSpeed, 10) : 40);
+              const adjustedSpeed = Math.round(speed / 2);
+              
+              // Process text to add natural pauses at punctuation
+              let processedText = data.text;
+              processedText = processedText.replace(/([.!?])\s+/g, '$1^400 ');
+              processedText = processedText.replace(/,\s+/g, ',^200 ');
+              processedText = processedText.replace(/([;:])\s+/g, '$1^150 ');
+              
+              data.typingTarget = typingTarget;
+              data.processedText = processedText;
+              data.adjustedSpeed = adjustedSpeed;
+            });
+            
+            // Chain the typing animations sequentially
+            let currentIndex = 0;
+            
+            function typeNextParagraph() {
+              if (currentIndex >= paragraphData.length) return;
+              
+              const data = paragraphData[currentIndex];
+              const { typingTarget, processedText, adjustedSpeed } = data;
+              currentIndex++;
+              
+              try {
+                const typed = new Typed(typingTarget, {
+                  strings: [processedText],
+                  typeSpeed: adjustedSpeed,
+                  startDelay: Math.random() * 100,
+                  backSpeed: 0,
+                  backDelay: 0,
+                  loop: false,
+                  showCursor: false,
+                  cursorChar: '',
+                  smartBackspace: true,
+                  shuffle: false,
+                  fadeOut: false,
+                  fadeOutClass: '',
+                  fadeOutDelay: 0,
+                  attr: null,
+                  bindInputFocusEvents: false,
+                  contentType: 'html',
+                  onComplete: function(self) {
+                    typeNextParagraph();
+                    if (instances.has(el)) {
+                      instances.delete(el);
+                    }
+                  }
+                });
+                
+                instances.set(el, typed);
+              } catch (e) {
+                console.error('Typewriter error:', e);
+                typingTarget.textContent = text;
+                typeNextParagraph();
+              }
+            }
+            
             typeNextParagraph();
+          } catch(err) {
+            console.error('[typewriter] startTypingForElement failed:', err);
           }
-        }
-        
-        // Start typing the first paragraph
-        typeNextParagraph();
+        };
+
+        fontsReady.then(run);
       } catch(err) {
         console.error('[typewriter] startTypingForElement failed:', err);
       }

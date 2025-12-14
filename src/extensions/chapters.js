@@ -390,7 +390,9 @@ window.initChapters = function initChapters() {
     }
 
   // Track if this is the initial hash or a user-triggered change
+  // Mirror to a global so any context can read it safely
   let isInitialHash = true;
+  window.__chaptersInitialHash = true;
 
   // Helper function to create scroll handler
   function createScrollHandler(targetId) {
@@ -399,7 +401,8 @@ window.initChapters = function initChapters() {
       
       // Clear all iframes with about:blank to clean up state
       // Only do this on user-triggered navigation, not initial load
-      if (!isInitialHash) {
+      const initial = typeof isInitialHash !== 'undefined' ? isInitialHash : window.__chaptersInitialHash;
+      if (!initial) {
         document.querySelectorAll('iframe').forEach(iframe => {
           iframe.src = 'about:blank';
         });
@@ -751,7 +754,8 @@ window.initChapters = function initChapters() {
     
     // Clear all iframes with about:blank to clean up state
     // Only do this on user-triggered navigation, not initial load
-    if (!isInitialHash) {
+    const initial = typeof isInitialHash !== 'undefined' ? isInitialHash : window.__chaptersInitialHash;
+    if (!initial) {
       document.querySelectorAll('iframe').forEach(iframe => {
         iframe.src = 'about:blank';
       });
@@ -819,14 +823,14 @@ window.initChapters = function initChapters() {
 
   // Listen for hash changes (but not the initial one)
   window.addEventListener('hashchange', () => {
-    isInitialHash = false; // After initial load, all hash changes are user-triggered
+    isInitialHash = false; window.__chaptersInitialHash = false; // After initial load, all hash changes are user-triggered
     handleHashJump();
   });
   
   // Handle initial hash on page load (with a delay to ensure content is ready)
   setTimeout(() => {
     handleHashJump();
-    isInitialHash = false; // Mark initial hash as processed
+    isInitialHash = false; window.__chaptersInitialHash = false; // Mark initial hash as processed
   }, 500);
 }
 
