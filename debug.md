@@ -1,8 +1,18 @@
 ---
 dual-iframe: true
-body-class: snap, fs-video-mobile
+body-class: snap fs-video-mobile editor animate-sections content-top
 css: src/theme.css
+snap: true
+editor: true
+extensions: [inflect-caption]
 ---
+
+{.testimony typewriter}
+[](fg:blank)
+[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois-he(label-main,id=al-zawaida),+pois-he#2(label-main,id=home))
+ההורים שלי השתגעו מדאגה. הם חששו שלא אשרוד, וכל הזמן התעדכנו במצבי דרך אחמד. 
+כשמצבי השתפר קצת במהלך האשפוז, הצלחתי סוף סוף להתקשר בעצמי לאמא שלי. רציתי שהיא תשמע שאני בסדר. היא לא האמינה שאני עדיין חיה ולא הפסיקה לבכות.
+
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389)
