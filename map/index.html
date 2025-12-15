@@ -2737,8 +2737,10 @@ map.on('load', () => {
     map.resize();
       }
   
+  // After all layers are loaded, if :follow is present in the hash, trigger follow logic directly (no hashchange event)
+  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit, showTicker: showTickerInit, followHidden: followHiddenInit, showMapUI, isStatic } = parseHash();
+  
   // Apply fitBounds if bounds are specified in hash (instead of zoom)
-  const { camera: camInit } = parseHash();
   if (camInit.boundsMeters) {
     const bbox = calculateGeographicBounds(camInit.center, camInit.boundsMeters);
     map.fitBounds(bbox, {
@@ -2748,9 +2750,6 @@ map.on('load', () => {
       animate: false
     });
   }
-  
-  // After all layers are loaded, if :follow is present in the hash, trigger follow logic directly (no hashchange event)
-  const { camera: camInit, layers: layersInit, dynamicGeojsonToLoad: dynInit, followId: followInit, followOffset: followOffsetInit, showTicker: showTickerInit, followHidden: followHiddenInit, showMapUI, isStatic } = parseHash();
   if (followInit) {
     // Only start follow if not already running (avoid double-trigger)
     if (!window._isFollowStarted) {
