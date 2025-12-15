@@ -16,7 +16,7 @@ extensions: [inflect-caption]
 <a href="https://btselem.org" title="בצלם" class="dontinflect" target="blank"><img src="img/bts_logo.svg" alt="בצלם" style="max-width:100px;height:auto;"></a>
 </div>
 
-# _The Displacements of_ Nibal Al-Hisi
+# _The Displacement Journey of_ Nibal Al-Hisi
 
 <div id="lang">
     <a href="#" class="dontinflect" data-reload>עברית</a>
