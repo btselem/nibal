@@ -1063,6 +1063,66 @@ function removeMapUIControls() {
   }
 }
 
+// ===== FitBounds Helper Functions =====
+// Reference safe area size (600x600px) - the area we want to keep visible across all screens
+const SAFE_AREA_SIZE = 600;
+
+// Convert zoom level + center to geographic bounds that fit in safe area
+// Returns bounding box [[west, south], [east, north]]
+function zoomToBounds(center, zoom) {
+  // Calculate meters per pixel at this zoom and latitude
+  // At equator: metersPerPixel = 40075017 * cos(lat) / (256 * 2^zoom)
+  const lat = Array.isArray(center) ? center[1] : center.lat;
+  const lng = Array.isArray(center) ? center[0] : center.lng;
+  
+  const latRad = lat * Math.PI / 180;
+  const metersPerPixel = (40075017 * Math.cos(latRad)) / (256 * Math.pow(2, zoom));
+  
+  // Calculate how many meters the safe area represents
+  const metersHalfWidth = (SAFE_AREA_SIZE / 2) * metersPerPixel;
+  
+  // Convert meters to degrees (approximate)
+  const metersPerDegreeLat = 111320;
+  const metersPerDegreeLng = 111320 * Math.cos(latRad);
+  
+  const latOffset = metersHalfWidth / metersPerDegreeLat;
+  const lngOffset = metersHalfWidth / metersPerDegreeLng;
+  
+  return [
+    [lng - lngOffset, lat - latOffset], // southwest
+    [lng + lngOffset, lat + latOffset]  // northeast
+  ];
+}
+
+// Convert geographic bounds back to reference zoom
+// Calculates what zoom level would fit these bounds in the safe area
+function boundsToZoom(bounds, center) {
+  const lat = Array.isArray(center) ? center[1] : center.lat;
+  const latRad = lat * Math.PI / 180;
+  
+  // Calculate the width of the bounds in degrees
+  const lngSpan = bounds[1][0] - bounds[0][0]; // east - west
+  
+  // Convert to meters
+  const metersPerDegreeLng = 111320 * Math.cos(latRad);
+  const boundsWidthMeters = lngSpan * metersPerDegreeLng;
+  
+  // Calculate meters per pixel needed to fit bounds in safe area
+  const metersPerPixel = boundsWidthMeters / SAFE_AREA_SIZE;
+  
+  // Calculate zoom: metersPerPixel = (40075017 * cos(lat)) / (256 * 2^zoom)
+  // Solving for zoom: 2^zoom = (40075017 * cos(lat)) / (256 * metersPerPixel)
+  const worldCircumference = 40075017 * Math.cos(latRad);
+  const zoom = Math.log2(worldCircumference / (256 * metersPerPixel));
+  
+  return Math.max(0, Math.min(22, zoom));
+}
+
+// Flag to prevent hash updates during programmatic map moves
+let isFittingBounds = false;
+
+// ===== End FitBounds Helpers =====
+
 // Track externally loaded layers (not part of original style)
 const externalLayers = new Set();
 
@@ -1194,18 +1254,22 @@ function parseHash() {
     return (typeof val === 'number' && !isNaN(val)) ? val : def;
   }
 
-  // Apply mobile zoom adjustment ONCE during parsing (not reactively)
-  // This ensures smooth experience on mobile without oscillation
-  const isMobile = window.innerWidth <= 1000;
-  const baseZoom = pickNum(cameraParts[2], defaultCamera.zoom);
-  const adjustedZoom = isMobile ? baseZoom - 1 : baseZoom;
+  // Parse camera position and convert zoom to geographic bounds
+  const center = [pickNum(cameraParts[1], defaultCamera.center[0]), pickNum(cameraParts[0], defaultCamera.center[1])];
+  const zoom = pickNum(cameraParts[2], defaultCamera.zoom);
+  const bearing = pickNum(cameraParts[3], defaultCamera.bearing);
+  const pitch = pickNum(cameraParts[4], defaultCamera.pitch);
+  
+  // Convert reference zoom to geographic bounds for fitBounds
+  const bounds = zoomToBounds(center, zoom);
 
   return {
     camera: {
-      center: [pickNum(cameraParts[1], defaultCamera.center[0]), pickNum(cameraParts[0], defaultCamera.center[1])],
-      zoom: adjustedZoom,
-      bearing: pickNum(cameraParts[3], defaultCamera.bearing),
-      pitch: pickNum(cameraParts[4], defaultCamera.pitch)
+      center,
+      zoom,  // Keep original zoom for reference
+      bounds,  // Geographic bounds to use with fitBounds
+      bearing,
+      pitch
     },
     layers: layersOn,
     dynamicGeojsonToLoad,
@@ -1841,9 +1905,19 @@ async function loadWaybackLayer(dateStr, toLayer) {
 // Update hash from map state
 function updateHash(map, visibleLayers) {
   const c = map.getCenter();
-  const z = map.getZoom().toFixed(2);
   const b = map.getBearing().toFixed(1);
   const p = map.getPitch().toFixed(1);
+  
+  // Calculate reference zoom from current view bounds
+  // Get the current bounds and calculate what zoom would fit them in the safe area
+  const currentBounds = map.getBounds();
+  const boundsArray = [
+    [currentBounds.getWest(), currentBounds.getSouth()],
+    [currentBounds.getEast(), currentBounds.getNorth()]
+  ];
+  const referenceZoom = boundsToZoom(boundsArray, [c.lng, c.lat]);
+  const z = referenceZoom.toFixed(2);
+  
   // Preserve existing layer part of hash if present
   const hash = window.location.hash.replace('#', '');
   const parts = hash.split('/');
@@ -2531,7 +2605,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   style,
   center: camera.center,
-  zoom: camera.zoom,
+  zoom: camera.zoom,  // Initial zoom, will be adjusted by fitBounds after load
   bearing: camera.bearing,
   pitch: camera.pitch,
   interactive: true,  // Will be disabled if /static flag is present
@@ -2539,6 +2613,21 @@ const map = new mapboxgl.Map({
 });
 // Expose map globally for add-layer UI logic
 window.map = map;
+
+// Apply fitBounds after map is ready to use geographic bounds from hash
+map.once('load', () => {
+  if (camera.bounds) {
+    isFittingBounds = true;
+    map.fitBounds(camera.bounds, {
+      padding: 0,
+      bearing: camera.bearing,
+      pitch: camera.pitch,
+      animate: false
+    });
+    // Reset flag after fitBounds completes
+    setTimeout(() => { isFittingBounds = false; }, 100);
+  }
+});
 
 // Solution 5: Force immediate map resize with native resolution on mobile
 // This addresses portrait mode scaling where labels appear tiny
@@ -2746,10 +2835,19 @@ map.on('load', () => {
   // Re-apply camera from hash after style load to ensure bearing/pitch/zoom are honored
   try {
     const { camera: parsedCamera } = parseHash();
-    if (parsedCamera) {
+    if (parsedCamera && parsedCamera.bounds) {
+      isFittingBounds = true;
+      map.fitBounds(parsedCamera.bounds, {
+        padding: 0,
+        bearing: parsedCamera.bearing,
+        pitch: parsedCamera.pitch,
+        animate: false
+      });
+      setTimeout(() => { isFittingBounds = false; }, 100);
+    } else if (parsedCamera) {
       map.jumpTo({
         center: parsedCamera.center,
-        zoom: parsedCamera.zoom,  // Zoom already adjusted in parseHash for mobile
+        zoom: parsedCamera.zoom,
         bearing: parsedCamera.bearing,
         pitch: parsedCamera.pitch,
         animate: false
@@ -2790,6 +2888,9 @@ map.on('load', () => {
 
 // Update hash on camera move
 map.on('moveend', () => {
+  // Don't update hash during programmatic fitBounds operations
+  if (isFittingBounds) return;
+  
   // During free-camera follow animation, don't write to the hash —
   // it can re-introduce :follow and cause unintended restarts.
   if (isFreeCameraAnimating) return;
@@ -3353,17 +3454,32 @@ window.addEventListener('hashchange', () => {
     });
   }
 
-  // 5. Fly to hash geolocation (with animation), then start follow only after fly completes
-  const flyOpts = {
-    center: [camera.center[0], camera.center[1]],
-    zoom: camera.zoom,  // Zoom already adjusted in parseHash for mobile
-    bearing: camera.bearing,
-    pitch: camera.pitch,
-    duration: 1200
-  };
+  // 5. Apply camera position from hash using fitBounds
+  isFittingBounds = true;
+  
+  if (camera.bounds) {
+    // Use fitBounds to position map based on geographic bounds
+    map.fitBounds(camera.bounds, {
+      padding: 0,
+      bearing: camera.bearing,
+      pitch: camera.pitch,
+      duration: 1200  // Animated transition
+    });
+  } else {
+    // Fallback to flyTo if bounds not available
+    map.flyTo({
+      center: [camera.center[0], camera.center[1]],
+      zoom: camera.zoom,
+      bearing: camera.bearing,
+      pitch: camera.pitch,
+      duration: 1200
+    });
+  }
+  
+  // Reset flag after animation completes
+  setTimeout(() => { isFittingBounds = false; }, 1300);
 
   // Always start follow if followId is present after camera update
-  map.flyTo(flyOpts);
   if (followId) {
     // Wait for both flyTo and source readiness before starting follow
     let followReady = false;
