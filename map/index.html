@@ -1064,8 +1064,8 @@ function removeMapUIControls() {
 }
 
 // ===== FitBounds Helper Functions =====
-// Reference safe area size (300x300px) - the area we want to keep visible across all screens
-const SAFE_AREA_SIZE = 300;
+// Reference safe area size (500x500px) - the area we want to keep visible across all screens
+const SAFE_AREA_SIZE = 500;
 
 // Convert zoom level + center to geographic bounds that fit in safe area
 // Returns bounding box [[west, south], [east, north]]
@@ -1094,32 +1094,8 @@ function zoomToBounds(center, zoom) {
   ];
 }
 
-// Convert geographic bounds back to reference zoom
-// Calculates what zoom level would fit these bounds in the safe area
-function boundsToZoom(bounds, center) {
-  const lat = Array.isArray(center) ? center[1] : center.lat;
-  const latRad = lat * Math.PI / 180;
-  
-  // Calculate the width of the bounds in degrees
-  const lngSpan = bounds[1][0] - bounds[0][0]; // east - west
-  
-  // Convert to meters
-  const metersPerDegreeLng = 111320 * Math.cos(latRad);
-  const boundsWidthMeters = lngSpan * metersPerDegreeLng;
-  
-  // Calculate meters per pixel needed to fit bounds in safe area
-  const metersPerPixel = boundsWidthMeters / SAFE_AREA_SIZE;
-  
-  // Calculate zoom: metersPerPixel = (40075017 * cos(lat)) / (256 * 2^zoom)
-  // Solving for zoom: 2^zoom = (40075017 * cos(lat)) / (256 * metersPerPixel)
-  const worldCircumference = 40075017 * Math.cos(latRad);
-  const zoom = Math.log2(worldCircumference / (256 * metersPerPixel));
-  
-  // Round to 2 decimal places to prevent drift from tiny floating point errors
-  const roundedZoom = Math.round(zoom * 100) / 100;
-  
-  return Math.max(0, Math.min(22, roundedZoom));
-}
+// Store the original hash zoom to prevent updates
+let originalHashZoom = null;
 
 // Flag to prevent hash updates during programmatic map moves
 let isFittingBounds = false;
@@ -1262,6 +1238,9 @@ function parseHash() {
   const zoom = pickNum(cameraParts[2], defaultCamera.zoom);
   const bearing = pickNum(cameraParts[3], defaultCamera.bearing);
   const pitch = pickNum(cameraParts[4], defaultCamera.pitch);
+  
+  // Store the original zoom from hash to prevent updates later
+  originalHashZoom = zoom;
   
   // Convert reference zoom to geographic bounds for fitBounds
   const bounds = zoomToBounds(center, zoom);
@@ -1911,44 +1890,19 @@ function updateHash(map, visibleLayers) {
   const b = map.getBearing().toFixed(1);
   const p = map.getPitch().toFixed(1);
   
-  // Calculate reference zoom from current view bounds
-  // Get the current bounds and calculate what zoom would fit them in the safe area
-  const currentBounds = map.getBounds();
-  const boundsArray = [
-    [currentBounds.getWest(), currentBounds.getSouth()],
-    [currentBounds.getEast(), currentBounds.getNorth()]
-  ];
-  const referenceZoom = boundsToZoom(boundsArray, [c.lng, c.lat]);
-  const z = referenceZoom.toFixed(2);
-  
-  // Check if hash actually changed to prevent unnecessary updates
+  // CRITICAL: Never update zoom in hash - use original zoom from hash to prevent loops
+  // This is the KEY to preventing zoom-out oscillation
   const hash = window.location.hash.replace('#', '');
   const parts = hash.split('/');
   const oldCameraStr = parts[0] || '';
   const layersStr = parts[1];
   const trailing = parts.slice(2);
   
-  // Parse old zoom to check if it's within tolerance
+  // Parse old zoom and preserve it (NEVER recalculate)
   const oldParts = oldCameraStr.split(',');
-  const oldZoom = oldParts.length >= 3 ? parseFloat(oldParts[2]) : null;
-  const newZoom = parseFloat(z);
+  const z = oldParts.length >= 3 ? oldParts[2] : (originalHashZoom !== null ? originalHashZoom.toFixed(2) : '10.00');
   
-  // If zoom is within 0.05 tolerance and center/bearing/pitch unchanged, skip update
-  if (oldZoom !== null && Math.abs(oldZoom - newZoom) < 0.05) {
-    const oldLat = oldParts.length >= 1 ? parseFloat(oldParts[0]) : null;
-    const oldLng = oldParts.length >= 2 ? parseFloat(oldParts[1]) : null;
-    const oldBearing = oldParts.length >= 4 ? parseFloat(oldParts[3]) : null;
-    const oldPitch = oldParts.length >= 5 ? parseFloat(oldParts[4]) : null;
-    
-    if (oldLat !== null && oldLng !== null &&
-        Math.abs(oldLat - c.lat) < 0.00001 &&
-        Math.abs(oldLng - c.lng) < 0.00001 &&
-        oldBearing !== null && Math.abs(oldBearing - parseFloat(b)) < 0.1 &&
-        oldPitch !== null && Math.abs(oldPitch - parseFloat(p)) < 0.1) {
-      return; // Prevent updates when values are essentially the same
-    }
-  }
-  
+  // Build new camera string with SAME zoom as before
   const cameraStr = `${c.lat.toFixed(5)},${c.lng.toFixed(5)},${z},${b},${p}`;
   
   // Only update if camera position actually changed
