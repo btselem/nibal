@@ -76,60 +76,82 @@
             // Paragraphs already discovered at top of function; reuse the same array
             if (paragraphs.length === 0) return;
             
-            // MEASURE PARAGRAPHS: now without section constraints
+            // CRITICAL: Extract inflection links and reset paragraph styles BEFORE measuring
             const paragraphData = paragraphs.map((p, idx) => {
               const text = p.textContent || '';
-              
-              // Measure the paragraph without section height constraints
+
+              // Extract and save inflection links (they'll be re-added later)
+              const inflectableLinks = Array.from(p.querySelectorAll('a:not(.dontinflect)'));
+
+              // Temporarily remove inflection links so they don't affect height measurement
+              inflectableLinks.forEach(link => link.remove());
+
+              // Reset paragraph styles to get natural text-only height
+              p.style.height = '';
+              p.style.minHeight = '';
+              p.style.maxHeight = '';
+              p.style.width = '';
+
+              // Force reflow to apply resets
+              p.offsetHeight;
+
+              // Measure the paragraph with only text content (no inflection links)
               const rect = p.getBoundingClientRect();
               const measuredHeight = Math.ceil(rect.height || p.offsetHeight || p.clientHeight || 0);
               const measuredWidth = Math.ceil(rect.width || p.offsetWidth || p.clientWidth || 0);
+
+              // scrollHeight gives the true content height
+              const scrollHeight = p.scrollHeight;
+
+              // Re-add the inflection links back to the paragraph
+              inflectableLinks.forEach(link => p.appendChild(link));
+
+              // DEBUG: Log all measurements for troubleshooting
+              if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+                const computed = window.getComputedStyle(p);
+                const lineHeight = parseFloat(computed.lineHeight) || 0;
+                const paddingTop = parseFloat(computed.paddingTop) || 0;
+                const paddingBottom = parseFloat(computed.paddingBottom) || 0;
+                const borderTop = parseFloat(computed.borderTopWidth) || 0;
+                const borderBottom = parseFloat(computed.borderBottomWidth) || 0;
+
+                console.log(`[Typewriter Paragraph ${idx}] Measurements:`, {
+                  text: text.substring(0, 50) + '...',
+                  'rect.height': rect.height,
+                  'offsetHeight': p.offsetHeight,
+                  'clientHeight': p.clientHeight,
+                  'scrollHeight (text only)': scrollHeight,
+                  'measuredHeight (used)': measuredHeight,
+                  'lineHeight': lineHeight,
+                  'padding': `${paddingTop} + ${paddingBottom} = ${paddingTop + paddingBottom}`,
+                  'border': `${borderTop} + ${borderBottom} = ${borderTop + borderBottom}`,
+                  'box-sizing': computed.boxSizing
+                });
+              }
 
               return {
                 element: p,
                 text,
                 measuredHeight,
-                measuredWidth
+                measuredWidth,
+                scrollHeight,     // Full content height captured after removing inflection links
+                inflectableLinks  // Save the links to re-add later
               };
             });
             
-            // Apply height locking: measure each paragraph in isolation and lock its height
+            // Apply height locking: use scrollHeight for most accurate content measurement
             paragraphData.forEach((data, idx) => {
               const p = data.element;
               
-              // Measure paragraph in isolation to get true natural height without section constraints
-              const tempContainer = document.createElement('div');
-              tempContainer.style.cssText = 'position:fixed; top:-9999px; left:-9999px; width:' + data.measuredWidth + 'px; visibility:hidden; z-index:-9999;';
-              const clone = p.cloneNode(true);
-              clone.style.cssText = '';
+              // scrollHeight is the most reliable - it gives actual content height
+              // regardless of any parent constraints
+              const finalHeight = data.scrollHeight;
               
-              const cs = window.getComputedStyle(p);
-              const lineHeight = parseFloat(cs.lineHeight);
-              
-              tempContainer.appendChild(clone);
-              document.body.appendChild(tempContainer);
-              
-              const isolatedHeight = Math.ceil(clone.offsetHeight || clone.scrollHeight || clone.getBoundingClientRect().height || 0);
-              const heightWithFullLine = Math.ceil(isolatedHeight + lineHeight);
-              
-              tempContainer.remove();
-              
-              // Clear old inline sizing
-              p.style.height = '';
-              p.style.minHeight = '';
-              p.style.maxHeight = '';
-              p.style.width = '';
-              p.style.overflow = '';
-              p.style.boxSizing = '';
-              
-              // RE-MEASURE after clearing (to get true natural height)
-              const rect = p.getBoundingClientRect();
-              const naturalHeight = Math.ceil(rect.height || p.offsetHeight || p.clientHeight || 0);
-              
-              // Use ISOLATED height if it's significantly different (likely the true natural)
-              const finalHeight = isolatedHeight > 0 && isolatedHeight !== naturalHeight ? heightWithFullLine : naturalHeight;
-              
-              // NOW lock to the final height
+              if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+                console.log(`[Typewriter Paragraph ${idx}] Locking to height: ${finalHeight}px (scrollHeight, text only)`);
+              }
+
+              // Lock to the scrollHeight measurement
               if (finalHeight > 0) {
                 const hPx = finalHeight + 'px';
                 p.style.height = hPx;
@@ -142,14 +164,11 @@
               p.style.overflow = 'hidden';
               p.style.boxSizing = 'border-box';
 
-              // Separate inflectable links from text content
-              const inflectableLinks = Array.from(p.querySelectorAll('a:not(.dontinflect)'));
-              
               // Clear paragraph content
               p.innerHTML = '';
               
               // Re-add inflectable links first (they need to be in DOM for observer)
-              inflectableLinks.forEach(link => p.appendChild(link));
+              data.inflectableLinks.forEach(link => p.appendChild(link));
               
               // Create a span to hold the typed text
               const typingTarget = document.createElement('span');
