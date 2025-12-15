@@ -1137,10 +1137,21 @@ function updateBoundsIndicator() {
 
 // Calculate geographic bounds from center point and bounds size in meters
 // Returns LngLatBounds-compatible array [[west, south], [east, north]]
+// center can be array [lng, lat] or object {lng, lat} / {lat, lng}
 function calculateGeographicBounds(center, boundsMeters) {
+  // Normalize center to lat/lng values
+  let lat, lng;
+  if (Array.isArray(center)) {
+    lng = center[0];
+    lat = center[1];
+  } else {
+    lat = center.lat;
+    lng = center.lng;
+  }
+  
   // Use simple approximation: 1 degree latitude ≈ 111,320 meters
   // 1 degree longitude ≈ 111,320 * cos(latitude) meters
-  const latRad = center.lat * Math.PI / 180;
+  const latRad = lat * Math.PI / 180;
   const metersPerDegreeLat = 111320;
   const metersPerDegreeLng = 111320 * Math.cos(latRad);
   
@@ -1148,8 +1159,8 @@ function calculateGeographicBounds(center, boundsMeters) {
   const lngOffset = boundsMeters / metersPerDegreeLng;
   
   return [
-    [center.lng - lngOffset, center.lat - latOffset], // southwest
-    [center.lng + lngOffset, center.lat + latOffset]  // northeast
+    [lng - lngOffset, lat - latOffset], // southwest
+    [lng + lngOffset, lat + latOffset]  // northeast
   ];
 }
 
