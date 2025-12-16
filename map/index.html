@@ -3109,6 +3109,8 @@ window.addEventListener('hashchange', () => {
   // Always reset follow started before processing new hash
   window._isFollowStarted = false;
 
+  // ...existing code...
+
   const { camera, layers, dynamicGeojsonToLoad, followId, followOffset, showTicker, followHidden, showMapUI, isStatic } = parseHash();
 
   // Apply layer visibility from hash for all existing layers
