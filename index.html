@@ -378,6 +378,9 @@
                 if (config.dualIframe) FrontmatterExt.applyDualIframeMode(true);
             }
             
+            // Expose frontmatter config globally for extensions to access
+            window.frontmatter = config;
+            
             // Now load extensions based on frontmatter config
             // Extensions can now reliably check body classes in their init()
             await loadExtensionsFromConfig(config);
