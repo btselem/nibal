@@ -4,7 +4,8 @@ body-class: snap fs-video-mobile editor animate-sections content-top
 css: src/theme.css
 snap: true
 editor: true
-extensions: [inflect-caption]
+extensions: [inflect-caption, zoom-to-viewport]
+zoom-to-viewport: true
 ---
 
 {.title-section}

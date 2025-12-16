@@ -435,25 +435,6 @@
     #map-ui-controls button.fullscreen-exit:hover {
       background: rgba(255,100,100,0.4);
     }
-    
-    /* Bounds Indicator - shows safe area in standalone/edit mode */
-    #bounds-indicator {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 500px;
-      height: 500px;
-      margin-left: -250px;
-      margin-top: -250px;
-      border: 3px solid #4A90E2;
-      box-shadow: 0 0 0 9999px rgba(0,0,0,0.3);
-      pointer-events: none;
-      z-index: 100;
-      display: none; /* Hidden by default, shown in standalone/edit mode */
-    }
-    #bounds-indicator.visible {
-      display: block;
-    }
   </style>
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet" />
@@ -464,7 +445,6 @@
 </head>
 <body>
 <div id="map"></div>
-<div id="bounds-indicator"></div>
 <div id="layer-controls" class="hidden">
   <div id="layer-controls-header">
     <div class="title-row">
@@ -535,12 +515,6 @@ document.addEventListener('keydown', function(e) {
     if (controls) {
       const wasHidden = controls.classList.contains('hidden');
       controls.classList.toggle('hidden');
-      
-      // Update edit mode state
-      isEditMode = wasHidden;
-      
-      // Update bounds indicator visibility
-      updateBoundsIndicatorVisibility();
       
       // Tell parent about edit mode change
       if (window.parent && window.parent !== window) {
@@ -1089,100 +1063,6 @@ function removeMapUIControls() {
   }
 }
 
-// ===== FitBounds Helper Functions =====
-// Reference safe area size (500x500px) - the area we want to keep visible across all screens
-const SAFE_AREA_SIZE = 500;
-
-// Detect if running in iframe
-const isInIframe = window.self !== window.top;
-
-// Track edit mode state
-let isEditMode = false;
-
-// Convert zoom level + center to geographic bounds that fit in safe area
-// Returns bounding box [[west, south], [east, north]]
-function zoomToBounds(center, zoom) {
-  // Calculate meters per pixel at this zoom and latitude
-  // At equator: metersPerPixel = 40075017 * cos(lat) / (256 * 2^zoom)
-  const lat = Array.isArray(center) ? center[1] : center.lat;
-  const lng = Array.isArray(center) ? center[0] : center.lng;
-  
-  const latRad = lat * Math.PI / 180;
-  const metersPerPixel = (40075017 * Math.cos(latRad)) / (256 * Math.pow(2, zoom));
-  
-  // Calculate how many meters the safe area represents
-  const metersHalfWidth = (SAFE_AREA_SIZE / 2) * metersPerPixel;
-  
-  // Convert meters to degrees (approximate)
-  const metersPerDegreeLat = 111320;
-  const metersPerDegreeLng = 111320 * Math.cos(latRad);
-  
-  const latOffset = metersHalfWidth / metersPerDegreeLat;
-  const lngOffset = metersHalfWidth / metersPerDegreeLng;
-  
-  return [
-    [lng - lngOffset, lat - latOffset], // southwest
-    [lng + lngOffset, lat + latOffset]  // northeast
-  ];
-}
-
-// Calculate reference zoom from current bounds (for standalone/edit mode)
-function boundsToZoom(bounds, center) {
-  const lat = Array.isArray(center) ? center[1] : center.lat;
-  const latRad = lat * Math.PI / 180;
-  
-  // Calculate the width of the bounds in degrees
-  const lngSpan = bounds[1][0] - bounds[0][0]; // east - west
-  
-  // Convert to meters
-  const metersPerDegreeLng = 111320 * Math.cos(latRad);
-  const boundsWidthMeters = lngSpan * metersPerDegreeLng;
-  
-  // Calculate meters per pixel needed to fit bounds in safe area
-  const metersPerPixel = boundsWidthMeters / SAFE_AREA_SIZE;
-  
-  // Calculate zoom
-  const worldCircumference = 40075017 * Math.cos(latRad);
-  const zoom = Math.log2(worldCircumference / (256 * metersPerPixel));
-  
-  // Round to 2 decimal places
-  const roundedZoom = Math.round(zoom * 100) / 100;
-  
-  return Math.max(0, Math.min(22, roundedZoom));
-}
-
-// Store the original hash zoom to prevent updates (iframe mode only)
-let originalHashZoom = null;
-
-// Flags to prevent hash updates during programmatic map moves
-let isFittingBounds = false;
-let isConvertingHash = false;
-
-// Function to update bounds indicator visibility
-function updateBoundsIndicatorVisibility() {
-  const boundsIndicator = document.getElementById('bounds-indicator');
-  if (!boundsIndicator) return;
-  
-  // Check if /show-ui flag is present
-  const hash = window.location.hash.replace('#', '');
-  const parts = hash.split('/');
-  const trailing = parts.slice(2);
-  const hasShowUI = trailing.some(seg => seg === 'show-ui');
-  
-  // Show bounds indicator if:
-  // - NOT in iframe (standalone mode) OR in edit mode
-  // - AND NOT using /show-ui flag
-  const shouldShow = (!isInIframe || isEditMode) && !hasShowUI;
-  
-  if (shouldShow) {
-    boundsIndicator.classList.add('visible');
-  } else {
-    boundsIndicator.classList.remove('visible');
-  }
-}
-
-// ===== End FitBounds Helpers =====
-
 // Track externally loaded layers (not part of original style)
 const externalLayers = new Set();
 
@@ -1314,71 +1194,12 @@ function parseHash() {
     return (typeof val === 'number' && !isNaN(val)) ? val : def;
   }
 
-  // Parse camera position - support two formats:
-  // Format 1 (old): lat,lon,zoom,bearing,pitch (5 params)
-  // Format 2 (new): latA,lonA,latB,lonB,bearing,pitch (6 params - bounding box)
-  let center, zoom, bounds, bearing, pitch;
-  let needsHashConversion = false;
-  
-  if (cameraParts.length === 6) {
-    // New format: latA,lonA,latB,lonB,bearing,pitch (bounding box)
-    const latA = pickNum(cameraParts[0], defaultCamera.center[1]);
-    const lonA = pickNum(cameraParts[1], defaultCamera.center[0]);
-    const latB = pickNum(cameraParts[2], defaultCamera.center[1] + 0.1);
-    const lonB = pickNum(cameraParts[3], defaultCamera.center[0] + 0.1);
-    bearing = pickNum(cameraParts[4], defaultCamera.bearing);
-    pitch = pickNum(cameraParts[5], defaultCamera.pitch);
-    
-    // Calculate center from bounding box
-    center = [(lonA + lonB) / 2, (latA + latB) / 2];
-    
-    // Set bounds for fitBounds
-    bounds = [[lonA, latA], [lonB, latB]]; // [[west, south], [east, north]]
-    
-    // Calculate zoom from bounds for reference (not used directly)
-    zoom = boundsToZoom(bounds, center);
-  } else {
-    // Old format: lat,lon,zoom,bearing,pitch (5 params)
-    // This will be auto-converted to bbox format
-    center = [pickNum(cameraParts[1], defaultCamera.center[0]), pickNum(cameraParts[0], defaultCamera.center[1])];
-    zoom = pickNum(cameraParts[2], defaultCamera.zoom);
-    bearing = pickNum(cameraParts[3], defaultCamera.bearing);
-    pitch = pickNum(cameraParts[4], defaultCamera.pitch);
-    
-    // Convert zoom + center to geographic bounds
-    bounds = zoomToBounds(center, zoom);
-    
-    // Mark that we need to update hash to new format
-    needsHashConversion = true;
-  }
-  
-  // Store the original zoom from hash (for reference only, not used for positioning)
-  originalHashZoom = zoom;
-
-  // Schedule hash conversion if needed (after map loads)
-  if (needsHashConversion && bounds) {
-    // Convert to new bbox format: latA,lonA,latB,lonB,bearing,pitch
-    isConvertingHash = true;
-    setTimeout(() => {
-      const [[lonA, latA], [lonB, latB]] = bounds;
-      const bboxCameraStr = `${latA.toFixed(5)},${lonA.toFixed(5)},${latB.toFixed(5)},${lonB.toFixed(5)},${bearing.toFixed(1)},${pitch.toFixed(1)}`;
-      const hash = window.location.hash.replace('#', '');
-      const parts = hash.split('/');
-      const trailing = parts.slice(1); // Preserve layers and flags
-      const newHash = `#${bboxCameraStr}` + (trailing.length ? `/${trailing.join('/')}` : '');
-      window.location.replace(newHash);
-      // Allow hash to settle before allowing updates
-      setTimeout(() => { isConvertingHash = false; }, 200);
-    }, 100);
-  }
-
   return {
     camera: {
-      center,
-      zoom,  // Calculated zoom from bounds (for reference)
-      bounds,  // Geographic bounds for fitBounds
-      bearing,
-      pitch
+      center: [pickNum(cameraParts[1], defaultCamera.center[0]), pickNum(cameraParts[0], defaultCamera.center[1])],
+      zoom: pickNum(cameraParts[2], defaultCamera.zoom),
+      bearing: pickNum(cameraParts[3], defaultCamera.bearing),
+      pitch: pickNum(cameraParts[4], defaultCamera.pitch)
     },
     layers: layersOn,
     dynamicGeojsonToLoad,
@@ -2013,35 +1834,16 @@ async function loadWaybackLayer(dateStr, toLayer) {
 
 // Update hash from map state
 function updateHash(map, visibleLayers) {
-  // Don't update hash during format conversion
-  if (isConvertingHash) return;
-  
   const c = map.getCenter();
+  const z = map.getZoom().toFixed(2);
   const b = map.getBearing().toFixed(1);
   const p = map.getPitch().toFixed(1);
-  
+  // Preserve existing layer part of hash if present
   const hash = window.location.hash.replace('#', '');
   const parts = hash.split('/');
-  const oldCameraStr = parts[0] || '';
   const layersStr = parts[1];
   const trailing = parts.slice(2);
-  
-  // Get current bounds from map
-  const currentBounds = map.getBounds();
-  
-  // Build new camera string using bounding box format: latA,lonA,latB,lonB,bearing,pitch
-  const latA = currentBounds.getSouth().toFixed(5);
-  const lonA = currentBounds.getWest().toFixed(5);
-  const latB = currentBounds.getNorth().toFixed(5);
-  const lonB = currentBounds.getEast().toFixed(5);
-  
-  const cameraStr = `${latA},${lonA},${latB},${lonB},${b},${p}`;
-  
-  // Only update if camera position actually changed
-  if (oldCameraStr === cameraStr) {
-    return; // Prevent unnecessary hash updates
-  }
-  
+  const cameraStr = `${c.lat.toFixed(5)},${c.lng.toFixed(5)},${z},${b},${p}`;
   const newHash = `#${cameraStr}` + (layersStr !== undefined ? `/${layersStr}` : '') + (trailing.length ? `/${trailing.join('/')}` : '');
   window.location.replace(newHash);
 }
@@ -2723,7 +2525,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   style,
   center: camera.center,
-  zoom: camera.zoom,  // Initial zoom, will be adjusted by fitBounds after load
+  zoom: camera.zoom,
   bearing: camera.bearing,
   pitch: camera.pitch,
   interactive: true,  // Will be disabled if /static flag is present
@@ -2731,21 +2533,6 @@ const map = new mapboxgl.Map({
 });
 // Expose map globally for add-layer UI logic
 window.map = map;
-
-// Apply fitBounds after map is ready to use geographic bounds from hash
-map.once('load', () => {
-  if (camera.bounds) {
-    isFittingBounds = true;
-    map.fitBounds(camera.bounds, {
-      padding: 0,
-      bearing: camera.bearing,
-      pitch: camera.pitch,
-      animate: false
-    });
-    // Reset flag after fitBounds completes (longer timeout for safety)
-    setTimeout(() => { isFittingBounds = false; }, 500);
-  }
-});
 
 // Solution 5: Force immediate map resize with native resolution on mobile
 // This addresses portrait mode scaling where labels appear tiny
@@ -2803,14 +2590,11 @@ map.on('load', () => {
         if (coords.length > 1) {
           followPathWithFreeCamera(map, coords, () => {
             // On completion: freeze current camera into the hash and remove :follow to avoid jumping back
-            const bounds = map.getBounds();
+            const c = map.getCenter();
+            const z = map.getZoom().toFixed(2);
             const b = map.getBearing().toFixed(1);
             const p = map.getPitch().toFixed(1);
-            const latA = bounds.getSouth().toFixed(5);
-            const lonA = bounds.getWest().toFixed(5);
-            const latB = bounds.getNorth().toFixed(5);
-            const lonB = bounds.getEast().toFixed(5);
-            const cameraStr = `${latA},${lonA},${latB},${lonB},${b},${p}`;
+            const cameraStr = `${c.lat.toFixed(5)},${c.lng.toFixed(5)},${z},${b},${p}`;
             let hash = window.location.hash.replace('#', '');
             const parts = hash.split('/');
             let layersStr = parts[1] || '';
@@ -2956,19 +2740,10 @@ map.on('load', () => {
   // Re-apply camera from hash after style load to ensure bearing/pitch/zoom are honored
   try {
     const { camera: parsedCamera } = parseHash();
-    if (parsedCamera && parsedCamera.bounds) {
-      isFittingBounds = true;
-      map.fitBounds(parsedCamera.bounds, {
-        padding: 0,
-        bearing: parsedCamera.bearing,
-        pitch: parsedCamera.pitch,
-        animate: false
-      });
-      setTimeout(() => { isFittingBounds = false; }, 500);
-    } else if (parsedCamera) {
+    if (parsedCamera) {
       map.jumpTo({
         center: parsedCamera.center,
-        zoom: parsedCamera.zoom,
+        zoom: parsedCamera.zoom + (window.innerWidth <= 1000 ? -1 : 0),
         bearing: parsedCamera.bearing,
         pitch: parsedCamera.pitch,
         animate: false
@@ -3003,18 +2778,17 @@ map.on('load', () => {
       }
     });
   }
-  
-  // Initialize bounds indicator visibility
-  updateBoundsIndicatorVisibility();
 
   // Do NOT trigger hashchange handler here; let user navigation or manual hash changes do it.
 });
 
 // Update hash on camera move
 map.on('moveend', () => {
-  // Don't update hash during programmatic fitBounds operations
-  if (isFittingBounds) return;
-  
+  // Don't update hash if we just applied mobile zoom adjustment (prevents loop)
+  if (window._skipNextHashUpdate) {
+    window._skipNextHashUpdate = false;
+    return;
+  }
   // During free-camera follow animation, don't write to the hash —
   // it can re-introduce :follow and cause unintended restarts.
   if (isFreeCameraAnimating) return;
@@ -3342,6 +3116,9 @@ window.addEventListener('hashchange', () => {
   const currentHash = window.location.hash;
   if (window._lastHashState === currentHash) return;
   window._lastHashState = currentHash;
+  
+  // Reset mobile zoom adjustment flag for this new hash
+  window._mobileZoomAdjusted = false;
 
   // Always cancel any running follow immediately so we can apply new state
   if (isFreeCameraAnimating) {
@@ -3578,32 +3355,23 @@ window.addEventListener('hashchange', () => {
     });
   }
 
-  // 5. Apply camera position from hash using fitBounds
-  isFittingBounds = true;
+  // 5. Fly to hash geolocation (with animation), then start follow only after fly completes
+  const flyOpts = {
+    center: [camera.center[0], camera.center[1]],
+    zoom: camera.zoom + (window.innerWidth <= 1000 && !window._mobileZoomAdjusted ? -1 : 0),
+    bearing: camera.bearing,
+    pitch: camera.pitch,
+    duration: 1200
+  };
   
-  if (camera.bounds) {
-    // Use fitBounds to position map based on geographic bounds
-    map.fitBounds(camera.bounds, {
-      padding: 0,
-      bearing: camera.bearing,
-      pitch: camera.pitch,
-      duration: 1200  // Animated transition
-    });
-  } else {
-    // Fallback to flyTo if bounds not available
-    map.flyTo({
-      center: [camera.center[0], camera.center[1]],
-      zoom: camera.zoom,
-      bearing: camera.bearing,
-      pitch: camera.pitch,
-      duration: 1200
-    });
+  // Mark that we've applied the mobile zoom adjustment for this hash
+  if (window.innerWidth <= 1000 && !window._mobileZoomAdjusted) {
+    window._mobileZoomAdjusted = true;
+    window._skipNextHashUpdate = true; // Prevent moveend from updating hash with new zoom
   }
-  
-  // Reset flag after animation completes (allow time for 1200ms animation + settling)
-  setTimeout(() => { isFittingBounds = false; }, 2000);
 
   // Always start follow if followId is present after camera update
+  map.flyTo(flyOpts);
   if (followId) {
     // Wait for both flyTo and source readiness before starting follow
     let followReady = false;
@@ -3629,14 +3397,11 @@ window.addEventListener('hashchange', () => {
         window._isFollowStarted = true;
   followPathWithFreeCamera(map, coords, () => {
           // On completion: freeze current camera into the hash and remove :follow to avoid jumping back
-          const bounds = map.getBounds();
+          const c = map.getCenter();
+          const z = map.getZoom().toFixed(2);
           const b = map.getBearing().toFixed(1);
           const p = map.getPitch().toFixed(1);
-          const latA = bounds.getSouth().toFixed(5);
-          const lonA = bounds.getWest().toFixed(5);
-          const latB = bounds.getNorth().toFixed(5);
-          const lonB = bounds.getEast().toFixed(5);
-          const cameraStr = `${latA},${lonA},${latB},${lonB},${b},${p}`;
+          const cameraStr = `${c.lat.toFixed(5)},${c.lng.toFixed(5)},${z},${b},${p}`;
           let hash = window.location.hash.replace('#', '');
           const parts = hash.split('/');
           let layersStr = parts[1] || '';
@@ -3681,9 +3446,6 @@ window.addEventListener('hashchange', () => {
     }
   } else {
   }
-  
-  // Update bounds indicator visibility when hash changes
-  updateBoundsIndicatorVisibility();
 });
 
 // Solution 3: Add Map Resize Observer for orientation changes

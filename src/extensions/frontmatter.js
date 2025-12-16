@@ -35,6 +35,7 @@
       const snapMatch = body.match(/^\s*snap:\s*(true|yes|false|no)\s*$/mi);
       const editorMatch = body.match(/^\s*editor:\s*(true|yes|false|no)\s*$/mi);
       const animateMatch = body.match(/^\s*animate-sections:\s*(true|yes|false|no)\s*$/mi);
+      const zoomToViewportMatch = body.match(/^\s*zoom-to-viewport:\s*(true|yes|false|no)\s*$/mi);
       
       const cssPath = cssMatch ? cssMatch[1].trim().replace(/^['\"]|['\"]$/g, '') : null;
       const bodyClass = bcMatch ? bcMatch[1].trim().replace(/^['\"]|['\"]$/g, '') : null;
@@ -51,6 +52,7 @@
       const snap = snapMatch ? /true|yes/i.test(snapMatch[1]) : null;
       const editor = editorMatch ? /true|yes/i.test(editorMatch[1]) : null;
       const animateSections = animateMatch ? /true|yes/i.test(animateMatch[1]) : null;
+      const zoomToViewport = zoomToViewportMatch ? /true|yes/i.test(zoomToViewportMatch[1]) : null;
       
       text = text.replace(fmRe, '');
       
@@ -63,7 +65,8 @@
         chapters,
         snap,
         editor,
-        animateSections
+        animateSections,
+        'zoom-to-viewport': zoomToViewport
       };
       
       return { 
@@ -77,7 +80,8 @@
         chapters,
         snap,
         editor,
-        animateSections
+        animateSections,
+        'zoom-to-viewport': zoomToViewport
       };
     }
 
