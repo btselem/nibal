@@ -2784,11 +2784,6 @@ map.on('load', () => {
 
 // Update hash on camera move
 map.on('moveend', () => {
-  // Don't update hash if we just applied mobile zoom adjustment (prevents loop)
-  if (window._skipNextHashUpdate) {
-    window._skipNextHashUpdate = false;
-    return;
-  }
   // During free-camera follow animation, don't write to the hash —
   // it can re-introduce :follow and cause unintended restarts.
   if (isFreeCameraAnimating) return;
@@ -3116,9 +3111,7 @@ window.addEventListener('hashchange', () => {
   const currentHash = window.location.hash;
   if (window._lastHashState === currentHash) return;
   window._lastHashState = currentHash;
-  
-  // Reset mobile zoom adjustment flag for this new hash
-  window._mobileZoomAdjusted = false;
+
 
   // Always cancel any running follow immediately so we can apply new state
   if (isFreeCameraAnimating) {
@@ -3358,17 +3351,11 @@ window.addEventListener('hashchange', () => {
   // 5. Fly to hash geolocation (with animation), then start follow only after fly completes
   const flyOpts = {
     center: [camera.center[0], camera.center[1]],
-    zoom: camera.zoom + (window.innerWidth <= 1000 && !window._mobileZoomAdjusted ? -1 : 0),
+    zoom: camera.zoom,
     bearing: camera.bearing,
     pitch: camera.pitch,
     duration: 1200
   };
-  
-  // Mark that we've applied the mobile zoom adjustment for this hash
-  if (window.innerWidth <= 1000 && !window._mobileZoomAdjusted) {
-    window._mobileZoomAdjusted = true;
-    window._skipNextHashUpdate = true; // Prevent moveend from updating hash with new zoom
-  }
 
   // Always start follow if followId is present after camera update
   map.flyTo(flyOpts);

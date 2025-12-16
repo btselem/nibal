@@ -5,7 +5,8 @@ css: src/theme.css, src/ltr.css
 snap: true
 editor: true
 animate-sections: true
-extensions: [inflect-caption]
+extensions: [inflect-caption, zoom-to-viewport]
+zoom-to-viewport: true
 ---
 
 {.title-section}

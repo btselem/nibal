@@ -43,7 +43,9 @@
   function parseMapHash(hash) {
     if (!hash || !hash.includes('#')) return null;
     
-    const hashPart = hash.split('#')[1];
+    // Only split on the FIRST # to preserve layer parameters like #2, #3
+    const firstHashIndex = hash.indexOf('#');
+    const hashPart = hash.substring(firstHashIndex + 1);
     if (!hashPart) return null;
     
     // Split by / to separate camera from layers
@@ -80,8 +82,12 @@
     // Only process map/ URLs
     if (!url.includes('map/')) return url;
     
-    const [basePart, hashPart] = url.split('#');
-    if (!hashPart) return url;
+    // Split ONLY on the first # to preserve layer parameters that contain # (like #2, #3)
+    const firstHashIndex = url.indexOf('#');
+    if (firstHashIndex === -1) return url;
+    
+    const basePart = url.substring(0, firstHashIndex);
+    const hashPart = url.substring(firstHashIndex + 1);
     
     const parsed = parseMapHash('#' + hashPart);
     if (!parsed) return url;

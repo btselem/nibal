@@ -1,8 +1,18 @@
 ---
 dual-iframe: true
-body-class: snap, fs-video-mobile
+body-class: snap fs-video-mobile editor animate-sections content-top
 css: src/theme.css
+snap: true
+editor: true
+extensions: [inflect-caption, zoom-to-viewport]
+zoom-to-viewport: true
 ---
+
+{.meta}
+[](svg/#intro-pre.svg/-0.01,0.31,1.28/+displacement,+nibal2023)
+[](map/#31.41661,34.37347,10.01,37.6,0.0/+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois.csv#5(poi,id=bureij),+pois.csv#6(poi,id=al-mawasi),+pois.csv#7(poi,id=deir-al-balah),~labels_he,~labels_he)
+זה הסיפור שלה.
+
 
 {.testimony typewriter}
 [](svg/#intro-pre.svg/-0.07,-0.36,2.4/+vimeo-1137392053,+@vimeo-1137391389)
