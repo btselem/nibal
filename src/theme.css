@@ -609,7 +609,7 @@ input#mce-EMAIL{
         top: 0;
         left: 0;
         width: 100vw;
-        height: 85dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        height: 80dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
         z-index: 0;
         pointer-events: none; /* don't intercept taps when covered */
     }
@@ -621,7 +621,7 @@ input#mce-EMAIL{
         top: 0;
         left: 0;
         width: 100vw;
-        height: 85dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        height: 80dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
         pointer-events: none; /* don't intercept taps when covered */
     }
 
@@ -636,7 +636,7 @@ input#mce-EMAIL{
     body>div#iframe-container:after {
         content: '';
         position: absolute;
-        top: 86dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        top: 81dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
         width: 100%;
         height: 15dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
         margin-top: -15dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
@@ -664,7 +664,7 @@ input#mce-EMAIL{
     section {
         margin: 0; /* spacing handled within main */
         max-width: none;
-        height: 96dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
+        height: 100dvh; /* Use dvh (dynamic viewport) for Safari mobile UI */
         padding: 0; /* Use dvh (dynamic viewport) for Safari mobile UI */
         justify-content: end;
         overflow: hidden; /* hide scrolling on main if content overflows */
@@ -772,7 +772,7 @@ input#mce-EMAIL{
 
     body.content-top section {
         justify-content: end;
-        padding-bottom: 4dvh;
+        padding-bottom: 32px;
     }
 
     body.content-top .inflect-caption {
