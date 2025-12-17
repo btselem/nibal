@@ -12,21 +12,20 @@ zoom-to-viewport: true
 # דף בדיקות
 
 
-
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-he.csv(label-main,id=gaza-2403),+pois-he.csv#2(label-main,id=nuseirat))
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+pois.csv(poi,id=home|gaza-2403|nuseirat|rafah),+pois-he.csv(label-main,id=nuseirat|rafah)
 מהעיר עזה המשיכה ניבאל ברגל, כשהיא נושאת את ריתא בת החצי שנה בידיה.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-he.csv(label-main,id=nuseirat),+pois-he.csv#2(label-main,id=rafah))
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-he.csv(label-main,id=nuseirat),+pois-he.csv#2(label-main,id=rafah))
 באזור א-נוסייראת השתיים התאחדו עם אחמד, אותו לא ראו מזה כחצי שנה.
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
 
 
-{.testimony typewriter}
+{.meta}
 [](fg:blank)
 [](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-he.csv(label-main,id=rafah),~labels_he) 
 התרגשתי מאוד לראות את אחמד. הוא חיבק ונישק את ריתא בלי הפסקה. 
