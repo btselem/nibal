@@ -273,20 +273,20 @@ Nibal described a terrifying ride through ruins, seeing bombs rain down nearby.
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv(label-main,id=gaza-2403),+pois.csv#2(label-main,id=nuseirat),~labels_he,+labels_en)
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv(label-main,id=gaza-2403),+pois.csv#2(label-main,id=nuseirat),~labels_he,+labels_en)
 From Gaza City, Nibal continued south on foot, carrying her baby in her arms.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois.csv(label-main,id=nuseirat),+pois.csv#2(label-main,id=rafah),~labels_he)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois.csv(label-main,id=nuseirat),+pois.csv#2(label-main,id=rafah),~labels_he)
 In the area of a-Nuseirat, the two reunited with Ahmad. 
 The young family went together to a tent Ahmad had set up in Rafah. 
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois.csv(label-main,id=rafah),~labels_he) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+pois.csv(poi,id=rafah),+pois.csv(label-main,id=rafah),~labels_he) 
 I was overjoyed to see Ahmad. He hugged and kissed Rita again and again.
 
 
@@ -588,7 +588,7 @@ In the following weeks, about half a million IDPs made their way home to the nor
 
 {.meta}
 [](fg:blank)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois.csv(label-main,id=jabalia),+pois.csv#2(label-main,id=al-mawasi),~labels_he,+labels_en)
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+idf-poly-outlines,+pois.csv(label-main,id=jabalia),+pois.csv#2(label-main,id=al-mawasi),~labels_he,+labels_en)
 
 Nibal and Ahmad made the journey with Rita, almost 1.5 years old.
 Nibal’s relatives picked them up at the Netzarim checkpoint. They took Ahmad to the couple’s apartment and drove Nibal to her parents with Rita.
