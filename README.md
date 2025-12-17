@@ -9,7 +9,7 @@ zoom-to-viewport: true
 ---
 
 {.title-section}
-[](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
+[](map/#31.42354,34.38337,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/0,0.17,1.52/+nibal2023,+displacement)
 
 <div class="logo">
@@ -157,7 +157,7 @@ zoom-to-viewport: true
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.38470,34.38001,10.37,-10.4,31.0/~labels_he,+oct7-hamas.csv(label-focused))
+[](map/#31.39603,34.38279,9.92,-10.4,42.0/~labels_he,+oct7-hamas.csv(label-focused))
 ב-7 באוקטובר 2023 ביצעו ארגון חמאס ופלגים חמושים פלסטינים נוספים מרצועת עזה את המתקפה הקטלנית ביותר שתועדה אי פעם נגד אזרחים ישראלים.
 
 1,220 בני אדם נהרגו, עשרות אלפים נפצעו, ו-252 נחטפו לרצועת עזה.
@@ -246,7 +246,7 @@ zoom-to-viewport: true
 
 {.meta} 
 [](fg:blank)
-[](map/#31.44505,34.33883,10.45,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois-he.csv(label-main,id=rafah),+rafah-mawasi-line(arrow) "באדום: האזורים שנכללו תחת צווי הפינוי של הצבא בין ה-6 ל-11 במאי 2024")
+[](map/#31.40908,34.39253,10.21,-0.8,0.0/+pois-he.csv(label-main,id=home),+pois-he.csv#2(label-main,id=khan-yunis),+arrow)
 בפברואר 2024 שיחרר הצבא הישראלי את אחמד, והוא הגיע לח'אן יונס שבדרום הרצועה.  
 למרות התנגדותם הנחרצת של הוריה, ניבאל החליטה לצאת דרומה, בתקווה להתאחד עם בעלה.
 
@@ -463,7 +463,7 @@ zoom-to-viewport: true
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois-he.csv(label-main,id=al-zawaida),+pois-he.csv#2(label-main,id=home))
+[](map/#31.40908,34.39253,10.21,-0.8,0.0/+pois-he.csv(label-main,id=al-zawaida),+pois-he.csv#2(label-main,id=home))
 ההורים שלי השתגעו מדאגה. הם חששו שלא אשרוד, וכל הזמן התעדכנו במצבי דרך אחמד. 
 כשמצבי השתפר קצת במהלך האשפוז, הצלחתי סוף סוף להתקשר בעצמי לאמא שלי. רציתי שהיא תשמע שאני בסדר. היא לא האמינה שאני עדיין חיה ולא הפסיקה לבכות.
 
@@ -671,7 +671,7 @@ zoom-to-viewport: true
 
 {.meta}
 [](fg:blank)
-[](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-he.csv(label-main,id=alaa-home),+pois-he.csv#2(label-main,id=couple-home),~labels_he "הערכת נזק וחומרת פגיעה במבנים בג׳אבליא עד לתחילת אפריל 2025. מקור: UNOSAT")
+[](map/#31.52956,34.47932,18.24,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-he.csv(label-main,id=alaa-home),+pois-he.csv#2(label-main,id=couple-home),~labels_he "הערכת נזק וחומרת פגיעה במבנים בג׳אבליא עד לתחילת אפריל 2025. מקור: UNOSAT")
 באפריל 2025 הפציץ הצבא הישראלי את הבית הסמוך לבית הזוג, בו חיה משפחתה של אלאא, אחותה של ניבאל.  
 
 
@@ -773,14 +773,14 @@ zoom-to-viewport: true
 
 {.meta} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "תושבים נעקרים ממחנה א-שאטי הסמוך לעיר עזה, 19 בספטמבר 2025 (Activestills/יוסף זענון)")
-[](map/#31.50806,34.46098,14.51,38.4,0.0/)
+[](map/#31.51202,34.45029,14.69,38.4,0.0/)
 
 שבועות ספורים לאחר שמשפחתה של ניבאל הגיעה אליה, פתחה ישראל במתקפה קרקעית נוספת על העיר עזה. 
 
 
 {.meta thumb} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786)
-[](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly))
+[](map/#31.51202,34.45029,14.69,38.4,0.0/+IDF_zone_090925_NEW(idf-poly))
 צווי הפינוי שהוציא הצבא בתחילת ספטמבר 2025 לתושבי צפון הרצועה הורו לכ-1.2 מיליון בני אדם לעקור שוב ממקום מושבם.
 
 <a href="https://www.btselem.org/hebrew/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#destruction_of_gaza_city" target="blank" class="dontinflect thumb">
@@ -826,7 +826,7 @@ zoom-to-viewport: true
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-he.csv(label-main,id=deir-al-balah) "באדום: השטח שנותר בשליטת ישראל לפי השלב הראשון בהסכם הפסקת האש ")
+[](map/#31.41150,34.38598,9.96,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-he.csv(label-main,id=deir-al-balah) "באדום: השטח שנותר בשליטת ישראל לפי השלב הראשון בהסכם הפסקת האש ")
 #### Oct 25
 ב-10 לאוקטובר 2025 נכנסה לתוקף הפסקת האש בין ישראל לחמאס. 
 בשבועות שלאחר מכן ישראל המשיכה את תקיפותיה ברצועה.
