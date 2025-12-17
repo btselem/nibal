@@ -10,7 +10,7 @@ zoom-to-viewport: true
 ---
 
 {.title-section}
-[](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
+[](map/#31.42354,34.38337,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/0,0.17,1.52/+nibal2023,+displacement)
 
 <div class="logo">
@@ -158,7 +158,7 @@ Five days later, Ahmad was issued a work permit and started a job as a construct
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.38470,34.38001,10.37,-10.4,31.0/~labels_he,+oct7-hamas-en.csv(label-focused))
+[](map/#31.39603,34.38279,9.92,-10.4,42.0/~labels_he,+oct7-hamas-en.csv(label-focused))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
 Entering from Gaza, the attackers killed 1,220 people, and injured tens of thousands. 
 They carried 252 people, some living and others dead, back to Gaza.
@@ -461,7 +461,7 @@ I asked about Rita, and they told me she was fine. That’s what kept me going. 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.38437,34.30257,11.63,0.0,39.0/+pois.csv(label-main,id=al-zawaida),+pois.csv#2(label-main,id=home),~labels_he)
+[](map/#31.40908,34.39253,10.21,-0.8,0.0/+pois.csv(label-main,id=al-zawaida),+pois.csv#2(label-main,id=home),~labels_he)
 My parents were frantic with worry. They were afraid I wouldn’t make it and kept checking in with Ahmad. 
 When I felt a bit better, in the hospital, I finally managed to call my mother. I wanted her to hear that I was okay. She couldn’t believe I was alive and couldn't stop crying.
 
@@ -670,7 +670,7 @@ I tried to focus on Rita. She was the most important thing. I did everything I c
 
 {.meta}
 [](fg:blank)
-[](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois.csv(label-main,id=alaa-home),+pois.csv#2(label-main,id=couple-home),~labels_he "Assessment of building damage and impact severity in Jabalya by early April 2025 (UNOSAT)")
+[](map/#31.52956,34.47932,18.24,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois.csv(label-main,id=alaa-home),+pois.csv#2(label-main,id=couple-home),~labels_he "Assessment of building damage and impact severity in Jabalya by early April 2025 (UNOSAT)")
 
 In April 2025, Israel bombed the home of Nibal’s sister ‘Alaa in Jabalya.
 
@@ -771,14 +771,14 @@ They sheltered in an abandoned restaurant belonging to friends, and later in a c
 
 {.meta} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "Residents displaced from a-Shati R.C. near Gaza City, 19 Sept. 2025 (Activestills/Yousef Zaanoun)")
-[](map/#31.50806,34.46098,14.51,38.4,0.0/~labels_he,+labels_en)
+[](map/#31.51202,34.45029,14.69,38.4,0.0/~labels_he,+labels_en)
 
 During those weeks, Israel launched another ground invasion into Gaza City.
 
 
 {.meta thumb} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786)
-[](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
+[](map/#31.51202,34.45029,14.69,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_en)
 In early September 2025, just weeks after Nibal arrived in Gaza City, Israel ordered about 1.2 million people to evacuate the city.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#destruction_of_gaza_city" target="blank" class="dontinflect thumb">
@@ -824,7 +824,7 @@ I look around and see my brothers’ wives caring for their families, and I’m 
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois.csv(label-main,id=deir-al-balah),~labels_he,+labels_en "In red: The area remaining under Israeli control according to the first phase of the Oct. 2025 ceasefire deal")
+[](map/#31.41150,34.38598,9.96,38.4,0.0/+IDF_zone_191025(idf-poly),+pois.csv(label-main,id=deir-al-balah),~labels_he,+labels_en "In red: The area remaining under Israeli control according to the first phase of the Oct. 2025 ceasefire deal")
 #### Oct 25
 On 10 October 2025, another ceasefire between Israel and Hamas took effect. 
 Israel continued to bomb the Gaza Strip in the weeks that followed.
