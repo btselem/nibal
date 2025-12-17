@@ -158,7 +158,7 @@ Five days later, Ahmad was issued a work permit and started a job as a construct
 {.meta no-h}
 #### Oct 23
 [](fg:blank)
-[](map/#31.39603,34.38279,9.92,-10.4,42.0/~labels_he,+oct7-hamas-en.csv(label-focused))
+[](map/#31.40670,34.40851,9.92,-10.4,42.0/~labels_he,+oct7-hamas-en.csv(label-focused))
 On 7 October 2023, Hamas and other armed Palestinian groups carried out the deadliest attack ever perpetrated against Israeli citizens.
 Entering from Gaza, the attackers killed 1,220 people, and injured tens of thousands. 
 They carried 252 people, some living and others dead, back to Gaza.
