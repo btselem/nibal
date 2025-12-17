@@ -10,7 +10,7 @@ zoom-to-viewport: true
 ---
 
 {.title-section}
-[](map/#31.30336,34.29179,9.53,37.6,0.0/~labels_he)
+[](map/#31.42354,34.38337,9.53,37.6,0.0/~labels_he)
 [](svg/#intro-pre.svg/0,0.17,1.52/+nibal2023,+displacement)
 
 <div class="logo">
@@ -157,7 +157,7 @@ zoom-to-viewport: true
 #### Oct 23
 
 [](fg:blank)
-[](map/#31.38470,34.38001,10.37,-10.4,31.0/~labels_he,+oct7-hamas-ar.csv(label-focused))
+[](map/#31.39603,34.38279,9.92,-10.4,42.0/~labels_he,+oct7-hamas-ar.csv(label-focused))
 في 7 تشرين الأول 2023، نفذت حركة حماس وفصائل فلسطينية مسلحة أخرى من قطاع غزة الهجوم الأكثر دموية الذي وقع ضد مدنيين إسرائيليين، على الإطلاق.
 قُتل 1,220 شخصًا في ذلك الهجوم، بمن فيهم نساء ومسنون وأطفال. 
 أصيب آلاف واختُطف إلى قطاع غزة 252 شخصًا، أحياءً وجثثًا.
@@ -468,7 +468,7 @@ zoom-to-viewport: true
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.41391,34.38595,10.45,-0.8,0.0/+pois-ar.csv(label-main-ar,id=al-zawaida),+pois-ar.csv#2(label-main-ar,id=home),~labels_he)
+[](map/#31.40908,34.39253,10.21,-0.8,0.0/+pois-ar.csv(label-main-ar,id=al-zawaida),+pois-ar.csv#2(label-main-ar,id=home),~labels_he)
 جُنَّ والداي من شدّة القلق. كانا يخشيان ألا أنجو، وكانا يتابعان حالتي باستمرار من خلال أحمد. 
 وعندما تحسّن وضعي قليلًا، تمكّنت أخيرًا من الاتصال بوالدتي بنفسي. أردتُ أن تسمع صوتي وتطمئن أنني على قيد الحياة. لم تصدّق أنني ما زلت حيّة وانفجرَت بالبكاء.
 
@@ -670,7 +670,7 @@ zoom-to-viewport: true
 
 {.meta}
 [](fg:blank)
-[](map/#31.52957,34.47929,18.39,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-ar.csv(label-main-ar,id=alaa-home),+pois-ar.csv#2(label-main-ar,id=couple-home),~labels_he "تقييم الأضرار وشدّة الإصابات في المباني في جباليا حتى بداية نيسان 2025. المصدر: UNOSAT")
+[](map/#31.52956,34.47932,18.24,38.4,0.0/+UNOSAT_jabalia_25-04-04(poly-scale),+pois-ar.csv(label-main-ar,id=alaa-home),+pois-ar.csv#2(label-main-ar,id=couple-home),~labels_he "تقييم الأضرار وشدّة الإصابات في المباني في جباليا حتى بداية نيسان 2025. المصدر: UNOSAT")
 في نيسان 2025، قصف الجيش الإسرائيلي منزل آلاء، شقيقة نِبال، في جباليا. 
 
 
@@ -772,14 +772,14 @@ zoom-to-viewport: true
 
 {.meta} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786 "سكان مهجّرون من مخيم الشاطئ للاجئين، قرب مدينة غزة، 19 أيلول 2025 (Activestills: يوسف زعنون)")
-[](map/#31.50806,34.46098,14.51,38.4,0.0/~labels_he,+labels_ar)
+[](map/#31.51202,34.45029,14.69,38.4,0.0/~labels_he,+labels_ar)
 
 في تلك الأسابيع ذاتها، شنت إسرائيل هجومًا بريًا آخر على مدينة غزة.
 
 
 {.meta thumb} 
 [](svg/#permanent_impermanence.svg/-0.59,0.39,2.29/+@vimeo-1136076786)
-[](map/#31.50806,34.46098,14.51,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_ar)
+[](map/#31.51202,34.45029,14.69,38.4,0.0/+IDF_zone_090925_NEW(idf-poly),~labels_he,+labels_ar)
 أوامر الإخلاء التي أصدرها الجيش الإسرائيلي في أوائل أيلول 2025، بعد أسابيع قليلة من وصول عائلة نِبال إلى المدينة، تأمر حوالي 1,2 مليون شخص بالنزوح من مكان إقامتهم، مرة أخرى.
 
 <a href="https://www.btselem.org/arabic/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#destruction_of_gaza_city" target="blank" class="dontinflect thumb">
@@ -825,7 +825,7 @@ zoom-to-viewport: true
 
 {.meta no-h}
 [](fg:blank)
-[](map/#31.41505,34.39181,9.91,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar.csv(label-main-ar,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
+[](map/#31.41150,34.38598,9.96,38.4,0.0/+IDF_zone_191025(idf-poly),+pois-ar.csv(label-main-ar,id=deir-al-balah),~labels_he,+labels_ar "بالأحمر: المساحة التي بقيت تحت سيطرة إسرائيل قبل المرحلة الأولى من اتفاق وقف إطلاق النار")
 #### Oct 25
 في 10 تشرين الأول 2025، دخل وقف إطلاق النار بين إسرائيل وحماس حيز التنفيذ.
 
