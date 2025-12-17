@@ -283,7 +283,6 @@ zoom-to-viewport: true
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
 
 
-
 {.testimony typewriter}
 [](fg:blank)
 [](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-he.csv(label-main,id=rafah),~labels_he) 
