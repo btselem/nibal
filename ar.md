@@ -278,20 +278,20 @@ zoom-to-viewport: true
 
 {.meta} 
 [](fg:blank)
-[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-ar.csv(label-main-ar,id=gaza-2403),+pois-ar.csv#2(label-main-ar,id=nuseirat),~labels_he,+labels_ar)
+[](map/#31.47949,34.42091,12.96,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot):follow+10100,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois-ar.csv(label-main-ar,id=gaza-2403),+pois-ar.csv#2(label-main-ar,id=nuseirat),~labels_he,+labels_ar)
 من مدينة غزة، تواصل نِبال رحلتها إلى جنوب القطاع سيرًا على الأقدام، حاملةً ريتا البالغة من العمر ستة أشهر بين ذراعيها.
 
 
 {.meta}
 [](fg:blank)
-[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+family-home,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-ar.csv(label-main-ar,id=nuseirat),+pois-ar.csv#2(label-main-ar,id=rafah),~labels_he)
+[](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-ar.csv(label-main-ar,id=nuseirat),+pois-ar.csv#2(label-main-ar,id=rafah),~labels_he)
 في منطقة النصيرات، تجتمعان مع أحمد، الذي لم تلتقياه منذ نحو ستة أشهر.
 من هناك، يواصل الثلاثة طريقهم إلى الخيمة التي أقامها أحمد في رفح.
 
 
 {.testimony typewriter}
 [](fg:blank)
-[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+family-home,+pois.csv(poi,id=rafah),+pois-ar.csv(label-main-ar,id=rafah),~labels_he) 
+[](map/#31.26998,34.25242,14.63,0.0,39.0/+nuseirat-rafah(2-by-foot),+pois.csv(poi,id=rafah),+pois-ar.csv(label-main-ar,id=rafah),~labels_he) 
 تأثرتُ كثيرًا برؤية أحمد. كان يعانق ريتا ويقبّلها بلا توقف.
 
 
@@ -594,7 +594,7 @@ zoom-to-viewport: true
 
 {.meta}
 [](fg:blank)
-[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+family-home,+idf-poly-outlines,+pois-ar.csv(label-main-ar,id=jabalia),+pois-ar.csv#2(label-main-ar,id=al-mawasi),~labels_he,+labels_ar)
+[](map/#31.43623,34.35063,10.79,0.0,39.0/+al-mawasi-jabalia(by-car):follow+,+al-mawasi,+idf-poly-outlines,+pois-ar.csv(label-main-ar,id=jabalia),+pois-ar.csv#2(label-main-ar,id=al-mawasi),~labels_he,+labels_ar)
 
 سارت نبال وأحمد، أيضًا، شمالًا، مع ريتا التي أصبح عمرها عامًا وأربعة أشهر. عند حاجز "نتساريم"، أخذهم أقارب نِبال من هناك. أخذوا أحمد إلى شقة الزوجين ونِبال وريتا إلى منزل والديها.
 
