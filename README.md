@@ -280,6 +280,11 @@ zoom-to-viewport: true
 [](fg:blank)
 [](map/#31.41663,34.36232,12,0.0,39.0/+jabalia-gaza(by-car),+gaza-nuseirat(by-foot),+nuseirat-rafah(2-by-foot):follow+16900,+pois.csv(poi,id=home),+pois.csv#2(poi,id=gaza-2403),+pois.csv#3(poi,id=nuseirat),+pois.csv#4(poi,id=rafah),+pois-he.csv(label-main,id=nuseirat),+pois-he.csv#2(label-main,id=rafah))
 באזור א-נוסייראת השתיים התאחדו עם אחמד, אותו לא ראו מזה כחצי שנה.
+
+
+{.meta}
+[](fg:blank)
+[](map/#31.26706,34.26417,12.10,1.6,36.5/+nuseirat-rafah(2-by-foot),+pois.csv(poi,id=rafah),+pois-he.csv(label-main,id=rafah),~labels_he)
 משם, המשיכו שלושתם אל האוהל של אחמד ברפיח.
 
 
