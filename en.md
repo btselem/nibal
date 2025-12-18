@@ -346,7 +346,7 @@ I was ashamed to tell my parents how I was living.
 
 {.meta thumb} 
 [](fg:blank)
-[](map/#31.46027,34.34286,10.08,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois.csv(label-main,id=rafah),~labels_he,+labels_en,+rafah-mawasi-line(arrow))
+[](map/#31.45080,34.31559,9.93,-49.6,24.5/+IDF_zone_060524-110524(idf-poly),~oct23-IDF_heatmap,+idf-poly-outlines,+IDF_zone_060524-110524_NEW(idf-poly),+pois.csv(label-main,id=rafah),~labels_he,+labels_en,+rafah-mawasi-line(arrow))
 Less than two months after the family arrived in Rafah, Israel ordered the city evacuated in early May 2024.
 
 <a href="https://www.btselem.org/gaza_strip/202512_no_place_under_heaven_forced_displacement_in_the_gaza_strip_2023_2025#rafah_invasion" target="blank" class="dontinflect thumb">
@@ -512,13 +512,13 @@ Within months, the area was crammed with tents sheltering over 1 million IDPs fr
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/0.86,-1.07,3.83/+winter_triple_comp.jpg "Winter in an IDP camp in Khan Yunis, 31 Dec. 2024 (Activestills/Doaa Albaz)")
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he)
 IDP accounts from November 2024, when the family arrived, describe extreme overcrowding, acute shortages of food and water, and no shelter from the harsh winter.
 
 
 {.meta}
 [](svg/#warehouse_bureij2.svg/1.29,-0.52,3.88/+wheelchaor_triple_comp.jpg "Akram ‘Adil, a boy who lost a leg in an Israeli attack, in an IDP camp in Gaza City, 13 Dec. 2024 (Anadolu/Mahmoud Issa)")
-[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he "Satellite image of the “humanitarian zone” in al-Mawasi, Khan Yunis, Jan. 2025 (ESRI Wayback)")
+[](map/#31.37047,34.28073,15.79,40.0,1.2/+wayback:20231101,+wayback:20251005,~labels_he)
 Nibal had to start her recovery in inhumane conditions. 
 Tens of thousands of IDPs with injuries, disabilities and amputated limbs, many caused in Israeli attacks, are still struggling to survive in tents.
 
