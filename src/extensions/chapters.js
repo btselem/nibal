@@ -417,6 +417,7 @@ window.initChapters = function initChapters() {
       }
       
       const target = document.getElementById(targetId);
+      console.log('[chapters-click] Button click targeting:', targetId, '- Found element:', target?.tagName, target?.id);
         if (!target) return;
         
         // Get scroll position and dimensions
@@ -431,31 +432,19 @@ window.initChapters = function initChapters() {
         // getBoundingClientRect().top is relative to viewport, so:
         // - positive = below current view
         // - negative = above current view
-        const isTargetBelow = targetRect.top < 0;
+        // true when target is below the current viewport
+        const isTargetBelow = targetRect.top > 0;
         
-        // Calculate jump position: show 50% of target from the direction it's coming from
-        let jumpScrollTop;
-        if (isTargetBelow) {
-          // Target is below: position so target's top edge is at viewport's bottom edge
-          // This shows the target coming up from below
-          jumpScrollTop = targetTop - (viewportHeight / 2);
-        } else {
-          // Target is above: position so target's bottom edge is at viewport's top edge
-          // This shows the target coming down from above
-          jumpScrollTop = targetTop + targetHeight - (viewportHeight / 2);
-        }
+        // Calculate jump position: center target in the viewport
+        let jumpScrollTop = targetTop - (viewportHeight / 2) + (targetHeight / 2);
         
         // Clamp to valid scroll range
         const maxScroll = (scroller.scrollHeight || document.documentElement.scrollHeight) - viewportHeight;
         jumpScrollTop = Math.max(0, Math.min(jumpScrollTop, maxScroll));
         
-        // Jump directly (instant scroll)
-        if (scroller === document.scrollingElement || scroller === document.documentElement) {
-          window.scrollTo({ top: jumpScrollTop });
-        } else {
-          scroller.scrollTop = jumpScrollTop;
-        }
+        console.log('[scroll-calc]', {targetId, targetTop, targetHeight, currentScrollTop, viewportHeight, isTargetBelow, calculatedJumpScrollTop: jumpScrollTop});
         
+        // Jump directly (instant scroll)
         // Apply animation AFTER scroll positioning, if enabled
         if (document.body.classList.contains('animate-sections')) {
           // Remove any existing animation classes from all sections
@@ -471,6 +460,13 @@ window.initChapters = function initChapters() {
             target.classList.add('slide-from-top');
           }
           
+          // Log final position after animation settles
+          setTimeout(() => {
+            const finalScroll = scroller.scrollTop || window.pageYOffset;
+            const targetRect2 = target.getBoundingClientRect();
+            console.log('[scroll-final]', {targetId, calculatedJumpScrollTop: jumpScrollTop, actualFinalScroll: finalScroll, targetRectTopAfter: targetRect2.top});
+          }, 700);
+          
           // Remove animation class after completion
           setTimeout(() => {
             target.classList.remove('slide-from-bottom', 'slide-from-top');
@@ -482,8 +478,8 @@ window.initChapters = function initChapters() {
           scroller.scrollTop = jumpScrollTop;
         }
         
-        // Reset snap suppression flag to allow wheel snap immediately after jump
-        window.__snapSuppressUntil = Date.now();
+        // Keep snap suppression active through animation completion
+        window.__snapSuppressUntil = Math.max(window.__snapSuppressUntil || 0, Date.now() + 800);
       };
     }
 
@@ -496,8 +492,8 @@ window.initChapters = function initChapters() {
     }
 
     // Helper to update progress bar states (visited/future/current)
-    function updateProgressStates(currentScrollTop) {
-      const viewportHeight = window.innerHeight;
+    function updateProgressStates(currentScrollTop, viewportHeightOverride) {
+      const viewportHeight = viewportHeightOverride || (document.querySelector('main')?.clientHeight) || window.innerHeight;
       const viewportCenter = currentScrollTop + (viewportHeight / 2);
       
       // Get all nav items and dots
@@ -653,8 +649,10 @@ window.initChapters = function initChapters() {
       if (updateScheduled) return;
       updateScheduled = true;
       requestAnimationFrame(() => {
-        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        updateProgressStates(currentScrollTop);
+        const scroller = document.querySelector('main') || document.scrollingElement || document.documentElement;
+        const currentScrollTop = scroller.scrollTop || window.pageYOffset || document.documentElement.scrollTop;
+        const viewportHeight = scroller.clientHeight || window.innerHeight;
+        updateProgressStates(currentScrollTop, viewportHeight);
         updateScheduled = false;
         
         // If we're in a scroll animation, schedule another update for smooth state transitions
@@ -670,8 +668,10 @@ window.initChapters = function initChapters() {
       
       function loop() {
         if (window.__chaptersAnimating) {
-          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          updateProgressStates(currentScrollTop);
+          const scroller = document.querySelector('main') || document.scrollingElement || document.documentElement;
+          const currentScrollTop = scroller.scrollTop || window.pageYOffset || document.documentElement.scrollTop;
+          const viewportHeight = scroller.clientHeight || window.innerHeight;
+          updateProgressStates(currentScrollTop, viewportHeight);
           animationFrameId = requestAnimationFrame(loop);
         } else {
           animationFrameId = null;
@@ -691,9 +691,17 @@ window.initChapters = function initChapters() {
     }, 16); // Check every frame (~60fps)
 
     // Update on scroll
+    const mainScroller = document.querySelector('main');
     document.removeEventListener('scroll', window.__chaptersOnScrollListener);
+    if (mainScroller) {
+      mainScroller.removeEventListener('scroll', window.__chaptersOnMainScrollListener);
+    }
     window.__chaptersOnScrollListener = scheduleUpdate;
     document.addEventListener('scroll', scheduleUpdate, { passive: true });
+    if (mainScroller) {
+      window.__chaptersOnMainScrollListener = scheduleUpdate;
+      mainScroller.addEventListener('scroll', scheduleUpdate, { passive: true });
+    }
     
     // Update on resize (layout may have changed)
     const resizeHandler = () => {
