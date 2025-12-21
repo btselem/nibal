@@ -770,6 +770,10 @@ input#mce-EMAIL{
     }
     */
 
+    section.meta{
+        font-size: 1.1em;
+    }
+
     body.content-top section {
         justify-content: end;
         padding-bottom: 32px;

@@ -112,7 +112,7 @@ section img { max-width: 100%; }
     padding: 0.2em 0.5em;
     border-radius: 6px;
     z-index: 1100;
-    font-size: 0.75em;
+    font-size: 0.9em;
     line-height: 1.4;
     pointer-events: none; /* don't block map or page interactions */
 }
